@@ -35,20 +35,24 @@ func GetLogger() *logger {
 //Look for the caller of the Logf function and automatically
 //print in the following format:
 //<timestamp><caller><Message>
-func (l *logger) Logf(format string, args ...interface{}) {
+func (l *logger) Logf(format string, args ...interface{}) string {
 	//TODO Maybe accept logging levels/importance of the message
 	t := time.Now()
 	timeStamp := t.Format("2006-01-02 15:04:05.000")
-	caller := findCaller()
+	caller := findCaller(3)
 	l.c["cyan"].PrintfFunc()("%s ", timeStamp)
 	l.c["yellow"].PrintfFunc()("%s: ", caller)
-	fmt.Printf(format, args...)
+	logString := fmt.Sprintf(format, args...)
+	fmt.Print(logString)
+	return logString
 }
 
-//A function that that looks at the callstack for the caller 2 above it
-func findCaller() string {
+//1 = itself
+//2 = 1 above (this would be Logf)
+//3 = 2 above etc.
+func findCaller(callstack int) string {
 	functionPointer := make([]uintptr, 1)
-	n := runtime.Callers(3, functionPointer)
+	n := runtime.Callers(callstack, functionPointer)
 	if n == 0 {
 		return "unknown function"
 	}
