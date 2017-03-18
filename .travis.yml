@@ -1,0 +1,14 @@
+language: go
+
+
+install:
+    - go get -v
+go:
+    - 1.7.x
+
+script:
+    - go test -v ./...
+
+before_install:
+    - chmod 600 .netrc
+    - cp .netrc ~
