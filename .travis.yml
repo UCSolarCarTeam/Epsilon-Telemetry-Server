@@ -9,7 +9,6 @@ before_script:
   - cd web-app
   - npm install
   - cd ../server
-  - cd web-app
   - npm install
   - cd ..
 
