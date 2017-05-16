@@ -27,13 +27,13 @@ const app = express();
  */
 app.set('port', process.env.PORT || 4000);
 app.use(cors({
-  exposedHeaders: ["Link"]
+  exposedHeaders: ['Link'],
 }));
 app.use(expressStatusMonitor());
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressValidator());
 
 /**

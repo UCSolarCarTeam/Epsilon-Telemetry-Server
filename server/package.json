@@ -2,6 +2,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha --reporter spec --timeout 5000",
+    "lint": "eslint -c .eslintrc.json test app.js controllers",
     "build-docker": "docker build --rm -t backend ."
   },
   "dependencies": {
@@ -23,6 +24,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-jasmine": "^2.2.0",
     "mocha": "^3.0.2",
     "supertest": "^2.0.0"
   },
