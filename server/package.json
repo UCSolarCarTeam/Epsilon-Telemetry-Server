@@ -3,7 +3,7 @@
     "start": "node app.js",
     "test": "mocha --reporter spec --timeout 5000",
     "lint": "eslint -c .eslintrc.json test app.js controllers",
-    "build-docker": "docker build --rm -t backend ."
+    "build:docker": "docker build --rm -t server ."
   },
   "dependencies": {
     "async": "^2.0.1",
