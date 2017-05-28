@@ -5,10 +5,15 @@
     "lint": "eslint -c .eslintrc.json test app.js controllers",
     "build:docker": "docker build --rm -t server ."
   },
+   "repository": {
+     "type": "git",
+     "url": "https://github.com/UCSolarCarTeam/Epsilon-Telemetry-Server.git"
+   },
   "dependencies": {
     "amqplib": "^0.5.1",
     "async": "^2.0.1",
     "body-parser": "^1.15.2",
+    "bookshelf": "^0.10.3",
     "chalk": "^1.1.3",
     "cheerio": "^0.22.0",
     "clockwork": "^0.1.4",
@@ -18,8 +23,10 @@
     "express": "^4.14.0",
     "express-status-monitor": "^0.1.4",
     "express-validator": "^2.20.8",
+    "knex": "0.12.9",
     "lob": "^3.9.0",
     "morgan": "^1.7.0",
+    "pg": "^6.2.3",
     "request": "^2.74.0",
     "validator": "^6.0.0"
   },
