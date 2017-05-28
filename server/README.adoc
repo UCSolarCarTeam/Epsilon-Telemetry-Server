@@ -23,3 +23,9 @@ Other commands:
  * `docker ps` to list running containers
  * For deleting containers refer to https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes[this]
 
+== How to install PostgresSQL
+
+If Linux then follow instructions at https://www.postgresql.org/download/linux/ubuntu/[here].
+Then follow instructions https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04[here] on setting up the database.
+
+
