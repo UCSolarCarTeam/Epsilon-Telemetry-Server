@@ -1,13 +1,13 @@
-import knex from 'knex';
-import knexConfig from './knexfile';
-import bookshelf from 'bookshelf';
+const knex = require('knex');
+const knexConfig = require('./knexfile');
+const bookshelfImport = require('bookshelf');
 
-let bookshelfObj;
+let bookshelf;
 
 if (process.env.NODE_ENV === 'production') {
-   bookshelfObj = bookshelf(knex(knexConfig.production));
+  bookshelf = bookshelfImport(knex(knexConfig.production));
 } else {
-   bookshelfObj = bookshelf(knex(knexConfig.development));
+  bookshelf = bookshelfImport(knex(knexConfig.development));
 }
 
-export default bookshelfObj;
+module.exports = bookshelf;

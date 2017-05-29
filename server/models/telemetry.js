@@ -1,7 +1,7 @@
-import bookshelf from '../bookshelf';
+const bookshelf = require('../bookshelf');
 
 const Telemetry = bookshelf.Model.extend({
   tableName: 'telemetry',
 });
 
-export default Telemetry;
+exports.modules = Telemetry;
