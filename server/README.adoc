@@ -27,5 +27,7 @@ Other commands:
 
 If Linux then follow instructions at https://www.postgresql.org/download/linux/ubuntu/[here].
 Then follow instructions https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04[here] on setting up the database.
+For local dev usage use username/password/db as "solarcar". To connect via TCP, log in as solarcar `sudo -u solarcar psql solarcar` and run `ALTER USER "solarcar" with PASSWORD 'solarcar';`.
+
 
 
