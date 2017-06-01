@@ -137,6 +137,7 @@ exports.up = function(knex) {
     table.boolean('cclReducedDueToHighPackVoltage');
     table.boolean('cclReducedDueToChargerLatch');
     table.boolean('cclReducedDueToAlternateCurrentLimit');
+    table.boolean('batteryAlive');
     table.integer('populatedCells');
     table.float('12vInputVoltage');
     table.float('fanVoltage');
@@ -190,7 +191,7 @@ exports.up = function(knex) {
     table.float('mppt3Temperature');
     table.boolean('lowBeams');
     table.boolean('highBeams');
-    table.boolean('brakesLights');
+    table.boolean('brakeLights');
     table.boolean('leftSignal');
     table.boolean('rightSignal');
     table.boolean('bmsStrobeLight');
