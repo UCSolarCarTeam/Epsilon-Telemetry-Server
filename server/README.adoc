@@ -1,0 +1,25 @@
+= Server
+
+Express.js server running in node
+
+== Build
+`npm run start` to run dev server. Can be hit at `http://localhost:4000/`.
+
+== Running unit tests
+`npm run test` to for tests
+
+== Deploying to server
+Requirements:
+
+ * https://www.docker.com/[Docker] must be installed.
+
+Steps:
+
+ . Build docker container using `npm run build:docker`
+ . Run container using `docker run --name server -p 4000:4000 --restart on-failure -d server`
+
+Other commands:
+
+ * `docker ps` to list running containers
+ * For deleting containers refer to https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes[this]
+

@@ -1,0 +1,92 @@
+= TelemetryView
+
+This project was generated with https://github.com/angular/angular-cli[Angular CLI] version 1.0.0. Install Angular CLI globally via `npm install -g @angular/cli`
+or prefix all commands with `npm` to use the one local to this project. This project is writen in Typescript 2 with the Angular 4 framework.
+
+Please follow the https://angular.io/guide/styleguide[style guide].
+
+== Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+== Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+
+== Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+== Running unit tests
+
+Run `ng test` to execute the unit tests via https://karma-runner.github.io[Karma].
+Run `ng test --coverage` to generate coverage HTML doc.
+
+== Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via http://www.protractortest.org/[Protractor].
+Before running the tests make sure you are serving the app via `ng serve`.
+
+== Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the https://github.com/angular/angular-cli/blob/master/README.md[Angular CLI README].
+
+== File descriptions
+
+tsling.json::
+  File responsible for configuring the linter settings. Edit to change linter rules.
+
+tsconfig.json::
+  TypeScript transpiler settings. Use to configure settings like target and source maps.
+
+protractor.conf.js::
+  E2E test configuring file. Edit to change how e2e tests are ran.
+
+package.json::
+  Config file for dependencies and project scripts. Edit to update dependencies or add build/run scripts.
+
+karma.conf.js::
+  Unit test config file, modify it to change how unit tests are ran.
+
+.editorconfig::
+  Editor config settings, configures editor settings for many supported text editors. Refer to http://editorconfig.org/
+
+.angular-cli.json::
+  Angular CLI config file, points Angular CLI to all the other config files.
+
+=== src
+
+typings.d.ts::
+  File for custom TypeScript typings, use to define your own.
+
+tsconfig.*.json::
+  TypeScript transpiler settings. Use to configure settings like target and source maps.
+
+test.ts::
+  The entry point of unit tests, should not have to be modified.
+
+styles.css::
+  Common style file for the entire app. Only put styles here that are used in multiple components.
+
+polyfills.ts::
+  Enable/disable polyfills for different browser support.
+
+main.ts::
+  Entry point of the main application. Starts the bootstrapping of the main app. Should not be modified.
+
+index.html::
+  File which is returned from the webserver. Use to add other script dependencies (I.E. bootstrap css) or other common header information.
+
+==== environments
+environment*.ts::
+  Sets environment settings for different build environments. Used when configuring the build.
+
+==== assets
+Folder which contains any file asset which should be packaged with the web-app. Could be pictures or other files.
+
+==== app
+Code for the app. Refer to https://angular.io/guide/styleguide#application-structure-and-angular-modules
+
+=== e2e
+Location for all e2e tests.
+

@@ -1,0 +1,4 @@
+= Epsilon-Telemetry-Server
+
+This repository contains the front end which is created using Angular.
+The server is made in Node.js express. See respective READMEs for more details.
