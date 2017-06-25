@@ -4,4 +4,4 @@ const Telemetry = bookshelf.Model.extend({
   tableName: 'telemetry',
 });
 
-exports.modules = Telemetry;
+module.exports = Telemetry;

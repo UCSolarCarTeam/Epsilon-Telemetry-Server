@@ -29,5 +29,17 @@ If Linux then follow instructions at https://www.postgresql.org/download/linux/u
 Then follow instructions https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04[here] on setting up the database.
 For local dev usage use username/password/db as "solarcar". To connect via TCP, log in as solarcar `sudo -u solarcar psql solarcar` and run `ALTER USER "solarcar" with PASSWORD 'solarcar';`.
 
+To reset database: login as solarcar user and run
+`DROP SCHEMA public CASCADE;` followed by `CREATE SCHEMA public;`.
 
+== Debugging
 
+Summary:
+
+1. Run `node --inspect-brk app.js`
+2. Navigate to `about:inspect` in Chrome
+
+Reference:
+
+* https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27
+* https://nodejs.org/en/docs/inspector

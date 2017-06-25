@@ -1,7 +1,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('telemetry', function(table) {
     table.bigIncrements('id').primary();
-    table.dateTime('timeStamp').notNullable();
+    table.dateTime('timeStamp').notNullable().defaultTo(knex.fn.now());
     table.text('name').notNullable().defaultTo('Solar Car Epsilon');
     table.boolean('motor0Alive');
     table.float('motor0SetCurrent');
@@ -102,7 +102,7 @@ exports.up = function(knex) {
     table.boolean('motor1IpmOrMotorTemperatureLimit');
     table.integer('motor1RxErrorCount').unsigned();
     table.integer('motor1TxErrorCount').unsigned();
-    table.boolean('internalCommununicationFault');
+    table.boolean('internalCommunicationFault');
     table.boolean('internalConversionFault');
     table.boolean('weakCellFault');
     table.boolean('lowCellVoltageFault');
@@ -139,13 +139,21 @@ exports.up = function(knex) {
     table.boolean('cclReducedDueToAlternateCurrentLimit');
     table.boolean('batteryAlive');
     table.integer('populatedCells');
+    table.boolean('dischargeRelayEnabled');
+    table.boolean('chargeRelayEnabled');
+    table.boolean('chargerSafetyEnabled');
+    table.boolean('malfunctionIndicatorActive');
+    table.boolean('multiPurposeInputSignalStatus');
+    table.boolean('alwaysOnSignalStatus');
+    table.boolean('isReadySignalStatus');
+    table.boolean('isChargingSignalStatus');
     table.float('12vInputVoltage');
     table.float('fanVoltage');
     table.float('packCurrent');
     table.float('packVoltage');
-    table.float('packStateofCharge');
+    table.float('packStateOfCharge');
     table.float('packAmphours');
-    table.float('packDepthofDischarge');
+    table.float('packDepthOfDischarge');
     table.integer('highTemperature');
     table.integer('highThermistorId');
     table.integer('lowTemperature');

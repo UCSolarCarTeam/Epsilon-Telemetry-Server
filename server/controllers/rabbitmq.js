@@ -1,7 +1,7 @@
 const Telemetry = require('../models/telemetry');
 
 // Constants
-const amqpQueueName = 'telem';
+const amqpQueueName = 'test-tool';
 
 const translateMotor = function(motorInfos) {
   const translatedMotor = {};
@@ -17,11 +17,19 @@ const translateMotorFaults = function(motorFaults) {
   const translatedMotorFaults = {};
   motorFaults.forEach((motorFault, index) => {
     Object.keys(motorFault.ErrorFlags).forEach(key => {
-      translatedMotorFaults[`motor${index}${key}Error`] =
+      let translatedKey = key;
+      if (translatedKey === 'MotorOverSpeed') {
+        translatedKey = 'OverSpeed';
+      }
+      translatedMotorFaults[`motor${index}${translatedKey}Error`] =
         motorFault.ErrorFlags[key];
     });
     Object.keys(motorFault.LimitFlags).forEach(key => {
-      translatedMotorFaults[`motor${index}${key}Limit`] =
+      let translatedKey = key;
+      if (translatedKey === 'MotorCurrent') {
+        translatedKey = 'Current';
+      }
+      translatedMotorFaults[`motor${index}${translatedKey}Limit`] =
         motorFault.LimitFlags[key];
     });
     translatedMotorFaults[`motor${index}RxErrorCount`] =
@@ -60,6 +68,12 @@ const translateDriverControls = function(driverControls) {
     let translatedKey = key[0].toLowerCase() + key.substring(1);
     if (translatedKey === 'alive') {
       translatedKey = 'driverControlsAlive';
+    } else if (translatedKey === 'forward') {
+      translatedKey = 'controlsForward';
+    } else if (translatedKey === 'reverse') {
+      translatedKey = 'controlsReverse';
+    } else if (translatedKey === 'reset') {
+      translatedKey = 'controlsMotorReset';
     }
     translatedDriverControls[translatedKey] = driverControls[key];
   });
@@ -69,8 +83,13 @@ const translateDriverControls = function(driverControls) {
 const translateBatteryFaults = function(batteryFaults) {
   const translatedBatteryFaults = {};
   Object.keys(batteryFaults.ErrorFlags).forEach(key => {
-    translatedBatteryFaults[key[0].toLowerCase() + key.substring(1)] =
-      batteryFaults.ErrorFlags[key];
+    if (key === 'CANBUSCommunicationsFault') {
+      translatedBatteryFaults['canBusCommunicationsFault'] =
+        batteryFaults.ErrorFlags[key];
+    } else {
+      translatedBatteryFaults[key[0].toLowerCase() + key.substring(1)] =
+        batteryFaults.ErrorFlags[key];
+    }
   });
   Object.keys(batteryFaults.LimitFlags).forEach(key => {
     translatedBatteryFaults[key[0].toLowerCase() + key.substring(1)] =
@@ -99,44 +118,59 @@ const translateBatteryData = function(batteryData) {
 };
 
 const translatePayload = function(payload) {
-  console.log(' [x] Received \'%s\'', payload.toString());
-  return Object.assign(
+  const data = JSON.parse(payload);
+  const translatedData = Object.assign(
     {},
-    translateMotor(payload.MotorDetails),
-    translateMotor(payload.KeyMotor),
-    translateMotorFaults(payload.MotorFaults),
-    translateMppts(payload.MPPT),
-    translateLights(payload.Lights),
-    translateDriverControls(payload.DriverControls),
-    translateBatteryFaults(payload.BatteryFaults),
-    translateBatteryData(payload.Battery)
+    translateMotor(data.MotorDetails),
+    translateMotor(data.KeyMotor),
+    translateMotorFaults(data.MotorFaults),
+    translateMppts(data.MPPT),
+    translateLights(data.Lights),
+    translateDriverControls(data.DriverControls),
+    translateBatteryFaults(data.BatteryFaults),
+    translateBatteryData(data.Battery)
   );
+  console.log(translatedData);
+  return translatedData;
 };
 
-const writeIncomingTelemetryToDatabase = function(message) {
-  new Telemetry(translatePayload(message.content)).save().then(saved => {
-    console.log(`Telemetry data saved`);
-  });
+const writeIncomingTelemetryToDatabase = function(message, channel) {
+  if (message) {
+    Telemetry
+      .forge(translatePayload(message.content))
+      .save()
+      .then(saved => {
+        console.log(`Telemetry data saved`);
+      });
+    channel.ack(message);
+  }
 };
 
 const connectRabbitMq = function() {
   require('amqplib')
-    .connect('amqp://localhost')
+    .connect('amqp://localhost:5672')
     .then(function(conn) {
       process.once('SIGINT', function() {
         conn.close();
       });
       return conn.createChannel().then(ch => {
         ch
-          .assertQueue(amqpQueueName, {exclusive: true})
+          .assertQueue(amqpQueueName, {
+            durable: true, // Messages will persist on queue unless consumed
+          })
           .then(() => {
-            return ch.consume(amqpQueueName, writeIncomingTelemetryToDatabase, {
-              noAck: false,
+            return ch.consume(amqpQueueName, message => {
+              writeIncomingTelemetryToDatabase(message, ch);
+            }, {
+              noAck: false, // Default
             });
           })
           .then(() =>
             console.log(' [*] Waiting for logs. To exit press CTRL+C')
-          );
+          )
+          .catch(error => {
+            console.error(error);
+          });
       });
     })
     .catch(console.warn);
