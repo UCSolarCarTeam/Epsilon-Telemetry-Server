@@ -1,0 +1,128 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('express-locallibrary-tutorial:server');
+var http = require('http');
+var amqp = require('amqplib/callback_api');
+var io = require('socket.io');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || 4000);
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/* Setup socket.io stuff for live webpage */
+io = io.listen(server);
+
+/* Setup the AMQP channel with RabbitMQ (change host if needed) */
+var rmqport = '5673';
+amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
+  try {
+    conn.createChannel(function(err, ch) {
+      // NOTE: the string in this variable should be 
+      // the same in the provider
+      var q = 'msgQueue';
+  
+      // check if queue is valid and wait for messages
+      ch.assertQueue(q, {durable: false});
+      console.log("Express: waiting for messages in %s", q);
+      ch.consume(q, function(msg) {
+        var msgString = msg.content.toString();
+        // update webpage at index
+        io.sockets.emit('add data', {
+          data: msgString
+        });
+        // log to console
+        console.log("read data from queue: %s", msgString);
+      }, {noAck: true});
+    });
+  } catch (e) {
+    if (e instanceof TypeError) {
+      console.log('Cannot create channel. Are you sure RabbitMQ is running on port ' + rmqport + '?');
+      console.log('Exiting...');
+      server.close();
+    }
+  }
+});
+
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  var mode = app.get('env');
+  debug('Listening on ' + bind + ' in ' + mode + ' mode');
+}

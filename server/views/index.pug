@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/socket.io.js')
+  script.
+    var socket = io();
+
+    socket.on('add data', function(data) {
+      addListItem(data);
+    });
+
+    function addListItem(data) {
+      var dataText = document.createTextNode(data);
+      var listItem = document.createElement('li');
+      var dataList = document.getElementById('dataList');
+
+      listItem.appendChild(dataText);
+      dataList.appendChild(listItem);
+    }
+  block content
+    h1= title
+    p Welcome to #{title}
+    ul(id='dataList')
+

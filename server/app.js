@@ -1,61 +1,46 @@
-/**
- * Module dependencies.
- */
-const express = require('express');
-const compression = require('compression');
-const bodyParser = require('body-parser');
-const logger = require('morgan');
-const chalk = require('chalk');
-const errorHandler = require('errorhandler');
-const expressValidator = require('express-validator');
-const expressStatusMonitor = require('express-status-monitor');
-const cors = require('cors');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-/**
- * Controllers (route handlers).
- */
-// TODO
+var index = require('./routes/index');
+var users = require('./routes/users');
 
-/**
- * Create Express server.
- */
-const app = express();
+var app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
-/**
- * Express configuration.
- */
-app.set('port', process.env.PORT || 4000);
-app.use(cors({
-  exposedHeaders: ['Link'],
-}));
-app.use(expressStatusMonitor());
-app.use(compression());
+// uncomment after placing favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(expressValidator());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-/**
- * Primary app routes.
- */
-// TODO
+app.use('/', index);
+app.use('/users', users);
 
-/**
- * Static serving for images
- */
-app.use( '/img', express.static(__dirname + '/assets'));
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-/**
- * Error Handler.
- */
-app.use(errorHandler());
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-/**
- * Start Express server.
- */
-app.listen(app.get('port'), () => {
-  console.log('%s Express server listening on port %d in %s mode.', chalk.green('✓'), app.get('port'), app.get('env'));
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 module.exports = app;
