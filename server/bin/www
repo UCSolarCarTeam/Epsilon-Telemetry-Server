@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var app = require('../app');
-var debug = require('debug')('express-locallibrary-tutorial:server');
+var debug = require('debug');
 var http = require('http');
 var amqp = require('amqplib/callback_api');
 var io = require('socket.io');
