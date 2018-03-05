@@ -47,7 +47,7 @@ amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
       ch.assertQueue(q, {durable: false});
       console.log("Express: waiting for messages in %s", q);
       ch.consume(q, function(msg) {
-        var msgString = msg.content.toString();
+        var msgString = JSON.stringify(msg);
         // update webpage at index
         io.sockets.emit('add data', {
           data: msgString
