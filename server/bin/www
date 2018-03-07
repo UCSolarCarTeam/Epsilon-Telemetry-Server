@@ -31,16 +31,19 @@ server.on('listening', onListening);
 io = io.listen(server);
 
 /* Setup the AMQP channel with RabbitMQ (change host if needed) */
-var rmqport = '5673';
+var rmqport = '5672';
 amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
   try {
     conn.createChannel(function(err, ch) {
       // NOTE: the string in this variable should be 
       // the same in the provider
       var q = 'msgQueue';
+      var ex = 'hermesExchange';
   
       // check if queue is valid and wait for messages
+      ch.assertExchange(ex, 'fanout', {durable: false});
       ch.assertQueue(q, {durable: false});
+      ch.bindQueue(q.queue, ex, '');
       console.log("Express: waiting for messages in %s", q);
       ch.consume(q, function(msg) {
         var msgString = JSON.stringify(msg);
