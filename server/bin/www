@@ -49,11 +49,11 @@ amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
         var msgString = JSON.stringify(msg);
         // update webpage at index
         io.sockets.emit('add data', {
-          data: msgString
+          allData: msgString
         });
         // log to console
         console.log("read data from queue: %s", msgString);
-      }, {noAck: true});
+      }, { noAck: true });
     });
   } catch (e) {
     if (e instanceof TypeError) {
