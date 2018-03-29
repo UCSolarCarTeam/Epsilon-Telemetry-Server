@@ -4,10 +4,10 @@
  * Module dependencies.
  */
 var app = require('../app');
-var debug = require('debug');
 var http = require('http');
 var amqp = require('amqplib/callback_api');
-var io = require('socket.io');
+var pg = require('pg');
+var debug = require('debug');
 
 /**
  * Get port from environment and store in Express.
@@ -27,10 +27,9 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/* Setup socket.io stuff for live webpage */
-io = io.listen(server);
-
-/* Setup the AMQP channel with RabbitMQ (change host if needed) */
+/**
+ * Setup the AMQP channel with RabbitMQ (change host if needed)
+ */
 var rmqport = '5672';
 amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
   try {
@@ -47,8 +46,7 @@ amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
       console.log("Express: waiting for messages in %s", q);
       ch.consume(q, function(msg) {
         var msgString = msg.content.toString();
-        // update webpage at index
-        io.sockets.emit('add data', msgString);
+        
         // log to console
         console.log("read data from queue: %s", msgString);
       }, { noAck: true });

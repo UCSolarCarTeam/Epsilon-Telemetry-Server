@@ -1,27 +1,30 @@
 const express = require('express');
 const path = require('path');
-// var favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const logger = require('morgan');
 
-const index = require('./routes/index');
+// Get API routes
+const api = require('./routes/api');
 
 const app = express();
 
-// view engine setup for dev purposes
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// uses /public/favicon.ico
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+// Used to parse POST data from Angular app
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', index);
+app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, '../web-app/dist')));
+
+/**
+ * Routes
+ */
+// API Route
+app.use('/api', api)
+
+// Main page
+app.use('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../web-app/dist/index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
