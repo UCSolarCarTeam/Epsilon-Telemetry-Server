@@ -6,7 +6,11 @@
 var app = require('../app');
 var http = require('http');
 var amqp = require('amqplib/callback_api');
-var pg = require('pg');
+
+const pg = require('pg');
+const path = require('path');
+const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/epsilontelemetrydb';
+
 var debug = require('debug');
 
 /**
@@ -45,10 +49,19 @@ amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
       ch.bindQueue(q.queue, ex, '');
       console.log("Express: waiting for messages in %s", q);
       ch.consume(q, function(msg) {
-        var msgString = msg.content.toString();
+        var jsonObj = JSON.parse(msg.content);
+        // pg.connect(connectionString, (err, client, done) => {
+        //   if (err) {
+        //     done();
+        //     console.log(err);
+        //     return resizeBy.status(500).json({ success: false, error_msg: err });
+        //   }
+        //   // TODO: map the 200+ JSON object attributes to database columns
+        //   // client.query('INSERT INTO packet (200+ columns here)')
+        // });
         
         // log to console
-        console.log("read data from queue: %s", msgString);
+        console.log("read data from queue: %s", jsonObj['Battery']['Alive']);
       }, { noAck: true });
     });
   } catch (e) {
