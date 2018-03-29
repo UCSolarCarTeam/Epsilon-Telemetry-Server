@@ -5,8 +5,40 @@ Express.js server running in node
 == Build
 `npm run start` to run dev server. Can be hit at `http://localhost:4000/`.
 
+== Setting up PostgreSQL
+=== Prerequisites
+First, you'll need to get the PostgreSQL signing key: +
+....
+wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O- | sudo apt-key add -
+....
+
+Add the PostgreSQL repository information with: +
+....
+echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql.list
+....
+
+=== Installation
+Install PostgreSQL +
+....
+ sudo apt-get update
+ sudo apt-get install postgresql
+....
+
+=== Setting up the Database
+In order to setup the database with the telemetry schema, you'll need to migrate the same schema from the database on our DigitalOcean droplet. First, switch to the postgres user and make your terminal a login shell with +
+....
+sudo su -l postgres
+....
+Next, create a database named epsilontelemetrydb +
+....
+createdb epsilontelemetrydb
+....
+Finally, import the schema (file is at the root of this repository) +
+....
+psql epsilontelemetrydb < migrate.txt
+....
 == Running unit tests
-`npm run test` to for tests
+`npm run test` to run tests
 
 == Deploying to server
 Requirements:
