@@ -52,7 +52,7 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE public.packet (
-    id bigint NOT NULL,
+    id bigserial NOT NULL,
     "timestamp" timestamp without time zone NOT NULL,
     name text NOT NULL,
     motor0alive boolean,
@@ -237,11 +237,6 @@ CREATE TABLE public.packet (
     mppt2arraycurrent double precision,
     mppt2batteryvoltage double precision,
     mppt2temperature double precision,
-    mppt3alive boolean,
-    mppt3arrayvoltage double precision,
-    mppt3arraycurrent double precision,
-    mppt3batteryvoltage double precision,
-    mppt3temperature double precision,
     lowbeams boolean,
     highbeams boolean,
     brakelights boolean,
