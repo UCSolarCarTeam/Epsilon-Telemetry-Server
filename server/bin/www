@@ -99,7 +99,7 @@ amqp.connect('amqp://localhost:' + rmqport, function(err, conn) {
             }
           });
         });
-      }, { noAck: true });
+      }, {noAck: true});
     });
   } catch (e) {
     if (e instanceof TypeError) {

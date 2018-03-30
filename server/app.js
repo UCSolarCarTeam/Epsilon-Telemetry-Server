@@ -10,7 +10,7 @@ const app = express();
 
 // Used to parse POST data from Angular app
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, '../web-app/dist')));
@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../web-app/dist')));
  * Routes
  */
 // API Route
-app.use('/api', api)
+app.use('/api', api);
 
 // Main page
 app.use('/', (req, res) => {
