@@ -2,10 +2,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-
-// Get API routes
-const api = require('./routes/api');
-
 const app = express();
 
 // Used to parse POST data from Angular app
@@ -18,9 +14,6 @@ app.use(express.static(path.join(__dirname, '../web-app/dist')));
 /**
  * Routes
  */
-// API Route
-app.use('/api', api);
-
 // Main page
 app.use('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../web-app/dist/index.html'));

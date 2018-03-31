@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
     "test": "mocha --reporter spec --timeout 5000",
-    "lint": "eslint -c .eslintrc.json test app.js controllers",
+    "lint": "eslint -c .eslintrc.json app.js bin lib routes test",
     "build:docker": "docker build --rm -t server ."
   },
   "dependencies": {
@@ -18,7 +18,8 @@
     "morgan": "~1.9.0",
     "pg": "^7.4.1",
     "pug": "2.0.0-beta11",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "ws": "^5.1.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
