@@ -27,7 +27,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
-
 --
 -- Name: chargestate; Type: TYPE; Schema: public; Owner: postgres
 --
@@ -250,10 +249,10 @@ CREATE TABLE public.packet (
 );
 
 
-ALTER TABLE public.packet OWNER TO postgres;
+ALTER TABLE public.packet OWNER TO epsilon;
 
 --
--- Name: packet_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: packet_pkey; Type: CONSTRAINT; Schema: public; Owner: epsilon
 --
 
 ALTER TABLE ONLY public.packet
@@ -261,12 +260,12 @@ ALTER TABLE ONLY public.packet
 
 
 --
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: epsilon
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
+REVOKE ALL ON SCHEMA public FROM epsilon;
+GRANT ALL ON SCHEMA public TO epsilon;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 

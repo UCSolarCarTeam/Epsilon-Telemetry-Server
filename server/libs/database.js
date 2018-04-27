@@ -1,3 +1,25 @@
+const pg = require('pg');
+const pg_pool = new pg.Pool({
+  user: 'epsilon',
+  database: 'epsilontelemetrydb',
+  password: 'UCalgarySolar',
+  port: 5432,
+});
+const db_errors = {
+  CONNECT_ERROR: 'Cannot connect to PostgreSQL',
+  INSERT_ERROR: 'Error while inserting into database',
+  SELECT_ERROR: 'Error during SELECT query',
+}
+
+module.exports.pool = pg_pool;
+module.exports.errors = db_errors;
+
+/**
+ * Function that maps the JSON object fields from the DigitalOcean RabbitMQ
+ * to the PostgreSQL database columns.
+ * 
+ * @param {JSON Object from RabbitMQ} jsonObj 
+ */
 module.exports.mapJsonToColumns = function(jsonObj) {
   let mapping = '';
   mapping += '\'' + jsonObj['TimeStamp'] + '\', ';
@@ -194,6 +216,7 @@ module.exports.mapJsonToColumns = function(jsonObj) {
   mapping += jsonObj['Lights']['RightSignal'] + ', ';
   mapping += jsonObj['Lights']['BmsStrobeLight'] + ', ';
   // Ignore lightsalive until Hermes is Updated
+  // mapping += jsonObj['Lights']['LightsAlive']
   mapping += 'NULL, '; // lightsalive
   mapping += jsonObj['Battery']['StrobeBmsLight'] + ', ';
   mapping += jsonObj['Battery']['AllowCharge'] + ', ';
