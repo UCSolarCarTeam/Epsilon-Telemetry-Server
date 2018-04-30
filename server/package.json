@@ -12,6 +12,7 @@
   "dependencies": {
     "amqplib": "^0.5.2",
     "body-parser": "~1.18.2",
+    "bson": "^2.0.6",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",

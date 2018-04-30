@@ -1,18 +1,8 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
 const debug = require('debug');
 const http = require('http');
-
-/**
- * Startup scripts
- */
 const app = require('../app');
-const ws = require('../libs/websocket');
-require('../libs/database');
-require('../libs/amqp');
 
 /**
  * Get port from environment and store in Express.
@@ -24,7 +14,6 @@ app.set('port', port);
  * Create HTTP server and setup websocket
  */
 const server = http.createServer(app);
-ws.socketSetupAndListen(server);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -65,3 +54,12 @@ server.on('listening', function() {
   const mode = app.get('env');
   debug('Listening on ' + bind + ' in ' + mode + ' mode');
 });
+
+module.exports.server = server;
+
+/**
+ * Startup scripts
+ */
+require('../libs/database');
+require('../libs/websocket');
+require('../libs/amqp');

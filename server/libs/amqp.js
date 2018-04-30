@@ -1,5 +1,8 @@
 const amqp = require('amqplib/callback_api');
+const BSON = require('bson');
 const db = require('./database');
+const wss = require('./websocket').websocket
+const bson = new BSON();
 
 /**
  * Get column names and store in global variable.
@@ -42,24 +45,38 @@ amqp.connect(rmq_URL, function(err, conn) {
       ch.assertExchange(ex, 'fanout', {durable: false});
       ch.assertQueue(q, {durable: false});
       ch.bindQueue(q.queue, ex, '');
-
       console.log('Express: waiting for messages in %s', q);
+
+      // get data from queue
       ch.consume(q, function(msg) {
         const jsonObj = JSON.parse(msg.content);
 
-        // connect to dattabase and insert data
+        // connect to database and check for errors
         db.pool.connect(function(err, client, done) {
           if (err) {
             return console.error(db.errors.CONNECT_ERROR, err.stack);
           }
+
+          // insert into database and return inserted row as JSON
           const query = 'INSERT INTO packet(' + columnNames + ') ' +
-                        'values(' + db.mapJsonToColumns(jsonObj) + ')';
+                        'values(' + db.mapJsonToColumns(jsonObj) + ') ' +
+                        'RETURNING row_to_json(packet)';
           client.query(query, function(err, result) {
             done();
             if (err) {
               return console.error(db.errors.INSERT_ERROR, err.stack);
             }
             console.log('1 row inserted from RabbitMQ');
+
+            // broadcast inserted row to all connected clients
+            const serData = bson.serialize(result.rows)
+            wss.broadcast = function broadcast(serData) {
+              wss.clients.forEach(function each(client) {
+                if (client.readyState === WebSocket.OPEN) {
+                  client.send(serData);
+                }
+              });
+            };
           });
         });
       }, {noAck: true});

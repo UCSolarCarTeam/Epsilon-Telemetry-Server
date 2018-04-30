@@ -1,37 +1,70 @@
 const WebSocket = require('ws');
 const db = require('./database');
+const BSON = require('bson');
+const server = require('../bin/www').server;
 
-/**
- * Function that handles setup and listening of websocket with the Angular app.
- * Listens for a 'getData' event and sends the entire database back.
- * 
- * @param {server object from startup script} server 
- */
-module.exports.socketSetupAndListen = function(server) {
-  const wss = new WebSocket.Server({server});
+const bson = new BSON();
+const wss = new WebSocket.Server({server});
 
-  wss.on('connection', function(ws, req) {
-    // getData event handler
-    ws.on('getData', function(msg) {
-      pool.connect(function(err, client, done) {
+const errors = {
+  CONNECT_ERROR: bson.serialize({Error: 'Node couldn\'t connect to PostgreSQL. See Node console for details.'}),
+  SELECT_ERROR: bson.serialize({Error: 'Node returned an error during the SELECT query. See Node console for details.'}),
+};
+
+wss.on('connection', function(ws, req) {
+  pool.connect(function(err, client, done) {
+    if (err) {
+      wss.send(errors.CONNECT_ERROR);
+      return console.error(db.errors.CONNECT_ERROR, err.stack);
+    }
+
+    // when client connects, select row with latest telemetry information
+    // as a JSON object and send it
+    const query = 'SELECT json_agg(latest) ' +
+                  'FROM (SELECT * ' +
+                        'FROM packet ' +
+                        'ORDER by timestamp DESC LIMIT 1) latest';
+    client.query(query, function(err, result) {
+      done();
         if (err) {
-          ws.send('Node couldn\'t connect to PostgreSQL. See console for details.');
-          return console.error(db.errors.CONNECT_ERROR, err.stack);
+          ws.send(errors.SELECT_ERROR);
+          return console.error(db.errors.SELECT_ERROR, err.stack);
         }
 
-        const query = 'SELECT * FROM packet ORDER BY id DESC';
-        client.query(query, function(err, result) {
-          done();
-          if (err) {
-            ws.send('Node returned an error during the SELECT query. See console for details.');
-            return console.error(db.errors.SELECT_ERROR, err.stack);
-          }
+        // send latest telemetry row to client (array with 1 element)
+        wss.send(bson.serialize(result.rows))
+    });
+  });
 
-          ws.send(result.rows);
-        });
+  // get_past_data event handler to view historical telemetry data
+  // MUST receive a JSON object with fields 'start' and 'end' with timestamps
+  ws.on('get_past_data', function(msg) {
+    pool.connect(function(err, client, done) {
+      if (err) {
+        ws.send(errors.CONNECT_ERROR);
+        return console.error(db.errors.CONNECT_ERROR, err.stack);
+      }
+
+      // select rows that fall within the time window specified
+      const jsonObj = bson.deserialize(msg);
+      const query = 'SELECT * ' +
+                    'FROM packet ' +
+                    'WHERE timestamp > \'' + str(jsonObj.start) + '\' ' +
+                    'AND timestamp < \'' + str(jsonObj.end) + '\'';
+      client.query(query, function(err, result) {
+        done();
+        if (err) {
+          ws.send(errors.SELECT_ERROR);
+          return console.error(db.errors.SELECT_ERROR, err.stack);
+        }
+
+        // send the rows back in an array
+        ws.send(bson.serialize(result.rows));
       });
     });
-
-    // add more event handlers here if needed
   });
-};
+
+  // add more event handlers here if needed
+});
+
+module.exports.websocket = wss;
