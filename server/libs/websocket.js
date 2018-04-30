@@ -23,7 +23,7 @@ wss.on('connection', function(ws, req) {
     const query = 'SELECT json_agg(latest) ' +
                   'FROM (SELECT * ' +
                         'FROM packet ' +
-                        'ORDER by timestamp DESC LIMIT 1) latest';
+                        'ORDER BY timestamp DESC LIMIT 1) latest';
     client.query(query, function(err, result) {
       done();
         if (err) {
@@ -47,10 +47,12 @@ wss.on('connection', function(ws, req) {
 
       // select rows that fall within the time window specified
       const jsonObj = bson.deserialize(msg);
-      const query = 'SELECT * ' +
-                    'FROM packet ' +
-                    'WHERE timestamp > \'' + str(jsonObj.start) + '\' ' +
-                    'AND timestamp < \'' + str(jsonObj.end) + '\'';
+      const query = 'SELECT json_agg(rows) ' +
+                    'FROM (SELECT * ' +
+                          'FROM packet ' +
+                          'WHERE timestamp > \'' + str(jsonObj.start) + '\' ' +
+                          'AND timestamp < \'' + str(jsonObj.end) + '\' ' +
+                          'ORDER BY timestamp) rows';
       client.query(query, function(err, result) {
         done();
         if (err) {

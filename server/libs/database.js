@@ -215,9 +215,7 @@ module.exports.mapJsonToColumns = function(jsonObj) {
   mapping += jsonObj['Lights']['LeftSignal'] + ', ';
   mapping += jsonObj['Lights']['RightSignal'] + ', ';
   mapping += jsonObj['Lights']['BmsStrobeLight'] + ', ';
-  // ignore lightsalive until test tool is updated
-  // mapping += jsonObj['Lights']['LightsAlive'] + ', ';
-  mapping += 'NULL, ';
+  mapping += jsonObj['Lights']['LightsAlive'] + ', ';
   mapping += jsonObj['Battery']['StrobeBmsLight'] + ', ';
   mapping += jsonObj['Battery']['AllowCharge'] + ', ';
   mapping += jsonObj['Battery']['ContactorError'];
