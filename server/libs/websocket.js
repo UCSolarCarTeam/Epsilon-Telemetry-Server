@@ -32,7 +32,7 @@ wss.on('connection', function(ws, req) {
         }
 
         // send latest telemetry row to client (array with 1 element)
-        wss.send(bson.serialize(result.rows))
+        wss.send(bson.serialize(result.rows));
     });
   });
 
@@ -45,7 +45,7 @@ wss.on('connection', function(ws, req) {
         return console.error(db.errors.CONNECT_ERROR, err.stack);
       }
 
-      // select rows that fall within the time window specified
+      // select rows that fall within the time window specified and return as JSON
       const jsonObj = bson.deserialize(msg);
       const query = 'SELECT json_agg(rows) ' +
                     'FROM (SELECT * ' +

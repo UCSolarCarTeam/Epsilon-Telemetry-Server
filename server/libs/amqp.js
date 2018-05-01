@@ -68,8 +68,12 @@ amqp.connect(rmq_URL, function(err, conn) {
             }
             console.log('1 row inserted from RabbitMQ');
 
+            // serialize the data in the proper format
+            let serData = [];
+            serData.push(result.rows[0].row_to_json)
+            serData = bson.serialize(serData);
+
             // broadcast inserted row to all connected clients
-            const serData = bson.serialize(result.rows)
             wss.broadcast = function broadcast(serData) {
               wss.clients.forEach(function each(client) {
                 if (client.readyState === WebSocket.OPEN) {
