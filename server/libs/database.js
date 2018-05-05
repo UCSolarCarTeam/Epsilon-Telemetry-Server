@@ -1,10 +1,7 @@
+const config = require('../config.json');
 const pg = require('pg');
-const pg_pool = new pg.Pool({
-  user: 'epsilon',
-  database: 'epsilontelemetrydb',
-  password: 'UCalgarySolar',
-  port: 5432,
-});
+const pg_pool = new pg.Pool(config.database);
+
 const db_errors = {
   CONNECT_ERROR: 'Cannot connect to PostgreSQL',
   INSERT_ERROR: 'Error while inserting into database',
@@ -188,12 +185,10 @@ module.exports.mapJsonToColumns = function(jsonObj) {
   mapping += jsonObj['Battery']['HighCellVoltage'] + ', ';
   mapping += jsonObj['Battery']['HighCellVoltageId'] + ', ';
   mapping += jsonObj['Battery']['AverageCellVoltage'] + ', ';
-  // Ignore PrechargeState until Hermes is updated
-  // and replace with Off instead
-  // mapping += jsonObj['Battery']['PrechargeState'] + ', ';
+  // mapping += jsonObj['AuxBms']['PrechargeState'] + ', ';
   mapping += '\'Off\', ';
-  mapping += jsonObj['Battery']['AuxVoltage'] + ', ';
-  mapping += jsonObj['Battery']['AuxBmsAlive'] + ', ';
+  mapping += jsonObj['AuxBms']['AuxVoltage'] + ', ';
+  mapping += jsonObj['AuxBms']['AuxBmsAlive'] + ', ';
   mapping += jsonObj['MPPT'][0]['Alive'] + ', ';
   mapping += jsonObj['MPPT'][0]['ArrayVoltage'] + ', ';
   mapping += jsonObj['MPPT'][0]['ArrayCurrent'] + ', ';
@@ -216,8 +211,8 @@ module.exports.mapJsonToColumns = function(jsonObj) {
   mapping += jsonObj['Lights']['RightSignal'] + ', ';
   mapping += jsonObj['Lights']['BmsStrobeLight'] + ', ';
   mapping += jsonObj['Lights']['Alive'] + ', ';
-  mapping += jsonObj['Battery']['StrobeBmsLight'] + ', ';
-  mapping += jsonObj['Battery']['AllowCharge'] + ', ';
-  mapping += jsonObj['Battery']['ContactorError'];
+  mapping += jsonObj['AuxBms']['StrobeBmsLight'] + ', ';
+  mapping += jsonObj['AuxBms']['AllowCharge'] + ', ';
+  mapping += jsonObj['AuxBms']['ContactorError'];
   return mapping;
 };

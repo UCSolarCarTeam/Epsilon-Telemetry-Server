@@ -1,13 +1,15 @@
 #!/usr/bin/env node
+'use strict';
 
 const debug = require('debug');
 const http = require('http');
 const app = require('../app');
+const config = require('../config.json');
 
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || config.server.port;
 app.set('port', port);
 
 /**
