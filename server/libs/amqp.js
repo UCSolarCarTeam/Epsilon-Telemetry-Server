@@ -22,7 +22,7 @@ db.any({
 });
 
 /**
- * Setup the AMQP channel with RabbitMQ (change host if needed)
+ * Setup the AMQP channel with RabbitMQ
  */
 amqp.connect(config.rabbitmq.host)
   // connect with amqp server
@@ -39,7 +39,7 @@ amqp.connect(config.rabbitmq.host)
     // bind internal queue with external exchange and enter ready state
     return ch.bindQueue(q.queue, ex, '')
       .then(ok => {
-        console.log('Express: waiting for messages in %s', q);
+        console.log(`Express: waiting for messages in ${q}`);
 
         // start reading objects from the queue
         return ch.consume(q, function(msg) {
@@ -63,6 +63,6 @@ amqp.connect(config.rabbitmq.host)
   })
   // catch RabbitMQ queue creation errors
   .catch(function(e) {
-    console.error('ERROR: Cannot create channel. Are you sure RabbitMQ is online at ' + config.rabbitmq.host + '?');
+    console.error(`ERROR: Cannot create channel. Are you sure RabbitMQ is online at ${config.rabbitmq.host}?`);
     process.exit(1);
   });

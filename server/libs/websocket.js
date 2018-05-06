@@ -21,7 +21,7 @@ wss.on('connection', function(ws, req) {
                 'ORDER BY timestamp DESC LIMIT 1) latest'
   }).then(result => {
     ws.send(bson.serialize(result.json_agg));
-  }).catch(error => {
+  }).catch(err => {
     ws.send(errors.SELECT_ERROR);
   });
 
@@ -37,8 +37,8 @@ wss.on('connection', function(ws, req) {
                   `AND timestamp < '${str(jsonObj.end)}' ` +
                   'ORDER BY timestamp) rows'
     }).then(results => {
-      ws.send(bson.serialize(result.rows));
-    }).catch(error => {
+      ws.send(bson.serialize(results));
+    }).catch(err => {
       ws.send(errors.SELECT_ERROR);
     });
   });
