@@ -16,6 +16,7 @@
 *.launch
 .settings/
 *.sublime-workspace
+*.swa[a-z]
 
 # IDE - VSCode
 .vscode/*

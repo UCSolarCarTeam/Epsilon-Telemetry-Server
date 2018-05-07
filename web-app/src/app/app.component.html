@@ -1,3 +1,19 @@
-<h1>
-  {{title}}
-</h1>
+<div style="padding: 5px;">
+  <h1>Solar Car Internal Website</h1>
+  <nav mat-tab-nav-bar >
+      <a mat-tab-link
+         *ngFor="let routeLink of routeLinks; let i = index;"
+         [routerLink]="routeLink.link"
+         routerLinkActive
+         #rla="routerLinkActive"
+         [active]="activeLinkIndex === i"
+         (click)="activeLinkIndex = i"
+         [routerLinkActiveOptions]="{exact: true}"
+         [class] = getActiveClass(i)
+      >
+          {{routeLink.label}}
+      </a>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

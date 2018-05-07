@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "~0.6.0",
     "@angular/animations": "^6.0.0",
     "@angular/cdk": "^6.0.0",
     "@angular/common": "^6.0.0",
@@ -45,6 +46,6 @@
     "protractor": "~5.3.1",
     "ts-node": "~6.0.3",
     "tslint": "~5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^2.7.2"
   }
 }
