@@ -33,15 +33,38 @@ Next, enter the PostgreSQL console as the user postgres
 ....
 sudo -u postgres psql
 ....
-You'll be in console mode now; you need to create the user epsilon
+You'll be in console mode now; you need to create the user epsilon and pick a password
 ....
-CREATE USER epsilon WITH PASSWORD 'UCalgarySolar' CREATEDB SUPERUSER;
-\quit
+CREATE USER epsilon WITH PASSWORD 'your password here' CREATEDB SUPERUSER;
 ....
+While in the psql prompt, you can verify that the database was created with `\l` and check that user epsilon was created with `\du`. You can quit with vim-style commands by typing `:q`.  
+
 Finally, import the schema (file is at the root of this repository) +
 ....
 sudo -u postgres psql epsilontelemetrydb < migrate.psql
 ....
+
+=== Setting up Node configuration
+Create a file at the root of this directory called `config.json`.  You can change different parameters depending on how you've set up your working environment. Below is the default configuration:
+....
+{
+  "server" : {
+    "port" : 4000
+  },
+  "database" : {
+    "user": "epsilon",
+    "database": "epsilontelemetrydb",
+    "password": "UCalgarySolar",
+    "port": 5432
+  },
+  "rabbitmq" : {
+    "host" : "amqp://localhost:5672",
+    "queue_name" : "msgQueue",
+    "exchange_name" : "hermesExchange"
+  }
+}
+....
+
 == Running unit tests
 `npm run test` to run tests
 
