@@ -29,7 +29,7 @@ export class AppComponent {
       },
       {
         label: 'MPPT',
-        link: 'mppt',
+        link: './mppt',
         index: 3
       },
       {
