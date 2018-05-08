@@ -1,6 +1,5 @@
 <div style="padding: 5px;">
-  <h1>Solar Car Internal Website</h1>
-  <nav mat-tab-nav-bar >
+  <nav mat-tab-nav-bar>
       <a mat-tab-link
          *ngFor="let routeLink of routeLinks; let i = index;"
          [routerLink]="routeLink.link"
@@ -9,7 +8,8 @@
          [active]="activeLinkIndex === i"
          (click)="activeLinkIndex = i"
          [routerLinkActiveOptions]="{exact: true}"
-         [class] = getActiveClass(i)
+         [class]=getActiveClass(i)
+         [disableRipple]="true"
       >
           {{routeLink.label}}
       </a>
