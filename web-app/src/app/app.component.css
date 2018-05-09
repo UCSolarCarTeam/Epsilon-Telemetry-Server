@@ -25,3 +25,8 @@
   background-color: #212121;
   width: 50%;
 }
+
+.mat-icon {
+  font-size: 18px;
+  margin-right: 5px;
+}

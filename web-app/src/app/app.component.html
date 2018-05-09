@@ -1,19 +1,19 @@
 <div style="padding: 5px;">
   <nav mat-tab-nav-bar>
-      <a mat-tab-link
-         *ngFor="let routeLink of routeLinks; let i = index;"
-         [routerLink]="routeLink.link"
-         routerLinkActive
-         #rla="routerLinkActive"
-         [active]="activeLinkIndex === i"
-         (click)="activeLinkIndex = i"
-         [routerLinkActiveOptions]="{exact: true}"
-         [class]=getActiveClass(i)
-         [disableRipple]="true"
-      >
-          {{routeLink.label}}
-      </a>
+    <a mat-tab-link
+     *ngFor="let routeLink of routeLinks; let i = index;"
+     [routerLink]="routeLink.link"
+     routerLinkActive
+     #rla="routerLinkActive"
+     [active]="activeLinkIndex === i"
+     (click)="activeLinkIndex = i"
+     [routerLinkActiveOptions]="{exact: true}"
+     [class]=getActiveClass(i)
+     [disableRipple]="true"
+     >
+      <mat-icon svgIcon="{{routeLink.icon}}"></mat-icon>
+     {{routeLink.label}}
+    </a>
   </nav>
-
   <router-outlet></router-outlet>
 </div>
