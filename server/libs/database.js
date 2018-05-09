@@ -1,5 +1,5 @@
 const promise = require('promise');
-const config = require('../config.json');
+const config = require('../config');
 
 const initOptions = {
   promiseLib: promise,

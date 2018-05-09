@@ -4,7 +4,7 @@
 const debug = require('debug');
 const http = require('http');
 const app = require('../app');
-const config = require('../config.json');
+const config = require('../config');
 
 /**
  * Get port from environment and store in Express.

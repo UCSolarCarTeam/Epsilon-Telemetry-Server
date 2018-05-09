@@ -25,43 +25,40 @@ Install PostgreSQL +
 ....
 
 === Setting up the Database
-In order to setup the database with the telemetry schema, you'll need to migrate the same schema from the database on our DigitalOcean droplet. To start, create the database using the postgres user
+In order to setup the database with the telemetry schema, you'll need to migrate the same schema from the database on our DigitalOcean droplet. To start, create the database, user, and password. Replace `username_here` with the username you want and follow the prompts to select a password as well.
 ....
 sudo -u postgres createdb epsilontelemetrydb
+sudo -u postgres createuser username_here -s -d -W
 ....
-Next, enter the PostgreSQL console as the user postgres
+You can verify that the database and user were created with psql:
 ....
 sudo -u postgres psql
 ....
-You'll be in console mode now; you need to create the user epsilon and pick a password
-....
-CREATE USER epsilon WITH PASSWORD 'your password here' CREATEDB SUPERUSER;
-....
-While in the psql prompt, you can verify that the database was created with `\l` and check that user epsilon was created with `\du`. You can quit with vim-style commands by typing `:q`.  
+While in the psql prompt, `\l` lists the databases and `\du` lists the users. You can quit with vim-style commands by typing `:q`. You can then quit with the `\quit` command.  
 
-Finally, import the schema (file is at the root of this repository) +
+Finally, import the schema (file is at the root of this repository)
 ....
 sudo -u postgres psql epsilontelemetrydb < migrate.psql
 ....
 
 === Setting up Node configuration
-Create a file at the root of this directory called `config.json`.  You can change different parameters depending on how you've set up your working environment. Below is the default configuration:
+Create a file at the root of this directory called `config.js`. You can change different parameters depending on how you've set up your working environment. Below is the default configuration found in `config.js.example`:
 ....
-{
-  "server" : {
-    "port" : 4000
-  },
-  "database" : {
-    "user": "epsilon",
-    "database": "epsilontelemetrydb",
-    "password": "UCalgarySolar",
-    "port": 5432
-  },
-  "rabbitmq" : {
-    "host" : "amqp://localhost:5672",
-    "queue_name" : "msgQueue",
-    "exchange_name" : "hermesExchange"
-  }
+module.exports.server = {
+  "port" : 4000,
+}
+
+module.exports.database = {
+  "user": "epsilon",
+  "database": "epsilontelemetrydb",
+  "password": "UCalgarySolar",
+  "port": 5432,
+}
+
+module.exports.rabbitmq = {
+  "host" : "amqp://localhost:5672",
+  "queue_name" : "msgQueue",
+  "exchange_name" : "hermesExchange",
 }
 ....
 

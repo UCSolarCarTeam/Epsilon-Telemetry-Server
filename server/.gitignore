@@ -12,7 +12,7 @@ pids
 logs
 results
 tmp
-config.json
+config.js
 
 #Build
 public/css/main.css
