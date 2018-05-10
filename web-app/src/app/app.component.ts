@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   routeLinks: any[];
   activeLinkIndex = -1;
 
@@ -69,33 +69,33 @@ export class AppComponent {
 
   registerIcons(): void {
     this.matIconRegistry.addSvgIcon(
-      "battery_icon",
+      'battery_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "../assets/icons/battery_icon.svg")
+        '../assets/icons/battery_icon.svg')
     );
 
     this.matIconRegistry.addSvgIcon(
-      "controls_icon",
+      'controls_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "../assets/icons/steering_icon.svg")
+        '../assets/icons/steering_icon.svg')
     );
 
     this.matIconRegistry.addSvgIcon(
-      "mppt_icon",
+      'mppt_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "../assets/icons/mppt_icon.svg")
+        '../assets/icons/mppt_icon.svg')
     );
 
     this.matIconRegistry.addSvgIcon(
-      "motor_icon",
+      'motor_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "../assets/icons/motor_icon.svg")
+        '../assets/icons/motor_icon.svg')
     );
 
     this.matIconRegistry.addSvgIcon(
-      "faults_icon",
+      'faults_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "../assets/icons/faults_icon.svg")
+        '../assets/icons/faults_icon.svg')
     );
   }
 }
