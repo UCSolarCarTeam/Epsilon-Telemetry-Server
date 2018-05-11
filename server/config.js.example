@@ -1,0 +1,16 @@
+module.exports.server = {
+  port : 4000,
+}
+
+module.exports.database = {
+  user: 'epsilon',
+  database: 'epsilontelemetrydb',
+  password: 'UCalgarySolar',
+  port: 5432,
+}
+
+module.exports.rabbitmq = {
+  host: 'amqp://localhost:5672',
+  queue_name: 'msgQueue',
+  exchange_name : 'hermesExchange',
+}
