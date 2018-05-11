@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { BatteryComponent } from './tabs/battery/battery.component';
