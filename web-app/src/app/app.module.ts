@@ -17,6 +17,7 @@ import { MpptComponent } from './tabs/mppt/mppt.component';
 import { FaultsComponent } from './tabs/faults/faults.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LeftpanelComponent } from './leftpanel/leftpanel.component';
+import { RightpanelComponent } from './rightpanel/rightpanel.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LeftpanelComponent } from './leftpanel/leftpanel.component';
     MotorComponent,
     MpptComponent,
     FaultsComponent,
-    LeftpanelComponent
+    LeftpanelComponent,
+    RightpanelComponent
   ],
   imports: [
     BrowserModule,

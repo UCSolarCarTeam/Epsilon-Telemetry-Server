@@ -1,5 +1,9 @@
 <mat-card class="packet">
   <mat-form-field class="packet-field">
-    <input matInput placeholder="Packet Timestamp" value="{{packet.timestamp}}">
+    <input matInput
+    placeholder="Packet Timestamp"
+    value="{{packet.timestamp}}"
+    [readonly]="true"
+    >
   </mat-form-field>
 </mat-card>
