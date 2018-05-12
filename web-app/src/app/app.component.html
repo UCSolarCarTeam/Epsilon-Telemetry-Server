@@ -1,4 +1,7 @@
-<div>
+<div class="packet">
+  <app-leftpanel></app-leftpanel> 
+</div>
+<div class="tabs">
   <nav mat-tab-nav-bar>
     <a mat-tab-link
      *ngFor="let routeLink of routeLinks; let i = index;"
@@ -11,8 +14,8 @@
      [class]=getActiveClass(i)
      [disableRipple]="true"
      >
-      <mat-icon svgIcon="{{routeLink.icon}}"></mat-icon>
-     {{routeLink.label}}
+     <mat-icon svgIcon="{{routeLink.icon}}"></mat-icon>
+      {{routeLink.label}}
     </a>
   </nav>
   <router-outlet></router-outlet>

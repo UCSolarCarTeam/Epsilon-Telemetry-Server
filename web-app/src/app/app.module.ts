@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { BatteryComponent } from './tabs/battery/battery.component';
@@ -13,6 +16,7 @@ import { MotorComponent } from './tabs/motor/motor.component';
 import { MpptComponent } from './tabs/mppt/mppt.component';
 import { FaultsComponent } from './tabs/faults/faults.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { LeftpanelComponent } from './leftpanel/leftpanel.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { AppRoutingModule } from './/app-routing.module';
     ControlsComponent,
     MotorComponent,
     MpptComponent,
-    FaultsComponent
+    FaultsComponent,
+    LeftpanelComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,9 @@ import { AppRoutingModule } from './/app-routing.module';
     HttpClientModule,
     MatIconModule,
     MatTabsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
     AppRoutingModule
   ],
   providers: [],

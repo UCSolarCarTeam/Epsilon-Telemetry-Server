@@ -1,3 +1,15 @@
+.packet {
+  display: inline-block;
+  vertical-align: top;
+  width: 20%;
+}
+
+.tabs {
+  margin: 0 auto;
+  display: inline-block;
+  width: 60%;
+}
+
 .mat-tab-link-active {
     background-color: #303030;
     color: #D5FEFF;
@@ -15,12 +27,11 @@
 }
 
 .mat-tab-nav-bar {
+  margin: 0 auto;
   background-color: #212121;
-  width: 75%;
 }
 
 .mat-icon {
   font-size: 18px;
   margin-right: 5px;
 }
-
