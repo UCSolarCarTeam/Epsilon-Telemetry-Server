@@ -1,9 +1,4 @@
-.packet {
-  display: inline-block;
-  vertical-align: top;
-  width: 15%;
-}
-
+/* Tabs */
 .tabs {
   margin: 0 auto;
   display: inline-block;
@@ -11,19 +6,19 @@
 }
 
 .mat-tab-link-active {
-    background-color: #303030;
-    color: #D5FEFF;
-    border: 1px solid #6B7F7F;
-    font-weight: bold;
+  background-color: #303030;
+  color: #D5FEFF;
+  border: 1px solid #6B7F7F;
+  font-weight: bold;
 }
 
 .mat-tab-link {
-    line-height: 30px !important;
-    height: 50px !important;
-    min-width: 20% !important;
-    border: 1px solid #7e7e7e;
-    color: white;
-    font-size: 18px;
+  line-height: 30px !important;
+  height: 50px !important;
+  min-width: 20% !important;
+  border: 1px solid #7e7e7e;
+  color: white;
+  font-size: 18px;
 }
 
 .mat-tab-nav-bar {
@@ -31,7 +26,21 @@
   background-color: #212121;
 }
 
-.mat-icon {
+.tab-icons {
   font-size: 18px;
   margin-right: 5px;
+}
+
+/* Left Panel */
+.left-panel {
+  display: inline-block;
+  vertical-align: top;
+  width: 15%;
+}
+/* Right Panel */
+.right-panel {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+  height: 100vh;
 }

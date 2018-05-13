@@ -1,3 +1,64 @@
-<p>
-  rightpanel works!
-</p>
+<mat-card class="car-misc">
+  <div class="direction">
+    <div class="backward">
+      <span>
+        <mat-icon id="back-arrow-1">arrow_back_ios</mat-icon>
+        <mat-icon id="back-arrow-2">arrow_back_ios</mat-icon>
+      </span>
+      <label>Reverse</label>
+    </div>
+    <div class="forward">
+      <span>
+        <mat-icon id="forward-arrow-1">arrow_forward_ios</mat-icon>
+        <mat-icon id="forward-arrow-2">arrow_forward_ios</mat-icon>
+      </span>
+      <label>Forward</label>
+    </div>
+  </div>
+  <div class="warning">
+    <div class="brakes">
+      <mat-icon id="brakes-icon">error_outline</mat-icon>
+      <label>Brakes</label>
+    </div>
+    <div class="hazard">
+      <mat-icon id="hazard-icon">warning</mat-icon>
+      <label>Hazard</label>
+    </div>
+  </div>
+  <div class="braking">
+    <label class="main-label">Regen Braking</label>
+    <mat-progress-bar mode="determinate" value="{{carMisc.regenBraking}}">
+    </mat-progress-bar>
+  </div>
+  <div class="acceleration">
+    <label class="main-label">Acceleration</label>
+    <mat-progress-bar mode="determinate" value="{{carMisc.acceleration}}">
+    </mat-progress-bar>
+  </div>
+  <div>
+    <mat-divider></mat-divider>
+  </div>
+  <mat-form-field>
+    <input matInput
+    placeholder="Set Current"
+    value="{{carMisc.setCurrent}}"
+    [readonly]="true"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+    placeholder="Bus Current"
+    value="{{carMisc.busCurrent}}"
+    [readonly]="true"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+    placeholder="Bus Voltage"
+    value="{{carMisc.busVoltage}}"
+    [readonly]="true"
+    >
+  </mat-form-field>
+</mat-card>
+<mat-card class="battery-misc">
+</mat-card>

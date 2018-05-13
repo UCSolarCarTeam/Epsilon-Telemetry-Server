@@ -1,4 +1,4 @@
-<div class="packet">
+<div class="left-panel">
   <app-leftpanel></app-leftpanel>
 </div>
 <div class="tabs">
@@ -14,9 +14,12 @@
      [class]=getActiveClass(i)
      [disableRipple]="true"
      >
-     <mat-icon svgIcon="{{routeLink.icon}}"></mat-icon>
+     <mat-icon svgIcon="{{routeLink.icon}}" class="tab-icons"></mat-icon>
       {{routeLink.label}}
     </a>
   </nav>
   <router-outlet></router-outlet>
+</div>
+<div class="right-panel">
+  <app-rightpanel></app-rightpanel>
 </div>

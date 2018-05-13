@@ -7,7 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { BatteryComponent } from './tabs/battery/battery.component';
@@ -40,6 +42,8 @@ import { RightpanelComponent } from './rightpanel/rightpanel.component';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
+    MatProgressBarModule,
+    MatDividerModule,
     AppRoutingModule
   ],
   providers: [],

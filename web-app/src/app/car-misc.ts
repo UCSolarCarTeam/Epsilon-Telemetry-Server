@@ -7,7 +7,7 @@ export class CarMisc {
   acceleration: number;
   setCurrent: number;
   busCurrent: number;
-  busVoltge: number;
+  busVoltage: number;
   setVelocity: number;
   vehicleVelocity: number;
   totalArrayPower: number;

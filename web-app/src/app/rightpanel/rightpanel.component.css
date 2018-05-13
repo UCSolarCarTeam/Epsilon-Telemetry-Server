@@ -1,0 +1,30 @@
+/* Car Miscellaneous */
+.car-misc,
+.battery-misc {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #212121;
+}
+
+.direction,
+.warning {
+  display: flex;
+  justify-content: space-around;
+}
+
+.forward,
+.backward,
+.brakes,
+.hazard {
+  display: flex;
+  flex-direction: column;
+}
+
+#back-arrow-2,
+#forward-arrow-2
+{
+  margin-left: -12px;
+}
