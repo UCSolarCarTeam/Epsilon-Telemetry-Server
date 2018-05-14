@@ -40,25 +40,47 @@
   </div>
   <mat-form-field>
     <input matInput
-    placeholder="Set Current"
-    value="{{carMisc.setCurrent}}"
-    [readonly]="true"
+      placeholder="Set Current"
+      value="{{carMisc.setCurrent}}"
+      readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
-    placeholder="Bus Current"
-    value="{{carMisc.busCurrent}}"
-    [readonly]="true"
+      placeholder="Bus Current"
+      value="{{carMisc.busCurrent}}"
+      readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
-    placeholder="Bus Voltage"
-    value="{{carMisc.busVoltage}}"
-    [readonly]="true"
+      placeholder="Bus Voltage"
+      value="{{carMisc.busVoltage}}"
+      readonly="true"
     >
   </mat-form-field>
+  <div class="spinners">
+    <mat-progress-spinner
+      id="overlay-0"
+      color="accent"
+      value="100"
+      diameter="150"
+    >
+    </mat-progress-spinner>
+    <mat-progress-spinner
+      id="overlay-1"
+      value="{{carMisc.getSetVelocityPercentage()}}"
+      diameter="150"
+    >
+    </mat-progress-spinner>
+    <mat-progress-spinner
+      id="overlay-2"
+      color="warn"
+      value="{{carMisc.getVehicleVelocityPercentage()}}"
+      diameter="150"
+    >
+    </mat-progress-spinner>
+  </div>
 </mat-card>
 <mat-card class="battery-misc">
 </mat-card>

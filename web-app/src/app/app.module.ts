@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { BatteryComponent } from './tabs/battery/battery.component';
@@ -44,6 +45,7 @@ import { RightpanelComponent } from './rightpanel/rightpanel.component';
     MatCardModule,
     MatProgressBarModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
     AppRoutingModule
   ],
   providers: [],
