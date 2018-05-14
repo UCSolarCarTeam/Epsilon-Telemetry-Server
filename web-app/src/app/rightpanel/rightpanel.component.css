@@ -1,12 +1,19 @@
+/* Right Panel */
+:host {
+  display: flex;
+  height: 100%;
+  width: 30%;
+}
+
 /* Car Miscellaneous */
 .car-misc,
 .battery-misc {
   width: 50%;
-  height: 100%;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   background-color: #212121;
+  margin: 0 2px;
 }
 
 .direction,

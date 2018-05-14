@@ -1,7 +1,11 @@
+:host {
+  height: 100%;
+  width: 15%;
+}
+
 .packet {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-item: center;
   background-color: transparent;
 }
