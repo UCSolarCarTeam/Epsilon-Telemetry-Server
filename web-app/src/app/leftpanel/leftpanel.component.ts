@@ -9,7 +9,7 @@ import { Packet } from '../packet';
 })
 export class LeftpanelComponent implements OnInit {
   packet: Packet = {
-    timestamp: "1988-Jul-18-04-07-13-199"
+    timestamp: '1988-Jul-18-04-07-13-199'
   };
 
   constructor() { }

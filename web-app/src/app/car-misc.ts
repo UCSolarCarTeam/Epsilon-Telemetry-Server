@@ -27,8 +27,7 @@ export class CarMisc {
     setVelocity: number,
     vehicleVelocity: number,
     totalArrayPower: number,
-    bmsStrobeLight: boolean)
-  {
+    bmsStrobeLight: boolean) {
     this.directionForward = directionForward;
     this.directionReverse = directionReverse;
     this.brakes = brakes;
