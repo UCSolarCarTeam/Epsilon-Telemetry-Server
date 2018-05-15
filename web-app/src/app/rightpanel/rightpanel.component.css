@@ -49,3 +49,8 @@
 #overlay-2 {
   z-index: 2;
 }
+
+.precharge-state-dots {
+  display: flex;
+  justify-content: center;
+}

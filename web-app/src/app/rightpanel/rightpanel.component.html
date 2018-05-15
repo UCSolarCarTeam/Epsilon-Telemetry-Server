@@ -1,3 +1,4 @@
+<!-- Car Right Panel -->
 <mat-card class="car-misc">
   <div class="direction">
     <div class="backward">
@@ -81,6 +82,80 @@
     >
     </mat-progress-spinner>
   </div>
+  <mat-form-field>
+    <input matInput
+      placeholder="Total Array Power"
+      value="{{carMisc.totalArrayPower}}"
+      readonly="true"
+    >
+  </mat-form-field>
+  <label>BMS Strobe Light</label>
 </mat-card>
+
+<!-- Battery Right Panel -->
 <mat-card class="battery-misc">
+  <mat-form-field>
+    <input matInput
+      placeholder="Total Pack Capacity"
+      value="{{batteryMisc.totalPackCapacity}}"
+      readonly="true"
+    >
+  </mat-form-field>
+  <div class="spinners">
+    <mat-progress-spinner
+      id="overlay-0"
+      color="accent"
+      value="100"
+      diameter="150"
+    >
+    </mat-progress-spinner>
+    <mat-progress-spinner
+      id="overlay-2"
+      color="warn"
+      value="{{batteryMisc.packStateOfCharge}}"
+      diameter="150"
+    >
+    </mat-progress-spinner>
+  </div>
+  <mat-form-field>
+    <input matInput
+      placeholder="Pack SOC Hours"
+      value="{{batteryMisc.packStateOfChargeHrs}}"
+      readonly="true"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+      placeholder="Highest Cell Temperature"
+      value="{{batteryMisc.highestCellTemp}}"
+      readonly="true"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+      placeholder="Lowest Cell Voltage"
+      value="{{batteryMisc.lowestCellVoltage}}"
+      readonly="true"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+      placeholder="Pack Current"
+      value="{{batteryMisc.packCurrent}}"
+      readonly="true"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+      placeholder="Pack Voltage"
+      value="{{batteryMisc.packVoltage}}"
+      readonly="true"
+    >
+  </mat-form-field>
+  <label>Precharge State</label>
+  <div class="precharge-state-dots">
+    <mat-icon>lens</mat-icon>
+    <mat-icon>lens</mat-icon>
+    <mat-icon>lens</mat-icon>
+  </div>
 </mat-card>

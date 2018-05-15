@@ -14,6 +14,17 @@ export class RightpanelComponent implements OnInit {
                                 30, 40, 50, 20, 10, 140,
                                 80, 65, true);
 
+  batteryMisc: BatteryMisc = {
+    totalPackCapacity: 40,
+    packStateOfCharge: 60,
+    packStateOfChargeHrs: 12,
+    highestCellTemp: 15,
+    lowestCellVoltage: 18,
+    packCurrent: 10,
+    packVoltage: 50,
+    prechargeState: 0
+  };
+
   constructor() { }
 
   ngOnInit() {
