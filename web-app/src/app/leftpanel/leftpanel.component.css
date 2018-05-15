@@ -4,8 +4,18 @@
 }
 
 .packet {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: transparent;
+}
+
+.packet-header {
+  display: flex;
+}
+
+#solar-title {
+  font-weight: bold;
+  font-size: 22px;
 }
