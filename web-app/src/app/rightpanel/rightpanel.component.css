@@ -28,6 +28,7 @@
 .hazard {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #back-arrow-2,
@@ -52,5 +53,4 @@
 
 .precharge-state-dots {
   display: flex;
-  justify-content: center;
 }
