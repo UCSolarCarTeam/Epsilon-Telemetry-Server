@@ -37,6 +37,14 @@
   margin-left: -12px;
 }
 
+.spinners {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+
 #overlay-0 {
   position: absolute;
   z-index: 0;
@@ -48,9 +56,23 @@
 }
 
 #overlay-2 {
+  position: absolute;
   z-index: 2;
 }
 
 .precharge-state-dots {
   display: flex;
+}
+
+.velocity-data {
+  align-self: center;
+  text-align: center;
+}
+
+.velocity-data p {
+  margin: 0 auto;
+}
+
+#bms-strobe-label {
+  align-self: center;
 }

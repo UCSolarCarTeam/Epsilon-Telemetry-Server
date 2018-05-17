@@ -9,4 +9,5 @@ html, body {
 body {
   margin: 10px auto;
   background-image: url("assets/background.png");
+  background-size: 100% 100%;
 }
