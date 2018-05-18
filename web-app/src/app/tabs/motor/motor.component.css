@@ -1,0 +1,92 @@
+.header {
+	font-family: Arial, sans-serif;
+	font-size: 1.2rem;
+	background-color: grey;
+	color: white;
+	padding-bottom: 1.2em;
+	padding-top: .2em;
+	border-radius: 25px;
+	margin-bottom: 25px;
+	margin-top: 10px;
+}
+.title-left {
+	float: left;
+	width: 75%;
+	margin-left: 5%;
+}
+.title-right {
+	color: #73a2ef;
+	font-size: 1.2em;
+	float: left;
+	width: 10%;
+}
+.spacing {
+	width: 40%;
+	margin-left: 20%;
+}
+
+.centering {
+	width: 40%;
+	margin-left: 5%;
+	margin-right: 5%; 
+}
+
+.circle {
+	float: right;
+	margin-right: 40%;
+	width: 20px;
+	height: 20px;
+	background-color: green;
+	border-radius: 50%;
+}
+
+.reduce {
+	width: 20%;
+}
+
+.subheader {
+	font-family: Arial, sans-serif;
+	font-size: 0.8rem;
+	background-color: grey;
+	color: white;
+	padding-bottom: 0.2em;
+	padding-top: .2em;
+	border-radius: 25px;
+}
+.subheader > h3 {
+	font-family: Arial, sans-serif;
+	font-size: .8em;
+	background-color: #7a7676;
+	color: white;
+	border-radius: 25px;
+}
+.container-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.container-column {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.item {
+	font-family: Arial, sans-serif;
+	color: white;
+	font-size: 0.75em;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.data {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+.leftside {
+	float: left;
+	width: 45%;
+	margin-right: 5%;
+}
