@@ -1,11 +1,9 @@
-/* Right Panel */
 :host {
   display: flex;
   height: 100%;
   width: 30%;
 }
 
-/* Car Miscellaneous */
 .car-misc,
 .battery-misc {
   width: 50%;
@@ -29,6 +27,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.progress-bars {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bars p {
+  margin: 0 3px;
 }
 
 #back-arrow-2,
@@ -61,16 +68,33 @@
 }
 
 .precharge-state-dots {
+  margin-top: 5px;
   display: flex;
 }
 
-.velocity-data {
+.precharge-state-dots p {
+  margin: 0 5px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.velocity-data,
+.soc-data {
   align-self: center;
   text-align: center;
 }
 
-.velocity-data p {
-  margin: 0 auto;
+.velocity-data p,
+.soc-data p {
+  margin: 0;
+}
+
+.velocity-number {
+  font-size: 25px;
+}
+
+#pack-soc {
+  font-size: 35px;
 }
 
 #bms-strobe-label {

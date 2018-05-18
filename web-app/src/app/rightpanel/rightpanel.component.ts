@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CarMisc } from '../car-misc';
-import { BatteryMisc } from '../battery-misc';
+import { BatteryMisc, State } from '../battery-misc';
 
 @Component({
   selector: 'app-rightpanel',
@@ -22,7 +22,7 @@ export class RightpanelComponent implements OnInit {
     lowestCellVoltage: 18,
     packCurrent: 10,
     packVoltage: 50,
-    prechargeState: 0
+    prechargeState: State.COMMON_ENGAGED
   };
 
   constructor() { }

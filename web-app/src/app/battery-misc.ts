@@ -1,4 +1,10 @@
-enum State {OFF, COMMON_ENGAGED, CHARGE_ENGAGED, DISCHARGE_ENGAGED, ALL_ENGAGED}
+export enum State {
+  OFF = "Off",
+  COMMON_ENGAGED = "Common Engaged",
+  CHARGE_ENGAGED = "Charge Engaged",
+  DISCHARGE_ENGAGED = "Discharge Engaged",
+  ALL_ENGAGED = "All engaged"
+}
 
 export class BatteryMisc {
   totalPackCapacity: number;

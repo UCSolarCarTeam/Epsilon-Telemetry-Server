@@ -28,13 +28,19 @@
   </div>
   <div class="braking">
     <label class="main-label">Regen Braking</label>
-    <mat-progress-bar mode="determinate" value="{{carMisc.regenBraking}}">
-    </mat-progress-bar>
+    <div class="progress-bars">
+      <mat-progress-bar mode="determinate" value="{{carMisc.regenBraking}}">
+      </mat-progress-bar>
+      <p>{{carMisc.regenBraking}}%</p>
+    </div>
   </div>
   <div class="acceleration">
     <label class="main-label">Acceleration</label>
-    <mat-progress-bar mode="determinate" value="{{carMisc.acceleration}}">
-    </mat-progress-bar>
+    <div class="progress-bars">
+      <mat-progress-bar mode="determinate" value="{{carMisc.acceleration}}">
+      </mat-progress-bar>
+      <p>{{carMisc.acceleration}}%</p>
+    </div>
   </div>
   <div>
     <mat-divider></mat-divider>
@@ -83,9 +89,9 @@
     </mat-progress-spinner>
     <div class="velocity-data">
       <label>Set velocity</label>
-      <p>{{carMisc.setVelocity}} km/h</p>
+      <p><span class="velocity-number">{{carMisc.setVelocity}}</span>km/h</p>
       <label>Vehicle Velocity</label>
-      <p>{{carMisc.vehicleVelocity}}</p>
+      <p><span class="velocity-number">{{carMisc.vehicleVelocity}}</span>km/h</p>
     </div>
   </div>
   <mat-form-field>
@@ -122,6 +128,10 @@
       diameter="200"
     >
     </mat-progress-spinner>
+    <div class="soc-data">
+      <label>Pack SOC</label>
+      <p id="pack-soc">{{batteryMisc.packStateOfCharge}}%</p>
+    </div>
   </div>
   <mat-form-field>
     <input matInput
@@ -158,10 +168,13 @@
       readonly="true"
     >
   </mat-form-field>
-  <label>Precharge State</label>
-  <div class="precharge-state-dots">
-    <mat-icon>lens</mat-icon>
-    <mat-icon>lens</mat-icon>
-    <mat-icon>lens</mat-icon>
+  <div class="precharge-state">
+    <label>Precharge State</label>
+    <div class="precharge-state-dots">
+      <mat-icon>lens</mat-icon>
+      <mat-icon>lens</mat-icon>
+      <mat-icon>lens</mat-icon>
+      <p>{{batteryMisc.prechargeState}}</p>
+    </div>
   </div>
 </mat-card>
