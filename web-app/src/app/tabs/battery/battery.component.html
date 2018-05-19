@@ -1,6 +1,11 @@
 <div class="battery">
 	<div class="header">
 		<span class="title-left rounded">Battery</span>
+		<div id="clicker">
+			<button (click)="show = !show" class="button"></button>
+    		<div *ngIf="show; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
+    		<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+		</div>
 		<span class="title-right rounded">Alive</span>
 
 	</div>
@@ -10,16 +15,56 @@
 					<h3>BMS Relay Status Flags</h3>
 					<div class="container-row">
 						<div class="container-column">
-							<span class="item">Discharge Relay Enabled </span>
-							<span class="item">Charge Relay Enabled</span>
-							<span class="item">Charger Safety Enabled</span>
-							<span class="item">Malfunction Indicator Active</span>
-							<span class="item">Multipurpose Input Signal Status</span>
+							<span class="itemLeft">
+								<button (click)="dischargeRelayEnabled = !dischargeRelayEnabled" class="buttonItems"></button>
+    								<span *ngIf="dischargeRelayEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+							Discharge Relay Enabled
+							</span>
+							<span class="itemLeft">
+								<button (click)="chargeRelayEnabled = !chargeRelayEnabled" class="buttonItems"></button>
+    								<span *ngIf="chargeRelayEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+							Charge Relay Enabled
+							</span>
+							<span class="itemLeft">
+								<button (click)="chargerSafetyEnabled = !chargerSafetyEnabled" class="buttonItems"></button>
+    								<span *ngIf="chargerSafetyEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+							Charger Safety Enabled
+							</span>
+							<span class="itemLeft">
+								<button (click)="malfunctionIndicatorActive = !malfunctionIndicatorActive" class="buttonItems"></button>
+    								<span *ngIf="malfunctionIndicatorActive; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+
+							Malfunction Indicator Active</span>
+							<span class="itemLeft">
+								<button (click)="multipurposeInputSignalStatus = !multipurposeInputSignalStatus" class="buttonItems"></button>
+    								<span *ngIf="multipurposeInputSignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+
+							Multipurpose Input Signal Status</span>
 						</div>
 						<div class="container-column">
-							<span class="item">Is Ready</span>
-							<span class="item">Is Charging</span>
-							<span class="item">Always On</span>
+							<span class="itemLeft">
+								<button (click)="isReady = !isReady" class="buttonItems"></button>
+    								<span *ngIf="isReady; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+
+							Is Ready</span>
+							<span class="itemLeft">
+								<button (click)="isCharging = !isCharging" class="buttonItems"></button>
+    								<span *ngIf="isCharging; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+
+							Is Charging</span>
+							<span class="itemLeft">
+								<button (click)="alwaysOn = !alwaysOn" class="buttonItems"></button>
+    								<span *ngIf="alwaysOn; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+
+							Always On</span>
 						</div>
 					</div>
 				</div>
