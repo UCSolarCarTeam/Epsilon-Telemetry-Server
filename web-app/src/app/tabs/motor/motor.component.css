@@ -9,17 +9,41 @@
 	margin-bottom: 25px;
 	margin-top: 10px;
 }
+
 .title-left {
 	float: left;
-	width: 75%;
+	width: 40%;
 	margin-left: 5%;
 }
 .title-right {
 	color: #73a2ef;
-	font-size: 1.2em;
 	float: left;
-	width: 10%;
+	width: 5%;
+	margin-left: 5px;
 }
+
+.circle {
+	float: left;
+	width: 15px;
+	height: 15px;
+}
+
+.clicker {
+	float: left;
+	width: 20%;
+}
+
+.button {
+	float: left;
+	width: 10px;
+	margin-right: 20%;
+}
+
+.ifs {
+	width: 10px;
+	float: left;
+}
+
 .spacing {
 	width: 40%;
 	margin-left: 20%;
@@ -29,15 +53,6 @@
 	width: 40%;
 	margin-left: 5%;
 	margin-right: 5%; 
-}
-
-.circle {
-	float: right;
-	margin-right: 40%;
-	width: 20px;
-	height: 20px;
-	background-color: green;
-	border-radius: 50%;
 }
 
 .reduce {

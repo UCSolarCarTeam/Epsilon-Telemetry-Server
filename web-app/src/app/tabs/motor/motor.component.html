@@ -5,7 +5,10 @@
 	<div class="container-row">
 		<div class="container-column centering">
 			<div class="subheader">
-				<span class="title-left">Key 0 Motor</span> 
+				<span class="title-left">Key 0 Motor</span>
+					<button (click)="key0Motor = !key0Motor" class="button"></button>
+	    			<span *ngIf="key0Motor; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    			<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 				<span class="title-right">Alive</span>
 			</div>
 			<div class="container-row">
@@ -88,6 +91,9 @@
 		<div class="container-column centering">
 			<div class="subheader">
 				<span class="title-left">Key 1 Motor</span> 
+				<button (click)="key1Motor = !key1Motor" class="button"></button>
+    		<div *ngIf="key1Motor; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
+    		<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 				<span class="title-right">Alive</span>
 			</div>
 			<div class="container-row">

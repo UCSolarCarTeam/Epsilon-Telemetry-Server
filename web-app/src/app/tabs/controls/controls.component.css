@@ -23,10 +23,13 @@
 .spacing {
 	width: 100%;
 	text-align: left;
-	font-family: Arial, sans-serif;
-	color: white;
 	font-size: 1.2rem;
 	padding-bottom: 0.2em;
+	font-family: Ariel, sans-serif;
+}
+
+.dataHeader {
+	color: rgba(255, 255, 255, 0.75);
 }
 
 .center-spacing {
@@ -52,6 +55,22 @@
 
 .reduce {
 	width: 20%;
+}
+
+.grey {
+	background-color: rgba(100, 100, 100, .5);
+}
+
+.black {
+	background-color: rgba(50, 50, 50, .5);
+}
+
+.on {
+	color: #c2185b;
+}
+
+.off {
+	color: grey;
 }
 
 .subheader {
@@ -93,10 +112,11 @@
 }
 .item {
 	font-family: Arial, sans-serif;
+	color: #c2185b;
 }
 .data {
-	padding: 5%;
 	background-color: #7a7676;
+	padding-right: 10%;
 }
 
 .leftside {

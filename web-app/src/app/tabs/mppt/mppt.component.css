@@ -32,12 +32,8 @@
 }
 
 .circle {
-	float: right;
-	margin-right: 40%;
-	width: 20px;
-	height: 20px;
-	background-color: green;
-	border-radius: 50%;
+	width: 15px;
+	height: 15px;
 }
 
 .reduce {

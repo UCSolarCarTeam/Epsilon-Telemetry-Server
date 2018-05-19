@@ -2,8 +2,8 @@
 	<div class="header">
 		<span class="title-left rounded">Battery</span>
 		<div id="clicker">
-			<button (click)="show = !show" class="button"></button>
-    		<div *ngIf="show; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
+			<button (click)="batteryAlive = !batteryAlive" class="button"></button>
+    		<div *ngIf="batteryAlive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
     		<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 		</div>
 		<span class="title-right rounded">Alive</span>
@@ -179,12 +179,24 @@
 			<div class="leftside">
 				<div class ="subheader">
 					<h3>Aux BMS</h3>
-					<div class="container-column">
-						<div class="container-row">
-							<span class="item">Aux BMS Alive</span>
-							<span class="item">Aux Voltage</span>
+					<div class="container-row">
+						<div class="container-column">
+							<span class="item">Strobe BMS</span>
+							<span class="item">Contactor Error</span>
+							<span class="item">Allow Charge</span>
 						</div>
-						<span class="item">Orion BMS Input Voltage</span>
+						<div class="container-column">
+							<div class="container-row">
+								
+									<button (click)="auxBMSAlive = !auxBMSAlive" class="buttonItems"></button>
+		    						<span *ngIf="auxBMSAlive; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+		    						<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+	    						
+								<span class="item">Aux BMS Alive</span>
+								<span class="item">Aux Voltage</span>
+							</div>
+							<span class="item">Orion BMS Input Voltage</span>
+						</div>
 					</div>
 				</div>
 			</div>

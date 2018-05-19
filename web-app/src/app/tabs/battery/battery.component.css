@@ -2,7 +2,7 @@
 	font-family: Arial, sans-serif;
 	font-size: 1.2rem;
 	background-color: grey;
-	color: white;
+	color: rgba(255, 255, 255, 0.75);
 	padding-bottom: 1.2em;
 	padding-top: .2em;
 	border-radius: 25px;
@@ -21,6 +21,7 @@
 	margin-left: 5px;
 
 }
+
 .circle {
 	float: left;
 	width: 15px;
@@ -36,6 +37,7 @@
 .button {
 	float: left;
 	width: 10px;
+	height: 10px;
 	margin-right: 20%;
 }
 
@@ -61,7 +63,7 @@ text-align: center;
 	font-family: Arial, sans-serif;
 	font-size: .8em;
 	background-color: #7a7676;
-	color: white;
+	color: rgba(255, 255, 255, 0.9);
 	border-radius: 25px;
 	text-align: center;
 }
@@ -77,14 +79,14 @@ text-align: center;
 }
 .item {
 	font-family: Arial, sans-serif;
-	color: white;
+	color: rgba(255, 255, 255, 0.9);
 	font-size: 0.75em;
 	margin-left: 15px;
 	margin-right: 15px;
 }
 .itemLeft {
 	font-family: Arial, sans-serif;
-	color: white;
+	color: rgba(255, 255, 255, 0.9);
 	font-size: 0.75em;
 	margin-left: 15px;
 	margin-right: 15px;

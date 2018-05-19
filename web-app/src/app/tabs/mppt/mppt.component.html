@@ -7,7 +7,11 @@
 		<div class="container-column centering">
 			<div class="subheader">
 				<div>MPPT 0</div> 
-				<div>Alive</div>
+				<div>
+					<button (click)="mppt0 = !mppt0" class="button"></button>
+	    			<span *ngIf="mppt0; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    			<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+				Alive</div>
 			</div>
 			<div class="item">
 				<div class="subsubheader">Array Voltage</div>
@@ -29,7 +33,11 @@
 		<div class="container-column centering">
 			<div class="subheader">
 				<div>MPPT 1</div> 
-				<div>Alive</div>
+				<div>
+					<button (click)="mppt1 = !mppt1" class="button"></button>
+	    			<span *ngIf="mppt1; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    			<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+				Alive</div>
 			</div>
 			<div class="item">
 				<div class="subsubheader">Array Voltage</div>
@@ -51,7 +59,11 @@
 		<div class="container-column centering">
 			<div class="subheader">
 				<div>MPPT 2</div> 
-				<div>Alive</div>
+				<div>
+					<button (click)="mppt2 = !mppt2" class="button"></button>
+	    			<span *ngIf="mppt2; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    			<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+				Alive</div>
 			</div>
 			<div class="item">
 				<div class="subsubheader">Array Voltage</div>
