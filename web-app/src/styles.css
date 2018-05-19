@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  margin: 10px auto;
+  margin: 0 auto;
   background-image: url("assets/background.png");
   background-size: 100% 100%;
 }

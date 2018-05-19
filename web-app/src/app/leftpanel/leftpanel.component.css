@@ -1,6 +1,7 @@
 :host {
-  height: 100%;
-  width: 15%;
+  display: flex;
+  height: 98%;
+  margin: 0.5%% auto;
 }
 
 .packet {

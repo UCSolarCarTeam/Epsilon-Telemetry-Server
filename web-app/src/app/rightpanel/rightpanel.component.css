@@ -1,14 +1,15 @@
 :host {
   display: flex;
-  height: 100%;
-  width: 30%;
+  height: 98%;
+  width: 25%;
+  margin: 0.5% auto;
 }
 
 .car-misc,
 .battery-misc {
-  width: 50%;
+  width: 38%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   background-color: #212121;
   margin: 0 2px;
@@ -48,8 +49,8 @@
   display: flex;
   align-self: center;
   justify-content: center;
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
 }
 
 #overlay-0 {
@@ -70,10 +71,18 @@
 .precharge-state-dots {
   margin-top: 5px;
   display: flex;
+  align-items: center;
+}
+
+.precharge-state-dots mat-icon {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
 }
 
 .precharge-state-dots p {
   margin: 0 5px;
+  font-size: 14px;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -93,8 +102,17 @@
   font-size: 25px;
 }
 
+#set-velocity {
+  color: #c2185b;
+}
+
+#vehicle-velocity {
+  color: #f44336;
+}
+
 #pack-soc {
   font-size: 35px;
+  color: #f44336;
 }
 
 #bms-strobe-label {

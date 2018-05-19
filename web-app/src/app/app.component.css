@@ -4,14 +4,13 @@
   height: 100%;
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
 }
 
 /* Tabs */
 .tabs {
-  margin: 0 5px;
+  margin: 0.5% 3px;
   display: inline-block;
-  width: 60%;
+  width: 65%;
 }
 
 .mat-tab-link-active {
