@@ -28,20 +28,20 @@ export class CarMisc {
     vehicleVelocity: number,
     totalArrayPower: number,
     bmsStrobeLight: boolean) {
-    this.directionForward = directionForward;
-    this.directionReverse = directionReverse;
-    this.brakes = brakes;
-    this.hazard = hazard;
-    this.regenBraking = regenBraking;
-    this.acceleration = acceleration;
-    this.setCurrent = setCurrent;
-    this.busCurrent = busCurrent;
-    this.busVoltage = busVoltage;
-    this.setVelocity = setVelocity;
-    this.vehicleVelocity = vehicleVelocity;
-    this.totalArrayPower = totalArrayPower;
-    this.bmsStrobeLight = bmsStrobeLight;
-    this.velocityTotal = this.setVelocity + this.vehicleVelocity;
+      this.directionForward = directionForward;
+      this.directionReverse = directionReverse;
+      this.brakes = brakes;
+      this.hazard = hazard;
+      this.regenBraking = regenBraking;
+      this.acceleration = acceleration;
+      this.setCurrent = setCurrent;
+      this.busCurrent = busCurrent;
+      this.busVoltage = busVoltage;
+      this.setVelocity = setVelocity;
+      this.vehicleVelocity = vehicleVelocity;
+      this.totalArrayPower = totalArrayPower;
+      this.bmsStrobeLight = bmsStrobeLight;
+      this.velocityTotal = this.setVelocity + this.vehicleVelocity;
   }
 
   getSetVelocityPercentage(): number {

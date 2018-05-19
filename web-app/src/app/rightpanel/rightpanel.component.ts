@@ -10,9 +10,9 @@ import { BatteryMisc, State } from '../battery-misc';
 })
 export class RightpanelComponent implements OnInit {
 
-  private carMisc = new CarMisc(false, true, false, true,
-                                30, 40, 50, 20, 10, 140,
-                                80, 65, true);
+  carMisc = new CarMisc(false, true, false, true,
+                        30, 40, 50, 20, 10, 140,
+                        80, 65, true);
 
   batteryMisc: BatteryMisc = {
     totalPackCapacity: 40,

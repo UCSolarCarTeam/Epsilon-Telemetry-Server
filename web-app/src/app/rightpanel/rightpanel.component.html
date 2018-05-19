@@ -1,14 +1,14 @@
 <!-- Car Right Panel -->
 <mat-card class="car-misc">
   <div class="direction">
-    <div class="backward">
+    <div class="reverse" [ngClass]="{'active': carMisc.directionReverse, 'inactive': !carMisc.directionReverse}">
       <span>
         <mat-icon id="back-arrow-1">arrow_back_ios</mat-icon>
         <mat-icon id="back-arrow-2">arrow_back_ios</mat-icon>
       </span>
       <label>Reverse</label>
     </div>
-    <div class="forward">
+    <div class="forward" [ngClass]="{'active': carMisc.directionForward, 'inactive': !carMisc.directionForward}">
       <span>
         <mat-icon id="forward-arrow-1">arrow_forward_ios</mat-icon>
         <mat-icon id="forward-arrow-2">arrow_forward_ios</mat-icon>
@@ -17,11 +17,11 @@
     </div>
   </div>
   <div class="warning">
-    <div class="brakes">
+    <div class="brakes" [ngClass]="{'active': carMisc.brakes, 'inactive': !carMisc.brakes}">
       <mat-icon id="brakes-icon">error_outline</mat-icon>
       <label>Brakes</label>
     </div>
-    <div class="hazard">
+    <div class="hazard" [ngClass]="{'active': carMisc.hazard, 'inactive': !carMisc.hazard}">
       <mat-icon id="hazard-icon">warning</mat-icon>
       <label>Hazard</label>
     </div>
@@ -101,7 +101,11 @@
       readonly="true"
     >
   </mat-form-field>
-  <label id="bms-strobe-label">BMS Strobe Light</label>
+  <label id="bms-strobe-label"
+         [ngClass]="{'active': carMisc.bmsStrobeLight, 'inactive': !carMisc.bmsStrobeLight}"
+  >
+  BMS Strobe Light
+  </label>
 </mat-card>
 
 <!-- Battery Right Panel -->
@@ -171,9 +175,9 @@
   <div class="precharge-state">
     <label>Precharge State</label>
     <div class="precharge-state-dots">
-      <mat-icon>lens</mat-icon>
-      <mat-icon>lens</mat-icon>
-      <mat-icon>lens</mat-icon>
+      <mat-icon class="inactive">lens</mat-icon>
+      <mat-icon class="inactive">lens</mat-icon>
+      <mat-icon class="inactive">lens</mat-icon>
       <p>{{batteryMisc.prechargeState}}</p>
     </div>
   </div>
