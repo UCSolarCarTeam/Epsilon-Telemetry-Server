@@ -175,9 +175,26 @@
   <div class="precharge-state">
     <label>Precharge State</label>
     <div class="precharge-state-dots">
-      <mat-icon class="inactive">lens</mat-icon>
-      <mat-icon class="inactive">lens</mat-icon>
-      <mat-icon class="inactive">lens</mat-icon>
+      <mat-icon
+        class="inactive"
+        [ngClass]="{'active': batteryMisc.prechargeState != State?.OFF}"
+      >
+        lens
+      </mat-icon>
+      <mat-icon
+        class="inactive"
+        [ngClass]="{'active': batteryMisc.prechargeState == State?.DISCHARGE_ENGAGED ||
+        batteryMisc.prechargeState == State?.ALL_ENGAGED}"
+      >
+        lens
+      </mat-icon>
+      <mat-icon
+        class="inactive"
+        [ngClass]="{'active': batteryMisc.prechargeState == State?.CHARGE_ENGAGED ||
+        batteryMisc.prechargeState == State?.ALL_ENGAGED}"
+      >
+        lens
+      </mat-icon>
       <p>{{batteryMisc.prechargeState}}</p>
     </div>
   </div>
