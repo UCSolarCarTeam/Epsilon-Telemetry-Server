@@ -8,11 +8,6 @@ import { MpptComponent } from './tabs/mppt/mppt.component';
 import { FaultsComponent } from './tabs/faults/faults.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        redirectTo: '/battery',
-        pathMatch: 'full'
-    },
     { path: 'battery', component: BatteryComponent },
     { path: 'controls', component: ControlsComponent },
     { path: 'motor', component: MotorComponent },
