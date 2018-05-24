@@ -44,8 +44,8 @@ export class MPPTService {
 
   private updateMPPT(data: ITelemetryData, num: number): void {
     this[`mppt${num}`].alive = data[`mppt${num}alive`];
-    this[`mppt${num}`].arrayCurrent = data[`mppt${num}arrayvoltage`];
-    this[`mppt${num}`].arrayVoltage = data[`mppt${num}arraycurrent`];
+    this[`mppt${num}`].arrayCurrent = data[`mppt${num}arraycurrent`];
+    this[`mppt${num}`].arrayVoltage = data[`mppt${num}arrayvoltage`];
     this[`mppt${num}`].batteryVoltage = data[`mppt${num}batteryvoltage`];
     this[`mppt${num}`].temperature = data[`mppt${num}temperature`];
   }
