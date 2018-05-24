@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-const db = require('./database').db;
+const db = require('./database').pool;
 const server = require('../bin/www').server;
 
 const wss = new WebSocket.Server({server});

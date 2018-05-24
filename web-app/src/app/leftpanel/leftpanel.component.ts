@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Packet } from '../packet';
+import { Packet } from '../_objects/packet';
+import { PacketService } from '../_services/packet.service';
 
 @Component({
   selector: 'app-leftpanel',
@@ -8,13 +9,23 @@ import { Packet } from '../packet';
   styleUrls: ['./leftpanel.component.css']
 })
 export class LeftpanelComponent implements OnInit {
-  packet: Packet = {
-    timestamp: '1988-Jul-18-04-07-13-199'
-  };
+  // declare empty public variable
+  packet: Packet;
 
-  constructor() { }
+  // inject the PacketService
+  constructor(private packetService: PacketService) { }
 
   ngOnInit() {
-  }
+    // initialize with default values
+    this.packet = this.packetService.getData();
 
+    // observe changes and update public variable when changed
+    // note the dollar sign, this means you can subscribe to the object
+    // see _services/packet.service.ts
+    this.packetService.packet$.subscribe(
+      (data: Packet) => {
+        this.packet = data;
+      }
+    );
+  }
 }

@@ -1,33 +1,20 @@
 export class CarMisc {
-  directionForward: boolean;
-  directionReverse: boolean;
-  brakes: boolean;
-  hazard: boolean;
-  regenBraking: number;
-  acceleration: number;
-  setCurrent: number;
-  busCurrent: number;
-  busVoltage: number;
-  setVelocity: number;
-  vehicleVelocity: number;
-  totalArrayPower: number;
-  bmsStrobeLight: boolean;
   velocityTotal: number;
 
   constructor(
-    directionForward: boolean,
-    directionReverse: boolean,
-    brakes: boolean,
-    hazard: boolean,
-    regenBraking: number,
-    acceleration: number,
-    setCurrent: number,
-    busCurrent: number,
-    busVoltage: number,
-    setVelocity: number,
-    vehicleVelocity: number,
-    totalArrayPower: number,
-    bmsStrobeLight: boolean) {
+    public directionForward: boolean,
+    public directionReverse: boolean,
+    public brakes: boolean,
+    public hazard: boolean,
+    public regenBraking: number,
+    public acceleration: number,
+    public setCurrent: number,
+    public busCurrent: number,
+    public busVoltage: number,
+    public setVelocity: number,
+    public vehicleVelocity: number,
+    public totalArrayPower: number,
+    public bmsStrobeLight: boolean) {
       this.directionForward = directionForward;
       this.directionReverse = directionReverse;
       this.brakes = brakes;

@@ -22,6 +22,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LeftpanelComponent } from './leftpanel/leftpanel.component';
 import { RightpanelComponent } from './rightpanel/rightpanel.component';
 
+import { WebSocketService } from './websocket.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +50,7 @@ import { RightpanelComponent } from './rightpanel/rightpanel.component';
     MatProgressSpinnerModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [WebSocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
