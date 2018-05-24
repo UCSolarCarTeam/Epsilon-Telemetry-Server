@@ -1,18 +1,17 @@
 const WebSocket = require('ws');
-const BSON = require('bson');
 const db = require('./database').db;
 const server = require('../bin/www').server;
 
-const bson = new BSON();
 const wss = new WebSocket.Server({server});
 
 const errors = {
-  SELECT_ERROR: bson.serialize({Error: 'Node returned an error during the SELECT query. See Node console for details.'}),
+  SELECT_ERROR: 'Node returned an error during the SELECT query. See Node console for details.',
 };
 
 wss.on('connection', function(ws, req) {
   // when client connects, select row with latest telemetry
   // information as a JSON object and send it
+  console.log("New client connected!");
   db.one({
     name: 'client-init',
     text: 'SELECT json_agg(latest) ' +
@@ -20,7 +19,7 @@ wss.on('connection', function(ws, req) {
                 'FROM packet ' +
                 'ORDER BY timestamp DESC LIMIT 1) latest'
   }).then(result => {
-    ws.send(bson.serialize(result.json_agg));
+    ws.send(JSON.stringify(result.json_agg[0]));
   }).catch(err => {
     ws.send(errors.SELECT_ERROR);
   });
@@ -37,7 +36,7 @@ wss.on('connection', function(ws, req) {
                   `AND timestamp < '${str(jsonObj.end)}' ` +
                   'ORDER BY timestamp) rows'
     }).then(results => {
-      ws.send(bson.serialize(results));
+      ws.send(JSON.stringify(result.json_agg));
     }).catch(err => {
       ws.send(errors.SELECT_ERROR);
     });
@@ -46,5 +45,10 @@ wss.on('connection', function(ws, req) {
   // add more event handlers here if needed
 });
 
-module.exports.bson = bson;
+wss.broadcast = function broadcast(data) {
+  wss.clients.forEach(function each(client) {
+    client.send(data);
+  });
+};
+
 module.exports.websocket = wss;

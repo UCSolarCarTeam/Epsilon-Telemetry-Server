@@ -1,25 +1,8 @@
 const amqp = require('amqplib');
-const BSON = require('bson');
 const promise = require('promise');
 const config = require('../config');
-const db = require('./database').db;
-const mapJsonToColumns = require('./database').mapColumns;
+const db = require('./database');
 const wss = require('./websocket').websocket
-const bson = require('./websocket').bson;
-
-/**
- * Get column names and store in global variable.
- */
-console.log('Updating column names...');
-let columnNames = '';
-db.any({
-  name: 'update-columns',
-  text: 'SELECT column_name FROM information_schema.columns ' +
-        'WHERE table_schema = \'public\' AND table_name = \'packet\''
-}).then(columns => {
-  columnNames = columns.slice(1).map(column => column.column_name).join();
-  console.log('Column names updated');
-});
 
 /**
  * Setup the AMQP channel with RabbitMQ
@@ -46,17 +29,14 @@ amqp.connect(config.rabbitmq.host)
           const jsonObj = JSON.parse(msg.content);
 
           // insert into database
-          db.one({
+          db.pool.one({
             name: 'rabbitmq-insert',
-            text: `INSERT INTO packet(${columnNames}) values(${mapJsonToColumns(jsonObj)}) RETURNING row_to_json(packet)`
+            text: `INSERT INTO packet(${db.getColumns()}) values(${db.jsonToSql(jsonObj)}) RETURNING row_to_json(packet)`
           }).then(inserted_row => {
             console.log('1 row inserted from RabbitMQ');
 
             // serialize the data and broadcast it to all connected clients
-            serializedData = bson.serialize(inserted_row.row_to_json);
-            wss.broadcast = function broadcast(serializedData) {
-              wss.clients.map(client => client.send(serializedData));
-            };
+            wss.broadcast(JSON.stringify(inserted_row.row_to_json));
           });
         }, {noAck: true});
       });
