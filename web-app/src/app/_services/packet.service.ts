@@ -18,7 +18,7 @@ export class PacketService {
 
     this.wsService.socket$.subscribe(
       (data: ITelemetryData) => {
-        this.packet.timestamp = data.timestamp;
+        this.packet.timestamp = new Date(data.timestamp).toTimeString();
         this.packet.name = data.name;
         this.packet$.emit(this.getData());
       }

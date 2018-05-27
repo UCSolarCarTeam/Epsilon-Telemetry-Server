@@ -6,11 +6,12 @@
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
     "test": "mocha --reporter spec --timeout 5000",
-    "lint": "eslint -c .eslintrc.json app.js bin lib routes test",
+    "lint": "eslint -c .eslintrc.json app.js bin scripts routes test",
     "build:docker": "docker build --rm -t server ."
   },
   "dependencies": {
     "amqplib": "^0.5.2",
+    "bluebird": "^3.5.1",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",

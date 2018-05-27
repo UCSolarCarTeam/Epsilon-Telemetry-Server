@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
-import * as Rx from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { ITelemetryData } from './_objects/interfaces/telemetry-data.interface';
 

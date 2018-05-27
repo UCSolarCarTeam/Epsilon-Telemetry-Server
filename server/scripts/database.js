@@ -1,11 +1,16 @@
 const promise = require('promise');
 const config = require('../config');
 
+/**
+ * Postgres options and handlers
+ */
 const initOptions = {
   promiseLib: promise,
+  // Query handler
   query: function(e) {
     console.log('QUERY:', e.query);
   },
+  // Error handler
   error: function(err, e) {
     console.error(err.stack);
     // connection error
@@ -20,43 +25,80 @@ const initOptions = {
     if (e.ctx) {
       console.error('ERROR: An internal database error occured during a transaction or task.');
     }
-  }
+  },
 };
+
+/**
+ * Connect to Postgres
+ */
 const pgp = require('pg-promise')(initOptions);
 const db = pgp(config.database);
 
-module.exports.pool = db;
-
 /**
- * Get column names and store in global variable.
+ * Get table columns and store in a global variable
  */
 console.log('Updating column names...');
-const column_map = new Map();
+const columnMap = new Map();
 db.any({
   name: 'update-columns',
   text: 'SELECT column_name FROM information_schema.columns ' +
-        'WHERE table_schema = \'public\' AND table_name = \'packet\''
-}).then(columns => {
-  columns.slice(1).map(column => column_map.set(column.column_name, null));
+        'WHERE table_schema = \'public\' AND table_name = \'packet\'',
+}).then((columns) => {
+  columns.slice(1).map((column) => columnMap.set(column.column_name, null));
   console.log('Column names updated');
 });
 
-module.exports.getColumns = function() {
-  return [...column_map.keys()].join();;
-}
+/**
+ * Gets table columns as a comma delimited string.
+ * @return {string}
+ */
+module.exports.getColumns = function getColumns() {
+  return [...columnMap.keys()].join();
+};
+
+/**
+ * Parses and inserts a JSON object into the database.
+ * @param {string} queryName
+ * @param {JSON} jsonObj
+ * @return {Promise}
+ */
+module.exports.insert = function(queryName, jsonObj) {
+  const mapObj = jsonToMap(jsonObj);
+  const tokens = [...Array(mapObj.size).keys()].map((x) => `$${x+1}`).join();
+
+  return db.one({
+    name: queryName,
+    text: `INSERT INTO packet (${this.getColumns()}) VALUES (${tokens}) RETURNING *`,
+    values: [...mapObj.values()],
+  });
+};
+
+/**
+ * Fetches the last row in the database.
+ * @return {Promise}
+ */
+module.exports.last = function() {
+  return db.one({
+    name: 'client-init',
+    text: 'SELECT * ' +
+          'FROM packet ' +
+          'ORDER BY timestamp DESC LIMIT 1',
+  });
+};
 
 /**
  * Function that maps the JSON object fields from the DigitalOcean RabbitMQ
  * to the PostgreSQL database columns.
- * 
- * @param {JSON Object from RabbitMQ} jsonObj 
+ *
+ * @param {JSON} jsonObj
+ * @return {Map}
  */
-module.exports.jsonToSql = function(jsonObj) {
-  const mapObj = Object.assign(column_map);
+function jsonToMap(jsonObj) {
+  const mapObj = Object.assign(columnMap);
   mapObj.set('timestamp',
-    `'${jsonObj['TimeStamp']}'`);
+    `${jsonObj['TimeStamp']}`);
   mapObj.set('name',
-    `'${jsonObj['PacketTitle']}'`);
+    `${jsonObj['PacketTitle']}`);
   mapObj.set('motor0alive',
     `${jsonObj['KeyMotor'][0]['Alive']}`);
   mapObj.set('motor0setcurrent',
@@ -389,7 +431,7 @@ module.exports.jsonToSql = function(jsonObj) {
   //   `'${jsonObj['AuxBms']['PrechargeState']}'`);
   // ignore until test tool fixed
   mapObj.set('prechargestate',
-    '\'Off\'');
+    'Off');
   mapObj.set('auxvoltage',
     `${jsonObj['AuxBms']['AuxVoltage']}`);
   mapObj.set('auxbmsalive',
@@ -445,5 +487,5 @@ module.exports.jsonToSql = function(jsonObj) {
   mapObj.set('contractorerror',
     `${jsonObj['AuxBms']['ContactorError']}`);
 
-  return [...mapObj.values()].join();
-};
+  return mapObj;
+}
