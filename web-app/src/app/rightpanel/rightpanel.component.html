@@ -113,7 +113,7 @@
   <mat-form-field>
     <input matInput
       placeholder="Total Pack Capacity"
-      value="{{batteryMisc.totalPackCapacity}} Ah"
+      value="{{batteryMisc.totalPackCapacity | number: '1.2-2'}} Ah"
       readonly="true"
     >
   </mat-form-field>
@@ -128,47 +128,46 @@
     <mat-progress-spinner
       id="overlay-2"
       color="warn"
-      value="{{batteryMisc.packStateOfCharge}}"
+      value="{{battery.packStateOfCharge}}"
       diameter="190"
     >
     </mat-progress-spinner>
     <div class="soc-data">
       <label>Pack SOC</label>
-      <p id="pack-soc">{{batteryMisc.packStateOfCharge}}%</p>
+      <p id="pack-soc">{{battery.packStateOfCharge}}%</p>
     </div>
   </div>
   <mat-form-field>
     <input matInput
-      placeholder="Pack SOC Hours"
-      value="{{batteryMisc.packStateOfChargeHrs}} Ah"
+      placeholder="Pack Amp Hours"
+      value="{{battery.packAmphours | number: '1.2-2'}} Ah"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
-    <input matInput
-      placeholder="Highest Cell Temperature"
-      value="{{batteryMisc.highestCellTemp}} °C"
+    <input matInput placeholder="Highest Cell Temperature"
+      value="{{battery.highTemperature}} °C"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Lowest Cell Voltage"
-      value="{{batteryMisc.lowestCellVoltage}} mV"
+      value="{{battery.lowCellVoltage | number: '1.2-2'}} mV"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Pack Current"
-      value="{{batteryMisc.packCurrent}} mA"
+      value="{{battery.packCurrent | number: '1.2-2'}} mA"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Pack Voltage"
-      value="{{batteryMisc.packVoltage}} mV"
+      value="{{battery.packVoltage | number: '1.2-2'}} mV"
       readonly="true"
     >
   </mat-form-field>
@@ -195,7 +194,7 @@
       >
         lens
       </mat-icon>
-      <p>{{batteryMisc.prechargeState}}</p>
+      <p>{{auxBms.prechargeState}}</p>
     </div>
   </div>
 </mat-card>

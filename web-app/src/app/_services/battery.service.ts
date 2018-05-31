@@ -9,7 +9,7 @@ import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface'
 export class BatteryService {
 
   battery$: EventEmitter<Battery>;
-  
+
   private battery: Battery;
 
   constructor(private wsService: WebSocketService) {
