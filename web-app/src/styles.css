@@ -1,6 +1,21 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
-  background-image: url("assets/Background.png");
+  margin: 0 auto;
+  background-image: url("assets/background.png");
+  background-size: 100% 100%;
+}
+
+.inactive {
+  color: rgba(255, 255, 255, 0.3)
+}
+
+.active {
+  color: #f44336;
 }
