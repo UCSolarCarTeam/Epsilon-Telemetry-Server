@@ -1,14 +1,14 @@
 <!-- Car Right Panel -->
 <mat-card class="car-misc">
   <div class="direction">
-    <div class="reverse" [ngClass]="{'active': carMisc.directionReverse, 'inactive': !carMisc.directionReverse}">
+    <div class="reverse" [ngClass]="{'active': controls.reverse, 'inactive': !controls.reverse}">
       <span>
         <mat-icon id="back-arrow-1">arrow_back_ios</mat-icon>
         <mat-icon id="back-arrow-2">arrow_back_ios</mat-icon>
       </span>
       <label>Reverse</label>
     </div>
-    <div class="forward" [ngClass]="{'active': carMisc.directionForward, 'inactive': !carMisc.directionForward}">
+    <div class="forward" [ngClass]="{'active': controls.forward, 'inactive': !controls.forward}">
       <span>
         <mat-icon id="forward-arrow-1">arrow_forward_ios</mat-icon>
         <mat-icon id="forward-arrow-2">arrow_forward_ios</mat-icon>
@@ -17,11 +17,11 @@
     </div>
   </div>
   <div class="warning">
-    <div class="brakes" [ngClass]="{'active': carMisc.brakes, 'inactive': !carMisc.brakes}">
+    <div class="brakes" [ngClass]="{'active': controls.brakes, 'inactive': !controls.brakes}">
       <mat-icon id="brakes-icon">error_outline</mat-icon>
       <label>Brakes</label>
     </div>
-    <div class="hazard" [ngClass]="{'active': carMisc.hazard, 'inactive': !carMisc.hazard}">
+    <div class="hazard" [ngClass]="{'active': controls.hazard, 'inactive': !controls.hazard}">
       <mat-icon id="hazard-icon">warning</mat-icon>
       <label>Hazard</label>
     </div>
@@ -29,17 +29,17 @@
   <div class="braking">
     <label class="main-label">Regen Braking</label>
     <div class="progress-bars">
-      <mat-progress-bar mode="determinate" value="{{carMisc.regenBraking}}">
+      <mat-progress-bar mode="determinate" value="{{controls.regenBraking}}">
       </mat-progress-bar>
-      <p>{{carMisc.regenBraking}}%</p>
+      <p>{{controls.regenBraking}}%</p>
     </div>
   </div>
   <div class="acceleration">
     <label class="main-label">Acceleration</label>
     <div class="progress-bars">
-      <mat-progress-bar mode="determinate" value="{{carMisc.acceleration}}">
+      <mat-progress-bar mode="determinate" value="{{controls.acceleration}}">
       </mat-progress-bar>
-      <p>{{carMisc.acceleration}}%</p>
+      <p>{{controls.acceleration}}%</p>
     </div>
   </div>
   <div>
@@ -102,7 +102,7 @@
     >
   </mat-form-field>
   <label id="bms-strobe-label"
-         [ngClass]="{'active': carMisc.bmsStrobeLight, 'inactive': !carMisc.bmsStrobeLight}"
+         [ngClass]="{'active': lights.bmsStrobeLight, 'inactive': !lights.bmsStrobeLight}"
   >
   BMS Strobe Light
   </label>
@@ -146,7 +146,7 @@
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Highest Cell Temperature"
-      value="{{battery.highTemperature}} °C"
+      value="{{battery.highTemperature | number: '1.2-2'}} °C"
       readonly="true"
     >
   </mat-form-field>
