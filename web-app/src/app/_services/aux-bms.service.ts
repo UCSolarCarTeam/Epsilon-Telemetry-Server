@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { WebSocketService } from '../websocket.service';
+
 import { AuxBms, State } from '../_objects/aux-bms';
 import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { WebSocketService } from '../websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,11 @@ export class AuxBmsService {
   }
 
   private updateAuxBms(data: ITelemetryData): void {
-    this.auxbms.allowCharge = data.allowcharge;
+    const pState = data.prechargestate as keyof typeof State;
     this.auxbms.alive = data.auxbmsalive;
+    this.auxbms.allowCharge = data.allowcharge;
     this.auxbms.auxVoltage = data.auxvoltage;
     this.auxbms.contactorError = data.contractorerror;
-    const pState = data.prechargestate as keyof typeof State;
     this.auxbms.prechargeState = State[pState];
     this.auxbms.strobeBmsLight = data.strobebmslight;
   }

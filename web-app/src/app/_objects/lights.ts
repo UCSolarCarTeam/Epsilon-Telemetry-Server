@@ -3,7 +3,7 @@ export class Lights {
   bmsStrobeLight = false;
   brakes = false;
   highBeams = false;
-  lowBeams = false;
   leftSignal = false;
+  lowBeams = false;
   rightSignal = false;
 }

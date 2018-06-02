@@ -1,8 +1,9 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { WebSocketService } from '../websocket.service';
+
 import { BatteryFaults } from '../_objects/faults/battery-faults';
-import { MotorFaults } from '../_objects/faults/motor-faults';
 import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { MotorFaults } from '../_objects/faults/motor-faults';
+import { WebSocketService } from '../websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,6 @@ export class FaultsService {
   }
 
   private updateBatteryFaults(data: ITelemetryData): void {
-    this.batteryFaults.errorFlags.twelvevpowerSupplyFault = data.twelvevpowersupplyfault;
     this.batteryFaults.errorFlags.alwaysOnSupplyFault = data.alwaysonsupplyfault;
     this.batteryFaults.errorFlags.canbusCommunicationsFault = data.canbuscommunicationsfault;
     this.batteryFaults.errorFlags.chargeLimitEnforcementFault = data.chargelimitenforcementfault;
@@ -66,6 +66,7 @@ export class FaultsService {
     this.batteryFaults.errorFlags.openWiringFault = data.openwiringfault;
     this.batteryFaults.errorFlags.packVoltageSensorFault = data.packvoltagesensorfault;
     this.batteryFaults.errorFlags.thermistorFault = data.thermistorfault;
+    this.batteryFaults.errorFlags.twelvevpowerSupplyFault = data.twelvevpowersupplyfault;
     this.batteryFaults.errorFlags.voltageRedundancyFault = data.voltageredundancyfault;
     this.batteryFaults.errorFlags.weakCellFault = data.weakcellfault;
     this.batteryFaults.errorFlags.weakPackFault = data.weakpackfault;

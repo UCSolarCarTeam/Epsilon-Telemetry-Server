@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { CarMisc } from '../car-misc';
 import { BatteryMisc, State } from '../battery-misc';
 
-import { Battery } from '../_objects/battery';
-import { BatteryService } from '../_services/battery.service';
 import { AuxBms } from '../_objects/aux-bms';
 import { AuxBmsService } from '../_services/aux-bms.service';
+import { Battery } from '../_objects/battery';
+import { BatteryService } from '../_services/battery.service';
 import { Controls } from '../_objects/controls';
 import { ControlsService } from '../_services/controls.service';
 import { Lights } from '../_objects/lights';
@@ -21,10 +21,10 @@ import { MotorService } from '../_services/motor.service';
 })
 export class RightpanelComponent implements OnInit {
 
-  battery: Battery;
   auxBms: AuxBms;
-  lights: Lights;
+  battery: Battery;
   controls: Controls;
+  lights: Lights;
   motor0: Motor;
   motor1: Motor;
 
@@ -49,22 +49,22 @@ export class RightpanelComponent implements OnInit {
               private lightsService: LightsService) { }
 
   ngOnInit() {
-    this.battery = this.batteryService.getData();
     this.auxBms = this.auxBmsService.getData();
+    this.battery = this.batteryService.getData();
     this.controls = this.controlsService.getData();
+    this.lights = this.lightsService.getData();
     this.motor0 = this.motorService.getData(0);
     this.motor1 = this.motorService.getData(1);
-    this.lights = this.lightsService.getData();
-
-    this.batteryService.battery$.subscribe(
-      (data: Battery) => {
-        this.battery = data;
-      }
-    );
 
     this.auxBmsService.auxbms$.subscribe(
       (data: AuxBms) => {
         this.auxBms = data;
+      }
+    );
+
+    this.batteryService.battery$.subscribe(
+      (data: Battery) => {
+        this.battery = data;
       }
     );
 

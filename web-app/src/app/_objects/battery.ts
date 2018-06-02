@@ -1,6 +1,4 @@
 export class Battery {
-  totalPackCapacity = -1;
-  twelvevinputVoltage = -1;
   alive = false;
   averageCellVoltage = -1;
   averageTemperature = -1;
@@ -32,6 +30,8 @@ export class Battery {
   packVoltage = -1;
   populatedCells = -1;
   requestedFanSpeed = -1;
+  totalPackCapacity = -1;
+  twelvevinputVoltage = -1;
 }
 
 class BMSRelayStatusFlags {

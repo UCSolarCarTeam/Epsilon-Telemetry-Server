@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BatteryComponent } from './tabs/battery/battery.component';
 import { ControlsComponent } from './tabs/controls/controls.component';
+import { FaultsComponent } from './tabs/faults/faults.component';
 import { MotorComponent } from './tabs/motor/motor.component';
 import { MpptComponent } from './tabs/mppt/mppt.component';
-import { FaultsComponent } from './tabs/faults/faults.component';
 
 const routes: Routes = [
     { path: 'battery', component: BatteryComponent },

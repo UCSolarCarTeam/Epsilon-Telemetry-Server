@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { WebSocketService } from '../websocket.service';
-import { Lights } from '../_objects/lights';
+
 import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { Lights } from '../_objects/lights';
+import { WebSocketService } from '../websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,8 @@ export class LightsService {
     this.lights.bmsStrobeLight = data.bmsstrobelight;
     this.lights.brakes = data.brakelights;
     this.lights.highBeams = data.highbeams;
-    this.lights.lowBeams = data.lowbeams;
     this.lights.leftSignal = data.leftsignal;
+    this.lights.lowBeams = data.lowbeams;
     this.lights.rightSignal = data.rightsignal;
   }
 }

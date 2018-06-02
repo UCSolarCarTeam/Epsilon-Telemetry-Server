@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { WebSocketService } from '../websocket.service';
-import { Packet } from '../_objects/packet';
+
 import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { Packet } from '../_objects/packet';
+import { WebSocketService } from '../websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,9 @@ export class PacketService {
 
     this.wsService.socket$.subscribe(
       (data: ITelemetryData) => {
-        this.packet.timestamp = new Date(data.timestamp).toTimeString();
-        this.packet.name = data.name;
         this.packet$.emit(this.getData());
+        this.packet.name = data.name;
+        this.packet.timestamp = new Date(data.timestamp).toTimeString();
       }
     );
   }

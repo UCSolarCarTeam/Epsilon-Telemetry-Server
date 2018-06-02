@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
+
+import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
 import { Motor } from '../_objects/motor';
 import { WebSocketService } from '../websocket.service';
-import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,12 +39,9 @@ export class MotorService {
 
   private updateMotor(data: ITelemetryData, num: number): void {
     this[`motor${num}`].alive = data[`motor${num}alive`];
+    this[`motor${num}`].backEmf = data[`motor${num}backemf`];
     this[`motor${num}`].busCurrent = data[`motor${num}buscurrent`];
     this[`motor${num}`].busVoltage = data[`motor${num}busvoltage`];
-    this[`motor${num}`].setCurrent = data[`motor${num}setcurrent`];
-    this[`motor${num}`].setVelocity = data[`motor${num}setvelocity`];
-    this[`motor${num}`].vehicleVelocity = data[`motor${num}vehiclevelocity`];
-    this[`motor${num}`].backEmf = data[`motor${num}backemf`];
     this[`motor${num}`].dcBusAmpHours = data[`motor${num}dcbusamphours`];
     this[`motor${num}`].dspBoardTemp = data[`motor${num}dspboardtemp`];
     this[`motor${num}`].heatSinkTemp = data[`motor${num}heatsinktemp`];
@@ -55,7 +53,10 @@ export class MotorService {
     this[`motor${num}`].odometer = data[`motor${num}odometer`];
     this[`motor${num}`].phaseBCurrent = data[`motor${num}phasebcurrent`];
     this[`motor${num}`].phaseCCurrent = data[`motor${num}phaseccurrent`];
+    this[`motor${num}`].setCurrent = data[`motor${num}setcurrent`];
+    this[`motor${num}`].setVelocity = data[`motor${num}setvelocity`];
     this[`motor${num}`].slipSpeed = data[`motor${num}slipspeed`];
+    this[`motor${num}`].vehicleVelocity = data[`motor${num}vehiclevelocity`];
     this[`motor${num}`].voltageRail15VSupply = data[`motor${num}voltagerail15vsupply`];
     this[`motor${num}`].voltageRail1VSupply = data[`motor${num}voltagerail1vsupply`];
     this[`motor${num}`].voltageRail3VSupply = data[`motor${num}voltagerail3vsupply`];

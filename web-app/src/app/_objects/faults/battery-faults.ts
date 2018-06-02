@@ -1,6 +1,5 @@
 export class BatteryFaults {
   errorFlags: BatteryErrorFlags = {
-    twelvevpowerSupplyFault: false,
     alwaysOnSupplyFault: false,
     canbusCommunicationsFault: false,
     chargeLimitEnforcementFault: false,
@@ -18,6 +17,7 @@ export class BatteryFaults {
     openWiringFault: false,
     packVoltageSensorFault: false,
     thermistorFault: false,
+    twelvevpowerSupplyFault: false,
     voltageRedundancyFault: false,
     weakCellFault: false,
     weakPackFault: false
@@ -41,7 +41,6 @@ export class BatteryFaults {
 }
 
 class BatteryErrorFlags {
-  twelvevpowerSupplyFault: boolean;
   alwaysOnSupplyFault: boolean;
   canbusCommunicationsFault: boolean;
   chargeLimitEnforcementFault: boolean;
@@ -59,6 +58,7 @@ class BatteryErrorFlags {
   openWiringFault: boolean;
   packVoltageSensorFault: boolean;
   thermistorFault: boolean;
+  twelvevpowerSupplyFault: boolean;
   voltageRedundancyFault: boolean;
   weakCellFault: boolean;
   weakPackFault: boolean;

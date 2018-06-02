@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { WebSocketService } from '../websocket.service';
+
 import { Battery } from '../_objects/battery';
 import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { WebSocketService } from '../websocket.service';
 
 @Injectable({
   providedIn: 'root'
