@@ -107,7 +107,7 @@
   <mat-form-field>
     <input matInput
       placeholder="Total Array Power"
-      value="{{carMisc.totalArrayPower}} W"
+      value="{{getTotalArrayPower() | number: '1.2-2'}} W"
       readonly="true"
     >
   </mat-form-field>

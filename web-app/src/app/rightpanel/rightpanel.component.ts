@@ -13,6 +13,8 @@ import { Lights } from '../_objects/lights';
 import { LightsService } from '../_services/lights.service';
 import { Motor } from '../_objects/motor';
 import { MotorService } from '../_services/motor.service';
+import { MPPT } from '../_objects/mppt';
+import { MPPTService } from '../_services/mppt.service';
 
 @Component({
   selector: 'app-rightpanel',
@@ -27,6 +29,9 @@ export class RightpanelComponent implements OnInit {
   lights: Lights;
   motor0: Motor;
   motor1: Motor;
+  mppt0: MPPT;
+  mppt1: MPPT;
+  mppt2: MPPT;
 
   carMisc = new CarMisc(false, true, false, true,
                         30, 40, 50, 20, 10, 140,
@@ -42,11 +47,12 @@ export class RightpanelComponent implements OnInit {
     packVoltage: 50, prechargeState: State.COMMON_ENGAGED
   };
 
-  constructor(private batteryService: BatteryService,
-              private auxBmsService: AuxBmsService,
+  constructor(private auxBmsService: AuxBmsService,
+              private batteryService: BatteryService,
               private controlsService: ControlsService,
+              private lightsService: LightsService,
               private motorService: MotorService,
-              private lightsService: LightsService) { }
+              private mpptService: MPPTService) { }
 
   ngOnInit() {
     this.auxBms = this.auxBmsService.getData();
@@ -55,6 +61,9 @@ export class RightpanelComponent implements OnInit {
     this.lights = this.lightsService.getData();
     this.motor0 = this.motorService.getData(0);
     this.motor1 = this.motorService.getData(1);
+    this.mppt0 = this.mpptService.getData(0);
+    this.mppt1 = this.mpptService.getData(1);
+    this.mppt2 = this.mpptService.getData(2);
 
     this.auxBmsService.auxbms$.subscribe(
       (data: AuxBms) => {
@@ -91,6 +100,24 @@ export class RightpanelComponent implements OnInit {
         this.motor1 = data;
       }
     );
+
+    this.mpptService.mppt0$.subscribe(
+      (data: MPPT) => {
+        this.mppt0 = data;
+      }
+    );
+
+    this.mpptService.mppt1$.subscribe(
+      (data: MPPT) => {
+        this.mppt1 = data;
+      }
+    );
+
+    this.mpptService.mppt2$.subscribe(
+      (data: MPPT) => {
+        this.mppt2 = data;
+      }
+    );
   }
 
   getAvgSetCurrent(): number {
@@ -113,11 +140,9 @@ export class RightpanelComponent implements OnInit {
     return (this.motor0.vehicleVelocity + this.motor1.vehicleVelocity) / 2;
   }
 
-
   getSetVelocityPercentage(): number {
     let velocityTotal: number = this.getVehicleVelocity() + this.getSetVelocity();
-    return this.getSetVelocity() / velocityTotal * 100;
-  }
+    return this.getSetVelocity() / velocityTotal * 100; }
 
   getVehicleVelocityPercentage(): number {
     let velocityTotal: number  = this.getVehicleVelocity() + this.getSetVelocity();
@@ -130,5 +155,12 @@ export class RightpanelComponent implements OnInit {
 
   getPackKWh(): number {
     return this.battery.packAmphours * this.battery.packVoltage / 1000;
+  }
+
+  getTotalArrayPower(): number {
+    let mppt0ArrayPower: number = this.mppt0.arrayCurrent * this.mppt0.arrayVoltage;
+    let mppt1ArrayPower: number = this.mppt1.arrayCurrent * this.mppt1.arrayVoltage;
+    let mppt2ArrayPower: number = this.mppt2.arrayCurrent * this.mppt2.arrayVoltage;
+    return mppt0ArrayPower + mppt1ArrayPower + mppt2ArrayPower;
   }
 }
