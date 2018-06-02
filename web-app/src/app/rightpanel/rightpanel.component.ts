@@ -124,11 +124,11 @@ export class RightpanelComponent implements OnInit {
   }
 
   getSetVelocityPercentage(): number {
-    let velocityTotal: number = this.getVehicleVelocity() + this.getSetVelocity();
+    const velocityTotal: number = this.getVehicleVelocity() + this.getSetVelocity();
     return this.getSetVelocity() / velocityTotal * 100; }
 
   getVehicleVelocityPercentage(): number {
-    let velocityTotal: number  = this.getVehicleVelocity() + this.getSetVelocity();
+    const velocityTotal: number  = this.getVehicleVelocity() + this.getSetVelocity();
     return this.getVehicleVelocity() / velocityTotal * 100;
   }
 
@@ -141,9 +141,9 @@ export class RightpanelComponent implements OnInit {
   }
 
   getTotalArrayPower(): number {
-    let mppt0ArrayPower: number = this.mppt0.arrayCurrent * this.mppt0.arrayVoltage;
-    let mppt1ArrayPower: number = this.mppt1.arrayCurrent * this.mppt1.arrayVoltage;
-    let mppt2ArrayPower: number = this.mppt2.arrayCurrent * this.mppt2.arrayVoltage;
+    const mppt0ArrayPower: number = this.mppt0.arrayCurrent * this.mppt0.arrayVoltage;
+    const mppt1ArrayPower: number = this.mppt1.arrayCurrent * this.mppt1.arrayVoltage;
+    const mppt2ArrayPower: number = this.mppt2.arrayCurrent * this.mppt2.arrayVoltage;
     return mppt0ArrayPower + mppt1ArrayPower + mppt2ArrayPower;
   }
 }
