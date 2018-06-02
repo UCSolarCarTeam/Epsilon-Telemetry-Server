@@ -13,9 +13,9 @@ export class AppComponent implements OnInit {
   activeLinkIndex = -1;
 
   constructor(
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
     private matIconRegistry: MatIconRegistry,
-    private router: Router,
+    private router: Router
   ) {
     this.registerIcons();
     this.routeLinks = [
