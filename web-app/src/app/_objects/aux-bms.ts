@@ -1,9 +1,9 @@
 export enum State {
-  ALL_ENGAGED = 'All engaged'
+  ALL_ENGAGED = 'All engaged',
   CHARGE_ENGAGED = 'Charge Engaged',
   COMMON_ENGAGED = 'Common Engaged',
   DISCHARGE_ENGAGED = 'Discharge Engaged',
-  Off = 'Off',
+  Off = 'Off' // Should be OFF = "Off"
 }
 
 export class AuxBms {

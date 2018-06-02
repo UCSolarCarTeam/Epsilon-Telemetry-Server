@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CarMisc } from '../car-misc';
-import { BatteryMisc, State } from '../battery-misc';
-
 import { AuxBms } from '../_objects/aux-bms';
 import { AuxBmsService } from '../_services/aux-bms.service';
 import { Battery } from '../_objects/battery';
@@ -32,20 +29,6 @@ export class RightpanelComponent implements OnInit {
   mppt0: MPPT;
   mppt1: MPPT;
   mppt2: MPPT;
-
-  carMisc = new CarMisc(false, true, false, true,
-                        30, 40, 50, 20, 10, 140,
-                        80, 65, true);
-
-  batteryMisc: BatteryMisc = {
-    totalPackCapacity: 40,
-    packStateOfCharge: 60,
-    packStateOfChargeHrs: 12,
-    highestCellTemp: 15,
-    lowestCellVoltage: 18,
-    packCurrent: 10,
-    packVoltage: 50, prechargeState: State.COMMON_ENGAGED
-  };
 
   constructor(private auxBmsService: AuxBmsService,
               private batteryService: BatteryService,

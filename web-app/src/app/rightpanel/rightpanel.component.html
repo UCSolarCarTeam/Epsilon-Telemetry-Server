@@ -62,7 +62,7 @@
   <mat-form-field>
     <input matInput
       placeholder="Bus Voltage"
-      value="{{getAvgBusCurrent() | number: '1.2-2'}} A"
+      value="{{getAvgBusVoltage() | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
@@ -186,21 +186,21 @@
     <div class="precharge-state-dots">
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': batteryMisc.prechargeState != State?.OFF}"
+        [ngClass]="{'active': auxBms.prechargeState != State?.OFF}"
       >
         lens
       </mat-icon>
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': batteryMisc.prechargeState == State?.DISCHARGE_ENGAGED ||
-        batteryMisc.prechargeState == State?.ALL_ENGAGED}"
+        [ngClass]="{'active': auxBms.prechargeState == State?.DISCHARGE_ENGAGED ||
+        auxBms.prechargeState == State?.ALL_ENGAGED}"
       >
         lens
       </mat-icon>
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': batteryMisc.prechargeState == State?.CHARGE_ENGAGED ||
-        batteryMisc.prechargeState == State?.ALL_ENGAGED}"
+        [ngClass]="{'active': auxBms.prechargeState == State?.CHARGE_ENGAGED ||
+        auxBms.prechargeState == State?.ALL_ENGAGED}"
       >
         lens
       </mat-icon>
