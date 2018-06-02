@@ -29,7 +29,6 @@ export class BatteryService {
   }
 
   private updateBattery(data: ITelemetryData): void {
-    this.battery.twelvevinputVoltage = data.twelvevinputvoltage;
     this.battery.alive = data.batteryalive;
     this.battery.averageCellVoltage = data.averagecellvoltage;
     this.battery.averageTemperature = data.averagetemperature;
@@ -59,5 +58,7 @@ export class BatteryService {
     this.battery.packVoltage = data.packvoltage;
     this.battery.populatedCells = data.populatedcells;
     this.battery.requestedFanSpeed = data.requestedfanspeed;
+    this.battery.totalPackCapacity = 168;
+    this.battery.twelvevinputVoltage = data.twelvevinputvoltage;
   }
 }

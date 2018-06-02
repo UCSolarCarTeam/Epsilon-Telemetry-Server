@@ -20,7 +20,7 @@ export class AuxBmsService {
       (data: ITelemetryData) => {
         this.updateAuxBms(data);
         this.auxbms$.emit(this.getData());
-        console.log(data.prechargestate)
+        // console.log(data.prechargestate)
       }
     );
   }

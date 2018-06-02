@@ -11,6 +11,6 @@ export class AuxBms {
   alive = false;
   auxVoltage = -1;
   contactorError = false;
-  prechargeState: State = State.off;
+  prechargeState: State = State.Off;
   strobeBmsLight = false;
 }

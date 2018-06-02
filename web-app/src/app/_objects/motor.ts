@@ -1,5 +1,5 @@
 export class Motor {
-  // KeyMotor 
+  // KeyMotor
   alive = false;
   busCurrent = -1;
   busVoltage = -1;

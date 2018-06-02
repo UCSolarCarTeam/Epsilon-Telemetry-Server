@@ -48,21 +48,21 @@
   <mat-form-field>
     <input matInput
       placeholder="Set Current"
-      value="{{carMisc.setCurrent}} A"
+      value="{{getAvgSetCurrent() | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Bus Current"
-      value="{{carMisc.busCurrent}} A"
+      value="{{getAvgBusCurrent() | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Bus Voltage"
-      value="{{carMisc.busVoltage}} V"
+      value="{{getAvgBusCurrent() | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
@@ -76,22 +76,32 @@
     </mat-progress-spinner>
     <mat-progress-spinner
       id="overlay-1"
-      value="{{carMisc.getSetVelocityPercentage()}}"
+      value="{{getSetVelocityPercentage()}}"
       diameter="190"
     >
     </mat-progress-spinner>
     <mat-progress-spinner
       id="overlay-2"
       color="warn"
-      value="{{carMisc.getVehicleVelocityPercentage()}}"
+      value="{{getVehicleVelocityPercentage()}}"
       diameter="190"
     >
     </mat-progress-spinner>
     <div class="velocity-data">
       <label>Set velocity</label>
-      <p id="set-velocity"><span class="velocity-number">{{carMisc.setVelocity}}</span>km/h</p>
+      <p id="set-velocity">
+        <span class="velocity-number">
+          {{getSetVelocity() | number: '1.2-2'}}
+        </span>
+        km/h
+      </p>
       <label>Vehicle Velocity</label>
-      <p id="vehicle-velocity"><span class="velocity-number">{{carMisc.vehicleVelocity}}</span>km/h</p>
+      <p id="vehicle-velocity">
+        <span class="velocity-number">
+          {{getVehicleVelocity() | number: '1.2-2'}}
+        </span>
+        km/h
+      </p>
     </div>
   </div>
   <mat-form-field>
@@ -113,7 +123,7 @@
   <mat-form-field>
     <input matInput
       placeholder="Total Pack Capacity"
-      value="{{batteryMisc.totalPackCapacity | number: '1.2-2'}} Ah"
+      value="{{getTotalPackCapacityKWh() | number: '1.2-2'}} kWh"
       readonly="true"
     >
   </mat-form-field>
@@ -139,8 +149,8 @@
   </div>
   <mat-form-field>
     <input matInput
-      placeholder="Pack Amp Hours"
-      value="{{battery.packAmphours | number: '1.2-2'}} Ah"
+      placeholder="Pack kWh"
+      value="{{getPackKWh() | number: '1.2-2'}} kWh"
       readonly="true"
     >
   </mat-form-field>
