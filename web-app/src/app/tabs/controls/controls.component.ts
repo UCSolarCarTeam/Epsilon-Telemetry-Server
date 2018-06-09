@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-controls',
@@ -24,6 +25,11 @@ export class ControlsComponent implements OnInit {
 	forward = true;
 	reverse = false;
 	reset = true;
+
+	acceleration = 50;
+	regenBraking = 35;
+
+	lightsHeadlightsLow = true;
 
   constructor() { }
 

@@ -1,7 +1,7 @@
 <div class="battery">
 	<div class="header">
 		<span class="title-left rounded">Battery</span>
-		<div id="clicker">
+		<div>
 			<button (click)="batteryAlive = !batteryAlive" class="button"></button>
     		<div *ngIf="batteryAlive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
     		<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
@@ -75,21 +75,21 @@
 					<div class="container-column">
 						<div class="container-row">
 							<div class="item">Pack Current
-								<div class="data">000 A</div>
+								<div class="data">{{packCurrent}} A</div>
 							</div>
 							<div class="item">Pack Voltage
-								<div class="data">000 V</div>
+								<div class="data">{{packVoltage}} V</div>
 							</div>
 							<div class="item">Pack Amphours
-								<div class="data">000 Ah</div>
+								<div class="data">{{packAmphours}} Ah</div>
 							</div>
 						</div>
 						<div class="container-row">
 							<div class="item">Pack State of charge
-								<div class="data">000</div>
+								<div class="data">{{packStateOfCharge}}</div>
 							</div>
 							<div class="item">Pack Depth of charge
-								<div class="data">000</div>
+								<div class="data">{{packDepthOfCharge}}</div>
 							</div>
 						</div>
 					</div>
@@ -104,24 +104,24 @@
 					<div class="container-row">
 						<div class="container-column">
 							<div class="item">High Temperature
-								<div class="data">50 ºC</div>
+								<div class="data">{{highTemperature}} ºC</div>
 							</div>
 							<div class="item">Low Temperature
-								<div class="data">50 ºC</div>
+								<div class="data">{{lowTemperature}} ºC</div>
 							</div>
 							<div class="item">Average Temperature
-								<div class="data">50 ºC</div>
+								<div class="data">{{averageTemperature}} ºC</div>
 							</div>
 						</div>
 						<div class="container-column">
 							<div class="item">High Thermistor ID
-								<div class="data">50 ºC</div>
+								<div class="data">{{highThermistorId}} ºC</div>
 							</div>
 							<div class="item">Low Thermistor ID
-								<div class="data">50 ºC</div>
+								<div class="data">{{lowThermistorId}} ºC</div>
 							</div>
 							<div class="item">Internal Temperature
-								<div class="data">50 ºC</div>
+								<div class="data">{{internalTemperature}} ºC</div>
 							</div>
 						</div>
 					</div>
@@ -133,24 +133,24 @@
 					<div class="container-row">
 						<div class="container-column">
 							<div class="item">Average Cell Voltage
-								<div class="data">000 V</div>
+								<div class="data">{{averageCellVoltage}} V</div>
 							</div>
 							<div class="item">Low Cell Voltage
-								<div class="data">000 V</div>
+								<div class="data">{{lowCellVoltage}} V</div>
 							</div>
 							<div class="item">High Cell Voltage
-								<div class="data">000 V</div>
+								<div class="data">{{highCellVoltage}} V</div>
 							</div>
 						</div>
 						<div class="container-column">
 							<div class="item">Populated Cells
-								<div class="data">000</div>
+								<div class="data">{{populatedCells}}</div>
 							</div>
 							<div class="item">Low Cell Voltage ID
-								<div class="data">000</div>
+								<div class="data">{{lowCellVoltageId}}</div>
 							</div>
 							<div class="item">High Cell Voltage ID
-								<div class="data">000</div>
+								<div class="data">{{highCellVoltageId}}</div>
 							</div>
 						</div>
 					</div>
@@ -162,18 +162,22 @@
 			<div class="leftside">
 				<div class ="subheader">
 					<h3>Fan</h3>
-					<div class="container-row">
-						<div class="item">Fan Voltage
-							<div class="data">000 V</div>
+					<div class="container-column">
+						<div class="container-row">
+							<div class="item">Fan Voltage
+								<div class="data">{{fanVoltage}} V</div>
+							</div>
+							<div class="item">Fan Speed
+								<div class="data">{{fanSpeed}}</div>
+							</div>
+							<div class="item">Requested Fan Speed
+								<div class="data">{{requestedFanSpeed}}</div>
+							</div>]
 						</div>
-						<div class="item">Fan Speed
-							<div class="data">000</div>
-						</div>
-						<div class="item">Requested Fan Speed
-							<div class="data">000</div>
+						<div class="item">Precharge State
+							<div class="data">{{prechargeState}}</div>
 						</div>
 					</div>
-					<span>Precharge State</span>
 				</div>
 			</div>
 			<div class="leftside">

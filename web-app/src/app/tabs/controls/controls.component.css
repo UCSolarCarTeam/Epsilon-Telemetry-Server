@@ -11,15 +11,30 @@
 }
 .title-left {
 	float: left;
-	width: 75%;
+	width: 50%;
 	margin-left: 5%;
 }
 .title-right {
 	color: #73a2ef;
-	font-size: 1.2em;
 	float: left;
-	width: 10%;
+	width: 5%;
+	margin-left: 5px;
+
 }
+
+.circle {
+	float: left;
+	width: 15px;
+	height: 15px;
+}
+
+.button {
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin-right: 20%;
+}
+
 .spacing {
 	width: 100%;
 	text-align: left;
@@ -44,15 +59,6 @@
 	margin-right: 5%; 
 }
 
-.circle {
-	float: right;
-	margin-right: 40%;
-	width: 20px;
-	height: 20px;
-	background-color: green;
-	border-radius: 50%;
-}
-
 .reduce {
 	width: 20%;
 }
@@ -71,6 +77,13 @@
 
 .off {
 	color: grey;
+}
+
+.headlightIcon {
+	width: 35px;
+}
+.signalSpacing {
+	width: 5px;
 }
 
 .subheader {
@@ -105,6 +118,10 @@
 	flex-direction: row;
 	justify-content: center;
 }
+.container-row-not-centered {
+	display: flex;
+	flex-direction: row;
+}
 .container-column {
 	display: inline-flex;
 	flex-direction: column;
@@ -117,6 +134,18 @@
 .data {
 	background-color: #7a7676;
 	padding-right: 10%;
+}
+
+.progressdata {
+	width: 50%;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.progressbar {
+	float: left;
+	width: 50%;
+	height: 25px;
+	margin-right: 10px;
 }
 
 .leftside {
