@@ -62,6 +62,6 @@ module.exports.server = server;
 /**
  * Startup scripts
  */
-require('../libs/database');
-require('../libs/websocket');
-require('../libs/amqp');
+require('../scripts/database');
+require('../scripts/websocket');
+require('../scripts/amqp');

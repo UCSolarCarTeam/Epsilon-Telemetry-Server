@@ -25,8 +25,12 @@
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
     "core-js": "^2.4.1",
+<<<<<<< HEAD
     "ng": "0.0.0-rc6",
     "rxjs": "^6.1.0",
+=======
+    "rxjs": "^6.2.0",
+>>>>>>> origin/henry/side-panel-services
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -44,7 +48,7 @@
     "karma-firefox-launcher": "^1.0.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^1.0.0",
-    "protractor": "~5.3.1",
+    "protractor": "^5.3.2",
     "ts-node": "~6.0.3",
     "tslint": "~5.10.0",
     "typescript": "^2.7.2"

@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  height: 98%;
+  margin: 0.5%% auto;
+}
+
+.packet {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: transparent;
+}
+
+.packet-header {
+  display: flex;
+}
+
+#solar-title {
+  font-weight: bold;
+  font-size: 22px;
+}

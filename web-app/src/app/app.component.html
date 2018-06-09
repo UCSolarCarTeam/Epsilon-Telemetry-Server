@@ -1,4 +1,5 @@
-<div>
+<app-leftpanel></app-leftpanel>
+<div class="tabs">
   <nav mat-tab-nav-bar>
     <a mat-tab-link
      *ngFor="let routeLink of routeLinks; let i = index;"
@@ -11,9 +12,10 @@
      [class]=getActiveClass(i)
      [disableRipple]="true"
      >
-      <mat-icon svgIcon="{{routeLink.icon}}"></mat-icon>
-     {{routeLink.label}}
+     <mat-icon svgIcon="{{routeLink.icon}}" class="tab-icons"></mat-icon>
+      {{routeLink.label}}
     </a>
   </nav>
   <router-outlet></router-outlet>
 </div>
+<app-rightpanel></app-rightpanel>
