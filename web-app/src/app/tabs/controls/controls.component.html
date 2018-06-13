@@ -2,8 +2,7 @@
 	<div class="header">
 		<div class="title-left rounded">Driver Controls</div>
 		<div class="title-right rounded">
-			<button (click)="driverControlsAlive = !driverControlsAlive" class="button"></button>
-    		<span *ngIf="driverControlsAlive; else driverControlsNotAlive" class="driverControlsAlive">
+    		<span *ngIf="controls.alive; else driverControlsNotAlive" class="driverControlsAlive">
     			<img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
     		</span>
     		<ng-template #driverControlsNotAlive>
@@ -20,54 +19,51 @@
 		</div>
 		<div class="container-row black">
 			<span class="spacing">
-				<span class="off" [ngClass]="{'on' : headlightsOff == true, 'off' : headlightsOff == false}">Off </span>
+				<span class="off" [ngClass]="{'on' : controls.headlightsOff == true, 'off' : controls.headlightsOff == false}">Off </span>
 				<div class="container-column">
-					<span class="off" [ngClass]="{'on' : headlightsLow == true, 'off' : headlightsLow == false}">Low </span>
-					<button (click)="lightsHeadlightsLow = !lightsHeadlightsLow" class="button"></button>
-					<span *ngIf="lightsHeadlightsLow; else lightsHeadlightsNotLow" class="lightsHeadlights">
-						<img src="../../../assets/LowHeadlightOff.png" alt="Headlight off" class="headlightIcon">
+					<span class="off" [ngClass]="{'on' : controls.headlightsLow == true, 'off' : controls.headlightsLow == false}">Low </span>
+					<span *ngIf="lights.lowBeams; else lightsHeadlightsNotLow" class="lightsHeadlights">
+						<img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="headlightIcon">
 					</span>
+
     				<ng-template #lightsHeadlightsNotLow>
-    					<span><img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="headlightIcon"></span>
+    					<span><img src="../../../assets/LowHeadlightOff.png" alt="Headlight off" class="headlightIcon"></span>
     				</ng-template>
 				</div>
 				<div class="container-column">
-					<span class="off" [ngClass]="{'on' : headlightsHigh == true, 'off' : headlightsHigh == false}">High</span>
-					<button (click)="lightsHeadlightsHigh = !lightsHeadlightsHigh" class="button"></button>
-					<span *ngIf="lightsHeadlightsHigh; else lightsHeadlightsNotHigh" class="lightsHeadlights">
-						<img src="../../../assets/HighHeadlightOff.png" alt="Headlight off" class="headlightIcon">
+					<span class="off" [ngClass]="{'on' : controls.headlightsHigh == true, 'off' : controls.headlightsHigh == false}">High</span>
+					<span *ngIf="lights.highBeams; else lightsHeadlightsNotHigh" class="lightsHeadlights">
+						<img src="../../../assets/HighHeadlightOn.png" alt="Headlight on" class="headlightIcon">
 					</span>
 	    			<ng-template #lightsHeadlightsNotHigh>
-	    				<span><img src="../../../assets/HighHeadlightOn.png" alt="Headlight on" class="headlightIcon"></span>
+	    				<span><img src="../../../assets/HighHeadlightOff.png" alt="Headlight off" class="headlightIcon"></span>
 	    			</ng-template>
 	    		</div>
 			</span>
 			<span class="spacing">
 				<div class="container-row-not-centered">
 					<div class="container-column">
-						<span class="off" [ngClass]="{'on' : signalLeft == true, 'off' : signalLeft == false}">Left </span>
-						<button (click)="lightsSignalLeft = !lightsSignalLeft" class="button"></button>
-						<span *ngIf="lightsSignalLeft; else lightsSignalNotLeft">
-							<img src="../../../assets/TurnSignalLeftOff.png" alt="Left signal off" class="headlightIcon">
+						<span class="off" [ngClass]="{'on' : controls.signalLeft == true, 'off' : controls.signalLeft == false}">Left </span>
+						<span *ngIf="lights.leftSignal; else lightsSignalNotLeft">
+							<img src="../../../assets/TurnSignalLeftOn.png" alt="Left signal on" class="headlightIcon">
 						</span>
 	    				<ng-template #lightsSignalNotLeft>
-	    					<span><img src="../../../assets/TurnSignalLeftOn.png" alt="Left signal on" class="headlightIcon"></span>
+	    					<span><img src="../../../assets/TurnSignalLeftOff.png" alt="Left signal off" class="headlightIcon"></span>
 	    				</ng-template>
 	    			</div>
 	    			<div class="signalSpacing"></div>
 	    			<div class="container-column">
-						<span class="off" [ngClass]="{'on' : signalRight == true, 'off' : signalRight == false}">Right</span>
-						<button (click)="lightsSignalRight = !lightsSignalRight" class="button"></button>
-						<span *ngIf="lightsSignalRight; else lightsSignalNotRight">
-							<img src="../../../assets/TurnSignalRightOff.png" alt="Right signal off" class="headlightIcon">
+						<span class="off" [ngClass]="{'on' : controls.signalRight == true, 'off' : controls.signalRight == false}">Right</span>
+						<span *ngIf="lights.rightSignal; else lightsSignalNotRight">
+							<img src="../../../assets/TurnSignalRightOn.png" alt="Right signal on" class="headlightIcon">
 						</span>
 	    				<ng-template #lightsSignalNotRight>
-	    					<span><img src="../../../assets/TurnSignalRightOn.png" alt="Right signal on" class="headlightIcon"></span>
+	    					<span><img src="../../../assets/TurnSignalRightOff.png" alt="Right signal off" class="headlightIcon"></span>
 	    				</ng-template>
 	    			</div>
 	    		</div>
 			</span>
-			<span class="spacing off" [ngClass]="{'on' : hazard == true, 'off' : hazard == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.hazard == true, 'off' : controls.hazard == false}">On</span>
 		</div>
 		<div class="container-row grey">
 			<span class="spacing dataHeader">Interior</span>
@@ -75,9 +71,9 @@
 			<span class="spacing dataHeader">Horn</span>
 		</div>
 		<div class="container-row black">
-			<span class="spacing off" [ngClass]="{'on' : interior == true, 'off' : interior == false}">On</span>
-			<span class="spacing off" [ngClass]="{'on' : pushToTalk == true, 'off' : pushToTalk == false}">On</span>
-			<span class="spacing off" [ngClass]="{'on' : horn == true, 'off' : horn == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.interior == true, 'off' : controls.interior == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.pushToTalk == true, 'off' : controls.pushToTalk == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.horn == true, 'off' : controls.horn == false}">On</span>
 		</div>
 		<div class="container-row grey">
 			<span class="spacing dataHeader">Aux</span>
@@ -85,14 +81,14 @@
 			<span class="spacing dataHeader">Volume</span>
 		</div>
 		<div class="container-row black">
-			<span class="spacing off" [ngClass]="{'on' : aux == true, 'off' : aux == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.aux == true, 'off' : controls.aux == false}">On</span>
 			<span class="spacing">
-				<span class="off" [ngClass]="{'on' : songPrev == true, 'off' : songPrev == false}">Prev. </span>
-				<span class="off" [ngClass]="{'on' : songNext == true, 'off' : songNext == false}">Next</span>
+				<span class="off" [ngClass]="{'on' : controls.prevSong == true, 'off' : controls.prevSong == false}">Prev. </span>
+				<span class="off" [ngClass]="{'on' : controls.nextSong == true, 'off' : controls.nextSong == false}">Next</span>
 			</span>
 			<span class="spacing on">
-				<span class="off" [ngClass]="{'on' : volumeUp == true, 'off' : volumeUp == false}">Up </span>
-				<span class="off" [ngClass]="{'on' : volumeDown == true, 'off' : volumeDown == false}">Down</span>
+				<span class="off" [ngClass]="{'on' : controls.volumeUp == true, 'off' : controls.volumeUp == false}">Up </span>
+				<span class="off" [ngClass]="{'on' : controls.volumeDown == true, 'off' : controls.volumeDown == false}">Down</span>
 			</span>
 		</div>
 		<div class="container-row grey">
@@ -101,9 +97,9 @@
 			<span class="spacing dataHeader">Reverse</span>
 		</div>
 		<div class="container-row black">
-			<span class="spacing off" [ngClass]="{'on' : brakes == true, 'off' : brakes == false}">On</span>
-			<span class="spacing off" [ngClass]="{'on' : forward == true, 'off' : forward == false}">On</span>
-			<span class="spacing off" [ngClass]="{'on' : reverse == true, 'off' : reverse == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.brakes == true, 'off' : controls.brakes == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.forward == true, 'off' : controls.forward == false}">On</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.reverse == true, 'off' : controls.reverse == false}">On</span>
 		</div>
 		<div class="container-row grey">
 			<span class="spacing dataHeader">Acceleration</span>
@@ -111,13 +107,13 @@
 			<span class="spacing dataHeader">Reset</span>
 		</div>
 		<div class="container-row black">
-			<span class="spacing"><mat-progress-bar class="progressbar" [value]="acceleration"></mat-progress-bar>
-				<span class="item progressdata">{{acceleration}} %</span>
+			<span class="spacing"><mat-progress-bar class="progressbar" [value]="controls.acceleration"></mat-progress-bar>
+				<span class="item progressdata">{{controls.acceleration}} %</span>
 			</span>
-			<span class="spacing"><mat-progress-bar class="progressbar" [value]="regenBraking"></mat-progress-bar>
-				<span class="item progressdata">{{regenBraking}} %</span>
+			<span class="spacing"><mat-progress-bar class="progressbar" [value]="controls.regenBraking"></mat-progress-bar>
+				<span class="item progressdata">{{controls.regenBraking}} %</span>
 			</span>
-			<span class="spacing on" [ngClass]="{'on' : reset == true, 'off' : reset == false}">On</span>
+			<span class="spacing on" [ngClass]="{'on' : controls.reset == true, 'off' : controls.reset == false}">On</span>
 		</div>
 	</div>
 </div>

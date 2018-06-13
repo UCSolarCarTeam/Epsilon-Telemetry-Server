@@ -86,6 +86,10 @@
 	width: 5px;
 }
 
+.headlightSpacing {
+	width: 1px;
+}
+
 .subheader {
 	font-family: Arial, sans-serif;
 	font-size: 0.8rem;

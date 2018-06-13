@@ -2,12 +2,10 @@
 	<div class="header">
 		<span class="title-left rounded">Battery</span>
 		<div>
-			<button (click)="batteryAlive = !batteryAlive" class="button"></button>
-    		<div *ngIf="batteryAlive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
+    		<div *ngIf="battery.batteryAlive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
     		<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 		</div>
 		<span class="title-right rounded">Alive</span>
-
 	</div>
 		<div class="container-row full">
 			<div class="leftside">
@@ -16,54 +14,41 @@
 					<div class="container-row">
 						<div class="container-column">
 							<span class="itemLeft">
-								<button (click)="dischargeRelayEnabled = !dischargeRelayEnabled" class="buttonItems"></button>
-    								<span *ngIf="dischargeRelayEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.dischargeRelayEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 							Discharge Relay Enabled
 							</span>
 							<span class="itemLeft">
-								<button (click)="chargeRelayEnabled = !chargeRelayEnabled" class="buttonItems"></button>
-    								<span *ngIf="chargeRelayEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.chargeRelayEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 							Charge Relay Enabled
 							</span>
 							<span class="itemLeft">
-								<button (click)="chargerSafetyEnabled = !chargerSafetyEnabled" class="buttonItems"></button>
-    								<span *ngIf="chargerSafetyEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.chargerSafetyEnabled; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 							Charger Safety Enabled
 							</span>
 							<span class="itemLeft">
-								<button (click)="malfunctionIndicatorActive = !malfunctionIndicatorActive" class="buttonItems"></button>
-    								<span *ngIf="malfunctionIndicatorActive; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.malfunctionIndicatorActive; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-
 							Malfunction Indicator Active</span>
 							<span class="itemLeft">
-								<button (click)="multipurposeInputSignalStatus = !multipurposeInputSignalStatus" class="buttonItems"></button>
-    								<span *ngIf="multipurposeInputSignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.multipurposeInputSignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-
 							Multipurpose Input Signal Status</span>
 						</div>
 						<div class="container-column">
 							<span class="itemLeft">
-								<button (click)="isReady = !isReady" class="buttonItems"></button>
-    								<span *ngIf="isReady; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.isReady; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-
 							Is Ready</span>
 							<span class="itemLeft">
-								<button (click)="isCharging = !isCharging" class="buttonItems"></button>
-    								<span *ngIf="isCharging; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.isCharging; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-
 							Is Charging</span>
 							<span class="itemLeft">
-								<button (click)="alwaysOn = !alwaysOn" class="buttonItems"></button>
-    								<span *ngIf="alwaysOn; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    								<span *ngIf="battery.bmsRelayStatusFlags.alwaysOnSignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
     									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-
 							Always On</span>
 						</div>
 					</div>
@@ -75,21 +60,21 @@
 					<div class="container-column">
 						<div class="container-row">
 							<div class="item">Pack Current
-								<div class="data">{{packCurrent}} A</div>
+								<div class="data">{{battery.packCurrent}} A</div>
 							</div>
 							<div class="item">Pack Voltage
-								<div class="data">{{packVoltage}} V</div>
+								<div class="data">{{battery.packVoltage}} V</div>
 							</div>
 							<div class="item">Pack Amphours
-								<div class="data">{{packAmphours}} Ah</div>
+								<div class="data">{{battery.packAmphours}} Ah</div>
 							</div>
 						</div>
 						<div class="container-row">
-							<div class="item">Pack State of charge
-								<div class="data">{{packStateOfCharge}}</div>
+							<div class="item">Pack State of Charge
+								<div class="data">{{battery.packStateOfCharge}}</div>
 							</div>
-							<div class="item">Pack Depth of charge
-								<div class="data">{{packDepthOfCharge}}</div>
+							<div class="item">Pack Depth of Discharge
+								<div class="data">{{battery.packDepthOfDischarge}}</div>
 							</div>
 						</div>
 					</div>
@@ -104,24 +89,24 @@
 					<div class="container-row">
 						<div class="container-column">
 							<div class="item">High Temperature
-								<div class="data">{{highTemperature}} ºC</div>
+								<div class="data">{{battery.highTemperature}} ºC</div>
 							</div>
 							<div class="item">Low Temperature
-								<div class="data">{{lowTemperature}} ºC</div>
+								<div class="data">{{battery.lowTemperature}} ºC</div>
 							</div>
 							<div class="item">Average Temperature
-								<div class="data">{{averageTemperature}} ºC</div>
+								<div class="data">{{battery.averageTemperature}} ºC</div>
 							</div>
 						</div>
 						<div class="container-column">
 							<div class="item">High Thermistor ID
-								<div class="data">{{highThermistorId}} ºC</div>
+								<div class="data">{{battery.highThermistorId}} ºC</div>
 							</div>
 							<div class="item">Low Thermistor ID
-								<div class="data">{{lowThermistorId}} ºC</div>
+								<div class="data">{{battery.lowThermistorId}} ºC</div>
 							</div>
 							<div class="item">Internal Temperature
-								<div class="data">{{internalTemperature}} ºC</div>
+								<div class="data">{{battery.internalTemperature}} ºC</div>
 							</div>
 						</div>
 					</div>
@@ -133,24 +118,24 @@
 					<div class="container-row">
 						<div class="container-column">
 							<div class="item">Average Cell Voltage
-								<div class="data">{{averageCellVoltage}} V</div>
+								<div class="data">{{battery.averageCellVoltage}} V</div>
 							</div>
 							<div class="item">Low Cell Voltage
-								<div class="data">{{lowCellVoltage}} V</div>
+								<div class="data">{{battery.lowCellVoltage}} V</div>
 							</div>
 							<div class="item">High Cell Voltage
-								<div class="data">{{highCellVoltage}} V</div>
+								<div class="data">{{battery.highCellVoltage}} V</div>
 							</div>
 						</div>
 						<div class="container-column">
 							<div class="item">Populated Cells
-								<div class="data">{{populatedCells}}</div>
+								<div class="data">{{battery.populatedCells}}</div>
 							</div>
 							<div class="item">Low Cell Voltage ID
-								<div class="data">{{lowCellVoltageId}}</div>
+								<div class="data">{{battery.lowCellVoltageId}}</div>
 							</div>
 							<div class="item">High Cell Voltage ID
-								<div class="data">{{highCellVoltageId}}</div>
+								<div class="data">{{battery.highCellVoltageId}}</div>
 							</div>
 						</div>
 					</div>
@@ -165,17 +150,17 @@
 					<div class="container-column">
 						<div class="container-row">
 							<div class="item">Fan Voltage
-								<div class="data">{{fanVoltage}} V</div>
+								<div class="data">{{battery.fanVoltage}} V</div>
 							</div>
 							<div class="item">Fan Speed
-								<div class="data">{{fanSpeed}}</div>
+								<div class="data">{{battery.fanSpeed}}</div>
 							</div>
 							<div class="item">Requested Fan Speed
-								<div class="data">{{requestedFanSpeed}}</div>
+								<div class="data">{{battery.requestedFanSpeed}}</div>
 							</div>]
 						</div>
 						<div class="item">Precharge State
-							<div class="data">{{prechargeState}}</div>
+							<div class="data">{{auxBms.prechargeState}}</div>
 						</div>
 					</div>
 				</div>
@@ -185,21 +170,31 @@
 					<h3>Aux BMS</h3>
 					<div class="container-row">
 						<div class="container-column">
-							<span class="item">Strobe BMS</span>
-							<span class="item">Contactor Error</span>
-							<span class="item">Allow Charge</span>
+							<span class="item">
+    								<span *ngIf="auxBms.strobeBmsLight; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+							Strobe BMS
+							</span>
+							<span class="item">
+    								<span *ngIf="auxBms.contactorError; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+							Contactor Error
+							</span>
+							<span class="item">
+    								<span *ngIf="auxBms.allowCharge; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+    									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+							Allow Charge
+							</span>
 						</div>
 						<div class="container-column">
-							<div class="container-row">
-								
-									<button (click)="auxBMSAlive = !auxBMSAlive" class="buttonItems"></button>
-		    						<span *ngIf="auxBMSAlive; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
-		    						<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-	    						
-								<span class="item">Aux BMS Alive</span>
-								<span class="item">Aux Voltage</span>
-							</div>
-							<span class="item">Orion BMS Input Voltage</span>
+							<span class="item">
+	    						<span *ngIf="auxBms.alive; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    						<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+    							Aux BMS Alive
+							</span>
+							<span class="item">Aux Voltage
+								<span class="data">{{auxBms.auxVoltage}}</span>
+							</span>
 						</div>
 					</div>
 				</div>

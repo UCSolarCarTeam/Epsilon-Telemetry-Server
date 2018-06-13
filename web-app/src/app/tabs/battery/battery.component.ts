@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuxBms } from '../../_objects/aux-bms';
+import { AuxBmsService } from '../../_services/aux-bms.service';
+import { Battery } from '../../_objects/battery';
+import { BatteryService } from '../../_services/battery.service';
+
+
 @Component({
   selector: 'app-battery',
   templateUrl: './battery.component.html',
@@ -7,37 +13,27 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class BatteryComponent implements OnInit {
-	packCurrent = 0;
-	packVoltage = 0;
-	packAmphours = 0;
-	packStateOfCharge = 0;
-	packDepthOfCharge = 0;
-	highTemperature = 50;
-	lowTemperature  = 50;
-	highThermistorId = 50;
-	lowThermistorId = 50;
-	internalTemperature = 50;
-	averageCellVoltage = 0;
-	lowCellVoltage = 0;
-	highCellVoltage = 0;
-	populatedCells = 0;
-	lowCellVoltageId = 0;
-	highCellVoltageId = 0;
-	fanVoltage = 0;
-	fanSpeed = 0;
-	requestedFanSpeed = 0;
-	prechargeState = 0;
-	auxBMSAlive = false;
-	auxVoltage = 0;
-	orionBMSInputVoltage = 0;
-	strobeBMS = false;
-	contactorError = false;
-	allowCharge = false;
 
+  auxBms: AuxBms;
+  battery: Battery;
 
-  constructor() { }
+  constructor(private auxBmsService: AuxBmsService,
+              private batteryService: BatteryService) { }
 
   ngOnInit() {
+  	this.battery = this.batteryService.getData();
+    this.auxBms = this.auxBmsService.getData();
+    
+    this.auxBmsService.auxbms$.subscribe(
+      (data: AuxBms) => {
+        this.auxBms = data;
+      }
+    );
+  	this.batteryService.battery$.subscribe(
+      (data: Battery) => {
+        this.battery = data;
+      }
+    );
   }
 
 }

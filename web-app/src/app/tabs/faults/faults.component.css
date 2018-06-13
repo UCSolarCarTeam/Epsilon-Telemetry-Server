@@ -62,6 +62,14 @@
 	border-radius: 25px;
 }
 
+.on {
+	color: #c2185b;
+}
+
+.off {
+	color: grey;
+}
+
 .subsubheader {
 	font-family: Arial, sans-serif;
 	font-size: 0.8rem;
