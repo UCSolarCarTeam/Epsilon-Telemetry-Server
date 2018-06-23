@@ -6,28 +6,27 @@
 		<div class="container-column centering">
 			<div class="subheader">
 				<span class="title-left">Key 0 Motor</span>
-					<button (click)="key0Motor = !key0Motor" class="button"></button>
-	    			<span *ngIf="key0Motor; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    			<span *ngIf="motor0.alive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
 	    			<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 				<span class="title-right">Alive</span>
 			</div>
 			<div class="container-row">
 				<div class="item">Set Current
-					<div class="data">00 A</div>
+					<div class="data">{{motor0.setCurrent}} A</div>
 				</div>
 				<div class="item">Set Velocity
-					<div class="data"> 100 %</div>
+					<div class="data"> {{motor0.setVelocity}} %</div>
 				</div>
 				<div class="item">Bus Current
-					<div class="data"> 00 RPM</div>
+					<div class="data"> {{motor0.busCurrent}} RPM</div>
 				</div>
 			</div>
 			<div class="container-row">
 				<div class="item">Bus Voltage
-					<div class="data"> 00 A</div>
+					<div class="data"> {{motor0.busVoltage}} A</div>
 				</div>
 				<div class="item">Vehicle Velocity
-					<div class="data">00 V</div>
+					<div class="data">{{motor0.vehicleVelocity}} V</div>
 				</div>
 			</div>
 			<div class="subheader">
@@ -36,83 +35,82 @@
 			<div class="container-row">
 				<div class="container-column">
 					<div class="item">Motor Voltage Real
-						<div class="data">00 V</div>
+						<div class="data">{{motor0.motorVoltageReal}} V</div>
 					</div>
 					<div class="item">Motor Current Real
-						<div class="data">00 A</div>
+						<div class="data">{{motor0.motorCurrentReal}} A</div>
 					</div>
 					<div class="item">Back EMF Real
-						<div class="data">00 V</div>
+						<div class="data">{{motor0.backEmfReal}} V</div>
 					</div>
 					<div class="item">Voltage Rail 3V Supply
-						<div class="data">00 V</div>
+						<div class="data">{{motor0.voltageRail3VSupply}} V</div>
 					</div>
 					<div class="item">Phase B Current
-						<div class="data">00 A (rms)</div>
+						<div class="data">{{motor0.phaseBCurrent}} A (rms)</div>
 					</div>
 					<div class="item">Heat Sink Temp.
-						<div class="data">00ºC</div>
+						<div class="data">{{motor0.heatSinkTemp}}ºC</div>
 					</div>
 					<div class="item">DSP Board Temp.
-						<div class="data">00ºC</div>
+						<div class="data">{{motor0.dspBoardTemp}}ºC</div>
 					</div>
 					<div class="item">Odometer
-						<div class="data">00 M</div>
+						<div class="data">{{motor0.odometer}} M</div>
 					</div>
 				</div>
 				<div class="container-column">
 					<div class="item">Motor Voltage Imaginary
-						<div class="data">00 V</div>
+						<div class="data">{{motor0.motorVoltageImaginary}} V</div>
 					</div>
 					<div class="item">Motor Current Imaginary
-						<div class="data">00 A</div>
+						<div class="data">{{motor0.motorCurrentImaginary}} A</div>
 					</div>
 					<div class="item">Voltage Rail 15V Supply
-						<div class="data">00V</div>
+						<div class="data">{{motor0.voltageRail15VSupply}}V</div>
 					</div>
-					<div class="item">Voltage Rail 1V Suppy
-						<div class="data">00V</div>
+					<div class="item">Voltage Rail 1V Supply
+						<div class="data">{{motor0.voltageRail1VSupply}}V</div>
 					</div>
 					<div class="item">Phase C Current
-						<div class="data">00 A(rms)</div>
+						<div class="data">{{motor0.phaseCCurrent}} A(rms)</div>
 					</div>
 					<div class="item">Motor Temp.
-						<div class="data">00ºC</div>
+						<div class="data">{{motor0.motorTemp}}ºC</div>
 					</div>
 					<div class="item">DC Bus Amp Hours
-						<div class="data">oo Ah</div>
+						<div class="data">{{motor0.dcBusAmpHours}} Ah</div>
 					</div>
 					<div class="item">Slip Speed
-						<div class="data">00 Hz</div>
+						<div class="data">{{motor0.slipSpeed}} Hz</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container-column centering">
 			<div class="subheader">
-				<span class="title-left">Key 1 Motor</span> 
-				<button (click)="key1Motor = !key1Motor" class="button"></button>
-    		<div *ngIf="key1Motor; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
-    		<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+				<span class="title-left">Key 1 Motor</span>
+	    			<span *ngIf="motor1.alive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    			<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 				<span class="title-right">Alive</span>
 			</div>
 			<div class="container-row">
 				<div class="item">Set Current
-					<div class="data">00 A</div>
+					<div class="data">{{motor1.setCurrent}} A</div>
 				</div>
 				<div class="item">Set Velocity
-					<div class="data"> 100 %</div>
+					<div class="data"> {{motor1.setVelocity}} %</div>
 				</div>
 				<div class="item">Bus Current
-					<div class="data"> 00 RPM</div>
+					<div class="data"> {{motor1.busCurrent}} RPM</div>
 				</div>
 			</div>
 			<div class="container-row">
 				<div class="item">Bus Voltage
-					<div class="data"> 00 A</div>
+					<div class="data"> {{motor1.busVoltage}} A</div>
 				</div>
 				<div class="item">Vehicle Velocity
-					<div class="data">00 V</div>
+					<div class="data">{{motor1.vehicleVelocity}} V</div>
 				</div>
 			</div>
 			<div class="subheader">
@@ -121,54 +119,54 @@
 			<div class="container-row">
 				<div class="container-column">
 					<div class="item">Motor Voltage Real
-						<div class="data">00 V</div>
+						<div class="data">{{motor1.motorVoltageReal}} V</div>
 					</div>
 					<div class="item">Motor Current Real
-						<div class="data">00 A</div>
+						<div class="data">{{motor1.motorCurrentReal}} A</div>
 					</div>
 					<div class="item">Back EMF Real
-						<div class="data">00 V</div>
+						<div class="data">{{motor1.backEmfReal}} V</div>
 					</div>
 					<div class="item">Voltage Rail 3V Supply
-						<div class="data">00 V</div>
+						<div class="data">{{motor1.voltageRail3VSupply}} V</div>
 					</div>
 					<div class="item">Phase B Current
-						<div class="data">00 A (rms)</div>
+						<div class="data">{{motor1.phaseBCurrent}} A (rms)</div>
 					</div>
 					<div class="item">Heat Sink Temp.
-						<div class="data">00ºC</div>
+						<div class="data">{{motor1.heatSinkTemp}}ºC</div>
 					</div>
 					<div class="item">DSP Board Temp.
-						<div class="data">00ºC</div>
+						<div class="data">{{motor1.dspBoardTemp}}ºC</div>
 					</div>
 					<div class="item">Odometer
-						<div class="data">00 M</div>
+						<div class="data">{{motor1.odometer}} M</div>
 					</div>
 				</div>
 				<div class="container-column">
 					<div class="item">Motor Voltage Imaginary
-						<div class="data">00 V</div>
+						<div class="data">{{motor1.motorVoltageImaginary}} V</div>
 					</div>
 					<div class="item">Motor Current Imaginary
-						<div class="data">00 A</div>
+						<div class="data">{{motor1.motorCurrentImaginary}} A</div>
 					</div>
 					<div class="item">Voltage Rail 15V Supply
-						<div class="data">00V</div>
+						<div class="data">{{motor1.voltageRail15VSupply}}V</div>
 					</div>
-					<div class="item">Voltage Rail 1V Suppy
-						<div class="data">00V</div>
+					<div class="item">Voltage Rail 1V Supply
+						<div class="data">{{motor1.voltageRail1VSupply}}V</div>
 					</div>
 					<div class="item">Phase C Current
-						<div class="data">00 A(rms)</div>
+						<div class="data">{{motor1.phaseCCurrent}} A(rms)</div>
 					</div>
 					<div class="item">Motor Temp.
-						<div class="data">00ºC</div>
+						<div class="data">{{motor1.motorTemp}}ºC</div>
 					</div>
 					<div class="item">DC Bus Amp Hours
-						<div class="data">oo Ah</div>
+						<div class="data">{{motor1.dcBusAmpHours}} Ah</div>
 					</div>
 					<div class="item">Slip Speed
-						<div class="data">00 Hz</div>
+						<div class="data">{{motor1.slipSpeed}} Hz</div>
 					</div>
 				</div>
 			</div>

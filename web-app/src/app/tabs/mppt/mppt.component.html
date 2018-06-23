@@ -8,9 +8,8 @@
 				<div class="text">MPPT 0</div>
 				<div class="text">Alive</div> 
 				<div>
-					<button (click)="mppt0 = !mppt0" class="button"></button>
-	    			<span *ngIf="mppt0; else mppt0AliveElse" class="buttonCentering">
-	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle">
+	    			<span *ngIf="mppt0.alive; else mppt0AliveElse" class="buttonCentering">
+	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
 	    			</span>
 	    			<ng-template #mppt0AliveElse>
 	    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
@@ -20,79 +19,77 @@
 			</div>
 			<div>
 				<div class="item">Array Voltage</div>
-				<div class="data">{{mppt0ArrayVoltage}} V</div>
+				<div class="data">{{mppt0.arrayVoltage}} V</div>
 			</div>
 			<div>
 				<div class="item">Array Current</div>
-				<div class="data">{{mppt0ArrayCurrent}} A</div>
+				<div class="data">{{mppt0.arrayCurrent}} A</div>
 			</div>
 			<div>
 				<div class="item">Battery Voltage</div>
-				<div class="data">{{mppt0BatteryVoltage}} V</div>
+				<div class="data">{{mppt0.batteryVoltage}} V</div>
 			</div>
 			<div>
 				<div class="item">Temperature</div>
-				<div class="data">{{mppt0Temperature}} ºC</div>
+				<div class="data">{{mppt0.temperature}} ºC</div>
 			</div>
 		</div>
 		<div class="container-column centering">
 			<div class="subheader">
 				<div>MPPT 1</div> 
 				<div>
-					<button (click)="mppt1 = !mppt1" class="button"></button>
-	    			<span *ngIf="mppt1; else mppt0AliveElse" class="buttonCentering">
-	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle">
+	    			<span *ngIf="mppt1.alive; else mppt1AliveElse" class="buttonCentering">
+	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
 	    			</span>
-	    			<ng-template #mppt0AliveElse>
+	    			<ng-template #mppt1AliveElse>
 	    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
 	    			</ng-template>
 				Alive</div>
 			</div>
 			<div>
 				<div class="item">Array Voltage</div>
-				<div class="data">{{mppt1ArrayVoltage}} V</div>
+				<div class="data">{{mppt1.arrayVoltage}} V</div>
 			</div>
 			<div>
 				<div class="item">Array Current</div>
-				<div class="data">{{mppt1ArrayCurrent}} A</div>
+				<div class="data">{{mppt1.arrayCurrent}} A</div>
 			</div>
 			<div>
 				<div class="item">Battery Voltage</div>
-				<div class="data">{{mppt1BatteryVoltage}} V</div>
+				<div class="data">{{mppt1.batteryVoltage}} V</div>
 			</div>
 			<div>
 				<div class="item">Temperature</div>
-				<div class="data">{{mppt1Temperature}} ºC</div>
+				<div class="data">{{mppt1.temperature}} ºC</div>
 			</div>		
 		</div>
 		<div class="container-column centering">
 			<div class="subheader">
 				<div>MPPT 2</div> 
 				<div>
-					<button (click)="mppt2 = !mppt2" class="button"></button>
-	    			<span *ngIf="mppt2; else mppt0AliveElse" class="buttonCentering">
+	    			<span *ngIf="mppt2.alive; else mppt2AliveElse" class="buttonCentering">
 	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle">
 	    			</span>
-	    			<ng-template #mppt0AliveElse>
+	    			<ng-template #mppt2AliveElse>
 	    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
 	    			</ng-template>
 				Alive</div>
 			</div>
 			<div>
 				<div class="item">Array Voltage</div>
-				<div class="data">{{mppt2ArrayVoltage}} V</div>
+				<div class="data">{{mppt2.arrayVoltage}} V</div>
 			</div>
 			<div>
 				<div class="item">Array Current</div>
-				<div class="data">{{mppt2ArrayCurrent}} A</div>
+				<div class="data">{{mppt2.arrayCurrent}} A</div>
 			</div>
 			<div>
 				<div class="item">Battery Voltage</div>
-				<div class="data">{{mppt2BatteryVoltage}} V</div>
+				<div class="data">{{mppt2.batteryVoltage}} V</div>
 			</div>
 			<div>
 				<div class="item">Temperature</div>
-				<div class="data">{{mppt2Temperature}} ºC</div>
+				<div class="data">{{mppt2.temperature}} ºC</div>
 			</div>		
 		</div>
 	</div>
