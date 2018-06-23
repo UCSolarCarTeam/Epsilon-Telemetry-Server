@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MPPT } from '../../_objects/mppt';
-import { MPPTService } from '../../_services/mppt.service';
+import { Mppt } from '../../_objects/mppt';
+import { MpptService } from '../../_services/mppt.service';
 
 @Component({
   selector: 'app-mppt',
@@ -25,32 +25,32 @@ export class MpptComponent implements OnInit {
 	mppt2BatteryVoltage = 0;
 	mppt2Temperature = 0;
 
-  mppt0: MPPT;
-  mppt1: MPPT;
-  mppt2: MPPT;
+  mppt0: Mppt;
+  mppt1: Mppt;
+  mppt2: Mppt;
 
 
-  constructor(private mpptService: MPPTService) { }
+  constructor(private mpptService: MpptService) { }
 
   ngOnInit() {
     this.mppt0 = this.mpptService.getData(0);
     this.mppt1 = this.mpptService.getData(1);
     this.mppt2 = this.mpptService.getData(2);
 
-    this.motorService.motor0$.subscribe(
-      (data: Motor) => {
-        this.motor0 = data;
+    this.mpptService.mppt0$.subscribe(
+      (data: Mppt) => {
+        this.mppt0 = data;
       }
     );
 
     this.mpptService.mppt1$.subscribe(
-      (data: MPPT) => {
+      (data: Mppt) => {
         this.mppt1 = data;
       }
     );
 
     this.mpptService.mppt2$.subscribe(
-      (data: MPPT) => {
+      (data: Mppt) => {
         this.mppt2 = data;
       }
     );

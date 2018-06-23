@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
         index: 2
       },
       {
-        label: 'MPPT',
+        label: 'Mppt',
         link: './mppt',
         icon: 'mppt_icon',
         index: 3
