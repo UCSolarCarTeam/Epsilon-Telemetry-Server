@@ -1,4 +1,4 @@
-export class MPPT {
+export class Mppt {
   alive = false;
   arrayCurrent = -1;
   arrayVoltage = -1;

@@ -1,5 +1,5 @@
 export enum State {
-  ALL_ENGAGED = 'All engaged',
+  ALL_ENGAGED = 'All Engaged',
   CHARGE_ENGAGED = 'Charge Engaged',
   COMMON_ENGAGED = 'Common Engaged',
   DISCHARGE_ENGAGED = 'Discharge Engaged',

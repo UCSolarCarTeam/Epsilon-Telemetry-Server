@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MPPTService } from './mppt.service';
+import { MpptService } from './mppt.service';
 
 describe('MpptService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MPPTService]
+      providers: [MpptService]
     });
   });
 
-  it('should be created', inject([MPPTService], (service: MPPTService) => {
+  it('should be created', inject([MpptService], (service: MpptService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -10,8 +10,8 @@ import { Lights } from '../_objects/lights';
 import { LightsService } from '../_services/lights.service';
 import { Motor } from '../_objects/motor';
 import { MotorService } from '../_services/motor.service';
-import { MPPT } from '../_objects/mppt';
-import { MPPTService } from '../_services/mppt.service';
+import { Mppt } from '../_objects/mppt';
+import { MpptService } from '../_services/mppt.service';
 
 @Component({
   selector: 'app-rightpanel',
@@ -26,16 +26,16 @@ export class RightpanelComponent implements OnInit {
   lights: Lights;
   motor0: Motor;
   motor1: Motor;
-  mppt0: MPPT;
-  mppt1: MPPT;
-  mppt2: MPPT;
+  mppt0: Mppt;
+  mppt1: Mppt;
+  mppt2: Mppt;
 
   constructor(private auxBmsService: AuxBmsService,
               private batteryService: BatteryService,
               private controlsService: ControlsService,
               private lightsService: LightsService,
               private motorService: MotorService,
-              private mpptService: MPPTService) { }
+              private mpptService: MpptService) { }
 
   ngOnInit() {
     this.auxBms = this.auxBmsService.getData();
@@ -85,19 +85,19 @@ export class RightpanelComponent implements OnInit {
     );
 
     this.mpptService.mppt0$.subscribe(
-      (data: MPPT) => {
+      (data: Mppt) => {
         this.mppt0 = data;
       }
     );
 
     this.mpptService.mppt1$.subscribe(
-      (data: MPPT) => {
+      (data: Mppt) => {
         this.mppt1 = data;
       }
     );
 
     this.mpptService.mppt2$.subscribe(
-      (data: MPPT) => {
+      (data: Mppt) => {
         this.mppt2 = data;
       }
     );
