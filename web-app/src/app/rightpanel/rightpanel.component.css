@@ -130,7 +130,7 @@ mat-divider {
 }
 
 @media screen
-  and (min-width: 1000px)
+  and (min-width: 1200px)
   and (max-width: 1600px),
   screen
   and (min-height: 600px)

@@ -1,11 +1,14 @@
 :host {
   display: flex;
   height: 98%;
+  min-width: 260px;
+  width: 20%;
   margin: 0.5%% auto;
 }
 
 .packet {
   display: flex;
+  width: 90%;
   flex-direction: column;
   justify-content: flex-start;
   background-color: transparent;
@@ -13,9 +16,27 @@
 
 .packet-header {
   display: flex;
+  justify-content: space-around;
 }
 
 #solar-title {
   font-weight: bold;
   font-size: 22px;
+}
+
+@media screen
+  and (min-width: 1200px)
+  and (max-width: 1600px),
+  screen
+  and (min-height: 600px)
+  and (max-height: 800px) {
+
+    .packet {
+      padding: 12px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+    }
 }
