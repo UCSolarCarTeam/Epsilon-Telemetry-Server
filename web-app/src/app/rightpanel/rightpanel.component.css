@@ -14,7 +14,6 @@
   background-color: #212121;
   margin: 0 2px;
 }
-
 .direction,
 .warning {
   display: flex;
@@ -28,6 +27,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  padding: 10px;
 }
 
 .progress-bars {
@@ -46,8 +47,9 @@
 }
 
 .spinners {
-  max-width: 100%;
-  height: auto;
+  align-self: center;
+  width: 180px;
+  height: 180px;
 }
 
 #overlay-0 {
@@ -117,4 +119,45 @@
 
 #bms-strobe-label {
   align-self: center;
+}
+
+@media screen
+  and (min-width: 1000px)
+  and (max-width: 1600px),
+  screen
+  and (min-height: 600px)
+  and (max-height: 800px) {
+
+  .car-misc,
+  .battery-misc {
+    padding: 18px;
+  }
+
+  .spinners {
+    width: 140px;
+    height: 140px;
+  }
+
+  .mat-progress-spinner {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .mat-progress-spinner ::ng-deep svg {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .velocity-number {
+    font-size: 18px;
+  }
+
+  .velocity-data p,
+  .soc-data p {
+    font-size: 12px;
+  }
+
+  label {
+    font-size: 14px;
+  }
 }
