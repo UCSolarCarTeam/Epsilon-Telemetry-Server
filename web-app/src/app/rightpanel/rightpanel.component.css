@@ -14,7 +14,6 @@
   background-color: #212121;
   margin: 0 2px;
 }
-
 .direction,
 .warning {
   display: flex;
@@ -87,6 +86,14 @@
   white-space: nowrap;
 }
 
+mat-divider {
+  margin: 5px 0;
+}
+
+.set-current {
+  margin-top: 5px;
+}
+
 .velocity-data,
 .soc-data {
   display: flex;
@@ -128,6 +135,11 @@
   screen
   and (min-height: 600px)
   and (max-height: 800px) {
+
+  .car-misc,
+  .battery-misc {
+    padding: 12px;
+  }
 
   .spinners {
     width: 140px;
