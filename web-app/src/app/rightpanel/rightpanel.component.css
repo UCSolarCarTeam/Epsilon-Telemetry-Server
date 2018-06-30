@@ -14,7 +14,6 @@
   background-color: #212121;
   margin: 0 2px;
 }
-
 .direction,
 .warning {
   display: flex;
@@ -128,6 +127,11 @@
   screen
   and (min-height: 600px)
   and (max-height: 800px) {
+
+  .car-misc,
+  .battery-misc {
+    padding: 18px;
+  }
 
   .spinners {
     width: 140px;
