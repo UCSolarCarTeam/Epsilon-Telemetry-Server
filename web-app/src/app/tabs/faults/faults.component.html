@@ -1,8 +1,8 @@
 <div class="faults">
 	<div class="container-row">
-		<div class="container column">
+		<div class="spacing">
 			<div class="subheader">Battery Faults</div>
-			<div class="item off" [ngClass]="{'on' : internalCommunicationsFault == true, 'off' : internalCommunicationsFault == false}">Internal Communications Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.internalCommunicationFault == true, 'off' : batteryFaults.errorFlags.internalCommunicationFault == false}">Internal Communications Fault</div>
 			<div class="item off" [ngClass]="{'on' : internalConversionFault == true, 'off' : internalConversionFault == false}">Internal Conversion Fault</div>
 			<div class="item off" [ngClass]="{'on' : weakCellFault == true, 'off' : weakCellFault == false}">Weak Cell Fault</div>
 			<div class="item off" [ngClass]="{'on' : voltageRedundancyFault == true, 'off' : voltageRedundancyFault == false}">Voltage Redeundancy Fault</div>
@@ -18,9 +18,10 @@
 			<div class="item off" [ngClass]="{'on' : internalMemoryFault == true, 'off' : internalMemoryFault == false}">Internal Memory Fault</div>
 			<div class="item off" [ngClass]="{'on' : internalThermistorFault == true, 'off' : internalThermistorFault == false}">Internal Thermistor Fault</div>
 			<div class="item off" [ngClass]="{'on' : internalLogicFault == true, 'off' : internalLogicFault == false}">Internal Logic Fault</div>
-
+		</div>
+		<div class="spacing">
 			<div class="subheader">Battery Limit Flags</div>
-			<div class="item off" [ngClass]="{'on' : DCLReducedDueToLowSOCLimit == true, 'off' : DCLReducedDueToLowSOCLimit == false}">DCL Reduced Due To Low SOCh Limit</div>
+			<div class="item off" [ngClass]="{'on' : DCLReducedDueToLowSOCLimit == true, 'off' : DCLReducedDueToLowSOCLimit == false}">DCL Reduced Due To Low SOC Limit</div>
 			<div class="item off" [ngClass]="{'on' : DCLReducedDueToHighCellResistanceLimit == true, 'off' : DCLReducedDueToHighCellResistanceLimit == false}">DCL Reduced Due To High Cell Resistance Limit</div>
 			<div class="item off" [ngClass]="{'on' : DCLReducedDueToTemperatureLimit == true, 'off' : DCLReducedDueToTemperatureLimit == false}">DCL Reduced Due To Temperature Limit</div>
 			<div class="item off" [ngClass]="{'on' : DCLReducedDueToLowCellVoltageLimit == true, 'off' : DCLReducedDueToLowCellVoltageLimit == false}">DCL Reduced Due To Low Cell Voltage Limit</div>
@@ -34,24 +35,53 @@
 			<div class="item off" [ngClass]="{'on' : CCLReducedDueToChargerLatchLimit == true, 'off' : CCLReducedDueToChargerLatchLimit == false}">CCL Reduced Due To Charger Latch Limit</div>
 			<div class="item off" [ngClass]="{'on' : CCLReducedDueToAlternateCurrentLimit == true, 'off' : CCLReducedDueToAlternateCurrentLimit == false}">CCL Reduced Due To Alternate Current Limit</div>
 		</div>
-		<div class="container column">
-			<div class="subheader">Motor 1 Faults</div>
-			<div class="item off" [ngClass]="{'on' : motorOverSpeedFault == true, 'off' : motorOverSpeedFault == false}">Motor Over Speed</div>
-			<div class="item off" [ngClass]="{'on' : softwareOverCurrentFault == true, 'off' : softwareOverCurrentFault == false}">Software Over Current</div>
-			<div class="item off" [ngClass]="{'on' : DCBusOverVoltageFault == true, 'off' : DCBusOverVoltageFault == false}">DC Bus Over Voltage</div>
-			<div class="item off" [ngClass]="{'on' : badMotorPositionHallSequenceFault == true, 'off' : badMotorPositionHallSequenceFault == false}">Bad Motor Position Hall Sequence</div>
-			<div class="item off" [ngClass]="{'on' : watchdogCausedLastResetFault == true, 'off' : watchdogCausedLastResetFault == false}">Watchdog Caused Last Reset</div>
-			<div class="item off" [ngClass]="{'on' : configReadErrorFault == true, 'off' : configReadErrorFault == false}">Config Read Error</div>
-			<div class="item off" [ngClass]="{'on' : railUnderVoltageLockOutFault == true, 'off' : railUnderVoltageLockOutFault == false}">Rail Under Voltage Lock Out</div>
-			<div class="item off" [ngClass]="{'on' : desaturationFault == true, 'off' : desaturationFault == false}">Desaturation Fault</div>
-			<div class="subheader">Motor 1 Faults</div>
-			<div class="item off" [ngClass]="{'on' : outputVoltagePwmLimit == true, 'off' : outputVoltagePwmLimit == false}">Output Voltage PWM</div>
-			<div class="item off" [ngClass]="{'on' : motorCurrentLimit == true, 'off' : motorCurrentLimit == false}">Motor Current</div>
-			<div class="item off" [ngClass]="{'on' : velocityLimit == true, 'off' : velocityLimit == false}">Velocity</div>
-			<div class="item off" [ngClass]="{'on' : busCurrentLimit == true, 'off' : busCurrentLimit == false}">Bus Current</div>
-			<div class="item off" [ngClass]="{'on' : busVoltageUpperLimit == true, 'off' : busVoltageUpperLimit == false}">Bus Voltage Upper</div>
-			<div class="item off" [ngClass]="{'on' : busVoltageLowerLimit == true, 'off' : busVoltageLowerLimit == false}">Bus Voltage Lower</div>
-			<div class="item off" [ngClass]="{'on' : ipmOrMotorTempLimit == true, 'off' : ipmOrMotorTempLimit == false}">IPM Or Motor Temperature</div>
+		<div class="container-column spacing">
+			<div class="container-row">
+				<div class="horizontal-spacing">
+					<div class="subheader">Motor 0 Faults</div>
+					<div class="item off" [ngClass]="{'on' : motorOverSpeedFault == true, 'off' : motorOverSpeedFault == false}">Motor Over Speed</div>
+					<div class="item off" [ngClass]="{'on' : softwareOverCurrentFault == true, 'off' : softwareOverCurrentFault == false}">Software Over Current</div>
+					<div class="item off" [ngClass]="{'on' : DCBusOverVoltageFault == true, 'off' : DCBusOverVoltageFault == false}">DC Bus Over Voltage</div>
+					<div class="item off" [ngClass]="{'on' : badMotorPositionHallSequenceFault == true, 'off' : badMotorPositionHallSequenceFault == false}">Bad Motor Position Hall Sequence</div>
+					<div class="item off" [ngClass]="{'on' : watchdogCausedLastResetFault == true, 'off' : watchdogCausedLastResetFault == false}">Watchdog Caused Last Reset</div>
+					<div class="item off" [ngClass]="{'on' : configReadErrorFault == true, 'off' : configReadErrorFault == false}">Config Read Error</div>
+					<div class="item off" [ngClass]="{'on' : railUnderVoltageLockOutFault == true, 'off' : railUnderVoltageLockOutFault == false}">Rail Under Voltage Lock Out</div>
+					<div class="item off" [ngClass]="{'on' : desaturationFault == true, 'off' : desaturationFault == false}">Desaturation Fault</div>
+				</div>
+				<div>
+					<div class="subheader">Motor 0 Limits</div>
+					<div class="item off" [ngClass]="{'on' : outputVoltagePwmLimit == true, 'off' : outputVoltagePwmLimit == false}">Output Voltage PWM</div>
+					<div class="item off" [ngClass]="{'on' : motorCurrentLimit == true, 'off' : motorCurrentLimit == false}">Motor Current</div>
+					<div class="item off" [ngClass]="{'on' : velocityLimit == true, 'off' : velocityLimit == false}">Velocity</div>
+					<div class="item off" [ngClass]="{'on' : busCurrentLimit == true, 'off' : busCurrentLimit == false}">Bus Current</div>
+					<div class="item off" [ngClass]="{'on' : busVoltageUpperLimit == true, 'off' : busVoltageUpperLimit == false}">Bus Voltage Upper</div>
+					<div class="item off" [ngClass]="{'on' : busVoltageLowerLimit == true, 'off' : busVoltageLowerLimit == false}">Bus Voltage Lower</div>
+					<div class="item off" [ngClass]="{'on' : ipmOrMotorTempLimit == true, 'off' : ipmOrMotorTempLimit == false}">IPM Or Motor Temperature</div>
+				</div>
+			</div>
+			<div class="container-row">
+				<div class="horizontal-spacing">
+					<div class="subheader">Motor 1 Faults</div>
+					<div class="item off" [ngClass]="{'on' : motorOverSpeedFault == true, 'off' : motorOverSpeedFault == false}">Motor Over Speed</div>
+					<div class="item off" [ngClass]="{'on' : softwareOverCurrentFault == true, 'off' : softwareOverCurrentFault == false}">Software Over Current</div>
+					<div class="item off" [ngClass]="{'on' : DCBusOverVoltageFault == true, 'off' : DCBusOverVoltageFault == false}">DC Bus Over Voltage</div>
+					<div class="item off" [ngClass]="{'on' : badMotorPositionHallSequenceFault == true, 'off' : badMotorPositionHallSequenceFault == false}">Bad Motor Position Hall Sequence</div>
+					<div class="item off" [ngClass]="{'on' : watchdogCausedLastResetFault == true, 'off' : watchdogCausedLastResetFault == false}">Watchdog Caused Last Reset</div>
+					<div class="item off" [ngClass]="{'on' : configReadErrorFault == true, 'off' : configReadErrorFault == false}">Config Read Error</div>
+					<div class="item off" [ngClass]="{'on' : railUnderVoltageLockOutFault == true, 'off' : railUnderVoltageLockOutFault == false}">Rail Under Voltage Lock Out</div>
+					<div class="item off" [ngClass]="{'on' : desaturationFault == true, 'off' : desaturationFault == false}">Desaturation Fault</div>
+				</div>
+				<div>
+					<div class="subheader">Motor 1 Limits</div>
+					<div class="item off" [ngClass]="{'on' : outputVoltagePwmLimit == true, 'off' : outputVoltagePwmLimit == false}">Output Voltage PWM</div>
+					<div class="item off" [ngClass]="{'on' : motorCurrentLimit == true, 'off' : motorCurrentLimit == false}">Motor Current</div>
+					<div class="item off" [ngClass]="{'on' : velocityLimit == true, 'off' : velocityLimit == false}">Velocity</div>
+					<div class="item off" [ngClass]="{'on' : busCurrentLimit == true, 'off' : busCurrentLimit == false}">Bus Current</div>
+					<div class="item off" [ngClass]="{'on' : busVoltageUpperLimit == true, 'off' : busVoltageUpperLimit == false}">Bus Voltage Upper</div>
+					<div class="item off" [ngClass]="{'on' : busVoltageLowerLimit == true, 'off' : busVoltageLowerLimit == false}">Bus Voltage Lower</div>
+					<div class="item off" [ngClass]="{'on' : ipmOrMotorTempLimit == true, 'off' : ipmOrMotorTempLimit == false}">IPM Or Motor Temperature</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

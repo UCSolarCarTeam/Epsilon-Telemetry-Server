@@ -1,96 +1,141 @@
 <div class="mppt">
 	<div class="header">
-		<span class="title-left rounded">MPPT</span>
+		<span class="header-title-left rounded">MPPT</span>
 	</div>
 	<div class="container-row">
-		<div class="container-column centering text">
-			<div class="subheader">
-				<div class="text">MPPT 0</div>
-				<div class="text">Alive</div> 
-				<div>
-	    			<span *ngIf="mppt0.alive; else mppt0AliveElse" class="buttonCentering">
-	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
-	    			</span>
-	    			<ng-template #mppt0AliveElse>
-	    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-	    			</ng-template>
+		<div class="title-left container-column">
+			<span class="subheader">Unit 0</span>
+			<div class="container-row">
+				<div class="container-column title-left text">
+					<div class="subheader">
+						<div class="text">Channel 0</div>
+						<div class="text">Alive</div> 
+						<div>
+			    			<span *ngIf="mppt0.alive; else mppt0AliveElse" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			</span>
+			    			<ng-template #mppt0AliveElse>
+			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
+			    			</ng-template>
+						</div>
+						
+					</div>
+					<div>
+						<div class="item">Array Voltage</div>
+						<div class="data">{{mppt0.arrayVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Array Current</div>
+						<div class="data">{{mppt0.arrayCurrent}} A</div>
+					</div>
+					<div>
+						<div class="item">Battery Voltage</div>
+						<div class="data">{{mppt0.batteryVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Temperature</div>
+						<div class="data">{{mppt0.temperature}} ºC</div>
+					</div>
 				</div>
-				
-			</div>
-			<div>
-				<div class="item">Array Voltage</div>
-				<div class="data">{{mppt0.arrayVoltage}} V</div>
-			</div>
-			<div>
-				<div class="item">Array Current</div>
-				<div class="data">{{mppt0.arrayCurrent}} A</div>
-			</div>
-			<div>
-				<div class="item">Battery Voltage</div>
-				<div class="data">{{mppt0.batteryVoltage}} V</div>
-			</div>
-			<div>
-				<div class="item">Temperature</div>
-				<div class="data">{{mppt0.temperature}} ºC</div>
+				<div class="container-column title-right text">
+					<div class="subheader">
+						<div class="text">Channel 1</div>
+						<div class="text">Alive</div> 
+						<div>
+			    			<span *ngIf="mppt1.alive; else mppt1AliveElse" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			</span>
+			    			<ng-template #mppt1AliveElse>
+			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
+			    			</ng-template>
+						</div>
+						
+					</div>
+					<div>
+						<div class="item">Array Voltage</div>
+						<div class="data">{{mppt1.arrayVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Array Current</div>
+						<div class="data">{{mppt1.arrayCurrent}} A</div>
+					</div>
+					<div>
+						<div class="item">Battery Voltage</div>
+						<div class="data">{{mppt1.batteryVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Temperature</div>
+						<div class="data">{{mppt1.temperature}} ºC</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="container-column centering">
-			<div class="subheader">
-				<div>MPPT 1</div> 
-				<div>
-	    			<span *ngIf="mppt1.alive; else mppt1AliveElse" class="buttonCentering">
-	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
-	    			</span>
-	    			<ng-template #mppt1AliveElse>
-	    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-	    			</ng-template>
-				Alive</div>
+		<div class="title-right container-column">
+			<span class="subheader">Unit 1</span>
+			<div class="container-row">
+				<div class="container-column title-left text">
+					<div class="subheader">
+						<div class="text">Channel 0</div>
+						<div class="text">Alive</div> 
+						<div>
+			    			<span *ngIf="mppt2.alive; else mppt2AliveElse" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			</span>
+			    			<ng-template #mppt2AliveElse>
+			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
+			    			</ng-template>
+						</div>
+						
+					</div>
+					<div>
+						<div class="item">Array Voltage</div>
+						<div class="data">{{mppt2.arrayVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Array Current</div>
+						<div class="data">{{mppt2.arrayCurrent}} A</div>
+					</div>
+					<div>
+						<div class="item">Battery Voltage</div>
+						<div class="data">{{mppt2.batteryVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Temperature</div>
+						<div class="data">{{mppt2.temperature}} ºC</div>
+					</div>
+				</div>
+				<div class="container-column title-right text">
+					<div class="subheader">
+						<div class="text">Channel 1</div>
+						<div class="text">Alive</div> 
+						<div>
+			    			<span *ngIf="mppt3.alive; else mppt3AliveElse" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			</span>
+			    			<ng-template #mppt3AliveElse>
+			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
+			    			</ng-template>
+						</div>
+						
+					</div>
+					<div>
+						<div class="item">Array Voltage</div>
+						<div class="data">{{mppt3.arrayVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Array Current</div>
+						<div class="data">{{mppt3.arrayCurrent}} A</div>
+					</div>
+					<div>
+						<div class="item">Battery Voltage</div>
+						<div class="data">{{mppt3.batteryVoltage}} V</div>
+					</div>
+					<div>
+						<div class="item">Temperature</div>
+						<div class="data">{{mppt3.temperature}} ºC</div>
+					</div>
+				</div>
 			</div>
-			<div>
-				<div class="item">Array Voltage</div>
-				<div class="data">{{mppt1.arrayVoltage}} V</div>
-			</div>
-			<div>
-				<div class="item">Array Current</div>
-				<div class="data">{{mppt1.arrayCurrent}} A</div>
-			</div>
-			<div>
-				<div class="item">Battery Voltage</div>
-				<div class="data">{{mppt1.batteryVoltage}} V</div>
-			</div>
-			<div>
-				<div class="item">Temperature</div>
-				<div class="data">{{mppt1.temperature}} ºC</div>
-			</div>		
-		</div>
-		<div class="container-column centering">
-			<div class="subheader">
-				<div>MPPT 2</div> 
-				<div>
-	    			<span *ngIf="mppt2.alive; else mppt2AliveElse" class="buttonCentering">
-	    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle">
-	    			</span>
-	    			<ng-template #mppt2AliveElse>
-	    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-	    			</ng-template>
-				Alive</div>
-			</div>
-			<div>
-				<div class="item">Array Voltage</div>
-				<div class="data">{{mppt2.arrayVoltage}} V</div>
-			</div>
-			<div>
-				<div class="item">Array Current</div>
-				<div class="data">{{mppt2.arrayCurrent}} A</div>
-			</div>
-			<div>
-				<div class="item">Battery Voltage</div>
-				<div class="data">{{mppt2.batteryVoltage}} V</div>
-			</div>
-			<div>
-				<div class="item">Temperature</div>
-				<div class="data">{{mppt2.temperature}} ºC</div>
-			</div>		
 		</div>
 	</div>
 </div>

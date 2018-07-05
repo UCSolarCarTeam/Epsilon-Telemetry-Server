@@ -9,16 +9,20 @@
 	margin-bottom: 25px;
 	margin-top: 10px;
 }
-.title-left {
+.header-title-left {
 	float: left;
-	width: 50%;
+	width: 45%;
 	margin-left: 5%;
 }
-.title-right {
-	color: #73a2ef;
+.title-left {
 	float: left;
-	width: 5%;
-	margin-left: 5px;
+	width: 47.5%;
+	margin-right: 2.5%;
+}
+.title-right {
+	float: left;
+	width: 47.5%;
+	margin-left: 2.5%;
 }
 
 .text {
@@ -72,8 +76,9 @@
 	color: rgba(255, 255, 255, 0.75);
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 25px;
+	border-radius: 5px;
 	text-align: center;
+	margin-bottom: 15px;
 }
 .subheader > h3 {
 	font-family: Arial, sans-serif;

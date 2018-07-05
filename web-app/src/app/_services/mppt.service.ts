@@ -12,29 +12,35 @@ export class MpptService {
   mppt0$: EventEmitter<Mppt>;
   mppt1$: EventEmitter<Mppt>;
   mppt2$: EventEmitter<Mppt>;
+  mppt3$: EventEmitter<Mppt>;
 
   private mppt0: Mppt;
   private mppt1: Mppt;
   private mppt2: Mppt;
+  private mppt3: Mppt;
 
   constructor(private wsService: WebSocketService) {
     this.mppt0$ = new EventEmitter<Mppt>();
     this.mppt1$ = new EventEmitter<Mppt>();
     this.mppt2$ = new EventEmitter<Mppt>();
+    this.mppt3$ = new EventEmitter<Mppt>();
 
     this.mppt0 = new Mppt;
     this.mppt1 = new Mppt;
     this.mppt2 = new Mppt;
+    this.mppt3 = new Mppt;
 
     this.wsService.socket$.subscribe(
       (data: ITelemetryData) => {
         this.updateMppt(data, 0);
         this.updateMppt(data, 1);
         this.updateMppt(data, 2);
+        this.updateMppt(data, 3);
 
         this.mppt0$.emit(this.getData(0));
         this.mppt1$.emit(this.getData(1));
         this.mppt2$.emit(this.getData(2));
+        this.mppt2$.emit(this.getData(3));
       }
     );
   }

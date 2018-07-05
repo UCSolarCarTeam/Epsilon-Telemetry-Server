@@ -26,6 +26,11 @@
 	float: left;
 	width: 15px;
 	height: 15px;
+	margin-top: 2px;
+}
+
+.width {
+	width: 100%;
 }
 
 .button {

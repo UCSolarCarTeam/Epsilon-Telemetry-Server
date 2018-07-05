@@ -21,10 +21,12 @@
 	width: 10%;
 }
 .spacing {
-	width: 40%;
-	margin-left: 20%;
+	margin: 1%;
 }
-
+.horizontal-spacing {
+	margin-left: 1%;
+	margin-right: 1%;
+}
 .centering {
 	width: 40%;
 	margin-left: 5%;
@@ -51,7 +53,7 @@
 	color: white;
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 25px;
+	border-radius: 5px;
 	text-align: center;
 }
 .subheader > h3 {
@@ -91,7 +93,6 @@
 }
 .item {
 	font-family: Arial, sans-serif;
-	color: white;
 }
 .data {
 	padding: 5%;

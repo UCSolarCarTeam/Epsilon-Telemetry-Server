@@ -9,25 +9,10 @@ import { MpptService } from '../../_services/mppt.service';
   styleUrls: ['./mppt.component.css']
 })
 export class MpptComponent implements OnInit {
-
-	mppt0ArrayVoltage = 0;
-	mppt0ArrayCurrent = 0;
-	mppt0BatteryVoltage = 0;
-	mppt0Temperature = 0;
-
-	mppt1ArrayVoltage = 0;
-	mppt1ArrayCurrent = 0;
-	mppt1BatteryVoltage = 0;
-	mppt1Temperature = 0;
-
-	mppt2ArrayVoltage = 0;
-	mppt2ArrayCurrent = 0;
-	mppt2BatteryVoltage = 0;
-	mppt2Temperature = 0;
-
   mppt0: Mppt;
   mppt1: Mppt;
   mppt2: Mppt;
+  mppt3: Mppt;
 
 
   constructor(private mpptService: MpptService) { }
@@ -36,6 +21,7 @@ export class MpptComponent implements OnInit {
     this.mppt0 = this.mpptService.getData(0);
     this.mppt1 = this.mpptService.getData(1);
     this.mppt2 = this.mpptService.getData(2);
+    this.mppt3 = this.mpptService.getData(3);
 
     this.mpptService.mppt0$.subscribe(
       (data: Mppt) => {
@@ -52,6 +38,12 @@ export class MpptComponent implements OnInit {
     this.mpptService.mppt2$.subscribe(
       (data: Mppt) => {
         this.mppt2 = data;
+      }
+    );
+
+    this.mpptService.mppt3$.subscribe(
+      (data: Mppt) => {
+        this.mppt3 = data;
       }
     );
   }

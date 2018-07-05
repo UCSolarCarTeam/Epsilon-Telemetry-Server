@@ -21,6 +21,16 @@
 	width: 5%;
 	margin-left: 5px;
 }
+.left-side {
+	float: left;
+	width: 47.5%;
+	margin-right: 2.5%;
+}
+.right-side {
+	float: left;
+	width: 47.5%;
+	margin-left: 2.5%;
+}
 
 .circle {
 	float: left;
@@ -66,7 +76,7 @@
 	color: rgba(255, 255, 255, 0.75);
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 25px;
+	border-radius: 5px;
 }
 .subheader > h3 {
 	font-family: Arial, sans-serif;
