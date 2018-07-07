@@ -1,14 +1,14 @@
 <!-- Car Right Panel -->
 <mat-card class="car-misc">
   <div class="direction">
-    <div class="reverse" [ngClass]="{'active': carMisc.directionReverse, 'inactive': !carMisc.directionReverse}">
+    <div class="reverse" [ngClass]="{'active': controls.reverse, 'inactive': !controls.reverse}">
       <span>
         <mat-icon id="back-arrow-1">arrow_back_ios</mat-icon>
         <mat-icon id="back-arrow-2">arrow_back_ios</mat-icon>
       </span>
       <label>Reverse</label>
     </div>
-    <div class="forward" [ngClass]="{'active': carMisc.directionForward, 'inactive': !carMisc.directionForward}">
+    <div class="forward" [ngClass]="{'active': controls.forward, 'inactive': !controls.forward}">
       <span>
         <mat-icon id="forward-arrow-1">arrow_forward_ios</mat-icon>
         <mat-icon id="forward-arrow-2">arrow_forward_ios</mat-icon>
@@ -17,11 +17,11 @@
     </div>
   </div>
   <div class="warning">
-    <div class="brakes" [ngClass]="{'active': carMisc.brakes, 'inactive': !carMisc.brakes}">
+    <div class="brakes" [ngClass]="{'active': controls.brakes, 'inactive': !controls.brakes}">
       <mat-icon id="brakes-icon">error_outline</mat-icon>
       <label>Brakes</label>
     </div>
-    <div class="hazard" [ngClass]="{'active': carMisc.hazard, 'inactive': !carMisc.hazard}">
+    <div class="hazard" [ngClass]="{'active': controls.hazard, 'inactive': !controls.hazard}">
       <mat-icon id="hazard-icon">warning</mat-icon>
       <label>Hazard</label>
     </div>
@@ -29,40 +29,40 @@
   <div class="braking">
     <label class="main-label">Regen Braking</label>
     <div class="progress-bars">
-      <mat-progress-bar mode="determinate" value="{{carMisc.regenBraking}}">
+      <mat-progress-bar mode="determinate" value="{{controls.regenBraking}}">
       </mat-progress-bar>
-      <p>{{carMisc.regenBraking}}%</p>
+      <p>{{controls.regenBraking}}%</p>
     </div>
   </div>
   <div class="acceleration">
     <label class="main-label">Acceleration</label>
     <div class="progress-bars">
-      <mat-progress-bar mode="determinate" value="{{carMisc.acceleration}}">
+      <mat-progress-bar mode="determinate" value="{{controls.acceleration}}">
       </mat-progress-bar>
-      <p>{{carMisc.acceleration}}%</p>
+      <p>{{controls.acceleration}}%</p>
     </div>
   </div>
   <div>
     <mat-divider></mat-divider>
   </div>
-  <mat-form-field>
+  <mat-form-field class="set-current">
     <input matInput
       placeholder="Set Current"
-      value="{{carMisc.setCurrent}} A"
+      value="{{getAvgSetCurrent() | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Bus Current"
-      value="{{carMisc.busCurrent}} A"
+      value="{{getAvgBusCurrent() | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Bus Voltage"
-      value="{{carMisc.busVoltage}} V"
+      value="{{getAvgBusVoltage() | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
@@ -71,38 +71,51 @@
       id="overlay-0"
       color="accent"
       value="100"
-      diameter="190"
+      diameter="180"
+      strokeWidth="10"
     >
     </mat-progress-spinner>
     <mat-progress-spinner
       id="overlay-1"
-      value="{{carMisc.getSetVelocityPercentage()}}"
-      diameter="190"
+      value="{{getSetVelocityPercentage()}}"
+      diameter="180"
+      strokeWidth="10"
     >
     </mat-progress-spinner>
     <mat-progress-spinner
       id="overlay-2"
       color="warn"
-      value="{{carMisc.getVehicleVelocityPercentage()}}"
-      diameter="190"
+      value="{{getVehicleVelocityPercentage()}}"
+      diameter="180"
+      strokeWidth="10"
     >
     </mat-progress-spinner>
     <div class="velocity-data">
       <label>Set velocity</label>
-      <p id="set-velocity"><span class="velocity-number">{{carMisc.setVelocity}}</span>km/h</p>
+      <p id="set-velocity">
+        <span class="velocity-number">
+          {{getSetVelocity() | number: '1.2-2'}}
+        </span>
+        km/h
+      </p>
       <label>Vehicle Velocity</label>
-      <p id="vehicle-velocity"><span class="velocity-number">{{carMisc.vehicleVelocity}}</span>km/h</p>
+      <p id="vehicle-velocity">
+        <span class="velocity-number">
+          {{getVehicleVelocity() | number: '1.2-2'}}
+        </span>
+        km/h
+      </p>
     </div>
   </div>
   <mat-form-field>
     <input matInput
       placeholder="Total Array Power"
-      value="{{carMisc.totalArrayPower}} W"
+      value="{{getTotalArrayPower() | number: '1.2-2'}} W"
       readonly="true"
     >
   </mat-form-field>
   <label id="bms-strobe-label"
-         [ngClass]="{'active': carMisc.bmsStrobeLight, 'inactive': !carMisc.bmsStrobeLight}"
+         [ngClass]="{'active': lights.bmsStrobeLight, 'inactive': !lights.bmsStrobeLight}"
   >
   BMS Strobe Light
   </label>
@@ -113,7 +126,7 @@
   <mat-form-field>
     <input matInput
       placeholder="Total Pack Capacity"
-      value="{{batteryMisc.totalPackCapacity}} Ah"
+      value="{{getTotalPackCapacityKWh() | number: '1.2-2'}} kWh"
       readonly="true"
     >
   </mat-form-field>
@@ -122,53 +135,54 @@
       id="overlay-0"
       color="accent"
       value="100"
-      diameter="190"
+      diameter="180"
+      strokeWidth="10"
     >
     </mat-progress-spinner>
     <mat-progress-spinner
       id="overlay-2"
       color="warn"
-      value="{{batteryMisc.packStateOfCharge}}"
-      diameter="190"
+      value="{{battery.packStateOfCharge}}"
+      diameter="180"
+      strokeWidth="10"
     >
     </mat-progress-spinner>
     <div class="soc-data">
       <label>Pack SOC</label>
-      <p id="pack-soc">{{batteryMisc.packStateOfCharge}}%</p>
+      <p id="pack-soc">{{battery.packStateOfCharge}}%</p>
     </div>
   </div>
   <mat-form-field>
     <input matInput
-      placeholder="Pack SOC Hours"
-      value="{{batteryMisc.packStateOfChargeHrs}} Ah"
+      placeholder="Pack kWh"
+      value="{{getPackKWh() | number: '1.2-2'}} kWh"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
-    <input matInput
-      placeholder="Highest Cell Temperature"
-      value="{{batteryMisc.highestCellTemp}} °C"
+    <input matInput placeholder="Highest Cell Temperature"
+      value="{{battery.highTemperature | number: '1.2-2'}} °C"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Lowest Cell Voltage"
-      value="{{batteryMisc.lowestCellVoltage}} mV"
+      value="{{battery.lowCellVoltage | number: '1.2-2'}} mV"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Pack Current"
-      value="{{batteryMisc.packCurrent}} mA"
+      value="{{battery.packCurrent | number: '1.2-2'}} mA"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Pack Voltage"
-      value="{{batteryMisc.packVoltage}} mV"
+      value="{{battery.packVoltage | number: '1.2-2'}} mV"
       readonly="true"
     >
   </mat-form-field>
@@ -177,25 +191,25 @@
     <div class="precharge-state-dots">
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': batteryMisc.prechargeState != State?.OFF}"
+        [ngClass]="{'active': auxBms.prechargeState != State?.OFF}"
       >
         lens
       </mat-icon>
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': batteryMisc.prechargeState == State?.DISCHARGE_ENGAGED ||
-        batteryMisc.prechargeState == State?.ALL_ENGAGED}"
+        [ngClass]="{'active': auxBms.prechargeState == State?.DISCHARGE_ENGAGED ||
+        auxBms.prechargeState == State?.ALL_ENGAGED}"
       >
         lens
       </mat-icon>
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': batteryMisc.prechargeState == State?.CHARGE_ENGAGED ||
-        batteryMisc.prechargeState == State?.ALL_ENGAGED}"
+        [ngClass]="{'active': auxBms.prechargeState == State?.CHARGE_ENGAGED ||
+        auxBms.prechargeState == State?.ALL_ENGAGED}"
       >
         lens
       </mat-icon>
-      <p>{{batteryMisc.prechargeState}}</p>
+      <p>{{auxBms.prechargeState}}</p>
     </div>
   </div>
 </mat-card>
