@@ -3,11 +3,12 @@
   height: 98%;
   width: 25%;
   margin: 0.5% auto;
+  justify-content: space-around;
 }
 
 .car-misc,
 .battery-misc {
-  width: 38%;
+  width: 45%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -28,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  padding: 10px;
+  padding: 5px;
 }
 
 .progress-bars {
@@ -139,6 +140,7 @@ mat-divider {
   .car-misc,
   .battery-misc {
     padding: 12px;
+    font-size: 14px;
   }
 
   .spinners {
