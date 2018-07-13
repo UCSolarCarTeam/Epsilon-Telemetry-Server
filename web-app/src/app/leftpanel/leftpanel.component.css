@@ -17,6 +17,14 @@
 .packet-header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  width: 6rem;
+  height: auto;
+  max-height: 100%;
 }
 
 #solar-title {
@@ -31,12 +39,11 @@
   and (min-height: 600px)
   and (max-height: 800px) {
 
-    .packet {
-      padding: 12px;
+    :host {
+      height: 96%;
     }
 
-    .logo {
-      width: 100px;
-      height: 100px;
+    .packet {
+      padding: 12px;
     }
 }
