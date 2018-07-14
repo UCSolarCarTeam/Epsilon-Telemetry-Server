@@ -30,13 +30,13 @@ export class FaultsComponent implements OnInit {
     );
 
     this.faultsService.motor0Faults$.subscribe(
-      (data: Motor0Faults) => {
+      (data: MotorFaults) => {
         this.motor0Faults = data;
       }
     );
 
     this.faultsService.motor1Faults$.subscribe(
-      (data: Motor1Faults) => {
+      (data: MotorFaults) => {
         this.motor1Faults = data;
       }
     );
