@@ -3,9 +3,6 @@
   "extends": ["eslint:recommended", "google", "plugin:jasmine/recommended"],
   "parserOptions": {
     "ecmaVersion": 7,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    },
     "sourceType": "module"
   },
   "env": {
