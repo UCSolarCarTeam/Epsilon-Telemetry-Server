@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LeftpanelComponent } from './leftpanel.component';
 
@@ -8,9 +8,8 @@ describe('LeftpanelComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeftpanelComponent ]
-    })
-    .compileComponents();
+      declarations: [LeftpanelComponent],
+    }).compileComponents();
     fixture = TestBed.createComponent(LeftpanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
