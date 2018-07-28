@@ -6,14 +6,11 @@ describe('LeftpanelComponent', () => {
   let component: LeftpanelComponent;
   let fixture: ComponentFixture<LeftpanelComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ LeftpanelComponent ]
     })
     .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(LeftpanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
