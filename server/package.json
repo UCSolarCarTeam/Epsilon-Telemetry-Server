@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
     "test": "mocha --reporter spec --timeout 5000",
-    "lint": "eslint -c .eslintrc.json app.js bin scripts routes test",
+    "lint": "eslint -c .eslintrc.json app.js bin scripts test",
     "build:docker": "docker build --rm -t server ."
   },
   "dependencies": {
