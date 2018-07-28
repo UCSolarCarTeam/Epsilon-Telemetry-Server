@@ -26,6 +26,7 @@ describe('RightpanelComponent', () => {
         MatProgressSpinnerModule,
         MatFormFieldModule,
         MatIconModule
+      ]
     })
     .compileComponents();
   }));
