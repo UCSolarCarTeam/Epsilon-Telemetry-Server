@@ -11,18 +11,13 @@
 	margin-bottom: 0.1em;
 	width: auto;
 }
-.alive {
-	margin-left: 0.2em;
-}
-.header > .title-left {
-	width: auto;
-	margin-left: 3%;
-}
-.title-right {
+.aliveGroup {
 	margin-left: auto;
 	width: auto;
 }
-
+.aliveGroup > .aliveText {
+	margin-left: 0.2em;
+}
 .circle {
 	float: left;
 	width: 1em;
@@ -35,32 +30,16 @@
 	margin-top: 2px;
 }
 
-
 .circleItems {
 	float: left;
 	width: 1em;
 	height: 1em;
 }
 
-.button {
-	float: left;
-	width: 10px;
-	height: 10px;
-	margin-right: 20%;
-}
-
-.buttonItems {
-	width: 10px;
-	height: 10px;
-}
-
 .ifs {
 	width: 10px;
 }
 
-.reduce {
-	width: 20%;
-}
 .full {
 	width: 100%;
 }
