@@ -1,13 +1,15 @@
 .header {
+	display: flex;
+	justify-content: space-between;
 	font-family: Arial, sans-serif;
 	font-size: 1.2rem;
-	background-color: grey;
-	color: white;
-	padding-bottom: 1.2em;
+	background-color: transparent;
+	color: #D5FEFF;
+	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 25px;
-	margin-bottom: 25px;
-	margin-top: 10px;
+	margin-top: 0.1em;
+	margin-bottom: 0.1em;
+	width: auto;
 }
 .title-left {
 	float: left;
