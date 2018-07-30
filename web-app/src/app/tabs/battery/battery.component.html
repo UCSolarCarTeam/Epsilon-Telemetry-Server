@@ -1,11 +1,12 @@
 <div class="battery">
 	<div class="header">
-		<span class="title-left rounded">Battery</span>
-		<div>
-    		<div *ngIf="battery.batteryAlive; else elseBlock"><img class="circleAlive" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
-    		<ng-template #elseBlock><img class="circleAlive" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-		</div>
-		<span class="title-right rounded">Alive</span>
+		<span class="title-right">
+			<div>
+	    		<div *ngIf="battery.batteryAlive; else elseBlock"><img class="circleAlive" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
+	    		<ng-template #elseBlock><img class="circleAlive" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+				<span class="alive">Alive</span>
+			</div>
+		</span>
 	</div>
 		<div class="container-row full">
 			<div class="leftside">
