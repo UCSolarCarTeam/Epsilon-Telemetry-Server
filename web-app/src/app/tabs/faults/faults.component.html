@@ -1,5 +1,130 @@
-<div class="faults container-column">
-	<div class="container-row">
+<div class="faults">
+<div class="container-row full">
+	<div class="leftside">
+			<div class="subheader">Battery Faults</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.alwaysOnSupplyFault == true, 'off' : batteryFaults.errorFlags.alwaysOnSupplyFault == false}">Always On Supply Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.canbusCommunicationsFault == true, 'off' : batteryFaults.errorFlags.canbusCommunicationsFault == false}">CANBUS Communications Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.chargeLimitEnforcementFault == true, 'off' : batteryFaults.errorFlags.chargeLimitEnforcementFault == false}">Charge Limit Enforcement Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.chargerSafetyRelayFault == true, 'off' : batteryFaults.errorFlags.chargerSafetyRelayFault == false}">Charger Safety Relay Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.currentSensorFault == true, 'off' : batteryFaults.errorFlags.currentSensorFault == false}">Current Sensor Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.dischargeLimitEnforcementFault == true, 'off' : batteryFaults.errorFlags.dischargeLimitEnforcementFault == false}">Discharge Limit Enforcement Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.fanMonitorFault == true, 'off' : batteryFaults.errorFlags.fanMonitorFault == false}">Fan Monitor Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.highVoltageIsolationFault == true, 'off' : batteryFaults.errorFlags.highVoltageIsolationFault == false}">High Voltage Isolation Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.internalCommunicationFault == true, 'off' : batteryFaults.errorFlags.internalCommunicationFault == false}">Internal Communications Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.internalConversionFault == true, 'off' : batteryFaults.errorFlags.internalConversionFault == false}">Internal Conversion Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags. internalLogicFault == true, 'off' : batteryFaults.errorFlags.internalLogicFault == false}">Internal Logic Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.internalMemoryFault == true, 'off' : batteryFaults.errorFlags.internalMemoryFault == false}">Internal Memory Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.internalThermistorFault == true, 'off' : batteryFaults.errorFlags.internalThermistorFault == false}">Internal Thermistor Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.lowCellVoltageFault == true, 'off' : batteryFaults.errorFlags.lowCellVoltageFault == false}">Low Cell Voltage Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.openWiringFault == true, 'off' : batteryFaults.errorFlags.openWiringFault == false}">Open Wiring Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.packVoltageSensorFault == true, 'off' : batteryFaults.errorFlags.packVoltageSensorFault == false}">Pack Voltage Sensor Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.thermistorFault == true, 'off' : batteryFaults.errorFlags.thermistorFault == false}">Thermistor Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.twelvevpowerSupplyFault == true, 'off' : batteryFaults.errorFlags.twelvevpowerSupplyFault == false}">Twelve V Power Supply Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.voltageRedundancyFault == true, 'off' : batteryFaults.errorFlags.voltageRedundancyFault == false}">Voltage Redundancy Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.weakCellFault == true, 'off' : batteryFaults.errorFlags.weakCellFault == false}">Weak Cell Fault</div>
+			<div class="item off" [ngClass]="{'on' : batteryFaults.errorFlags.weakPackFault == true, 'off' : batteryFaults.errorFlags.weakPackFault == false}">Weak Pack Fault</div>
+	</div>
+	<div class="rightside">
+		<div class="subheader">Battery Limit Flags</div>
+
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.cclReducedDueToAlternateCurrentLimit == true, 'off' : batteryFaults.limitFlags.cclReducedDueToAlternateCurrentLimit == false}">CCL Reduced Due To Alternate Current</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.cclReducedDueToChargerLatch == true, 'off' : batteryFaults.limitFlags.cclReducedDueToChargerLatch == false}">CCL Reduced Due To Charger Latch</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.cclReducedDueToHighCellResistance == true, 'off' : batteryFaults.limitFlags.cclReducedDueToHighCellResistance == false}">CCL Reduced Due To High Cell Resistance</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.cclReducedDueToHighCellVoltage == true, 'off' : batteryFaults.limitFlags.cclReducedDueToHighCellVoltage == false}">CCL Reduced Due To High Cell Voltage</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.cclReducedDueToHighPackVoltage == true, 'off' : batteryFaults.limitFlags.cclReducedDueToHighPackVoltage == false}">CCL Reduced Due To High Pack Voltage</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.cclReducedDueToHighSoc == true, 'off' : batteryFaults.limitFlags.cclReducedDueToHighSoc == false}">CCL Reduced Due To High SOC</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.cclReducedDueToTemperature == true, 'off' : batteryFaults.limitFlags.cclReducedDueToTemperature == false}">CCL Reduced Due To Temperature</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.dclReducedDueToHighCellResistance == true, 'off' : batteryFaults.limitFlags.dclReducedDueToHighCellResistance == false}">DCL Reduced Due To High Cell Resistance</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.dclReducedDueToLowCellVoltage == true, 'off' : batteryFaults.limitFlags.dclReducedDueToLowCellVoltage == false}">DCL Reduced Due To Low Cell Voltage</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.dclReducedDueToLowPackVoltage == true, 'off' : batteryFaults.limitFlags.dclReducedDueToLowPackVoltage == false}">DCL Reduced Due To Low Pack Voltage</div><div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.dclReducedDueToLowSoc == true, 'off' : batteryFaults.limitFlags.dclReducedDueToLowSoc == false}">DCL Reduced Due To Low SOC</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.dclReducedDueToTemperature == true, 'off' : batteryFaults.limitFlags.dclReducedDueToTemperature == false}">DCL Reduced Due To Temperature</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.dclandcclReducedDueToCommunicationFailsafe == true, 'off' : batteryFaults.limitFlags.dclandcclReducedDueToCommunicationFailsafe == false}">DCL and CCL Reduced Due To Communication Failsafe</div>
+		<div class="item off" [ngClass]="{'on' : batteryFaults.limitFlags.dclandcclReducedDueToVoltageFailsafe == true, 'off' : batteryFaults.limitFlags.dclandcclReducedDueToVoltageFailsafe == false}">DCL and CCL Reduced Due To Voltage Failsafe</div>
+	</div>
+</div>
+<div class="container-row full">
+	<div class="leftside">
+		<div class="subheader">Motor 0 Faults</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.motorOverSpeed == true, 'off' : motor0Faults.errorFlags.motorOverSpeed == false}">Motor Over Speed</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.softwareOverCurrent == true, 'off' : motor0Faults.errorFlags.softwareOverCurrent == false}">Software Over Current</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.dcBusOverVoltage == true, 'off' : motor0Faults.errorFlags.dcBusOverVoltage == false}">DC Bus Over Voltage</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.badMotorPositionHallSequence == true, 'off' : motor0Faults.errorFlags.badMotorPositionHallSequence == false}">Bad Motor Position Hall Sequence</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.watchdogCausedLastReset == true, 'off' : motor0Faults.errorFlags.watchdogCausedLastReset == false}">Watchdog Caused Last Reset</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.configReadError == true, 'off' : motor0Faults.errorFlags.configReadError == false}">Config Read Error</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.rail15VUnderVoltageLockOut == true, 'off' : motor0Faults.errorFlags.rail15VUnderVoltageLockOut == false}">Rail Under Voltage Lock Out</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.desaturationFault == true, 'off' : motor0Faults.errorFlags.desaturationFault == false}">Desaturation Fault</div>
+	</div>
+	<div class="rightside">
+		<div class="subheader">Motor 0 Limits</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.outputVoltagePwm == true, 'off' : motor0Faults.limitFlags.outputVoltagePwm == false}">Output Voltage PWM</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.motorCurrent == true, 'off' : motor0Faults.limitFlags.motorCurrent == false}">Motor Current</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.velocity == true, 'off' : motor0Faults.limitFlags.velocity == false}">Velocity</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.busCurrent == true, 'off' : motor0Faults.limitFlags.busCurrent == false}">Bus Current</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.busVoltageUpper == true, 'off' : motor0Faults.limitFlags.busVoltageUpper == false}">Bus Voltage Upper</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.busVoltageLower == true, 'off' : motor0Faults.limitFlags.busVoltageLower == false}">Bus Voltage Lower</div>
+		<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.ipmOrMotorTemperature == true, 'off' : motor0Faults.limitFlags.ipmOrMotorTemperature == false}">IPM Or Motor Temperature</div>
+	</div>
+</div>
+<div class="container-row full">
+	<div class="leftside">
+		<div class="subheader">Motor 1 Faults</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.motorOverSpeed == true, 'off' : motor1Faults.errorFlags.motorOverSpeed == false}">Motor Over Speed</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.softwareOverCurrent == true, 'off' : motor1Faults.errorFlags.softwareOverCurrent == false}">Software Over Current</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.dcBusOverVoltage == true, 'off' : motor1Faults.errorFlags.dcBusOverVoltage == false}">DC Bus Over Voltage</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.badMotorPositionHallSequence == true, 'off' : motor1Faults.errorFlags.badMotorPositionHallSequence == false}">Bad Motor Position Hall Sequence</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.watchdogCausedLastReset == true, 'off' : motor1Faults.errorFlags.watchdogCausedLastReset == false}">Watchdog Caused Last Reset</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.configReadError == true, 'off' : motor1Faults.errorFlags.configReadError == false}">Config Read Error</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.rail15VUnderVoltageLockOut == true, 'off' : motor1Faults.errorFlags.rail15VUnderVoltageLockOut == false}">Rail Under Voltage Lock Out</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.desaturationFault == true, 'off' : motor1Faults.errorFlags.desaturationFault == false}">Desaturation Fault</div>
+	</div>
+	<div class="rightside">
+		<div class="subheader">Motor 1 Limits</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.outputVoltagePwm == true, 'off' : motor1Faults.limitFlags.outputVoltagePwm == false}">Output Voltage PWM</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.motorCurrent == true, 'off' : motor1Faults.limitFlags.motorCurrent == false}">Motor Current</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.velocity == true, 'off' : motor1Faults.limitFlags.velocity == false}">Velocity</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.busCurrent == true, 'off' : motor1Faults.limitFlags.busCurrent == false}">Bus Current</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.busVoltageUpper == true, 'off' : motor1Faults.limitFlags.busVoltageUpper == false}">Bus Voltage Upper</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.busVoltageLower == true, 'off' : motor1Faults.limitFlags.busVoltageLower == false}">Bus Voltage Lower</div>
+		<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.ipmOrMotorTemperature == true, 'off' : motor1Faults.limitFlags.ipmOrMotorTemperature == false}">IPM Or Motor Temperature</div>
+	</div>
+</div>
+<div class="container-row full">
+	<div class="leftside">
+		<div class="subheader">RX Error Count</div>
+		<div class="container-row">
+			<div class="leftside">
+				<div class="data item"> Motor 0 </div>
+				<div class="data item value">{{motor0Faults.rxErrorCount}}</div>
+			</div>
+			<div class="rightside">
+				<div class="data item"> Motor 1 </div>
+				<div class="data item value">{{motor1Faults.rxErrorCount}}</div>
+			</div>
+		</div>
+	</div>
+	<div class="rightside">
+		<div class="subheader">TX Error Count</div>
+		<div class="container-row">
+			<div class="leftside">
+				<div class="data item"> Motor 0 </div>
+				<div class="data item value">{{motor0Faults.txErrorCount}}</div>
+			</div>
+			<div class="rightside">
+				<div class="data item"> Motor 1 </div>
+				<div class="data item value">{{motor1Faults.txErrorCount}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 	<div>
+		<div>RX Error Count</div>
+		<div>TX Error Count</div>
+	</div> -->
+<!-- 	<div>
+		<div>RX Error Count</div>
+		<div>TX Error Count</div>
+	</div> -->
+<!-- 	<div class="container-row">
 		<div class="spacing">
 			<div class="subheader">Battery Faults</div>
 
@@ -64,7 +189,7 @@
 				<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.busCurrent == true, 'off' : motor0Faults.limitFlags.busCurrent == false}">Bus Current</div>
 				<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.busVoltageUpper == true, 'off' : motor0Faults.limitFlags.busVoltageUpper == false}">Bus Voltage Upper</div>
 				<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.busVoltageLower == true, 'off' : motor0Faults.limitFlags.busVoltageLower == false}">Bus Voltage Lower</div>
-				<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.ipmOrMotorTemp == true, 'off' : motor0Faults.limitFlags.ipmOrMotorTemp == false}">IPM Or Motor Temperature</div>
+				<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.ipmOrMotorTemperature == true, 'off' : motor0Faults.limitFlags.ipmOrMotorTemperature == false}">IPM Or Motor Temperature</div>
 			</div>
 			<div>
 				<div>RX Error Count</div>
@@ -93,12 +218,12 @@
 				<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.busCurrent == true, 'off' : motor1Faults.limitFlags.busCurrent == false}">Bus Current</div>
 				<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.busVoltageUpper == true, 'off' : motor1Faults.limitFlags.busVoltageUpper == false}">Bus Voltage Upper</div>
 				<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.busVoltageLower == true, 'off' : motor1Faults.limitFlags.busVoltageLower == false}">Bus Voltage Lower</div>
-				<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.ipmOrMotorTemp == true, 'off' : motor1Faults.limitFlags.ipmOrMotorTemp == false}">IPM Or Motor Temperature</div>
+				<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.ipmOrMotorTemperature == true, 'off' : motor1Faults.limitFlags.ipmOrMotorTemperature == false}">IPM Or Motor Temperature</div>
 			</div>
 			<div>
 				<div>RX Error Count</div>
 				<div>TX Error Count</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
