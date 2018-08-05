@@ -34,19 +34,19 @@
 							<span class="item">Malfunction Indicator Active</span>
 						</span>
 						<span class="item textAlignLeft">
-								<span *ngIf="battery.bmsRelayStatusFlags.multipurposeInputSignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+								<span *ngIf="battery.bmsRelayStatusFlags.multiPurposeInputSignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
 									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 							<span class="item">Multipurpose Input Signal Status</span>
 						</span>
 					</div>
 					<div class="container-column">
 						<span class="item textAlignLeft">
-								<span *ngIf="battery.bmsRelayStatusFlags.isReady; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+								<span *ngIf="battery.bmsRelayStatusFlags.isReadySignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
 									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 							<span class="item">Is Ready</span>
 						</span>
 						<span class="item textAlignLeft">
-								<span *ngIf="battery.bmsRelayStatusFlags.isCharging; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+								<span *ngIf="battery.bmsRelayStatusFlags.isChargingSignalStatus; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
 									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 							<span class="item">Is Charging</span>
 						</span>
@@ -188,6 +188,11 @@
 								<span *ngIf="auxBms.allowCharge; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
 									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 							<span class="item textAlignLeft">Allow Charge</span>
+						</span>
+						<span class="item textAlignLeft">
+								<span *ngIf="auxBms.highVoltageEnable; else elseBlock" class="ifs"><img class="circleItems" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+									<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+							<span class="item textAlignLeft">High Voltage Enable</span>
 						</span>
 					</div>
 					<div class="container-column">
