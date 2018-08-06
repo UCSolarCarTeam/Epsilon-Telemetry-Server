@@ -487,7 +487,7 @@ function jsonToMap(jsonObj) {
   mapObj.set('contractorerror',
     `${jsonObj['AuxBms']['ContactorError']}`);
   mapObj.set('highvoltageenable',
-    `${jsonObj['AuxBms']['HighVoltageEnable']}`)
+    `${jsonObj['AuxBms']['HighVoltageEnable']}`);
 
   return mapObj;
 }

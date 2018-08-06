@@ -21,15 +21,15 @@ export class BatteryComponent implements OnInit {
               private batteryService: BatteryService) { }
 
   ngOnInit() {
-  	this.battery = this.batteryService.getData();
+    this.battery = this.batteryService.getData();
     this.auxBms = this.auxBmsService.getData();
-    
+
     this.auxBmsService.auxbms$.subscribe(
       (data: AuxBms) => {
         this.auxBms = data;
       }
     );
-  	this.batteryService.battery$.subscribe(
+    this.batteryService.battery$.subscribe(
       (data: Battery) => {
         this.battery = data;
       }
