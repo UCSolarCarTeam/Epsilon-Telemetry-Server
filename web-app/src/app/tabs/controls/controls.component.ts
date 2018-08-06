@@ -13,14 +13,13 @@ import { LightsService } from '../../_services/lights.service';
 })
 export class ControlsComponent implements OnInit {
 
-	
-	controls: Controls;
-  	lights: Lights;
+  controls: Controls;
+    lights: Lights;
 
-	acceleration = 50;
-	regenBraking = 35;
+  acceleration = 50;
+  regenBraking = 35;
 
-	lightsHeadlightsLow = true;
+  lightsHeadlightsLow = true;
 
   constructor(private controlsService: ControlsService,
               private lightsService: LightsService) { }
