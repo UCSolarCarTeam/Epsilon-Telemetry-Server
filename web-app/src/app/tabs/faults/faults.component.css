@@ -36,7 +36,6 @@
 	color: rgba(255, 255, 255, 0.75);
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	/*border-radius: 1px;*/
 	text-align: center;
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -54,7 +53,6 @@
 }
 .container-row {
 	display: flex;
-	flex-direction: row;
 	justify-content: space-between;
 }
 .container-column {
@@ -81,15 +79,11 @@
 .value {
 	border-bottom: 1px solid white;
 }
-.leftside {
-	float: left;
-	width: 100%;
-}
-.rightside {
+.side {
 	float: left;
 	width: 100%;
 }
 
-.leftside + .rightside {
+.side + .side {
 	margin-left: 0.8em;
 }
