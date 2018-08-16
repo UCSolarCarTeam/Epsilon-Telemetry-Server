@@ -59,10 +59,10 @@
 	width: 20%;
 }
 .grey {
-	background-color: rgba(100, 100, 100, .5);
+	margin-bottom: 1px white;
 }
 .black {
-	background-color: rgba(50, 50, 50, .5);
+	margin-bottom: 1px white;
 }
 .on {
 	color: #c2185b;

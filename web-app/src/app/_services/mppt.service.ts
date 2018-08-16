@@ -40,7 +40,7 @@ export class MpptService {
         this.mppt0$.emit(this.getData(0));
         this.mppt1$.emit(this.getData(1));
         this.mppt2$.emit(this.getData(2));
-        this.mppt2$.emit(this.getData(3));
+        this.mppt3$.emit(this.getData(3));
       }
     );
   }

@@ -30,25 +30,9 @@
 			</span>
 			<span class="spacing">
 				<div class="container-row-not-centered">
-					<div class="container-column">
 						<span class="off" [ngClass]="{'on' : controls.signalLeft == true, 'off' : controls.signalLeft == false}">Left </span>
-						<span *ngIf="lights.leftSignal; else lightsSignalNotLeft">
-							<img src="../../../assets/TurnSignalLeftOn.png" alt="Left signal on" class="headlightIcon">
-						</span>
-	    				<ng-template #lightsSignalNotLeft>
-	    					<span><img src="../../../assets/TurnSignalLeftOff.png" alt="Left signal off" class="headlightIcon"></span>
-	    				</ng-template>
-	    			</div>
 	    			<div class="signalSpacing"></div>
-	    			<div class="container-column">
 						<span class="off" [ngClass]="{'on' : controls.signalRight == true, 'off' : controls.signalRight == false}">Right</span>
-						<span *ngIf="lights.rightSignal; else lightsSignalNotRight">
-							<img src="../../../assets/TurnSignalRightOn.png" alt="Right signal on" class="headlightIcon">
-						</span>
-	    				<ng-template #lightsSignalNotRight>
-	    					<span><img src="../../../assets/TurnSignalRightOff.png" alt="Right signal off" class="headlightIcon"></span>
-	    				</ng-template>
-	    			</div>
 	    		</div>
 			</span>
 			<span class="spacing off" [ngClass]="{'on' : controls.hazard == true, 'off' : controls.hazard == false}">On</span>
@@ -60,24 +44,45 @@
 			<span class="spacing dataHeader">Alive</span>
 			</div>
 		<div class="container-row black">
-			<div>
-				<span *ngIf="lights.lowBeams; else lightsHeadlightsNotLow" class="lightsHeadlights">
-					<img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="headlightIcon">
-				</span>
-    			<ng-template #lightsHeadlightsNotLow>
-    				<span>
-    					<img src="../../../assets/LowHeadlightOff.png" alt="Headlight off" class="headlightIcon">
-    				</span>
-    			</ng-template>
-			</div>
-			<div>
-				<span *ngIf="lights.highBeams; else lightsHeadlightsNotHigh" class="lightsHeadlights">
-						<img src="../../../assets/HighHeadlightOn.png" alt="Headlight on" class="headlightIcon">
+			<span class="spacing">
+				<span>
+					<span *ngIf="lights.lowBeams; else lightsHeadlightsNotLow" class="lightsHeadlights">
+						<img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="headlightIcon">
 					</span>
-	    			<ng-template #lightsHeadlightsNotHigh>
-	    				<span><img src="../../../assets/HighHeadlightOff.png" alt="Headlight off" class="headlightIcon"></span>
+	    			<ng-template #lightsHeadlightsNotLow>
+	    				<span>
+	    					<img src="../../../assets/LowHeadlightOff.png" alt="Headlight off" class="headlightIcon">
+	    				</span>
 	    			</ng-template>
-			</div>
+				</span>
+				<span>
+					<span *ngIf="lights.highBeams; else lightsHeadlightsNotHigh" class="lightsHeadlights">
+							<img src="../../../assets/HighHeadlightOn.png" alt="Headlight on" class="headlightIcon">
+						</span>
+		    			<ng-template #lightsHeadlightsNotHigh>
+		    				<span><img src="../../../assets/HighHeadlightOff.png" alt="Headlight off" class="headlightIcon"></span>
+		    			</ng-template>
+				</span>
+			</span>
+			<span class="spacing">
+				<span>
+					<span *ngIf="lights.leftSignal; else lightsSignalNotLeft">
+							<img src="../../../assets/TurnSignalLeftOn.png" alt="Left signal on" class="headlightIcon">
+						</span>
+	    				<ng-template #lightsSignalNotLeft>
+	    					<span><img src="../../../assets/TurnSignalLeftOff.png" alt="Left signal off" class="headlightIcon"></span>
+	    				</ng-template>
+				</span>
+				<span>
+					<span *ngIf="lights.rightSignal; else lightsSignalNotRight">
+							<img src="../../../assets/TurnSignalRightOn.png" alt="Right signal on" class="headlightIcon">
+						</span>
+	    				<ng-template #lightsSignalNotRight>
+	    					<span><img src="../../../assets/TurnSignalRightOff.png" alt="Right signal off" class="headlightIcon"></span>
+	    				</ng-template>
+				</span>
+			</span>
+			<span class="spacing off" [ngClass]="{'on' : controls.hazard == true, 'off' : controls.hazard == false}">On</span>
 		</div>
 		<div class="container-row grey">
 			<span class="spacing dataHeader">Interior</span>
