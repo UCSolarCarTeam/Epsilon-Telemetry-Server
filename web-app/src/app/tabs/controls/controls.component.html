@@ -1,43 +1,31 @@
 <div class="controls">
-	<div class="header">
-		<div class="title-left rounded">Driver Controls</div>
-		<div class="title-right rounded">
-    		<span *ngIf="controls.alive; else driverControlsNotAlive" class="driverControlsAlive">
-    			<img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
-    		</span>
-    		<ng-template #driverControlsNotAlive>
-    				<img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-			</ng-template>
-		</div>
-		<span class="title-right rounded">Alive</span>
+  <div class="header">
+    <div class="title-left rounded">Driver Controls</div>
+      <div class="title-right rounded">
+        <span *ngIf="controls.alive; else driverControlsNotAlive" class="driverControlsAlive">
+    	  <img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+    	</span>
+    	<ng-template #driverControlsNotAlive>
+    	  <img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
+		</ng-template>
+	  </div>
+	  <span class="title-right rounded">Alive</span>
 	</div>
 	<div class="container-column width">
-		<div class="container-row grey">
-			<span class="spacing dataHeader">Headlights</span>
-			<span class="spacing dataHeader">Signal</span>
-			<span class="spacing dataHeader">Hazard</span>
-		</div>
+	  <div class="container-row grey">
+	    <span class="spacing dataHeader">Headlights</span>
+		<span class="spacing dataHeader">Signal</span>
+		<span class="spacing dataHeader">Hazard</span>
+	  </div>
 		<div class="container-row black">
-			<span class="spacing">
-				<span class="off" [ngClass]="{'on' : controls.headlightsOff == true, 'off' : controls.headlightsOff == false}">Off </span>
-				<div class="container-column">
-					<span class="off" [ngClass]="{'on' : controls.headlightsLow == true, 'off' : controls.headlightsLow == false}">Low </span>
-					<span *ngIf="lights.lowBeams; else lightsHeadlightsNotLow" class="lightsHeadlights">
-						<img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="headlightIcon">
-					</span>
-
-    				<ng-template #lightsHeadlightsNotLow>
-    					<span><img src="../../../assets/LowHeadlightOff.png" alt="Headlight off" class="headlightIcon"></span>
-    				</ng-template>
+		  <span class="spacing">
+			<span class="off" [ngClass]="{'on' : controls.headlightsOff == true, 'off' : controls.headlightsOff == false}">Off </span>
+			<div class="container-column">
+			  <span class="off" [ngClass]="{'on' : controls.headlightsLow == true, 'off' : controls.headlightsLow == false}">Low </span>
+					
 				</div>
 				<div class="container-column">
 					<span class="off" [ngClass]="{'on' : controls.headlightsHigh == true, 'off' : controls.headlightsHigh == false}">High</span>
-					<span *ngIf="lights.highBeams; else lightsHeadlightsNotHigh" class="lightsHeadlights">
-						<img src="../../../assets/HighHeadlightOn.png" alt="Headlight on" class="headlightIcon">
-					</span>
-	    			<ng-template #lightsHeadlightsNotHigh>
-	    				<span><img src="../../../assets/HighHeadlightOff.png" alt="Headlight off" class="headlightIcon"></span>
-	    			</ng-template>
 	    		</div>
 			</span>
 			<span class="spacing">
@@ -64,6 +52,32 @@
 	    		</div>
 			</span>
 			<span class="spacing off" [ngClass]="{'on' : controls.hazard == true, 'off' : controls.hazard == false}">On</span>
+		</div>
+
+		<div class="container-row grey">
+			<span class="spacing dataHeader">Headlights</span>
+			<span class="spacing dataHeader">Signal</span>
+			<span class="spacing dataHeader">Alive</span>
+			</div>
+		<div class="container-row black">
+			<div>
+				<span *ngIf="lights.lowBeams; else lightsHeadlightsNotLow" class="lightsHeadlights">
+					<img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="headlightIcon">
+				</span>
+    			<ng-template #lightsHeadlightsNotLow>
+    				<span>
+    					<img src="../../../assets/LowHeadlightOff.png" alt="Headlight off" class="headlightIcon">
+    				</span>
+    			</ng-template>
+			</div>
+			<div>
+				<span *ngIf="lights.highBeams; else lightsHeadlightsNotHigh" class="lightsHeadlights">
+						<img src="../../../assets/HighHeadlightOn.png" alt="Headlight on" class="headlightIcon">
+					</span>
+	    			<ng-template #lightsHeadlightsNotHigh>
+	    				<span><img src="../../../assets/HighHeadlightOff.png" alt="Headlight off" class="headlightIcon"></span>
+	    			</ng-template>
+			</div>
 		</div>
 		<div class="container-row grey">
 			<span class="spacing dataHeader">Interior</span>
@@ -92,7 +106,7 @@
 			</span>
 		</div>
 		<div class="container-row grey">
-			<span class="spacing dataHeader">Breaks</span>
+			<span class="spacing dataHeader">Brakes</span>
 			<span class="spacing dataHeader">Forward</span>
 			<span class="spacing dataHeader">Reverse</span>
 		</div>

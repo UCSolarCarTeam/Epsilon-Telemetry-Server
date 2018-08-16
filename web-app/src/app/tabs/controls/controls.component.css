@@ -19,27 +19,22 @@
 	float: left;
 	width: 5%;
 	margin-left: 5px;
-
 }
-
 .circle {
 	float: left;
 	width: 15px;
 	height: 15px;
 	margin-top: 2px;
 }
-
 .width {
 	width: 100%;
 }
-
 .button {
 	float: left;
 	width: 10px;
 	height: 10px;
 	margin-right: 20%;
 }
-
 .spacing {
 	width: 100%;
 	text-align: left;
@@ -47,50 +42,40 @@
 	padding-bottom: 0.2em;
 	font-family: Ariel, sans-serif;
 }
-
 .dataHeader {
 	color: rgba(255, 255, 255, 0.75);
 }
-
 .center-spacing {
 	width: 70%;
 	margin-left: 20%;
 	text-align: center;
 }
-
 .centering {
 	width: 60%;
 	margin-left: 5%;
 	margin-right: 5%; 
 }
-
 .reduce {
 	width: 20%;
 }
-
 .grey {
 	background-color: rgba(100, 100, 100, .5);
 }
-
 .black {
 	background-color: rgba(50, 50, 50, .5);
 }
-
 .on {
 	color: #c2185b;
 }
-
 .off {
 	color: grey;
 }
-
 .headlightIcon {
 	width: 35px;
 }
 .signalSpacing {
 	width: 5px;
 }
-
 .subheader {
 	font-family: Arial, sans-serif;
 	font-size: 0.8rem;
@@ -108,7 +93,6 @@
 	color: white;
 	border-radius: 25px;
 }
-
 .subsubheader {
 	font-family: Arial, sans-serif;
 	font-size: 0.8rem;
@@ -140,19 +124,16 @@
 	background-color: #7a7676;
 	padding-right: 10%;
 }
-
 .progressdata {
 	width: 50%;
 	color: rgba(255, 255, 255, 0.75);
 }
-
 .progressbar {
 	float: left;
 	width: 50%;
 	height: 25px;
 	margin-right: 10px;
 }
-
 .leftside {
 	float: left;
 	width: 45%;
