@@ -1,15 +1,10 @@
 <div class="controls">
-  <div class="header">
-    <div class="title-left rounded">Driver Controls</div>
-      <div class="title-right rounded">
-        <span *ngIf="controls.alive; else driverControlsNotAlive" class="driverControlsAlive">
-    	  <img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
-    	</span>
-    	<ng-template #driverControlsNotAlive>
-    	  <img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-		</ng-template>
-	  </div>
-	  <span class="title-right rounded">Alive</span>
+	<div class="header">
+		<span class="aliveGroup">
+	    		<div *ngIf="controls.alive; else elseBlock"><img class="circleAlive" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
+	    		<ng-template #elseBlock><img class="circleAlive" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+				<span class="aliveText">Alive</span>
+		</span>
 	</div>
 	<div class="container-column width">
 	  <div class="container-row grey">
