@@ -37,7 +37,7 @@
 }
 
 .container-column {
-	display: inline-flex;
+	display: flex;
 	flex-direction: column;
 	width: auto;
 }
@@ -97,4 +97,9 @@
 	margin: 0 2px;
 	background-color: transparent;
 	border-bottom: 1px solid white;
+}
+
+.no-bullets {
+	list-style-type:none;
+	padding: 0;
 }
