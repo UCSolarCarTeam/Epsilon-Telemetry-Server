@@ -31,7 +31,10 @@
     "hoek": "^5.0.4",
     "log-symbols": "^2.2.0",
     "node-gyp": "^3.8.0",
+    "original": "^1.0.2",
     "rxjs": "^6.2.2",
+    "sockjs-client": "^1.1.5",
+    "url-parse": "^1.4.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
