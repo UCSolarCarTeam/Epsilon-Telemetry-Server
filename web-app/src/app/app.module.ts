@@ -13,7 +13,7 @@ import { MatTabsModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { BatteryComponent } from './tabs/battery/battery.component';
 import { ControlsComponent } from './tabs/controls/controls.component';
 import { FaultsComponent } from './tabs/faults/faults.component';
@@ -53,4 +53,5 @@ import { WebSocketService } from './websocket.service';
   providers: [WebSocketService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
