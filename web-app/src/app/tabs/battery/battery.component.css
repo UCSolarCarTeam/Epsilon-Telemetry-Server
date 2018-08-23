@@ -11,6 +11,7 @@
 	margin-bottom: 0.1em;
 	width: auto;
 }
+
 .alive-group {
 	margin-left: auto;
 }
@@ -58,7 +59,6 @@
 .ifs {
 	width: 10px;
 }
-
 .dataset {
 	text-align: center;
 	font-family: Arial, sans-serif;
