@@ -13,4 +13,5 @@ export class AuxBms {
   contactorError = false;
   prechargeState: State = State.Off;
   strobeBmsLight = false;
+  highVoltageEnable = false;
 }

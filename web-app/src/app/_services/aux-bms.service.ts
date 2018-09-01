@@ -38,5 +38,6 @@ export class AuxBmsService {
     this.auxbms.contactorError = data.contractorerror;
     this.auxbms.prechargeState = State[pState];
     this.auxbms.strobeBmsLight = data.strobebmslight;
+    this.auxbms.highVoltageEnable = data.highvoltageenable;
   }
 }
