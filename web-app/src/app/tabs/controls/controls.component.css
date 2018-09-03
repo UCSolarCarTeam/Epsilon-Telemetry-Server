@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: space-between;
 	font-family: Arial, sans-serif;
-	font-size: 1.2rem;
+	font-size: 1.5vw;
 	background-color: transparent;
 	color: #D5FEFF;
 	padding-bottom: 0.2em;
@@ -52,7 +52,7 @@
 .spacing {
 	width: 100%;
 	text-align: left;
-	font-size: 1.2rem;
+	font-size: 1.5vw;
 	padding-bottom: 0.2em;
 	font-family: Ariel, sans-serif;
 }
@@ -72,11 +72,12 @@
 .reduce {
 	width: 20%;
 }
-.grey {
-	margin-bottom: 1px white;
+.titleUnderline {
+	border-bottom: 1px solid white;
+	margin-bottom: 5%;
 }
-.black {
-	margin-bottom: 1px white;
+.dataUnderline {
+	border-bottom: 1px solid white;
 }
 .on {
 	color: #c2185b;
@@ -84,8 +85,9 @@
 .off {
 	color: grey;
 }
-.headlightIcon {
+.lightIcon {
 	width: 35px;
+	padding-top: 10%;
 }
 .signalSpacing {
 	width: 5px;
@@ -130,13 +132,17 @@
 	flex-direction: column;
 	justify-content: center;
 }
+.container-column-data {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
 .item {
 	font-family: Arial, sans-serif;
 	color: #c2185b;
 }
 .data {
-	background-color: #7a7676;
-	padding-right: 10%;
+	margin-bottom: 5%;
 }
 .progressdata {
 	width: 50%;
