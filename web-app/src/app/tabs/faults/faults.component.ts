@@ -19,7 +19,6 @@ export class FaultsComponent implements OnInit {
 
   ngOnInit() {
     this.batteryFaults = this.faultsService.getBatteryFaults();
-    console.log(this.batteryFaults.errorFlags.internalCommunicationFault);
     this.motor0Faults = this.faultsService.getMotorFaults(0);
     this.motor1Faults = this.faultsService.getMotorFaults(1);
 
