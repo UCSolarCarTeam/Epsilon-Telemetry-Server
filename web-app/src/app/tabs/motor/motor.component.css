@@ -9,17 +9,18 @@
 	margin-bottom: 25px;
 	margin-top: 10px;
 }
-
+.alive-group {
+	float:right;
+	margin-right: 1em;
+}
 .title-left {
-	float: left;
-	width: 40%;
-	margin-left: 5%;
+	margin-left: 1em;
 }
 .title-right {
 	color: #73a2ef;
 	float: left;
 	width: 5%;
-	margin-left: 5px;
+	margin-left: 20%;
 }
 .left-side {
 	float: left;
@@ -30,12 +31,6 @@
 	float: left;
 	width: 47.5%;
 	margin-left: 2.5%;
-}
-
-.circle {
-	float: left;
-	width: 15px;
-	height: 15px;
 }
 
 .clicker {
@@ -70,21 +65,9 @@
 }
 
 .subheader {
-	font-family: Arial, sans-serif;
-	font-size: 0.8rem;
-	background-color: grey;
-	color: rgba(255, 255, 255, 0.75);
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	border-radius: 5px;
+	justify-content: flex-start;
 }
-.subheader > h3 {
-	font-family: Arial, sans-serif;
-	font-size: .8em;
-	background-color: #7a7676;
-	color: rgba(255, 255, 255, 0.75);
-	border-radius: 25px;
-}
+
 .container-row {
 	display: flex;
 	flex-direction: row;

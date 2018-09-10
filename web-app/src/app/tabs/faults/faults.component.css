@@ -1,3 +1,9 @@
+/*Added on to from src/styles.css*/
+.subheader {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
 .title-left {
 	float: left;
 	width: 75%;
@@ -29,19 +35,7 @@
 .reduce {
 	width: 20%;
 }
-.subheader {
-	font-family: Arial, sans-serif;
-	font-size: 1rem;
-	background-color: #303030;
-	color: rgba(255, 255, 255, 0.75);
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	text-align: center;
-	margin-top: 1em;
-	margin-bottom: 1em;
-	width: 100%;
-	border:1px solid #6B7F7F;
-}
+
 .full {
 	width:100%;
 }
