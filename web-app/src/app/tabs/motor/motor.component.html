@@ -1,13 +1,12 @@
 <div class="motor">
-	<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
-	
+	<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle"></ng-template>	
 	<div class="container-row">
 		<div class="container-column left-side">
 			<div class="subheader">
 				<span class="title-left">Key Motor 1</span>
 				<div class="alive-group">
 	    			<span *ngIf="motor0.alive; else elseBlock">
-	    				<img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle">
+	    				<img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle">
 		    		</span>
 		    		Alive
 	    		</div>
@@ -94,7 +93,7 @@
 				<span class="title-left">Key Motor 1</span>
 				<div class="alive-group">
 	    			<span *ngIf="motor1.alive; else elseBlock">
-	    				<img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle">
+	    				<img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle">
 		    		</span>
 		    		Alive
 	    		</div>
