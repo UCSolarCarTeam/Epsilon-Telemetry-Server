@@ -67,13 +67,7 @@
 .subheader {
 	justify-content: flex-start;
 }
-/*.subheader > h3 {
-	font-family: Arial, sans-serif;
-	font-size: .8em;
-	background-color: #7a7676;
-	color: rgba(255, 255, 255, 0.75);
-	border-radius: 25px;
-}*/
+
 .container-row {
 	display: flex;
 	flex-direction: row;
