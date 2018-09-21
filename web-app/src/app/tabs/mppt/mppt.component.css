@@ -35,9 +35,13 @@
 }
 
 .circle {
-	float: left;
+	float: right;
 	width: 15px;
 	height: 15px;
+}
+
+.alive {
+	float: right;
 }
 
 .circleItems {
@@ -73,14 +77,15 @@
 
 .subheader {
 	font-family: Arial, sans-serif;
-	font-size: 0.8rem;
-	background-color: grey;
+	font-size: 1rem;
+	background-color: #303030;
 	color: rgba(255, 255, 255, 0.75);
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 5px;
 	text-align: center;
 	margin-bottom: 15px;
+	width: auto;
+	border:1px solid #6B7F7F;
 }
 .subheader > h3 {
 	font-family: Arial, sans-serif;

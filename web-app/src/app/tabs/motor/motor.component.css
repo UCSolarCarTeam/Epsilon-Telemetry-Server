@@ -1,13 +1,15 @@
 .header {
+	display: flex;
+	justify-content: space-between;
 	font-family: Arial, sans-serif;
 	font-size: 1.2rem;
-	background-color: grey;
-	color: rgba(255, 255, 255, 0.75);
-	padding-bottom: 1.2em;
+	background-color: transparent;
+	color: #D5FEFF;
+	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 25px;
-	margin-bottom: 25px;
-	margin-top: 10px;
+	margin-top: 0.1em;
+	margin-bottom: 0.1em;
+	width: auto;
 }
 
 .title-left {
@@ -71,12 +73,15 @@
 
 .subheader {
 	font-family: Arial, sans-serif;
-	font-size: 0.8rem;
-	background-color: grey;
+	font-size: 1rem;
+	background-color: #303030;
 	color: rgba(255, 255, 255, 0.75);
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 5px;
+	text-align: center;
+	margin-bottom: 15px;
+	width: auto;
+	border:1px solid #6B7F7F;
 }
 .subheader > h3 {
 	font-family: Arial, sans-serif;
@@ -103,13 +108,21 @@
 	font-size: 0.75em;
 	margin-left: 15px;
 	margin-right: 15px;
+	border-bottom: 1px solid white;
+	margin-bottom: 10px;
 }
 .data {
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 5px;
-	margin-bottom: 10px;
 	padding: 5px;
+	white-space: nowrap;
+	justify-content: center;
+	text-align: center;
+}
+
+.underline {
+	justify-content: center;
 }
 
 .leftside {

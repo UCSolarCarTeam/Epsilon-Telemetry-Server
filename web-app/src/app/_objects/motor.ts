@@ -1,7 +1,7 @@
 export class Motor {
   // KeyMotor
   alive = false;
-  busCurrent = -1;
+  busCurrent = -100;
   busVoltage = -1;
   setCurrent = -1;
   setVelocity = -1;
@@ -10,9 +10,9 @@ export class Motor {
   // MotorDetails
   backEmf = -1;
   dcBusAmpHours = -1;
-  dspBoardTemp = -1;
-  heatSinkTemp = -1;
-  motorCurrentImaginary = -1;
+  dspBoardTemp = -100;
+  heatSinkTemp = -100;
+  motorCurrentImaginary = -100;
   motorCurrentReal = -1;
   motorTemp = -1;
   motorVoltageImaginary = -1;
