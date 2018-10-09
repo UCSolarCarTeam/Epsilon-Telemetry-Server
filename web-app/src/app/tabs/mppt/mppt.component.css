@@ -30,6 +30,11 @@
 .text {
 	text-align: center;
 }
+
+.aliveText {
+	background-color: transparent;
+	color: #D5FEFF;
+}
 .aliveCircle {
 	float: left;
 }
@@ -45,6 +50,7 @@
 }
 
 .circleItems {
+	margin-top: .5em;
 	width: 15px;
 	height: 15px;
 }
@@ -112,7 +118,6 @@
 	font-size: 0.8rem;
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 25px;
 	text-align: center;
 }
 .data {
@@ -121,8 +126,12 @@
 	font-size: 0.8rem;
 	padding-bottom: 0.2em;
 	padding-top: .2em;
-	border-radius: 25px;
 	text-align: center;
+	border-bottom: 1px solid white;
+	margin-bottom: .5em;
+}
+.underline {
+	justify-content: center;
 }
 
 .leftside {

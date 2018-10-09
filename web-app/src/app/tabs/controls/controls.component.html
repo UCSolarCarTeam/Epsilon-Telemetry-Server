@@ -1,11 +1,11 @@
 <div class="controls">
 	<div class="header">
-		<span class="aliveGroup">
+		<span class="alive-group">
 	    		<div *ngIf="controls.alive; else controlsNotAlive"><img class="circleAlive" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
 	    		<ng-template #controlsNotAlive><img class="circleAlive" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 				<span class="aliveText">Alive</span>
 		</span>
-		<span class="aliveGroup">
+		<span class="alive-group">
 	    		<div *ngIf="lights.alive; else elseBlock"><img class="circleAlive" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></div>
 	    		<ng-template #elseBlock><img class="circleAlive" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
 				<span class="aliveText">Alive</span>

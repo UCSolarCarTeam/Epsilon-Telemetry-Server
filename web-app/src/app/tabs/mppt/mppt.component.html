@@ -6,63 +6,63 @@
 				<div class="container-column title-left text">
 					<div class="subheader">
 						<div class="text">Channel 0</div>
-						<div class="text">Alive</div> 
-						<div>
+						<span class="aliveText">Alive </span> 
+						<span>
 			    			<span *ngIf="mppt0.alive; else mppt0AliveElse" class="buttonCentering">
 			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
 			    			</span>
 			    			<ng-template #mppt0AliveElse>
 			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
 			    			</ng-template>
-						</div>
+						</span>
 						
 					</div>
 					<div>
 						<div class="item">Array Voltage</div>
-						<div class="data">{{mppt0.arrayVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt0.arrayVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Array Current</div>
-						<div class="data">{{mppt0.arrayCurrent}} A</div>
+						<div class="data"><span class="underline">{{mppt0.arrayCurrent}} A</span></div>
 					</div>
 					<div>
 						<div class="item">Battery Voltage</div>
-						<div class="data">{{mppt0.batteryVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt0.batteryVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Temperature</div>
-						<div class="data">{{mppt0.temperature}} ºC</div>
+						<div class="data"><span class="underline">{{mppt0.temperature}} ºC</span></div>
 					</div>
 				</div>
 				<div class="container-column title-right text">
 					<div class="subheader">
 						<div class="text">Channel 1</div>
-						<div class="text">Alive</div> 
-						<div>
+						<span class="aliveText">Alive </span>
+						<span>
 			    			<span *ngIf="mppt1.alive; else mppt1AliveElse" class="buttonCentering">
 			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
 			    			</span>
 			    			<ng-template #mppt1AliveElse>
 			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
 			    			</ng-template>
-						</div>
+						</span>
 						
 					</div>
 					<div>
 						<div class="item">Array Voltage</div>
-						<div class="data">{{mppt1.arrayVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt1.arrayVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Array Current</div>
-						<div class="data">{{mppt1.arrayCurrent}} A</div>
+						<div class="data"><span class="underline">{{mppt1.arrayCurrent}} A</span></div>
 					</div>
 					<div>
 						<div class="item">Battery Voltage</div>
-						<div class="data">{{mppt1.batteryVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt1.batteryVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Temperature</div>
-						<div class="data">{{mppt1.temperature}} ºC</div>
+						<div class="data"><span class="underline">{{mppt1.temperature}} ºC</span></div>
 					</div>
 				</div>
 			</div>
@@ -73,63 +73,63 @@
 				<div class="container-column title-left text">
 					<div class="subheader">
 						<div class="text">Channel 0</div>
-						<div class="text">Alive</div> 
-						<div>
+						<span class="aliveText">Alive </span> 
+						<span>
 			    			<span *ngIf="mppt2.alive; else mppt2AliveElse" class="buttonCentering">
 			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
 			    			</span>
 			    			<ng-template #mppt2AliveElse>
 			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
 			    			</ng-template>
-						</div>
+						</span>
 						
 					</div>
 					<div>
 						<div class="item">Array Voltage</div>
-						<div class="data">{{mppt2.arrayVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt2.arrayVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Array Current</div>
-						<div class="data">{{mppt2.arrayCurrent}} A</div>
+						<div class="data"><span class="underline">{{mppt2.arrayCurrent}} A</span></div>
 					</div>
 					<div>
 						<div class="item">Battery Voltage</div>
-						<div class="data">{{mppt2.batteryVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt2.batteryVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Temperature</div>
-						<div class="data">{{mppt2.temperature}} ºC</div>
+						<div class="data"><span class="underline">{{mppt2.temperature}} ºC</span></div>
 					</div>
 				</div>
 				<div class="container-column title-right text">
 					<div class="subheader">
 						<div class="text">Channel 1</div>
-						<div class="text">Alive</div> 
-						<div>
+						<span class="aliveText">Alive </span>
+						<span>
 			    			<span *ngIf="mppt3.alive; else mppt3AliveElse" class="buttonCentering">
 			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
 			    			</span>
 			    			<ng-template #mppt3AliveElse>
 			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
 			    			</ng-template>
-						</div>
+						</span>
 						
 					</div>
 					<div>
 						<div class="item">Array Voltage</div>
-						<div class="data">{{mppt3.arrayVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt3.arrayVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Array Current</div>
-						<div class="data">{{mppt3.arrayCurrent}} A</div>
+						<div class="data"><span class="underline">{{mppt3.arrayCurrent}} A</span></div>
 					</div>
 					<div>
 						<div class="item">Battery Voltage</div>
-						<div class="data">{{mppt3.batteryVoltage}} V</div>
+						<div class="data"><span class="underline">{{mppt3.batteryVoltage}} V</span></div>
 					</div>
 					<div>
 						<div class="item">Temperature</div>
-						<div class="data">{{mppt3.temperature}} ºC</div>
+						<div class="data"><span class="underline">{{mppt3.temperature}} ºC</span></div>
 					</div>
 				</div>
 			</div>

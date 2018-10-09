@@ -20,11 +20,9 @@
 	color: #73a2ef;
 	float: left;
 	width: 5%;
-	margin-left: 5px;
 }
-.aliveGroup {
+.alive-group {
 	margin-left: auto;
-	width: auto;
 }
 .aliveGroup > .aliveText {
 	margin-left: 0.2em;
@@ -39,6 +37,7 @@
 	width: 1em;
 	height: 1em;
 	margin-top: 2px;
+	margin-right: .4em;
 }
 .width {
 	width: 100%;
