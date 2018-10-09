@@ -81,6 +81,7 @@
 	width: 20%;
 }
 
+<<<<<<< HEAD
 .subheader {
 	font-family: Arial, sans-serif;
 	font-size: 1rem;
@@ -101,6 +102,8 @@
 	border-radius: 25px;
 }
 
+=======
+>>>>>>> a0614b81c9895eac93cb954086e36cc0c202462f
 .container-row {
 	padding-top: .2em;
 	display: flex;

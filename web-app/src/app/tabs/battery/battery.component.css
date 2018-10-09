@@ -1,17 +1,3 @@
-.header {
-	display: flex;
-	justify-content: space-between;
-	font-family: Arial, sans-serif;
-	font-size: 1.2rem;
-	background-color: transparent;
-	color: #D5FEFF;
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	margin-top: 0.1em;
-	margin-bottom: 0.1em;
-	width: auto;
-}
-
 .alive-group {
 	margin-left: auto;
 }
@@ -56,6 +42,7 @@
 	color: rgb(255, 255, 255);
 	color: rgba(255, 255, 255, 0.75);
 }
+<<<<<<< HEAD
 .subheader {
 	font-family: Arial, sans-serif;
 	font-size: 1rem;
@@ -69,6 +56,8 @@
 	width: auto;
 	border:1px solid #6B7F7F;
 }
+=======
+>>>>>>> a0614b81c9895eac93cb954086e36cc0c202462f
 .item {
 	font-family: Arial, sans-serif;
 	color: rgb(255, 255, 255);

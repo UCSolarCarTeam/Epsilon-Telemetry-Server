@@ -11,11 +11,12 @@
 	margin-bottom: 0.1em;
 	width: auto;
 }
-
+.alive-group {
+	float:right;
+	margin-right: 1em;
+}
 .title-left {
-	float: left;
-	width: 40%;
-	margin-left: 5%;
+	margin-left: 1em;
 }
 .title-right {
 	color: #D5FEFF;
@@ -32,12 +33,6 @@
 	float: left;
 	width: 47.5%;
 	margin-left: 2.5%;
-}
-
-.circle {
-	float: left;
-	width: 15px;
-	height: 15px;
 }
 
 .clicker {
@@ -90,6 +85,7 @@
 	color: rgba(255, 255, 255, 0.75);
 	border-radius: 25px;
 }
+
 .container-row {
 	display: flex;
 	flex-direction: row;
