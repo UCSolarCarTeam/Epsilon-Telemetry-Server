@@ -1,8 +1,6 @@
-.alive-group {
-	float:right;
-	margin-right: 1em;
-}
 .title-left {
+	float: left;
+	width: 40%;
 	margin-left: 1em;
 }
 .title-right {
@@ -21,45 +19,10 @@
 	width: 47.5%;
 	margin-left: 2.5%;
 }
-
-.clicker {
-	float: left;
-	width: 20%;
-}
-
-.button {
-	float: left;
-	width: 10px;
-	margin-right: 20%;
-}
-
-.ifs {
-	width: 10px;
+/*Added on to from src/styles.css*/
+.circle {
 	float: left;
 }
-
-.spacing {
-	width: 40%;
-	margin-left: 20%;
-}
-
-.centering {
-	width: 40%;
-	margin-left: 5%;
-	margin-right: 5%; 
-}
-
-.reduce {
-	width: 20%;
-}
-.subheader > h3 {
-	font-family: Arial, sans-serif;
-	font-size: .8em;
-	background-color: #7a7676;
-	color: rgba(255, 255, 255, 0.75);
-	border-radius: 25px;
-}
-
 .container-row {
 	display: flex;
 	flex-direction: row;
@@ -90,13 +53,6 @@
 	justify-content: center;
 	text-align: center;
 }
-
 .underline {
 	justify-content: center;
-}
-
-.leftside {
-	float: left;
-	width: 45%;
-	margin-right: 5%;
 }
