@@ -1,11 +1,10 @@
 <div class="motor">
-	<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle"></ng-template>	
+<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle"></ng-template>	
 	<div class="container-row">
 		<div class="container-column left-side">
 			<div class="subheader">
 				<span class="title-left">Key 0 Motor </span>
-	    			<span *ngIf="motor0.alive; else elseBlock" class="alive"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle"></span>
-	    			<ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle"></ng-template>
+	    			<span *ngIf="motor0.alive; else elseBlock" class="alive"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
 				<span class="title-right">Alive</span>
 			</div>
 			<div class="container-row">
@@ -88,7 +87,7 @@
 		<div class="container-column right-side">
 			<div class="subheader">
 				<span class="title-left">Key 1 Motor </span>
-	    			<span *ngIf="motor1.alive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Red Circle" id="circle"></span>
+	    			<span *ngIf="motor1.alive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
 				<span class="title-right">Alive</span>
 			</div>
 			<div class="container-row">

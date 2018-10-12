@@ -1,36 +1,8 @@
-.header {
-	display: flex;
-	justify-content: space-between;
-	font-family: Arial, sans-serif;
-	font-size: 1.5vw;
-	background-color: transparent;
-	color: #D5FEFF;
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	margin-top: 0.1em;
-	margin-bottom: 0.1em;
-	width: auto;
-}
-.title-left {
-	float: left;
-	width: 50%;
-	margin-left: 5%;
-}
-.title-right {
-	color: #73a2ef;
-	float: left;
-	width: 5%;
-}
 .alive-group {
 	margin-left: auto;
 }
 .aliveGroup > .aliveText {
 	margin-left: 0.2em;
-}
-.circle {
-	float: left;
-	width: 1em;
-	height: 1em;
 }
 .circleAlive {
 	float: left;
@@ -42,34 +14,15 @@
 .width {
 	width: 100%;
 }
-.button {
-	float: left;
-	width: 10px;
-	height: 10px;
-	margin-right: 20%;
-}
 .spacing {
 	width: 100%;
 	text-align: left;
-	font-size: 1.5vw;
+	font-size: 1.2rem;
 	padding-bottom: 0.2em;
 	font-family: Ariel, sans-serif;
 }
 .dataHeader {
 	color: rgba(255, 255, 255, 0.75);
-}
-.center-spacing {
-	width: 70%;
-	margin-left: 20%;
-	text-align: center;
-}
-.centering {
-	width: 60%;
-	margin-left: 5%;
-	margin-right: 5%; 
-}
-.reduce {
-	width: 20%;
 }
 .titleUnderline {
 	border-bottom: 1px solid white;
@@ -90,32 +43,6 @@
 }
 .signalSpacing {
 	width: 5px;
-}
-.subheader {
-	font-family: Arial, sans-serif;
-	font-size: 0.8rem;
-	background-color: grey;
-	color: white;
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	border-radius: 25px;
-	text-align: center;
-}
-.subheader > h3 {
-	font-family: Arial, sans-serif;
-	font-size: .8em;
-	background-color: #7a7676;
-	color: white;
-	border-radius: 25px;
-}
-.subsubheader {
-	font-family: Arial, sans-serif;
-	font-size: 0.8rem;
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	border-radius: 25px;
-	text-align: center;
-	color: white;
 }
 .container-row {
 	display: flex;
@@ -152,9 +79,4 @@
 	width: 50%;
 	height: 25px;
 	margin-right: 10px;
-}
-.leftside {
-	float: left;
-	width: 45%;
-	margin-right: 5%;
 }

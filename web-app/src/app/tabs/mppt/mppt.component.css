@@ -1,16 +1,3 @@
-.header {
-	display: flex;
-	justify-content: space-between;
-	font-family: Arial, sans-serif;
-	font-size: 1.2rem;
-	background-color: transparent;
-	color: #D5FEFF;
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	margin-top: 0.1em;
-	margin-bottom: 0.1em;
-	width: auto;
-}
 .header-title-left {
 	float: left;
 	width: 45%;
@@ -38,13 +25,6 @@
 .aliveCircle {
 	float: left;
 }
-
-.circle {
-	float: right;
-	width: 15px;
-	height: 15px;
-}
-
 .alive {
 	float: right;
 }
@@ -79,20 +59,6 @@
 
 .reduce {
 	width: 20%;
-}
-
-<<<<<<< HEAD
-.subheader {
-	font-family: Arial, sans-serif;
-	font-size: 1rem;
-	background-color: #303030;
-	color: rgba(255, 255, 255, 0.75);
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	text-align: center;
-	margin-bottom: 15px;
-	width: auto;
-	border:1px solid #6B7F7F;
 }
 .subheader > h3 {
 	font-family: Arial, sans-serif;

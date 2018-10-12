@@ -1,4 +1,5 @@
 <div class="mppt">
+<ng-template #elseBlock><img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle"></ng-template>
 	<div class="container-row">
 		<div class="title-left container-column">
 			<span class="subheader">Unit 0</span>
@@ -8,14 +9,10 @@
 						<div class="text">Channel 0</div>
 						<span class="aliveText">Alive </span> 
 						<span>
-			    			<span *ngIf="mppt0.alive; else mppt0AliveElse" class="buttonCentering">
-			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			<span *ngIf="mppt0.alive; else elseBlock" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle">
 			    			</span>
-			    			<ng-template #mppt0AliveElse>
-			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-			    			</ng-template>
 						</span>
-						
 					</div>
 					<div>
 						<div class="item">Array Voltage</div>
@@ -39,12 +36,9 @@
 						<div class="text">Channel 1</div>
 						<span class="aliveText">Alive </span>
 						<span>
-			    			<span *ngIf="mppt1.alive; else mppt1AliveElse" class="buttonCentering">
-			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			<span *ngIf="mppt1.alive; else elseBlock" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle">
 			    			</span>
-			    			<ng-template #mppt1AliveElse>
-			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-			    			</ng-template>
 						</span>
 						
 					</div>
@@ -75,14 +69,10 @@
 						<div class="text">Channel 0</div>
 						<span class="aliveText">Alive </span> 
 						<span>
-			    			<span *ngIf="mppt2.alive; else mppt2AliveElse" class="buttonCentering">
-			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			<span *ngIf="mppt2.alive; else elseBlock" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle">
 			    			</span>
-			    			<ng-template #mppt2AliveElse>
-			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-			    			</ng-template>
 						</span>
-						
 					</div>
 					<div>
 						<div class="item">Array Voltage</div>
@@ -106,14 +96,10 @@
 						<div class="text">Channel 1</div>
 						<span class="aliveText">Alive </span>
 						<span>
-			    			<span *ngIf="mppt3.alive; else mppt3AliveElse" class="buttonCentering">
-			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle" id="circle">
+			    			<span *ngIf="mppt3.alive; else elseBlock" class="buttonCentering">
+			    				<img class="circleItems" src="../../../assets/GreenCircle.png" alt="Green Circle">
 			    			</span>
-			    			<ng-template #mppt3AliveElse>
-			    				<img class="circleItems" src="../../../assets/RedCircle.png" alt="Red Circle" id="circle">
-			    			</ng-template>
 						</span>
-						
 					</div>
 					<div>
 						<div class="item">Array Voltage</div>
