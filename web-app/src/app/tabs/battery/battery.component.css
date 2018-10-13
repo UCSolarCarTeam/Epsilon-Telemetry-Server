@@ -1,37 +1,30 @@
 .alive-group {
 	margin-left: auto;
 }
-
 .alive-text {
 	margin-left: 0.2em;
 }
-
 .circle-items {
 	float: left;
 	width: 1em;
 	height: 1em;
 }
-
 .container-row {
 	display: flex;
 	justify-content: space-around;
 }
-
 .container-column {
 	display: flex;
 	flex-direction: column;
 	width: auto;
 }
-
 .side {
 	float: left;
 	width: 100%;
 }
-
 .side + .side{
 	margin-left: 10px;
 }
-
 .ifs {
 	width: 10px;
 }
@@ -42,7 +35,6 @@
 	color: rgb(255, 255, 255);
 	color: rgba(255, 255, 255, 0.75);
 }
-
 .item {
 	font-family: Arial, sans-serif;
 	color: rgb(255, 255, 255);

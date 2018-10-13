@@ -1,8 +1,3 @@
-.header-title-left {
-	float: left;
-	width: 45%;
-	margin-left: 5%;
-}
 .title-left {
 	float: left;
 	width: 47.5%;
@@ -13,59 +8,17 @@
 	width: 47.5%;
 	margin-left: 2.5%;
 }
-
 .text {
 	text-align: center;
 }
-
 .aliveText {
 	background-color: transparent;
 	color: #D5FEFF;
 }
-.aliveCircle {
-	float: left;
-}
-.alive {
-	float: right;
-}
-
 .circleItems {
 	margin-top: .5em;
 	width: 15px;
 	height: 15px;
-}
-
-.button {
-	float: left;
-	width: 10px;
-	height: 10px;
-}
-
-.ifs {
-	width: 10px;
-}
-
-.spacing {
-	width: 40%;
-	margin-left: 20%;
-}
-
-.centering {
-	width: 40%;
-	margin-left: 5%;
-	margin-right: 5%; 
-}
-
-
-.reduce {
-	width: 20%;
-}
-.subheader > h3 {
-	font-family: Arial, sans-serif;
-	font-size: .8em;
-	background-color: #7a7676;
-	color: rgba(255, 255, 255, 0.75);
-	border-radius: 25px;
 }
 .container-row {
 	padding-top: .2em;
@@ -78,14 +31,6 @@
 	flex-direction: column;
 	justify-content: center;
 }
-.item {
-	color: rgba(255, 255, 255, 0.75);
-	font-family: Arial, sans-serif;
-	font-size: 0.8rem;
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	text-align: center;
-}
 .data {
 	font-family: Arial, sans-serif;
 	color: rgba(255, 255, 255, 0.75);
@@ -93,15 +38,8 @@
 	padding-bottom: 0.2em;
 	padding-top: .2em;
 	text-align: center;
-	border-bottom: 1px solid white;
-	margin-bottom: .5em;
 }
 .underline {
-	justify-content: center;
-}
-
-.leftside {
-	float: left;
-	width: 45%;
-	margin-right: 5%;
+	border-bottom: 1px solid white;
+	margin-bottom: .5em;
 }
