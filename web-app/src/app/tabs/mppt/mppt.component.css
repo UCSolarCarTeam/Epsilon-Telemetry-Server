@@ -1,21 +1,16 @@
-.title-left {
+.half {
 	float: left;
 	width: 47.5%;
 	margin-right: 2.5%;
 }
-.title-right {
-	float: left;
-	width: 47.5%;
-	margin-left: 2.5%;
-}
 .text {
 	text-align: center;
 }
-.aliveText {
+.alive-text {
 	background-color: transparent;
 	color: #D5FEFF;
 }
-.circleItems {
+.circle-items {
 	margin-top: .5em;
 	width: 15px;
 	height: 15px;
