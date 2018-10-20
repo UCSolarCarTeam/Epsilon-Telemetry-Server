@@ -31,7 +31,7 @@ export class AuxBmsService {
   }
 
   private updateAuxBms(data: ITelemetryData): void {
-    const pState = data.prechargestate as keyof typeof State;
+    const pState = data.prechargestate;
     this.auxbms.alive = data.auxbmsalive;
     this.auxbms.allowCharge = data.allowcharge;
     this.auxbms.auxVoltage = data.auxvoltage;
