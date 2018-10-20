@@ -32,11 +32,11 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 --
 
 CREATE TYPE public.chargestate AS ENUM (
-    'Off',
-    'Common Engaged',
-    'Charge Engaged',
-    'Discharge Engaged',
-    'All Engaged'
+    'OFF',
+    'COMMON_ENGAGED',
+    'CHARGE_ENGAGED',
+    'DISCHARGE_ENGAGED',
+    'ALL_ENGAGED'
 );
 
 

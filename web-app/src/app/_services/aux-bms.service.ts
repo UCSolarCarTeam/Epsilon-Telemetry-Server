@@ -21,7 +21,7 @@ export class AuxBmsService {
       (data: ITelemetryData) => {
         this.updateAuxBms(data);
         this.auxbms$.emit(this.getData());
-        // console.log(data.prechargestate)
+        console.log(data)
       }
     );
   }
@@ -37,6 +37,8 @@ export class AuxBmsService {
     this.auxbms.auxVoltage = data.auxvoltage;
     this.auxbms.contactorError = data.contractorerror;
     this.auxbms.prechargeState = State[pState];
+    console.log(data.prechargestate);
+    console.log(pState);
     this.auxbms.strobeBmsLight = data.strobebmslight;
     this.auxbms.highVoltageEnable = data.highvoltageenable;
   }

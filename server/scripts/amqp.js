@@ -21,7 +21,7 @@ amqp.connect(config.rabbitmq.host)
     // bind internal queue with external exchange and enter ready state
     return ch.bindQueue(q.queue, ex, '')
       .then((ok) => {
-        console.log(`Express: waiting for messages in ${q}`);
+        //console.log(`Express: waiting for messages in ${q}`);
 
         // start reading objects from the queue
         return ch.consume(q, function(msg) {
@@ -31,7 +31,6 @@ amqp.connect(config.rabbitmq.host)
           db.insert('rabbitmq-insert', jsonObj)
             .then((insertedRow) => {
               console.log('1 row inserted from RabbitMQ');
-
               // send to angular clients
               wss.broadcast(JSON.stringify(insertedRow));
             });
