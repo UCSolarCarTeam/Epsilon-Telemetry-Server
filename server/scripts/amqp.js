@@ -26,7 +26,7 @@ amqp.connect(config.rabbitmq.host)
         // start reading objects from the queue
         return ch.consume(q, function(msg) {
           const jsonObj = JSON.parse(msg.content);
-          console.log(jsonObj);
+          console.log(jsonObj.prechargestate);
 
           // save the data into database
           db.insert('rabbitmq-insert', jsonObj)
