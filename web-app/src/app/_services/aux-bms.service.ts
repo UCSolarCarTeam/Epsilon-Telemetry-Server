@@ -31,12 +31,12 @@ export class AuxBmsService {
   }
 
   private updateAuxBms(data: ITelemetryData): void {
-    const pState = data.prechargestate;
+    const pState = data.prechargestate as keyof typeof State;
     this.auxbms.alive = data.auxbmsalive;
     this.auxbms.allowCharge = data.allowcharge;
     this.auxbms.auxVoltage = data.auxvoltage;
     this.auxbms.contactorError = data.contractorerror;
-    this.auxbms.prechargeState = State[pState];
+    this.auxbms.prechargeState = State[data.prechargestate];
     this.auxbms.strobeBmsLight = data.strobebmslight;
     this.auxbms.highVoltageEnable = data.highvoltageenable;
   }
