@@ -58,6 +58,9 @@
 	flex-direction: column;
 	justify-content: center;
 }
+.centered {
+	justify-content: center;	
+}
 .container-column-data {
 	display: inline-flex;
 	flex-direction: column;
