@@ -26,13 +26,11 @@ amqp.connect(config.rabbitmq.host)
         // start reading objects from the queue
         return ch.consume(q, function(msg) {
           const jsonObj = JSON.parse(msg.content);
-          // console.log(jsonObj.prechargestate);
 
           // save the data into database
           db.insert('rabbitmq-insert', jsonObj)
             .then((insertedRow) => {
               console.log('1 row inserted from RabbitMQ');
-
               // send to angular clients
               wss.broadcast(JSON.stringify(insertedRow));
             });
