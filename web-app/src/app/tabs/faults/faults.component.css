@@ -1,0 +1,75 @@
+/*Added on to from src/styles.css*/
+.subheader {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.title-left {
+	float: left;
+	width: 75%;
+	margin-left: 5%;
+}
+.title-right {
+	color: #73a2ef;
+	font-size: 1.2em;
+	float: left;
+	width: 10%;
+}
+.horizontal-spacing {
+	margin: 1%;
+	width: 48%;
+}
+.centering {
+	width: 40%;
+	margin-left: 5%;
+	margin-right: 5%; 
+}
+.reduce {
+	width: 20%;
+}
+
+.full {
+	width:100%;
+}
+.on {
+	color: #c2185b;
+}
+.off {
+	color: grey;
+}
+.container-row {
+	display: flex;
+	justify-content: space-between;
+}
+.container-column {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.item {
+	font-family: Arial, sans-serif;
+	font-size: 1rem;
+}
+
+.data {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 5px;
+	margin-bottom: 1em;
+	padding: 5px;
+	margin: 0 2px;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.value {
+	border-bottom: 1px solid white;
+}
+.side {
+	float: left;
+	width: 100%;
+}
+
+.side + .side {
+	margin-left: 0.8em;
+}

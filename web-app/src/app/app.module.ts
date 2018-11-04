@@ -45,6 +45,8 @@ import { WebSocketService } from './websocket.service';
     MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
+    MatTabsModule,
+    AppRoutingModule,
     MatInputModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
