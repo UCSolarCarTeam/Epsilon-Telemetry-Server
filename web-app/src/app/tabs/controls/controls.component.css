@@ -55,12 +55,7 @@
 	flex-direction: column;
 	justify-content: center;
 }
-.centered {
-	justify-content: center;	
-}
-.container-column-data {
-	display: inline-flex;
-	flex-direction: column;
+.flex-start {
 	justify-content: flex-start;
 }
 .item {
