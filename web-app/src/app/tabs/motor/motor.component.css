@@ -9,15 +9,10 @@
 	width: 5%;
 	margin-left: .4em;
 }
-.left-side {
+.half {
 	float: left;
 	width: 47.5%;
 	margin-right: 2.5%;
-}
-.right-side {
-	float: left;
-	width: 47.5%;
-	margin-left: 2.5%;
 }
 /*Added on to from src/styles.css*/
 .circle {

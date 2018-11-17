@@ -31,7 +31,6 @@ amqp.connect(config.rabbitmq.host)
           db.insert('rabbitmq-insert', jsonObj)
             .then((insertedRow) => {
               console.log('1 row inserted from RabbitMQ');
-
               // send to angular clients
               wss.broadcast(JSON.stringify(insertedRow));
             });

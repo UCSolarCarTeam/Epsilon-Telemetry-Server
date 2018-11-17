@@ -1,10 +1,7 @@
 .alive-group {
 	margin-left: auto;
 }
-.aliveGroup > .aliveText {
-	margin-left: 0.2em;
-}
-.circleAlive {
+.circle-alive {
 	float: left;
 	width: 1em;
 	height: 1em;
@@ -21,14 +18,14 @@
 	padding-bottom: 0.2em;
 	font-family: Ariel, sans-serif;
 }
-.dataHeader {
+.data-header {
 	color: rgba(255, 255, 255, 0.75);
 }
-.titleUnderline {
+.title-underline {
 	border-bottom: 1px solid white;
 	margin-bottom: 5%;
 }
-.dataUnderline {
+.data-underline {
 	border-bottom: 1px solid white;
 }
 .on {
@@ -37,11 +34,11 @@
 .off {
 	color: grey;
 }
-.lightIcon {
+.light-icon {
 	width: 35px;
 	padding-top: 10%;
 }
-.signalSpacing {
+.signal-spacing {
 	width: 5px;
 }
 .container-row {
@@ -49,7 +46,7 @@
 	flex-direction: row;
 	justify-content: center;
 }
-.container-row-not-centered {
+.centered {
 	display: flex;
 	flex-direction: row;
 }
@@ -73,11 +70,11 @@
 .data {
 	margin-bottom: 5%;
 }
-.progressdata {
+.progress-data {
 	width: 50%;
 	color: rgba(255, 255, 255, 0.75);
 }
-.progressbar {
+.progress-bar {
 	float: left;
 	width: 50%;
 	height: 25px;

@@ -427,11 +427,8 @@ function jsonToMap(jsonObj) {
     `${jsonObj['Battery']['HighCellVoltageId']}`);
   mapObj.set('averagecellvoltage',
     `${jsonObj['Battery']['AverageCellVoltage']}`);
-  // mapObj.set('prechargestate',
-  //   `'${jsonObj['AuxBms']['PrechargeState']}'`);
-  // ignore until test tool fixed
   mapObj.set('prechargestate',
-    'Off');
+    `${jsonObj['AuxBms']['PrechargeState']}`);
   mapObj.set('auxvoltage',
     `${jsonObj['AuxBms']['AuxVoltage']}`);
   mapObj.set('auxbmsalive',
