@@ -1,10 +1,10 @@
 <ng-template #elseBlock><img class="circle-items" src="../../../assets/RedCircle.png" alt="Red Circle" ></ng-template>
-<div class="header">
-	<div class="alive-group">
-    		<div *ngIf="battery.batteryAlive; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" ></div>
-			<span class="alive-text">Alive</span>
+	<div class="header">
+		<div class="alive-group">
+	    		<div *ngIf="battery.alive; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" ></div>
+				<span class="alive-text">Alive</span>
+		</div>
 	</div>
-</div>
 <div class="container-row">
 	<div class="side">
 		<div class ="subheader">BMS Relay Status Flags</div>

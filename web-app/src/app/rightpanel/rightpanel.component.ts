@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuxBms } from '../_objects/aux-bms';
+import { AuxBms, State } from '../_objects/aux-bms';
 import { AuxBmsService } from '../_services/aux-bms.service';
 import { Battery } from '../_objects/battery';
 import { BatteryService } from '../_services/battery.service';
@@ -29,6 +29,7 @@ export class RightpanelComponent implements OnInit {
   mppt0: Mppt;
   mppt1: Mppt;
   mppt2: Mppt;
+  state = State;
 
   constructor(private auxBmsService: AuxBmsService,
               private batteryService: BatteryService,
