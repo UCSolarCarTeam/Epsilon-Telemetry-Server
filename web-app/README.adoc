@@ -90,3 +90,6 @@ Code for the app. Refer to https://angular.io/guide/styleguide#application-struc
 === e2e
 Location for all e2e tests.
 
+=== Errors
+Due to node_modules not being kept track by git, if there are errors in running the web-app side, run the command 'npm install'. This is due to some missing files on the node_modules side.
+
