@@ -83,10 +83,6 @@ Other commands:
  == Installing Dependencies
 Due to certain dependencies having vulnerabilities or possibly being malicious, please run these commands so the right version of the dependecy is used.
 
-`npm install @angular-devkit/build-angular@0.10.6`
-`npm install karma@3.1.1`
-`npm install protractor@5.4.1`
-`npm update node-sass --depth 2`
 `npm install event-stream@3.3.4`
 `npm uninstall flatmap-stream`
 
