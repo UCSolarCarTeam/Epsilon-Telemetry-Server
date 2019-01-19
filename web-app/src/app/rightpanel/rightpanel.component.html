@@ -191,21 +191,21 @@
     <div class="precharge-state-dots">
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': auxBms.prechargeState != State?.OFF}"
+        [ngClass]="{'active': auxBms.prechargeState != state?.Off}"
       >
         lens
       </mat-icon>
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': auxBms.prechargeState == State?.DISCHARGE_ENGAGED ||
-        auxBms.prechargeState == State?.ALL_ENGAGED}"
+        [ngClass]="{'active': auxBms.prechargeState == state?.DISCHARGE_ENGAGED ||
+        auxBms.prechargeState == state?.ALL_ENGAGED}"
       >
         lens
       </mat-icon>
       <mat-icon
         class="inactive"
-        [ngClass]="{'active': auxBms.prechargeState == State?.CHARGE_ENGAGED ||
-        auxBms.prechargeState == State?.ALL_ENGAGED}"
+        [ngClass]="{'active': auxBms.prechargeState == state?.CHARGE_ENGAGED ||
+        auxBms.prechargeState == state?.ALL_ENGAGED}"
       >
         lens
       </mat-icon>
