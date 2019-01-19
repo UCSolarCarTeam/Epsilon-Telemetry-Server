@@ -186,30 +186,11 @@
       readonly="true"
     >
   </mat-form-field>
-  <div class="precharge-state">
-    <label>Precharge State</label>
-    <div class="precharge-state-dots">
-      <mat-icon
-        class="inactive"
-        [ngClass]="{'active': auxBms.prechargeState != state?.Off}"
+  <mat-form-field>
+    <input matInput
+      placeholder="Precharge State"
+      value= "{{auxBms.prechargeState}}"
+      readonly="true"
       >
-        lens
-      </mat-icon>
-      <mat-icon
-        class="inactive"
-        [ngClass]="{'active': auxBms.prechargeState == state?.DISCHARGE_ENGAGED ||
-        auxBms.prechargeState == state?.ALL_ENGAGED}"
-      >
-        lens
-      </mat-icon>
-      <mat-icon
-        class="inactive"
-        [ngClass]="{'active': auxBms.prechargeState == state?.CHARGE_ENGAGED ||
-        auxBms.prechargeState == state?.ALL_ENGAGED}"
-      >
-        lens
-      </mat-icon>
-      <p>{{auxBms.prechargeState}}</p>
-    </div>
-  </div>
+  </mat-form-field>
 </mat-card>
