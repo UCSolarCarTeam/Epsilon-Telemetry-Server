@@ -93,7 +93,7 @@ Location for all e2e tests.
 == Install Dependencies
 Due to certain dependencies having vulnerabilities or possibly being malicious, please run 
 
-npm audit
+`npm audit`
 
 and this will give the list of commands to fix the vulnerabilities.
 
