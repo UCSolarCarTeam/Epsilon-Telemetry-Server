@@ -1,5 +1,5 @@
 export class Battery {
-  alive = false;
+  alive = true;
   averageCellVoltage = -1;
   averageTemperature = -1;
   bmsRelayStatusFlags: BMSRelayStatusFlags = {
