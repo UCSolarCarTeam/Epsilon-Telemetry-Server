@@ -90,3 +90,10 @@ Code for the app. Refer to https://angular.io/guide/styleguide#application-struc
 === e2e
 Location for all e2e tests.
 
+== Install Dependencies
+Due to certain dependencies having vulnerabilities or possibly being malicious, please run 
+
+`npm audit`
+
+and this will give the list of commands to fix the vulnerabilities.
+
