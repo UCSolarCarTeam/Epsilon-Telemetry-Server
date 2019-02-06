@@ -9,6 +9,8 @@
 .car-misc,
 .battery-misc {
   width: 40%;
+  min-width:120px;
+  font-size: 12px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -134,7 +136,7 @@ mat-divider {
 }
 
 .velocity-number {
-  font-size: 25px;
+  font-size: 18px;
 }
 
 #set-velocity {
@@ -172,7 +174,7 @@ mat-divider {
   }
 
   .velocity-number {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .velocity-data p,
