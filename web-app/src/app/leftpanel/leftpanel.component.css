@@ -2,7 +2,6 @@
   display: flex;
   height: 98%;
   min-width: 260px;
-  width: 20%;
   margin: 0.5%% auto;
 }
 
@@ -47,3 +46,10 @@
       padding: 12px;
     }
 }
+
+@media screen
+  and (max-width: 768px) {
+    :host {
+      display: none;
+    };
+  }
