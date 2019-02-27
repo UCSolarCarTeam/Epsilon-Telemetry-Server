@@ -186,3 +186,20 @@ mat-divider {
     font-size: 14px;
   }
 }
+
+@media screen
+  and (max-width: 768px) {
+    :host {
+      display: none;
+    }
+  }
+
+@media screen
+  and (min-width: 768px)
+  and (max-width: 1200px) {
+    .car-misc,
+    .battery-misc {
+      width: 120px;
+    }
+  }
+  
