@@ -52,14 +52,17 @@
 	column-gap: 10px;
 	grid-template-columns: repeat(2, 1fr);
 }
-.grid-span-two {
-	grid-column: 1 / span 2;
+.grid-span-row {
+	grid-column: 1 / -1;
 }
 
 @media only screen
 and (max-width: 768px){
 	.battery-container-grid {
 		grid-template-columns: repeat(1, 1fr);
+	}
+	.grid-container {
+		grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
 	}
 }
 @media only screen
