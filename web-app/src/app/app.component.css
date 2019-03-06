@@ -50,6 +50,7 @@
 and (max-width: 768px){
   .tabs{
     width: 100%;
+    margin: 0;
   }
 }
 
