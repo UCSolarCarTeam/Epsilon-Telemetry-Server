@@ -1,17 +1,83 @@
-<ng-template #elseBlock><img class="circle-alive" src="../../../assets/RedCircle.png" alt="Red Circle"></ng-template>
-	<div class="header">
-		<span class="alive-group">
-	    		<span *ngIf="controls.alive; else elseBlock"><img class="circle-alive" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
-				Alive
-		</span>
-		<span class="alive-group">
-	    		<span *ngIf="lights.alive; else elseBlock"><img class="circle-alive" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
-				Alive
-		</span>
+<ng-template #elseBlock><img class="circle-items" src="../../../assets/RedCircle.png" alt="Red Circle"></ng-template>
+<div class="grid-container">
+	<div class="lights">
+		<div class="subheader">
+			<span class="title-left">Lights</span>
+    		<span *ngIf="lights.alive; else elseBlock"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
+			<span class="title-right">Alive</span>
+		</div>
+		<div class="sub-container-grid">
+			<div>
+				<div class="subheader">Headlights</div>
+				<div class="grid-container">
+					<span *ngIf="lights.lowBeams; else lightsHeadlightsNotLow" class="lightsHeadlights">
+						<img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="light-icon">
+					</span>
+					<ng-template #lightsHeadlightsNotLow>
+	    				<span>
+	    					<img src="../../../assets/LowHeadlightOff.png" alt="Headlight off" class="light-icon">
+	    				</span>
+	    			</ng-template>
+	    			<span *ngIf="lights.highBeams; else lightsHeadlightsNotHigh" class="lightsHeadlights">
+						<img src="../../../assets/HighHeadlightOn.png" alt="Headlight on" class="light-icon">
+					</span>
+	    			<ng-template #lightsHeadlightsNotHigh>
+		    				<span><img src="../../../assets/HighHeadlightOff.png" alt="Headlight off" class="light-icon"></span>
+	    			</ng-template>
+	    		</div>
+			</div>
+			<div>
+				<div class="subheader">Signals</div>
+				<div class="grid-container">
+					<span *ngIf="lights.leftSignal; else lightsSignalNotLeft">
+						<img src="../../../assets/TurnSignalLeftOn.png" alt="Left signal on" class="light-icon">
+					</span>
+					<ng-template #lightsSignalNotLeft>
+						<span><img src="../../../assets/TurnSignalLeftOff.png" alt="Left signal off" class="light-icon"></span>
+					</ng-template>
+	    			<span *ngIf="lights.rightSignal; else lightsSignalNotRight">
+						<img src="../../../assets/TurnSignalRightOn.png" alt="Right signal on" class="light-icon">
+					</span>
+					<ng-template #lightsSignalNotRight>
+						<span><img src="../../../assets/TurnSignalRightOff.png" alt="Right signal off" class="light-icon"></span>
+					</ng-template>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div class="controls">
+		<div class="subheader">
+			<span>Control</span>
+			<span class="alive-group">
+	    		<span *ngIf="controls.alive; else elseBlock"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
+				<span class="alive-text">Alive</span>
+			</span>
+		</div>
+		<div class="control-container-grid">
+			<div class="grid-container">
+				<div class="item">
+					<span class="spacing data-header">Headlights</span>
+					<span class="off data" [ngClass]="{'on' : controls.headlightsOff == true, 'off' : controls.headlightsOff == false}">
+						<span class="data-underline">Off </span>
+					</span>
+					<span class="off data" [ngClass]="{'on' : controls.headlightsLow == true, 'off' : controls.headlightsLow == false}">
+						<span class="data-underline">Low </span>
+					</span>
+					<span class="off data" [ngClass]="{'on' : controls.headlightsHigh == true, 'off' : controls.headlightsHigh == false}">
+						<span class="data-underline">High</span>
+					</span>
+				</div>
+			</div>			
+
+
+		</div>
+	</div>
+</div>
+
+
 <div class="container-column width">
   <div class="container-row">
-    <span class="spacing data-header">Headlights</span>
+    
 	<span class="spacing data-header">Signal</span>
 	<span class="spacing data-header">Hazard</span>
   </div>
