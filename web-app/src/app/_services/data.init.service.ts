@@ -20,7 +20,7 @@ export class DataInitService {
               private ls: LightsService,
               private mots: MotorService,
               private mps: MpptService,
-              ) {console.log("Initializing Data Services") }
+              ) {}
 
   load() {
     return new Promise((resolve, reject) => {
