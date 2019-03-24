@@ -3,6 +3,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Battery } from '../_objects/battery';
 import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
 import { WebSocketService } from '../websocket.service';
+import { RoundingService } from './rounding.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class BatteryService {
 
   private battery: Battery;
 
-  constructor(private wsService: WebSocketService) {
+  constructor(private wsService: WebSocketService, private rService: RoundingService) {
     this.battery$ = new EventEmitter<Battery>();
     this.battery = new Battery;
 
@@ -42,7 +43,7 @@ export class BatteryService {
     this.battery.bmsRelayStatusFlags.malfunctionIndicatorActive = data.malfunctionindicatoractive;
     this.battery.bmsRelayStatusFlags.multiPurposeInputSignalStatus = data.multipurposeinputsignalstatus;
     this.battery.fanSpeed = data.fanspeed;
-    this.battery.fanVoltage = data.fanvoltage;
+    this.battery.fanVoltage = this.rService.getRoundedValue(data.fanvoltage, 2);
     this.battery.highCellVoltage = data.highcellvoltage;
     this.battery.highCellVoltageId = data.highcellvoltageid;
     this.battery.highTemperature = data.hightemperature;
@@ -52,14 +53,14 @@ export class BatteryService {
     this.battery.lowCellVoltageId = data.lowcellvoltageid;
     this.battery.lowTemperature = data.lowtemperature;
     this.battery.lowThermistorId = data.lowthermistorid;
-    this.battery.packAmphours = data.packamphours;
-    this.battery.packCurrent = data.packcurrent;
-    this.battery.packDepthOfDischarge = data.packdepthofdischarge;
-    this.battery.packStateOfCharge = data.packstateofcharge;
-    this.battery.packVoltage = data.packvoltage;
+    this.battery.packAmphours = this.rService.getRoundedValue(data.packamphours, 2);
+    this.battery.packCurrent = this.rService.getRoundedValue(data.packcurrent, 2);
+    this.battery.packDepthOfDischarge = this.rService.getRoundedValue(data.packdepthofdischarge, 2);
+    this.battery.packStateOfCharge = this.rService.getRoundedValue(data.packstateofcharge, 2);
+    this.battery.packVoltage = this.rService.getRoundedValue(data.packvoltage, 2);
     this.battery.populatedCells = data.populatedcells;
     this.battery.requestedFanSpeed = data.requestedfanspeed;
     this.battery.totalPackCapacity = 168;
-    this.battery.twelvevinputVoltage = data.twelvevinputvoltage;
+    this.battery.twelvevinputVoltage = this.rService.getRoundedValue(data.twelvevinputvoltage, 2);
   }
 }
