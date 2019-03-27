@@ -38,6 +38,8 @@
 .tab-icons {
   font-size: 18px;
   margin-right: 5px;
+  margin-left: 5px;
+  transform: scale(1.2);
 }
 
 .sticky {
@@ -74,4 +76,4 @@ and (max-width: 1200px){
   .tabs{
     margin-right: 2em;
   }
-} 
+}
