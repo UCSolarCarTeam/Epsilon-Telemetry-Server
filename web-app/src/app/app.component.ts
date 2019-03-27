@@ -20,31 +20,31 @@ export class AppComponent implements OnInit {
     this.registerIcons();
     this.routeLinks = [
       {
-        label: 'Battery',
+        label: '\xa0\xa0Battery\xa0\xa0\xa0',
         link: './battery',
         icon: 'battery_icon',
         index: 0
       },
       {
-        label: 'Controls',
+        label: '\xa0Controls\xa0\xa0',
         link: './controls',
         icon: 'controls_icon',
         index: 1
       },
       {
-        label: 'Motor',
+        label: '\xa0\xa0\xa0Motor\xa0\xa0\xa0\xa0',
         link: './motor',
         icon: 'motor_icon',
         index: 2
       },
       {
-        label: 'MPPT',
+        label: '\xa0\xa0MPPT\xa0\xa0\xa0\xa0',
         link: './mppt',
         icon: 'mppt_icon',
         index: 3
       },
       {
-        label: 'Faults',
+        label: '\xa0\xa0 Faults\xa0\xa0\xa0\xa0',
         link: './faults',
         icon: 'faults_icon',
         index: 4
