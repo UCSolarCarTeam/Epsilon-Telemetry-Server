@@ -1,12 +1,14 @@
 <ng-template #elseBlock><img class="circle" src="../../../assets/RedCircle.png" alt="Red Circle"></ng-template>	
-<div class="container-row">
-	<div class="container-column half">
-		<div class="subheader">
-			<span class="title-left">Key 0 Motor </span>
-    			<span *ngIf="motor0.alive; else elseBlock" class="alive"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
-			<span class="title-right">Alive</span>
+<div class="motor-grid-container">
+	<div>
+		<div class="subheader subheader-flex">
+			<span class="title">Key 0 Motor </span>
+			<div class="alive-group">
+				<span *ngIf="motor0.alive; else elseBlock" class="alive"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
+				<span class="alive-text">Alive</span>
+			</div>
 		</div>
-		<div class="container-row">
+		<div class="flex-row">
 			<div class="item">Set Current
 				<div class="data"><span class="underline">{{motor0.setCurrent}} A</span></div>
 			</div>
@@ -17,7 +19,7 @@
 				<div class="data"><span class="underline">{{motor0.busCurrent}} RPM</span></div>
 			</div>
 		</div>
-		<div class="container-row">
+		<div class="flex-row">
 			<div class="item">Bus Voltage
 				<div class="data"><span class="underline">{{motor0.busVoltage}} A</span></div>
 			</div>
@@ -25,71 +27,68 @@
 				<div class="data"><span class="underline">{{motor0.vehicleVelocity}} V</span></div>
 			</div>
 		</div>
-		<div class="subheader">
-			<span class="title-left">Motor 0 Details</span>
+		<div class="subheader">Motor 0 Details
 		</div>
-		<div class="container-row">
-			<div class="container-column">
-				<div class="item">Motor Voltage Real
-					<div class="data"><span class="underline">{{motor0.motorVoltageReal}} V</span></div>
-				</div>
-				<div class="item">Motor Current Real
-					<div class="data"><span class="underline">{{motor0.motorCurrentReal}} A</span></div>
-				</div>
-				<div class="item">Back EMF Real
-					<div class="data"><span class="underline">{{motor0.backEmf}} V</span></div>
-				</div>
-				<div class="item">Voltage Rail 3V Supply
-					<div class="data"><span class="underline">{{motor0.voltageRail3VSupply}} V</span></div>
-				</div>
-				<div class="item">Phase B Current
-					<div class="data"><span class="underline">{{motor0.phaseBCurrent}} A (rms)</span></div>
-				</div>
-				<div class="item">Heat Sink Temp.
-					<div class="data"><span class="underline">{{motor0.heatSinkTemp}}ºC</span></div>
-				</div>
-				<div class="item">DSP Board Temp.
-					<div class="data"><span class="underline">{{motor0.dspBoardTemp}}ºC</span></div>
-				</div>
-				<div class="item">Odometer
-					<div class="data"><span class="underline">{{motor0.odometer}} M</span></div>
-				</div>
+		<div class="grid-container">
+			<div class="item">Motor Voltage Real
+				<div class="data"><span class="underline">{{motor0.motorVoltageReal}} V</span></div>
 			</div>
-			<div class="container-column">
-				<div class="item">Motor Voltage Imaginary
-					<div class="data"><span class="underline">{{motor0.motorVoltageImaginary}} V</span></div>
-				</div>
-				<div class="item">Motor Current Imaginary
-					<div class="data"><span class="underline">{{motor0.motorCurrentImaginary}} A</span></div>
-				</div>
-				<div class="item">Voltage Rail 15V Supply
-					<div class="data"><span class="underline">{{motor0.voltageRail15VSupply}} V</span></div>
-				</div>
-				<div class="item">Voltage Rail 1V Supply
-					<div class="data"><span class="underline">{{motor0.voltageRail1VSupply}} V</span></div>
-				</div>
-				<div class="item">Phase C Current
-					<div class="data"><span class="underline">{{motor0.phaseCCurrent}} A(rms)</span></div>
-				</div>
-				<div class="item">Motor Temp.
-					<div class="data"><span class="underline">{{motor0.motorTemp}}ºC</span></div>
-				</div>
-				<div class="item">DC Bus Amp Hours
-					<div class="data"><span class="underline">{{motor0.dcBusAmpHours}} Ah</span></div>
-				</div>
-				<div class="item">Slip Speed
-					<div class="data"><span class="underline">{{motor0.slipSpeed}} Hz</span></div>
-				</div>
+			<div class="item">Motor Voltage Imaginary
+				<div class="data"><span class="underline">{{motor0.motorVoltageImaginary}} V</span></div>
+			</div>
+			<div class="item">Motor Current Real
+				<div class="data"><span class="underline">{{motor0.motorCurrentReal}} A</span></div>
+			</div>
+			<div class="item">Motor Current Imaginary
+				<div class="data"><span class="underline">{{motor0.motorCurrentImaginary}} A</span></div>
+			</div>
+			<div class="item">Back EMF Real
+				<div class="data"><span class="underline">{{motor0.backEmf}} V</span></div>
+			</div>
+			<div class="item">Voltage Rail 15V Supply
+				<div class="data"><span class="underline">{{motor0.voltageRail15VSupply}} V</span></div>
+			</div>
+			<div class="item">Voltage Rail 3V Supply
+				<div class="data"><span class="underline">{{motor0.voltageRail3VSupply}} V</span></div>
+			</div>
+			<div class="item">Voltage Rail 1V Supply
+				<div class="data"><span class="underline">{{motor0.voltageRail1VSupply}} V</span></div>
+			</div>
+			<div class="item">Phase B Current
+				<div class="data"><span class="underline">{{motor0.phaseBCurrent}} A (rms)</span></div>
+			</div>
+			<div class="item">Phase C Current
+				<div class="data"><span class="underline">{{motor0.phaseCCurrent}} A(rms)</span></div>
+			</div>
+			<div class="item">Heat Sink Temp.
+				<div class="data"><span class="underline">{{motor0.heatSinkTemp}}ºC</span></div>
+			</div>
+			<div class="item">Motor Temp.
+				<div class="data"><span class="underline">{{motor0.motorTemp}}ºC</span></div>
+			</div>
+			<div class="item">DSP Board Temp.
+				<div class="data"><span class="underline">{{motor0.dspBoardTemp}}ºC</span></div>
+			</div>
+			<div class="item">DC Bus Amp Hours
+				<div class="data"><span class="underline">{{motor0.dcBusAmpHours}} Ah</span></div>
+			</div>
+			<div class="item">Odometer
+				<div class="data"><span class="underline">{{motor0.odometer}} M</span></div>
+			</div>
+			<div class="item">Slip Speed
+				<div class="data"><span class="underline">{{motor0.slipSpeed}} Hz</span></div>
 			</div>
 		</div>
 	</div>
-	<div class="container-column half">
-		<div class="subheader">
-			<span class="title-left">Key 1 Motor </span>
-    			<span *ngIf="motor1.alive; else elseBlock" class="buttonCentering"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
-			<span class="title-right">Alive</span>
+	<div>
+		<div class="subheader subheader-flex">
+			<span class="title">Key 1 Motor </span>
+			<div class="alive-group">
+				<span *ngIf="motor0.alive; else elseBlock" class="alive"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle"></span>
+				<span class="alive-text">Alive</span>
+			</div>
 		</div>
-		<div class="container-row">
+		<div class="flex-row">
 			<div class="item">Set Current
 				<div class="data"><span class="underline">{{motor1.setCurrent}} A</span></div>
 			</div>
@@ -100,7 +99,7 @@
 				<div class="data"><span class="underline">{{motor1.busCurrent}} RPM</span></div>
 			</div>
 		</div>
-		<div class="container-row">
+		<div class="flex-row">
 			<div class="item">Bus Voltage
 				<div class="data"><span class="underline">{{motor1.busVoltage}} A</span></div>
 			</div>
@@ -108,61 +107,56 @@
 				<div class="data"><span class="underline">{{motor1.vehicleVelocity}} V</span></div>
 			</div>
 		</div>
-		<div class="subheader">
-			<span class="title-left">Motor 1 Details</span>
+		<div class="subheader">Motor 1 Details
 		</div>
-		<div class="container-row">
-			<div class="container-column">
-				<div class="item">Motor Voltage Real
-					<div class="data"><span class="underline">{{motor1.motorVoltageReal}} V</span></div>
-				</div>
-				<div class="item">Motor Current Real
-					<div class="data"><span class="underline">{{motor1.motorCurrentReal}} A</span></div>
-				</div>
-				<div class="item">Back EMF Real
-					<div class="data"><span class="underline">{{motor1.backEmf}} V</span></div>
-				</div>
-				<div class="item">Voltage Rail 3V Supply
-					<div class="data"><span class="underline">{{motor1.voltageRail3VSupply}} V</span></div>
-				</div>
-				<div class="item">Phase B Current
-					<div class="data"><span class="underline">{{motor1.phaseBCurrent}} A (rms)</span></div>
-				</div>
-				<div class="item">Heat Sink Temp.
-					<div class="data"><span class="underline">{{motor1.heatSinkTemp}}ºC</span></div>
-				</div>
-				<div class="item">DSP Board Temp.
-					<div class="data"><span class="underline">{{motor1.dspBoardTemp}}ºC</span></div>
-				</div>
-				<div class="item">Odometer
-					<div class="data"><span class="underline">{{motor1.odometer}} M</span></div>
-				</div>
+		<div class="grid-container">
+			<div class="item">Motor Voltage Real
+				<div class="data"><span class="underline">{{motor1.motorVoltageReal}} V</span></div>
 			</div>
-			<div class="container-column">
-				<div class="item">Motor Voltage Imaginary
-					<div class="data"><span class="underline">{{motor1.motorVoltageImaginary}} V</span></div>
-				</div>
-				<div class="item">Motor Current Imaginary
-					<div class="data"><span class="underline">{{motor1.motorCurrentImaginary}} A</span></div>
-				</div>
-				<div class="item">Voltage Rail 15V Supply
-					<div class="data"><span class="underline">{{motor1.voltageRail15VSupply}} V</span></div>
-				</div>
-				<div class="item">Voltage Rail 1V Supply
-					<div class="data"><span class="underline">{{motor1.voltageRail1VSupply}} V</span></div>
-				</div>
-				<div class="item">Phase C Current
-					<div class="data"><span class="underline">{{motor1.phaseCCurrent}} A(rms)</span></div>
-				</div>
-				<div class="item">Motor Temp.
-					<div class="data"><span class="underline">{{motor1.motorTemp}}ºC</span></div>
-				</div>
-				<div class="item">DC Bus Amp Hours
-					<div class="data"><span class="underline">{{motor1.dcBusAmpHours}} Ah</span></div>
-				</div>
-				<div class="item">Slip Speed
-					<div class="data"><span class="underline">{{motor1.slipSpeed}} Hz</span></div>
-				</div>
+			<div class="item">Motor Voltage Imaginary
+				<div class="data"><span class="underline">{{motor1.motorVoltageImaginary}} V</span></div>
+			</div>
+			<div class="item">Motor Current Real
+				<div class="data"><span class="underline">{{motor1.motorCurrentReal}} A</span></div>
+			</div>
+			<div class="item">Motor Current Imaginary
+				<div class="data"><span class="underline">{{motor1.motorCurrentImaginary}} A</span></div>
+			</div>
+			<div class="item">Back EMF Real
+				<div class="data"><span class="underline">{{motor1.backEmf}} V</span></div>
+			</div>
+			<div class="item">Voltage Rail 15V Supply
+				<div class="data"><span class="underline">{{motor1.voltageRail15VSupply}} V</span></div>
+			</div>
+			<div class="item">Voltage Rail 3V Supply
+				<div class="data"><span class="underline">{{motor1.voltageRail3VSupply}} V</span></div>
+			</div>
+			<div class="item">Voltage Rail 1V Supply
+				<div class="data"><span class="underline">{{motor1.voltageRail1VSupply}} V</span></div>
+			</div>
+			<div class="item">Phase B Current
+				<div class="data"><span class="underline">{{motor1.phaseBCurrent}} A (rms)</span></div>
+			</div>
+			<div class="item">Phase C Current
+				<div class="data"><span class="underline">{{motor1.phaseCCurrent}} A(rms)</span></div>
+			</div>
+			<div class="item">Heat Sink Temp.
+				<div class="data"><span class="underline">{{motor1.heatSinkTemp}}ºC</span></div>
+			</div>
+			<div class="item">Motor Temp.
+				<div class="data"><span class="underline">{{motor1.motorTemp}}ºC</span></div>
+			</div>
+			<div class="item">DSP Board Temp.
+				<div class="data"><span class="underline">{{motor1.dspBoardTemp}}ºC</span></div>
+			</div>
+			<div class="item">DC Bus Amp Hours
+				<div class="data"><span class="underline">{{motor1.dcBusAmpHours}} Ah</span></div>
+			</div>
+			<div class="item">Odometer
+				<div class="data"><span class="underline">{{motor1.odometer}} M</span></div>
+			</div>
+			<div class="item">Slip Speed
+				<div class="data"><span class="underline">{{motor1.slipSpeed}} Hz</span></div>
 			</div>
 		</div>
 	</div>
