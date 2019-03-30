@@ -35,10 +35,12 @@ export class BatteryComponent implements OnInit {
       }
     );
   }
+
   getLowCellVoltage(): number {
-  return this.battery.lowCellVoltage/1000;
+  return this.battery.lowCellVoltage / 1000;
   }
+
   getHighCellVoltage(): number {
-  return this.battery.highCellVoltage/1000;
+  return this.battery.highCellVoltage / 1000;
   }
 }
