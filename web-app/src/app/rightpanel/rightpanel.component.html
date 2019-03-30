@@ -168,21 +168,21 @@
   <mat-form-field>
     <input matInput
       placeholder="Lowest Cell Voltage"
-      value="{{battery.lowCellVoltage/1000 | number: '1.2-2'}} V"
+      value="{{battery.lowCellVoltage | number: '1.2-2'}} V"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Pack Current"
-      value="{{battery.packCurrent/1000 | number: '1.2-2'}} A"
+      value="{{battery.packCurrent | number: '1.2-2'}} A"
       readonly="true"
     >
   </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Pack Voltage"
-      value="{{battery.packVoltage/1000 | number: '1.2-2'}} V"
+      value="{{battery.packVoltage | number: '1.2-2'}} V"
       readonly="true"
     >
   </mat-form-field>
