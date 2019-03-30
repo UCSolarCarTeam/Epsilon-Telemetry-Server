@@ -23,6 +23,8 @@ import { MpptComponent } from './tabs/mppt/mppt.component';
 import { RightpanelComponent } from './rightpanel/rightpanel.component';
 
 import { WebSocketService } from './websocket.service';
+import { DataInitService } from './_services/data.init.service';
+import { APP_INITIALIZER } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,14 @@ import { WebSocketService } from './websocket.service';
     MatProgressSpinnerModule,
     MatTabsModule
   ],
-  providers: [WebSocketService],
+  providers: [
+    WebSocketService,
+    DataInitService,
+    { provide: APP_INITIALIZER,
+      useFactory: (fs: DataInitService) => function() {return fs.load()},
+      deps: [DataInitService],
+      multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 
