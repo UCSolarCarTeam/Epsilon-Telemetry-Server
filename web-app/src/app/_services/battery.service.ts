@@ -30,6 +30,18 @@ export class BatteryService {
     return this.battery;
   }
 
+  getAverageCellVoltage(): number {
+  return this.battery.averageCellVoltage / 1000;
+  }
+
+  getLowCellVoltage(): number {
+  return this.battery.lowCellVoltage / 1000;
+  }
+
+  getHighCellVoltage(): number {
+  return this.battery.highCellVoltage / 1000;
+  }
+
   private updateBattery(data: ITelemetryData): void {
     this.battery.alive = data.batteryalive;
     this.battery.averageCellVoltage = data.averagecellvoltage;
