@@ -13,7 +13,7 @@
 		<div class="lights-container-grid">
 			<div>
 				<div class="subheader">Headlights</div>
-				<div class="even-display">
+				<div class="flex">
 					<span *ngIf="lights.lowBeams; else lightsHeadlightsNotLow" class="lightsHeadlights">
 						<img src="../../../assets/LowHeadlightOn.png" alt="Headlight on" class="light-icon">
 					</span>
@@ -32,7 +32,7 @@
 			</div>
 			<div>
 				<div class="subheader">Signals</div>
-				<div class="even-display">
+				<div class="flex">
 					<span *ngIf="lights.leftSignal; else lightsSignalNotLeft">
 						<img src="../../../assets/TurnSignalLeftOn.png" alt="Left signal on" class="light-icon">
 					</span>
@@ -75,23 +75,17 @@
 				</div>
 			</div>
 			<div>
-				<div class="subheader">Signals</div>
-				<div class="even-display">
+				<div class="subheader">Signals / Hazard</div>
+				<div class="flex">
 					<span [ngClass]="{'on' : controls.signalLeft == true, 'off' : controls.signalLeft == false}">
 						<span class="data">Left</span>
 					</span>
  					<span [ngClass]="{'on' : controls.signalRight == true, 'off' : controls.signalRight == false}">
 						<span class="data">Right</span>
 					</span>
-				</div>
-			</div> 
-			<div>
-				<div class="subheader">Hazard</div>
-				<div class="item">
 					<span [ngClass]="{'on' : controls.hazard == true, 'off' : controls.hazard == false}">
 						<span class="data">On</span>
 					</span>
-
 				</div>
 			</div>
 			<div>
@@ -127,19 +121,14 @@
 				</div>
 			</div>
 			<div>
-				<div class="subheader">Song</div>
-				<div class="even-display">
+				<div class="subheader">Music</div>
+				<div class="flex">
 					<span [ngClass]="{'on' : controls.prevSong == true, 'off' : controls.prevSong == false}">
 						<span class="data">Prev. </span>
 					</span>
 					<span [ngClass]="{'on' : controls.nextSong == true, 'off' : controls.nextSong == false}">
 						<span class="data">Next</span>
 					</span>
-				</div>
-			</div>
-			<div>
-				<div class="subheader">Volume</div>
-				<div class="even-display">
 					<span [ngClass]="{'on' : controls.volumeUp == true, 'off' : controls.volumeUp == false}">
 						<span class="data">Up </span>
 					</span>
@@ -157,16 +146,11 @@
 				</div>
 			</div>
 			<div>
-				<div class="subheader">Forward</div>
+				<div class="subheader">Forward / Reverse</div>
 				<div class="item">
 					<span [ngClass]="{'on' : controls.forward == true, 'off' : controls.forward == false}">
 						<span class="data">On</span>
 					</span>
-				</div>
-			</div>
-			<div>
-				<div class="subheader">Reverse</div>
-				<div class="item">
 					<span [ngClass]="{'on' : controls.reverse == true, 'off' : controls.reverse == false}">
 						<span class="data">On</span>
 					</span>
