@@ -23,10 +23,6 @@
 	padding-top: 10%;
 	margin: .1em;
 }
-.even-display {
-	display: flex;
-	justify-content: space-evenly;
-}
 .progress-data {
 	width: 40%;
 	color: rgba(255, 255, 255, 0.75);
@@ -86,6 +82,10 @@
 	column-gap: 10px;
 	grid-template-columns: repeat(3, 1fr);
 }
+.grid-box {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
 .grid-span-row {
 	grid-column: 1 / -1;
 }
@@ -93,12 +93,15 @@
 @media only screen
 and (max-width: 768px){
 	.sub-container-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(1, 1fr);
 		margin-left: 5px;
 		margin-right: 5px;
 	}
 	.grid-container {
 		grid-template-columns: repeat(1, minmax(300px,1fr));
+	}
+	.grid-box {
+		margin: 0em;
 	}
 }
 @media only screen
@@ -107,4 +110,8 @@ and (max-width: 1100px){
 	.grid-container {
 		grid-template-columns: repeat(1, minmax(170px,1fr));
 	}
+	.grid-box {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
 }

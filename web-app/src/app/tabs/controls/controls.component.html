@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<div class="sub-container-grid">
-			<div>
+			<div class="grid-box">
 				<div class="subheader">Headlights</div>
 				<div class="item">
 					<span [ngClass]="{'on' : controls.headlightsOff == true, 'off' : controls.headlightsOff == false}">
@@ -74,8 +74,8 @@
 					</span>
 				</div>
 			</div>
-			<div>
-				<div class="subheader">Signals / Hazard</div>
+			<div class="grid-box">
+				<div class="subheader">Lights</div>
 				<div class="flex">
 					<span [ngClass]="{'on' : controls.signalLeft == true, 'off' : controls.signalLeft == false}">
 						<span class="data">Left</span>
@@ -84,43 +84,31 @@
 						<span class="data">Right</span>
 					</span>
 					<span [ngClass]="{'on' : controls.hazard == true, 'off' : controls.hazard == false}">
-						<span class="data">On</span>
+						<span class="data">Hazard</span>
 					</span>
-				</div>
-			</div>
-			<div>
-				<div class="subheader">Interior</div>
-				<div class="item">
 					<span [ngClass]="{'on' : controls.interior == true, 'off' : controls.interior == false}">
-						<span class="data">On</span>
+						<span class="data">Interior</span>
 					</span>
 				</div>
 			</div>
-			<div>
-				<div class="subheader">Push To Talk</div>
+			<div class="grid-box">
+				<div class="subheader">Misc.</div>
 				<div class="item">
 					<span [ngClass]="{'on' : controls.pushToTalk == true, 'off' : controls.pushToTalk == false}">
-						<span class="data">On</span>
+						<span class="data">Push To Talk</span>
 					</span>
-				</div>
-			</div>
-			<div>
-				<div class="subheader">Horn</div>
-				<div class="item">
 					<span [ngClass]="{'on' : controls.horn == true, 'off' : controls.horn == false}">
-						<span class="data">On</span>
+						<span class="data">Horn</span>
+					</span>
+					<span [ngClass]="{'on' : controls.reset == true, 'off' : controls.reset == false}">
+						<span class="data">Reset</span>
+					</span>
+					<span [ngClass]="{'on' : controls.brakes == true, 'off' : controls.brakes == false}">
+						<span class="data">Brakes</span>
 					</span>
 				</div>
 			</div>
-			<div>
-				<div class="subheader">Aux</div>
-				<div class="item">
-					<span [ngClass]="{'on' : controls.aux == true, 'off' : controls.aux == false}">
-						<span class="data">On</span>
-					</span>
-				</div>
-			</div>
-			<div>
+			<div class="grid-box">
 				<div class="subheader">Music</div>
 				<div class="flex">
 					<span [ngClass]="{'on' : controls.prevSong == true, 'off' : controls.prevSong == false}">
@@ -137,46 +125,35 @@
 					</span>
 				</div>
 			</div>
-			<div>
-				<div class="subheader">Brakes</div>
+			<div class="grid-box">
+				<div class="subheader">Drive Mode</div>
 				<div class="item">
-					<span [ngClass]="{'on' : controls.brakes == true, 'off' : controls.brakes == false}">
-						<span class="data">On</span>
+					<span [ngClass]="{'on' : controls.aux == true, 'off' : controls.aux == false}">
+						<span class="data">Aux</span>
 					</span>
-				</div>
-			</div>
-			<div>
-				<div class="subheader">Forward / Reverse</div>
-				<div class="item">
 					<span [ngClass]="{'on' : controls.forward == true, 'off' : controls.forward == false}">
-						<span class="data">On</span>
+						<span class="data">Forward</span>
 					</span>
 					<span [ngClass]="{'on' : controls.reverse == true, 'off' : controls.reverse == false}">
-						<span class="data">On</span>
+						<span class="data">Reverse</span>
 					</span>
 				</div>
 			</div>
-			<div>
+			<div class="grid-box">
 				<div class="subheader">Acceleration</div>
 				<div class="item"><mat-progress-bar class="progress-bar" [value]="controls.acceleration"></mat-progress-bar>
 						<span class="progress-data">{{controls.acceleration}} %</span>
 				</div>
 			</div>
-			<div>
+			<div></div>
+			<div class="grid-box">
 				<div class="subheader">Regen</div>
 				<div class="item">
 						<mat-progress-bar class="progress-bar" [value]="controls.regenBraking"></mat-progress-bar>
 						<span class="progress-data">{{controls.regenBraking}} %</span>
 				</div>
 			</div>
-			<div>
-				<div class="subheader">Reset</div>
-				<div class="item">
-					<span [ngClass]="{'on' : controls.reset == true, 'off' : controls.reset == false}">
-						<span class="data">On</span>
-					</span>
-				</div>
-			</div>
+			<div></div>
 		</div>				
 	</div>
 </div>
