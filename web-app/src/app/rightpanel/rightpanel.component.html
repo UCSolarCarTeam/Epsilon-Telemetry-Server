@@ -76,13 +76,6 @@
     >
     </mat-progress-spinner>
     <mat-progress-spinner
-      id="overlay-1"
-      value="{{getSetVelocityPercentage()}}"
-      diameter="180"
-      strokeWidth="10"
-    >
-    </mat-progress-spinner>
-    <mat-progress-spinner
       id="overlay-2"
       color="warn"
       value="{{getVehicleVelocityPercentage()}}"
@@ -91,13 +84,6 @@
     >
     </mat-progress-spinner>
     <div class="velocity-data">
-      <label>Set velocity</label>
-      <p id="set-velocity">
-        <span class="velocity-number">
-          {{getSetVelocity() | number: '1.2-2'}}
-        </span>
-        km/h
-      </p>
       <label>Vehicle Velocity</label>
       <p id="vehicle-velocity">
         <span class="velocity-number">
