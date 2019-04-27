@@ -32,4 +32,12 @@ export class MotorComponent implements OnInit {
     );
   }
 
+  getMotor0SetCurrent(): number {
+  return this.motor0.setCurrent * 100;
+  }
+
+  getMotor1SetCurrent(): number {
+  return this.motor1.setCurrent * 100;
+  }
+
 }
