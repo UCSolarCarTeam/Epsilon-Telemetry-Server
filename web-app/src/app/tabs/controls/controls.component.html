@@ -60,23 +60,23 @@
 			</div>
 		</div>
 		<div class="sub-container-grid">
-			<div class="grid-box">
+			<div>
 				<div class="subheader">Headlights</div>
-				<div class="item">
+				<div class="item grid-box">
 					<span [ngClass]="{'on' : controls.headlightsOff == true, 'off' : controls.headlightsOff == false}">
 						<span class="data">Off </span>
 					</span>
 					<span [ngClass]="{'on' : controls.headlightsLow == true, 'off' : controls.headlightsLow == false}">
 						<span class="data">Low </span>
 					</span>
-					<span [ngClass]="{'on' : controls.headlightsHigh == true, 'off' : controls.headlightsHigh == false}">
+					<span class="grid-span-row" [ngClass]="{'on' : controls.headlightsHigh == true, 'off' : controls.headlightsHigh == false}">
 						<span class="data">High</span>
 					</span>
 				</div>
 			</div>
-			<div class="grid-box">
+			<div>
 				<div class="subheader">Lights</div>
-				<div class="flex">
+				<div class="item grid-box">
 					<span [ngClass]="{'on' : controls.signalLeft == true, 'off' : controls.signalLeft == false}">
 						<span class="data">Left</span>
 					</span>
@@ -91,11 +91,11 @@
 					</span>
 				</div>
 			</div>
-			<div class="grid-box">
+			<div>
 				<div class="subheader">Misc.</div>
-				<div class="item">
+				<div class="item grid-box">
 					<span [ngClass]="{'on' : controls.pushToTalk == true, 'off' : controls.pushToTalk == false}">
-						<span class="data">Push To Talk</span>
+						<span class="data wrap">Push To Talk</span>
 					</span>
 					<span [ngClass]="{'on' : controls.horn == true, 'off' : controls.horn == false}">
 						<span class="data">Horn</span>
@@ -108,9 +108,9 @@
 					</span>
 				</div>
 			</div>
-			<div class="grid-box">
+			<div>
 				<div class="subheader">Music</div>
-				<div class="flex">
+				<div class="item grid-box">
 					<span [ngClass]="{'on' : controls.prevSong == true, 'off' : controls.prevSong == false}">
 						<span class="data">Prev. </span>
 					</span>
@@ -125,32 +125,33 @@
 					</span>
 				</div>
 			</div>
-			<div class="grid-box">
+			<div>
 				<div class="subheader">Drive Mode</div>
-				<div class="item">
+				<div class="item grid-box">
 					<span [ngClass]="{'on' : controls.aux == true, 'off' : controls.aux == false}">
 						<span class="data">Aux</span>
 					</span>
 					<span [ngClass]="{'on' : controls.forward == true, 'off' : controls.forward == false}">
 						<span class="data">Forward</span>
 					</span>
-					<span [ngClass]="{'on' : controls.reverse == true, 'off' : controls.reverse == false}">
+					<span class="grid-span-row" [ngClass]="{'on' : controls.reverse == true, 'off' : controls.reverse == false}">
 						<span class="data">Reverse</span>
 					</span>
 				</div>
 			</div>
-			<div class="grid-box">
+			<div>
 				<div class="subheader">Acceleration</div>
-				<div class="item"><mat-progress-bar class="progress-bar" [value]="controls.acceleration"></mat-progress-bar>
-						<span class="progress-data">{{controls.acceleration}} %</span>
+				<div>
+					<mat-progress-bar class="progress-bar" [value]="controls.acceleration"></mat-progress-bar>
+					<span class="progress-data">{{controls.acceleration}} %</span>
 				</div>
 			</div>
 			<div></div>
-			<div class="grid-box">
+			<div>
 				<div class="subheader">Regen</div>
-				<div class="item">
-						<mat-progress-bar class="progress-bar" [value]="controls.regenBraking"></mat-progress-bar>
-						<span class="progress-data">{{controls.regenBraking}} %</span>
+				<div>
+					<mat-progress-bar class="progress-bar" [value]="controls.regenBraking"></mat-progress-bar>
+					<span class="progress-data">{{controls.regenBraking}} %</span>
 				</div>
 			</div>
 			<div></div>

@@ -1,3 +1,7 @@
+.lights {
+	margin-bottom: 2em;
+}
+
 .flex {
 	display: flex;
 	justify-content: space-evenly;
@@ -24,15 +28,16 @@
 	margin: .1em;
 }
 .progress-data {
-	width: 40%;
+	width: 20%;
 	color: rgba(255, 255, 255, 0.75);
 	word-wrap: all;
-
+	font-family: Arial, sans-serif;
+	font-size: 0.8rem;
 }
 .progress-bar {
 	float: left;
-	width: 60%;
 	height: 25px;
+	width: 80%;
 	margin-right: .3em;
 }
 .circle-items {
@@ -51,9 +56,10 @@
 	color: rgb(255, 255, 255);
 	color: rgba(255, 255, 255, 0.9);
 	font-size: 0.8rem;
-	display: flex;
+	display: grid;
 	justify-content: space-around;
 	margin-bottom: .5em;
+	grid-template-columns: repeat(2, 1fr);
 }
 .data {
 	padding: .2em;
@@ -63,7 +69,10 @@
 	font-size: 0.8rem;
 	display: flex;
 	justify-content: space-around;
-	margin-bottom: .5em;
+	margin: 0em 2em 2em 2em;
+}
+.wrap {
+	white-space: nowrap;
 }
 .grid-container {
 	display: grid;
@@ -83,8 +92,8 @@
 	grid-template-columns: repeat(3, 1fr);
 }
 .grid-box {
-	margin-top: 2em;
-	margin-bottom: 2em;
+	grid-template-columns: repeat(2, 1fr);
+	margin-bottom: 1em;
 }
 .grid-span-row {
 	grid-column: 1 / -1;
