@@ -9,6 +9,8 @@
 .car-misc,
 .battery-misc {
   width: 40%;
+  min-width:120px;
+  font-size: 12px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -49,8 +51,27 @@
 
 .spinners {
   align-self: center;
-  width: 180px;
-  height: 180px;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.mat-progress-spinner {
+  position:  absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  align-self: center;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mat-progress-spinner ::ng-deep svg {
+  align-self: center;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 #overlay-0 {
@@ -102,6 +123,11 @@ mat-divider {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position:  absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .velocity-data p,
@@ -110,7 +136,7 @@ mat-divider {
 }
 
 .velocity-number {
-  font-size: 25px;
+  font-size: 18px;
 }
 
 #set-velocity {
@@ -147,23 +173,8 @@ mat-divider {
     font-size: 14px;
   }
 
-  .spinners {
-    width: 140px;
-    height: 140px;
-  }
-
-  .mat-progress-spinner {
-    width: 140px !important;
-    height: 140px !important;
-  }
-
-  .mat-progress-spinner ::ng-deep svg {
-    width: 140px !important;
-    height: 140px !important;
-  }
-
   .velocity-number {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .velocity-data p,
@@ -175,3 +186,20 @@ mat-divider {
     font-size: 14px;
   }
 }
+
+@media screen
+  and (max-width: 768px) {
+    :host {
+      display: none;
+    }
+  }
+
+@media screen
+  and (min-width: 768px)
+  and (max-width: 1200px) {
+    .car-misc,
+    .battery-misc {
+      width: 120px;
+    }
+  }
+  
