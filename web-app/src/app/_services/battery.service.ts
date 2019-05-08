@@ -30,18 +30,6 @@ export class BatteryService {
     return this.battery;
   }
 
-  getAverageCellVoltage(): number {
-  return this.battery.averageCellVoltage / 1000;
-  }
-
-  getLowCellVoltage(): number {
-  return this.battery.lowCellVoltage / 1000;
-  }
-
-  getHighCellVoltage(): number {
-  return this.battery.highCellVoltage / 1000;
-  }
-
   private updateBattery(data: ITelemetryData): void {
     this.battery.alive = data.batteryalive;
     this.battery.averageCellVoltage = data.averagecellvoltage;
@@ -74,5 +62,8 @@ export class BatteryService {
     this.battery.requestedFanSpeed = data.requestedfanspeed;
     this.battery.totalPackCapacity = 168;
     this.battery.twelvevinputVoltage = this.rService.getRoundedValue(data.twelvevinputvoltage, 2);
+    this.battery.averageCellVoltage = data.averagecellvoltage / 1000;
+    this.battery.lowCellVoltage = data.lowcellvoltage / 1000;
+    this.battery.highCellVoltage = data.highcellvoltage / 1000;
   }
 }
