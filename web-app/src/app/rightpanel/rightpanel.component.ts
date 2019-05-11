@@ -124,10 +124,6 @@ export class RightpanelComponent implements OnInit {
     return (this.motor0.vehicleVelocity + this.motor1.vehicleVelocity) / 2;
   }
 
-  getSetVelocityPercentage(): number {
-    const velocityTotal: number = this.getVehicleVelocity() + this.getSetVelocity();
-    return this.getSetVelocity() / velocityTotal * 100; }
-
   getVehicleVelocityPercentage(): number {
     const velocityTotal: number  = this.getVehicleVelocity() + this.getSetVelocity();
     return this.getVehicleVelocity() / velocityTotal * 100;
