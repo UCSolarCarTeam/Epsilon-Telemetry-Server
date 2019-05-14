@@ -35,5 +35,4 @@ export class BatteryComponent implements OnInit {
       }
     );
   }
-
 }

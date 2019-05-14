@@ -62,5 +62,8 @@ export class BatteryService {
     this.battery.requestedFanSpeed = data.requestedfanspeed;
     this.battery.totalPackCapacity = 168;
     this.battery.twelvevinputVoltage = this.rService.getRoundedValue(data.twelvevinputvoltage, 2);
+    this.battery.averageCellVoltage = data.averagecellvoltage / 1000;
+    this.battery.lowCellVoltage = data.lowcellvoltage / 1000;
+    this.battery.highCellVoltage = data.highcellvoltage / 1000;
   }
 }
