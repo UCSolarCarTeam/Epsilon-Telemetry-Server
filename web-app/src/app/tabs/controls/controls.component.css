@@ -9,12 +9,6 @@
 .alive-title {
 	margin-left: .5em;
 }
-.data-header {
-	color: rgba(255, 255, 255, 0.75);
-}
-.data-underline {
-	border-bottom: 1px solid white;
-}
 .on {
 	color: #c2185b;
 	font-size: 40px;
@@ -27,29 +21,27 @@
 	padding-top: 10%;
 	margin: .1em;
 }
+.grid-column {
+	display: grid;
+	grid-column: 1 / 2;
+}
 .progress-data {
 	width: 20%;
 	color: rgba(255, 255, 255, 0.75);
 	word-wrap: all;
 	font-family: Arial, sans-serif;
 	font-size: 0.8rem;
+	margin-top: 0.5em
 }
 .progress-bar {
 	float: left;
 	height: 25px;
-	width: 80%;
-	margin-right: .3em;
+	width: 70%;
+	margin: 0.5em 0.2em 1.5em 1.5em;
 }
 .circle-items {
 	width: 19px;
 	height: 19px;
-}
-.dataset {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	font-size: 0.8rem;
-	color: rgb(255, 255, 255);
-	color: rgba(255, 255, 255, 0.75);
 }
 .item {
 	font-family: Arial, sans-serif;
@@ -71,7 +63,7 @@
 	justify-content: space-around;
 	margin: 0em 2em 2em 2em;
 }
-.wrap {
+.nowrap {
 	white-space: nowrap;
 }
 .grid-container {

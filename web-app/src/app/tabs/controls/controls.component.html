@@ -95,7 +95,7 @@
 				<div class="subheader">Misc.</div>
 				<div class="item grid-box">
 					<span [ngClass]="{'on' : controls.pushToTalk == true, 'off' : controls.pushToTalk == false}">
-						<span class="data wrap">Push To Talk</span>
+						<span class="data nowrap">Push To Talk</span>
 					</span>
 					<span [ngClass]="{'on' : controls.horn == true, 'off' : controls.horn == false}">
 						<span class="data">Horn</span>
@@ -141,7 +141,7 @@
 			</div>
 			<div>
 				<div class="subheader">Acceleration</div>
-				<div>
+				<div class="grid-row">
 					<mat-progress-bar class="progress-bar" [value]="controls.acceleration"></mat-progress-bar>
 					<span class="progress-data">{{controls.acceleration}} %</span>
 				</div>
@@ -149,7 +149,7 @@
 			<div></div>
 			<div>
 				<div class="subheader">Regen</div>
-				<div>
+				<div class="grid-row">
 					<mat-progress-bar class="progress-bar" [value]="controls.regenBraking"></mat-progress-bar>
 					<span class="progress-data">{{controls.regenBraking}} %</span>
 				</div>
