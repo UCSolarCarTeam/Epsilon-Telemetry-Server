@@ -21,9 +21,9 @@
 	padding-top: 10%;
 	margin: .1em;
 }
-.grid-column {
-	display: grid;
-	grid-column: 1 / 2;
+.grid-row {
+	display: flex;
+	flex-direction: row;
 }
 .progress-data {
 	width: 20%;
