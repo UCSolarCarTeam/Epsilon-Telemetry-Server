@@ -1,11 +1,11 @@
 .title-left {
-	float: left;
+	float: center;
 	width: 40%;
 	margin-left: 1em;
 }
 .title-right {
 	color: #D5FEFF;
-	float: left;
+	float: center;
 	width: 5%;
 	margin-left: .4em;
 }
@@ -16,7 +16,8 @@
 }
 /*Added on to from src/styles.css*/
 .circle {
-	float: left;
+	float: center;
+	margin-left: 10%;
 }
 .container-row {
 	display: flex;
