@@ -10,6 +10,9 @@
 .subheader .title {
 	width: 40%;
 }
+.title {
+	float: center;
+}
 .alive-group {
 	margin-right:1em;
 }
