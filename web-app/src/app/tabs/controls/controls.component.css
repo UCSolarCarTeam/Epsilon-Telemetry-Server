@@ -72,6 +72,8 @@
 	grid-template-columns: repeat(1, 1fr);
 	padding-top: .2em;
 	margin-top: 0.1em;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 .lights-container-grid {
 	display: grid;
