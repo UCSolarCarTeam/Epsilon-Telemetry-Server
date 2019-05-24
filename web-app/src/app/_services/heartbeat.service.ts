@@ -9,9 +9,11 @@ export class HeartbeatService {
 
   heartBeat$: EventEmitter<Boolean>;
   packet: Packet;
+  interval: number;
 
   constructor(private packetService: PacketService) {
       this.packet = this.packetService.getData();
+      this.interval = 5000;
       this.packetService.packet$.subscribe(
         (data: Packet) => {
           this.packet = data;
@@ -21,13 +23,13 @@ export class HeartbeatService {
     this.heartBeat$ = new EventEmitter<Boolean>();
     setInterval(() => {
         this.heartBeatCheck()
-    }, 5000)
+    }, this.interval)
   }
 
    heartBeatCheck() {
     const packetTime = Date.parse(this.packet.timestamp);
 
-    if (Number.isNaN(packetTime) || Date.now() - packetTime > 5000) {
+    if (Number.isNaN(packetTime) || Date.now() - packetTime > this.interval) {
         this.heartBeat$.emit(false);
     } else {
         this.heartBeat$.emit(true);
