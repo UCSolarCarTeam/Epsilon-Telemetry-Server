@@ -1,48 +1,42 @@
-.title-left {
-	float: center;
-	width: 40%;
-	margin-left: 1em;
+/*Added on to from src/styles.css*/
+.circle {
+	float: left;
 }
-.title-right {
-	color: #D5FEFF;
+.subheader-flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.subheader .title {
+	width: 40%;
+}
+.title {
 	float: center;
+}
+.alive-group {
+	margin-right:1em;
+}
+.alive-text {
+	color: #D5FEFF;
 	width: 5%;
 	margin-left: .4em;
 }
-.half {
-	float: left;
-	width: 47.5%;
-	margin-right: 2.5%;
-}
-/*Added on to from src/styles.css*/
-.circle {
-	float: center;
-	margin-left: 10%;
-}
-.container-row {
+.flex-row {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-around;
 	padding-top: .2em;
 	margin-top: 0.1em;
-}
-.container-column {
-	display: inline-flex;
-	flex-direction: column;
-	justify-content: center;
 }
 .item {
 	font-family: Arial, sans-serif;
 	color: rgba(255, 255, 255, 0.75);
 	font-size: 0.75em;
-	margin-left: 15px;
-	margin-right: 15px;
 	border-bottom: 1px solid white;
 	margin-bottom: 10px;
+	text-align: center;
 }
 .data {
-	margin-left: 20px;
-	margin-right: 20px;
 	margin-top: 5px;
 	padding: 5px;
 	white-space: nowrap;
@@ -51,4 +45,28 @@
 }
 .underline {
 	justify-content: center;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 5px;
+	margin-left: 1.2em;
+	margin-right: 1.2em;
+}
+.motor-grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding-top: .2em;
+	margin-top: 0.1em;
+	column-gap: 10px;
+}
+
+@media only screen
+and (max-width: 768px){
+	.motor-grid-container{
+		grid-template-columns: repeat(1, 1fr);
+		margin-left: 5px;
+		margin-right: 5px;
+	}
 }
