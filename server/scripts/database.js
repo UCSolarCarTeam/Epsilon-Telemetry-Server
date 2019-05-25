@@ -463,6 +463,16 @@ function jsonToMap(jsonObj) {
     `${jsonObj['MPPT'][2]['BatteryVoltage']}`);
   mapObj.set('mppt2temperature',
     `${jsonObj['MPPT'][2]['Temperature']}`);
+  mapObj.set('mppt3alive',
+    `${jsonObj['MPPT'][3]['Alive']}`);
+  mapObj.set('mppt3arrayvoltage',
+    `${jsonObj['MPPT'][3]['ArrayVoltage']}`);
+  mapObj.set('mppt3arraycurrent',
+    `${jsonObj['MPPT'][3]['ArrayCurrent']}`);
+  mapObj.set('mppt3batteryvoltage',
+    `${jsonObj['MPPT'][3]['BatteryVoltage']}`);
+  mapObj.set('mppt3temperature',
+    `${jsonObj['MPPT'][3]['Temperature']}`);
   mapObj.set('lowbeams',
     `${jsonObj['Lights']['LowBeams']}`);
   mapObj.set('highbeams',
