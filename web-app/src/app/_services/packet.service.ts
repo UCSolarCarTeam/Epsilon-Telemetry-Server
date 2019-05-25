@@ -21,7 +21,7 @@ export class PacketService {
       (data: ITelemetryData) => {
         this.packet$.emit(this.getData());
         this.packet.name = data.name;
-        this.packet.timestamp = new Date(data.timestamp).toTimeString();
+        this.packet.timestamp = new Date(data.timestamp);
       }
     );
   }

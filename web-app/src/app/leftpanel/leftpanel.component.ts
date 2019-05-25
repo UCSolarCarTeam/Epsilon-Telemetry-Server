@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Packet } from '../_objects/packet';
 import { PacketService } from '../_services/packet.service';
+import { HeartbeatService } from '../_services/heartbeat.service';
 
 @Component({
   selector: 'app-leftpanel',
@@ -12,8 +13,10 @@ export class LeftpanelComponent implements OnInit {
   // declare empty public variable
   packet: Packet;
 
+  private heartBeat;
   // inject the PacketService
-  constructor(private packetService: PacketService) { }
+  constructor(private packetService: PacketService, private heartbeatService: HeartbeatService) {
+  }
 
   ngOnInit() {
     // initialize with default values
@@ -25,7 +28,12 @@ export class LeftpanelComponent implements OnInit {
     this.packetService.packet$.subscribe(
       (data: Packet) => {
         this.packet = data;
+        this.heartBeat = true;
       }
     );
+    this.heartbeatService.heartBeat$.subscribe(
+        (heartBeat: Boolean) => {
+            this.heartBeat = heartBeat;
+        })
   }
 }
