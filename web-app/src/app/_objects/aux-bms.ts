@@ -3,7 +3,7 @@ export enum State {
   CHARGE_ENGAGED = 'Charge Engaged',
   COMMON_ENGAGED = 'Common Engaged',
   DISCHARGE_ENGAGED = 'Discharge Engaged',
-  Off = 'Off' // Should be OFF = "Off"
+  OFF = 'Off'
 }
 
 export class AuxBms {
@@ -11,7 +11,7 @@ export class AuxBms {
   allowCharge = false;
   auxVoltage = -1;
   contactorError = false;
-  prechargeState: State = State.Off;
+  prechargeState: State = State.OFF;
   strobeBmsLight = false;
   highVoltageEnable = false;
 }
