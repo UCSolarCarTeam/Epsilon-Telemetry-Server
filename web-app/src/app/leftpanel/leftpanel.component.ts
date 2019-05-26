@@ -13,7 +13,7 @@ export class LeftpanelComponent implements OnInit {
   // declare empty public variable
   packet: Packet;
 
-  private heartBeat;
+  heartBeat: Boolean;
   // inject the PacketService
   constructor(private packetService: PacketService, private heartbeatService: HeartbeatService) {
   }
