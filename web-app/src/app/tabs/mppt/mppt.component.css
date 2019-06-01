@@ -1,8 +1,3 @@
-.half {
-	float: left;
-	width: 47.5%;
-	margin-right: 2.5%;
-}
 .text {
 	text-align: center;
 }
@@ -15,14 +10,18 @@
 	width: 15px;
 	height: 15px;
 }
-.container-row {
+.flex-row {
 	padding-top: .2em;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-around;
 }
-.container-column {
-	display: inline-flex;
+.flex-column {
+	display: flex;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 0.35em;
+	width: 98%;
 	flex-direction: column;
 	justify-content: center;
 }
@@ -37,4 +36,15 @@
 .underline {
 	border-bottom: 1px solid white;
 	margin-bottom: .5em;
+}
+.mppt-grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	margin-top: 1em;
+}
+@media only screen 
+and (max-width: 768px){
+	.mppt-grid-container{
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
