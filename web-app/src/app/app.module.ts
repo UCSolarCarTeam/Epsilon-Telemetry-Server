@@ -20,6 +20,7 @@ import { FaultsComponent } from './tabs/faults/faults.component';
 import { LeftpanelComponent } from './leftpanel/leftpanel.component';
 import { MotorComponent } from './tabs/motor/motor.component';
 import { MpptComponent } from './tabs/mppt/mppt.component';
+import { RaceComponent } from './tabs/race/race.component';
 import { RightpanelComponent } from './rightpanel/rightpanel.component';
 
 import { WebSocketService } from './websocket.service';
@@ -35,7 +36,8 @@ import { APP_INITIALIZER } from '@angular/core';
     LeftpanelComponent,
     MotorComponent,
     MpptComponent,
-    RightpanelComponent
+    RaceComponent,
+    RightpanelComponent,
   ],
   imports: [
     AppRoutingModule,
