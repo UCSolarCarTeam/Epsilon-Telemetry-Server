@@ -20,12 +20,12 @@ import { FaultsComponent } from './tabs/faults/faults.component';
 import { LeftpanelComponent } from './leftpanel/leftpanel.component';
 import { MotorComponent } from './tabs/motor/motor.component';
 import { MpptComponent } from './tabs/mppt/mppt.component';
+import { RaceComponent } from './tabs/race/race.component';
 import { RightpanelComponent } from './rightpanel/rightpanel.component';
 
 import { WebSocketService } from './websocket.service';
 import { DataInitService } from './_services/data.init.service';
 import { APP_INITIALIZER } from '@angular/core';
-import { RaceComponent } from './tabs/race/race.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +36,8 @@ import { RaceComponent } from './tabs/race/race.component';
     LeftpanelComponent,
     MotorComponent,
     MpptComponent,
+    RaceComponent,
     RightpanelComponent,
-    RaceComponent
   ],
   imports: [
     AppRoutingModule,
