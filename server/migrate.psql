@@ -2,30 +2,18 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.12
--- Dumped by pg_dump version 9.5.12
+-- Dumped from database version 11.2 (Ubuntu 11.2-1.pgdg18.04+1)
+-- Dumped by pg_dump version 11.2 (Ubuntu 11.2-1.pgdg18.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 --
 -- Name: chargestate; Type: TYPE; Schema: public; Owner: postgres
@@ -47,11 +35,49 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: lap; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.lap (
+    lapnumber bigint NOT NULL,
+    "timestamp" timestamp without time zone NOT NULL,
+    secondsdifference integer,
+    totalpowerin double precision,
+    totalpowerout double precision,
+    netpowerout double precision,
+    distance double precision
+);
+
+
+ALTER TABLE public.lap OWNER TO postgres;
+
+--
+-- Name: lap_lapnumber_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.lap_lapnumber_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.lap_lapnumber_seq OWNER TO postgres;
+
+--
+-- Name: lap_lapnumber_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.lap_lapnumber_seq OWNED BY public.lap.lapnumber;
+
+
+--
 -- Name: packet; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.packet (
-    id bigserial NOT NULL,
+    id bigint NOT NULL,
     "timestamp" timestamp without time zone NOT NULL,
     name text NOT NULL,
     motor0alive boolean,
@@ -254,22 +280,50 @@ CREATE TABLE public.packet (
     highvoltageenable boolean
 );
 
+
+ALTER TABLE public.packet OWNER TO postgres;
+
 --
--- Name: packet_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: packet_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.packet_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.packet_id_seq OWNER TO postgres;
+
+--
+-- Name: packet_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.packet_id_seq OWNED BY public.packet.id;
+
+
+--
+-- Name: lap lapnumber; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.lap ALTER COLUMN lapnumber SET DEFAULT nextval('public.lap_lapnumber_seq'::regclass);
+
+
+--
+-- Name: packet id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.packet ALTER COLUMN id SET DEFAULT nextval('public.packet_id_seq'::regclass);
+
+
+--
+-- Name: packet packet_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.packet
     ADD CONSTRAINT packet_pkey PRIMARY KEY (id);
-
-
---
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
