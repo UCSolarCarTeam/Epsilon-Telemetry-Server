@@ -1,8 +1,8 @@
 export interface ILapDataInterface {
-    lapNumber: number,
-    lapTime: string,
-    totalPowerIn: number,
-    totalPowerOut: number,
-    netPowerOut: number,
+    lapnumber: number,
+    timestamp: string,
+    totalpowerin: number,
+    totalpowerout: number,
+    netpowerout: number,
     distance: number
 }
