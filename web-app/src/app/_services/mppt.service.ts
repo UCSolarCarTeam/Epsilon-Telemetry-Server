@@ -30,7 +30,7 @@ export class MpptService {
     this.mppt2 = new Mppt;
     this.mppt3 = new Mppt;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.updateMppt(data, 0);
         this.updateMppt(data, 1);

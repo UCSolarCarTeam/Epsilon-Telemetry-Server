@@ -15,6 +15,7 @@ wss.on('connection', function(ws, req) {
     // send to client
     .then((lastRow) => {
       // make the datetime pretty
+      lastRow['msgType'] = 'packet';
       ws.send(JSON.stringify(lastRow));
     })
     // send error if cannot fetch last row

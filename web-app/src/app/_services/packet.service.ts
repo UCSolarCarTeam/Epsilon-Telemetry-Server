@@ -17,7 +17,7 @@ export class PacketService {
     this.packet$ = new EventEmitter<Packet>();
     this.packet = new Packet;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.packet$.emit(this.getData());
         this.packet.name = data.name;
