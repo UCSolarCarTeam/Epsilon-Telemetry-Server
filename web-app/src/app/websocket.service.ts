@@ -12,6 +12,7 @@ export class WebSocketService {
   socket$: WebSocketSubject<any>;
 
   packetMultiplex$: Observable<any>;
+  lapMultiplex$: Observable<any>;
 
   constructor() {
     this.socket$ = webSocket('ws://localhost:4000');
@@ -19,6 +20,11 @@ export class WebSocketService {
          () => ({subscribe: ''}),
          () => ({unsubscribe: ''}),
          message => (message.msgType === 'packet') // Messages will go through if this passes
+        )
+    this.lapMultiplex$ = this.socket$.multiplex(
+         () => ({subscribe: ''}),
+         () => ({unsubscribe: ''}),
+         message => (message.msgType === 'lap')
         )
   }
 }
