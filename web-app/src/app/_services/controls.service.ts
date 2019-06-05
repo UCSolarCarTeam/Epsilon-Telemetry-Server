@@ -17,7 +17,7 @@ export class ControlsService {
     this.controls$ = new EventEmitter<Controls>();
     this.controls = new Controls;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.updateControls(data);
         this.controls$.emit(this.getData());

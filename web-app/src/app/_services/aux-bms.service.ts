@@ -17,7 +17,7 @@ export class AuxBmsService {
     this.auxbms$ = new EventEmitter<AuxBms>();
     this.auxbms = new AuxBms;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.updateAuxBms(data);
         this.auxbms$.emit(this.getData());
