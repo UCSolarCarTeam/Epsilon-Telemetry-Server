@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+  <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="lapNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lap Number</th>
+      <td mat-cell *matCellDef="let row">{{row.lapNumber}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="lapTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lap Time</th>
+      <td mat-cell *matCellDef="let row">{{row.lapTime}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalPowerIn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Power In</th>
+      <td mat-cell *matCellDef="let row">{{row.totalPowerIn}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalPowerOut">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Power Out</th>
+      <td mat-cell *matCellDef="let row">{{row.totalPowerOut}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="netPowerOut">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Net Power Out</th>
+      <td mat-cell *matCellDef="let row">{{row.netPowerOut}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="distance">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Distance</th>
+      <td mat-cell *matCellDef="let row">{{row.distance}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+    [length]="dataSource.data.length"
+    [pageIndex]="0"
+    [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>
