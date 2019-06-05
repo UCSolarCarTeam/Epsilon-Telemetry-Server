@@ -4,7 +4,7 @@ import { DataTableDataSource } from './data-table-datasource';
 import { ILapDataInterface } from '../../../_objects/interfaces/lap-data.interface';
 
 @Component({
-  selector: 'data-table',
+  selector: 'app-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
