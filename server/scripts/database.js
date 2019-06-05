@@ -77,7 +77,7 @@ module.exports.insert = function(queryName, jsonObj) {
  * Fetches the last row in the database.
  * @return {Promise}
  */
-module.exports.last = function() {
+module.exports.lastPacket = function() {
   return db.one({
     name: 'client-init',
     text: 'SELECT * ' +
@@ -86,6 +86,18 @@ module.exports.last = function() {
   });
 };
 
+/**
+* Fetches all the laps in the database
+* @return {Promise}
+*/
+module.exports.laps = function() {
+  return db.any({
+    name: 'client-init-lap',
+    text: 'SELECT * ' +
+          'FROM lap ' +
+          'ORDER BY timestamp DESC',
+  });
+};
 /**
  * Function that maps the JSON object fields from the DigitalOcean RabbitMQ
  * to the PostgreSQL database columns.
