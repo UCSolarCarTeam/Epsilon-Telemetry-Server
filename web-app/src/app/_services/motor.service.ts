@@ -23,7 +23,7 @@ export class MotorService {
     this.motor0 = new Motor;
     this.motor1 = new Motor;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.updateMotor(data, 0);
         this.updateMotor(data, 1);
