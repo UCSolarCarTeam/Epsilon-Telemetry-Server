@@ -12,14 +12,14 @@ export class DataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: DataTableDataSource;
-  lapData: ILapDataInterface[] = {
-    'lapNumber': 0,
-    'lapTime': 'time',
-    'totalPowerIn': 0,
-    'totalPowerOut': 0,
-    'netPowerOut': 0,
-    'distance': 0
-  }
+  // lapData: ILapDataInterface[] = {
+  //   'lapNumber': 0,
+  //   'lapTime': 'time',
+  //   'totalPowerIn': 0,
+  //   'totalPowerOut': 0,
+  //   'netPowerOut': 0,
+  //   'distance': 0
+  // }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['lapNumber', 'lapTime', 'totalPowerIn', 'totalPowerOut', 'netPowerOut', 'distance'];
