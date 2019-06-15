@@ -2,11 +2,11 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { ILapDataInterface } from '../../../_objects/interfaces/lap-data.interface';
+import { LapData } from '../../../_objects/lapData';
 
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: ILapDataInterface[] = [
+const EXAMPLE_DATA: LapData[] = [
  {lapNumber: 2, lapTime: 'H:MM:S', totalPowerIn: 0, totalPowerOut: 0, netPowerOut: 0, distance: 0},
  {lapNumber: 2, lapTime: 'H:MM:S', totalPowerIn: 0, totalPowerOut: 0, netPowerOut: 0, distance: 0},
  {lapNumber: 2, lapTime: 'H:MM:S', totalPowerIn: 0, totalPowerOut: 0, netPowerOut: 0, distance: 0},
@@ -18,8 +18,8 @@ const EXAMPLE_DATA: ILapDataInterface[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DataTableDataSource extends DataSource<ILapDataInterface> {
-  data: ILapDataInterface[] = EXAMPLE_DATA;
+export class DataTableDataSource extends DataSource<LapData> {
+  data: LapData[] = EXAMPLE_DATA;
 
   constructor(private paginator: MatPaginator, private sort: MatSort) {
     super();
@@ -30,7 +30,7 @@ export class DataTableDataSource extends DataSource<ILapDataInterface> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<ILapDataInterface[]> {
+  connect(): Observable<LapData[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -57,7 +57,7 @@ export class DataTableDataSource extends DataSource<ILapDataInterface> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: ILapDataInterface[]) {
+  private getPagedData(data: LapData[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -66,19 +66,19 @@ export class DataTableDataSource extends DataSource<ILapDataInterface> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: ILapDataInterface[]) {
+  private getSortedData(data: LapData[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
 
-    // return data.sort((a, b) => {
-    //   const isAsc = this.sort.direction === 'asc';
-    //   switch (this.sort.active) {
-    //     case 'name': return compare(a.name, b.name, isAsc);
-    //     case 'id': return compare(+a.id, +b.id, isAsc);
-    //     default: return 0;
-    //   }
-    // });
+    return data.sort((a, b) => {
+      const isAsc = this.sort.direction === 'asc';
+      switch (this.sort.active) {
+        // case 'name': return compare(a.name, b.name, isAsc);
+        // case 'id': return compare(+a.id, +b.id, isAsc);
+        default: return 0;
+      }
+    });
   }
 }
 
