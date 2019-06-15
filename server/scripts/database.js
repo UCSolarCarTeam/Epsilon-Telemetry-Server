@@ -77,12 +77,52 @@ module.exports.insert = function(queryName, jsonObj) {
  * Fetches the last row in the database.
  * @return {Promise}
  */
-module.exports.last = function() {
+module.exports.lastPacket = function() {
   return db.one({
     name: 'client-init',
     text: 'SELECT * ' +
           'FROM packet ' +
           'ORDER BY timestamp DESC LIMIT 1',
+  });
+};
+
+/**
+* Fetches all the laps in the database
+* @return {Promise}
+*/
+module.exports.laps = function() {
+  return db.any({
+    name: 'client-init-lap',
+    text: 'SELECT * ' +
+          'FROM lap ' +
+          'ORDER BY timestamp DESC',
+  });
+};
+
+// Time
+const moment = require('moment');
+
+/**
+* Function that inserts a new lap entry to the lap table
+**/
+// TODO - Add actual calculations
+module.exports.addLap = function() {
+  const columns =
+  [
+    'lapnumber',
+    'timestamp',
+    'secondsdifference',
+    'totalpowerin',
+    'totalpowerout',
+    'netpowerout',
+    'distance',
+  ];
+
+  const tokens = [0, moment().format('YYYY-MM-DD HH:mm:ss.SSS'), 100, 100, 100, 100, 100];
+  return db.one({
+    name: `insertLap`,
+    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+    values: tokens,
   });
 };
 

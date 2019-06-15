@@ -12,6 +12,7 @@ const EXAMPLE_DATA: LapData[] = [
  {lapNumber: 2, lapTime: 'H:MM:S', totalPowerIn: 0, totalPowerOut: 0, netPowerOut: 0, distance: 0},
 
 ];
+let lapData: LapData[];
 
 /**
  * Data source for the DataTable view. This class should
@@ -19,7 +20,7 @@ const EXAMPLE_DATA: LapData[] = [
  * (including sorting, pagination, and filtering).
  */
 export class DataTableDataSource extends DataSource<LapData> {
-  data: LapData[] = EXAMPLE_DATA;
+  data: LapData[] = lapData;
 
   constructor(private paginator: MatPaginator, private sort: MatSort) {
     super();
