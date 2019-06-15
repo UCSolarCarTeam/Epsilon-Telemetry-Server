@@ -7,6 +7,7 @@ import { ControlsService } from './controls.service';
 import { LightsService } from './lights.service';
 import { MotorService } from './motor.service';
 import { MpptService } from './mppt.service';
+import { LapService } from './lap.service'
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class DataInitService {
               private ls: LightsService,
               private mots: MotorService,
               private mps: MpptService,
+              private laps: LapService,
               ) {}
 
   load() {
