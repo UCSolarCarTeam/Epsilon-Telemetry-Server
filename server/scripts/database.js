@@ -116,12 +116,15 @@ module.exports.addLap = function() {
     'totalpowerout',
     'netpowerout',
     'distance',
+    'amphours',
+    'averagepackcurrent',
+    'batterysecondsremaining',
   ];
 
-  const tokens = [0, moment().format('YYYY-MM-DD HH:mm:ss.SSS'), 100, 100, 100, 100, 100];
+  const tokens = [0, moment().format('YYYY-MM-DD HH:mm:ss.SSS'), 100, 100, 100, 100, 100, 100, 100, 100];
   return db.one({
     name: `insertLap`,
-    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
     values: tokens,
   });
 };

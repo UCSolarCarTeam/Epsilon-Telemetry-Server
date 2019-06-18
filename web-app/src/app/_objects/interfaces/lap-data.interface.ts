@@ -4,5 +4,8 @@ export interface ILapDataInterface {
     totalpowerin: number,
     totalpowerout: number,
     netpowerout: number,
-    distance: number
+    distance: number,
+    amphours: number,
+    averagepackcurrent: number,
+    batterysecondsremaining: number,
 }
