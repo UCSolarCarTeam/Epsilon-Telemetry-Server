@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RaceComponent } from './race.component';
+import { DataTableComponent } from './data-table/data-table.component';
 
 describe('RaceComponent', () => {
   let component: RaceComponent;
