@@ -25,7 +25,7 @@ wss.on('connection', function(ws, req) {
   db.laps()
   .then((laps) => {
     // console.log(laps)
-    for (let lap = 0; lap < laps.length; lap++) {
+    for (let lap = laps.length - 1; lap >= 0; --lap) {
       laps[lap]['msgType'] = 'lap';
       ws.send(JSON.stringify(laps[lap]));
     }

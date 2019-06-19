@@ -38,6 +38,6 @@ export class LapService {
     newData.averagePackCurrent = data.averagepackcurrent;
     newData.batterySecondsRemaining = data.batterysecondsremaining;
 
-    this.lapDataArray.push(newData)
+    this.lapDataArray.unshift(newData)
   }
 }
