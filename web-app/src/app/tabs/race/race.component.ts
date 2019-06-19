@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataTableComponent } from './data-table/data-table.component';
 import { LapData } from '../../_objects/lapData';
 import { LapService } from '../../_services/lap.service';
 
