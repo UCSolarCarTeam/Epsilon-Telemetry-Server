@@ -31,6 +31,16 @@
       <td mat-cell *matCellDef="let lap"> {{lap.distance}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="amphours">
+      <th mat-header-cell *matHeaderCellDef> Remaining Amphours </th>
+      <td mat-cell *matCellDef="let lap"> {{lap.amphours}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="averagePackCurrent">
+      <th mat-header-cell *matHeaderCellDef> Average Pack Current </th>
+      <td mat-cell *matCellDef="let lap"> {{lap.averagePackCurrent}} </td>
+    </ng-container>
+    
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
