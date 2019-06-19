@@ -5,4 +5,7 @@ export class LapData {
     totalPowerOut = -1;
     netPowerOut = -1;
     distance = -1;
+    amphours = -1;
+    averagePackCurrent = -1;
+    batterySecondsRemaining = -1;
 }

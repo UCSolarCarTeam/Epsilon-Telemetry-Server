@@ -34,6 +34,9 @@ export class LapService {
     newData.totalPowerOut = data.totalpowerout;
     newData.netPowerOut = data.netpowerout;
     newData.distance = data.distance;
+    newData.amphours = data.amphours;
+    newData.averagePackCurrent = data.averagepackcurrent;
+    newData.batterySecondsRemaining = data.batterysecondsremaining;
 
     this.lapDataArray.push(newData)
   }

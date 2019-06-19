@@ -45,7 +45,10 @@ CREATE TABLE public.lap (
     totalpowerin double precision,
     totalpowerout double precision,
     netpowerout double precision,
-    distance double precision
+    distance double precision,
+    amphours double precision,
+    averagepackcurrent double precision,
+    batterysecondsremaining integer
 );
 
 
