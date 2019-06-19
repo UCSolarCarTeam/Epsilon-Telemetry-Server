@@ -2,7 +2,18 @@ const amqp = require('amqplib');
 const config = require('../config');
 const db = require('./database');
 const wss = require('./websocket').websocket;
+const rc = require('./race');
+
 let volumeDown = false;
+let lastTimestamp;
+
+db.lastLap()
+  .then((lastLap) => {
+    lastTimestamp = lastLap.timestamp;
+}).catch(() => {
+    lastTimestamp = '-infinity';
+});
+
 /**
  * Setup the AMQP channel with RabbitMQ
  */
@@ -32,12 +43,19 @@ amqp.connect(config.rabbitmq.host)
           // TODO: Swap VolumeDown with lap button when it's ready
           if (!jsonObj.DriverControls.VolumeDown
             && volumeDown) {
-            db.addLap(jsonObj)
-              .then((insertedRow) => {
-                console.log('1 row inserted into Lap Table');
-                insertedRow['msgType'] = 'lap';
-                wss.broadcast(JSON.stringify(insertedRow));
-              });
+            db.between(lastTimestamp, jsonObj.TimeStamp)
+               .then((allPackets) => {
+                 let averagePackCurrent = rc.getAveragePackCurrent(allPackets);
+                 lastTimestamp = jsonObj.TimeStamp;
+                 // Create Lap JSON Object
+                 let lap = {'averagePackCurrent': averagePackCurrent};
+                 db.addLap(lap)
+                   .then((insertedRow) => {
+                     console.log('1 row inserted into Lap Table');
+                     insertedRow['msgType'] = 'lap';
+                     wss.broadcast(JSON.stringify(insertedRow));
+                   });
+               });
           }
           volumeDown = jsonObj.DriverControls.VolumeDown;
 

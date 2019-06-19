@@ -136,7 +136,7 @@ const moment = require('moment');
 * Function that inserts a new lap entry to the lap table
 **/
 // TODO - Add actual calculations
-module.exports.addLap = function() {
+module.exports.addLap = function(jsonObj) {
   const columns =
   [
     'lapnumber',
@@ -150,8 +150,17 @@ module.exports.addLap = function() {
     'averagepackcurrent',
     'batterysecondsremaining',
   ];
-
-  const tokens = [0, moment().format('YYYY-MM-DD HH:mm:ss.SSS'), 100, 100, 100, 100, 100, 100, 100, 100];
+  const tokens =
+  [0,
+  moment().format('YYYY-MM-DD HH:mm:ss.SSS'),
+  100,
+  100,
+  100,
+  100,
+  100,
+  100,
+  jsonObj.averagePackCurrent,
+  100];
   return db.one({
     name: `insertLap`,
     text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
