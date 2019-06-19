@@ -87,6 +87,23 @@ module.exports.lastPacket = function() {
 };
 
 /**
+ * Fetches all the packets in the database between two timestamps (inclusive)
+ * @param {Timestamp} lowestTime
+ * @param {Timestamp} highestTime
+ * @return {Promise}
+ */
+module.exports.between = function(lowestTime, highestTime) {
+  return db.any({
+    name: 'select-between',
+    text: 'SELECT * ' +
+          'FROM packet ' +
+          'GROUP BY packet.id ' +
+          'HAVING "timestamp" >= $1 AND "timestamp" <= $2',
+    values: [lowestTime, highestTime],
+  });
+};
+
+/**
 * Fetches all the laps in the database
 * @return {Promise}
 */
@@ -96,6 +113,19 @@ module.exports.laps = function() {
     text: 'SELECT * ' +
           'FROM lap ' +
           'ORDER BY timestamp DESC',
+  });
+};
+
+/**
+ * Fetches the last lap in the database
+ * @return {Promise}
+ */
+module.exports.lastLap = function() {
+  return db.one({
+    name: 'client-last-lap',
+    text: 'SELECT * ' +
+          'FROM lap ' +
+          'ORDER BY timestamp DESC LIMIT 1',
   });
 };
 
