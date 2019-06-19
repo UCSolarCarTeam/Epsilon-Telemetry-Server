@@ -11,8 +11,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
-import { MatPaginatorModule } from '@angular/material';
-import { MatSortModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -59,10 +57,7 @@ import { APP_INITIALIZER } from '@angular/core';
     MatInputModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatTabsModule,
     MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
   ],
   providers: [
     WebSocketService,

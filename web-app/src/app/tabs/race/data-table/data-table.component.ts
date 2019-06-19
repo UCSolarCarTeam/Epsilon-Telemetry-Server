@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
-import { DataTableDataSource } from './data-table-datasource';
+import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { LapData } from '../../../_objects/lapData';
+import { LapService } from '../../../_services/lap.service';
 
 @Component({
   selector: 'app-data-table',
@@ -9,9 +9,10 @@ import { LapData } from '../../../_objects/lapData';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  dataSource: DataTableDataSource;
+  @ViewChild('table') table: MatTable<LapData>;
+
+  displayedColumns = ['lapNumber', 'lapTime', 'totalPowerIn', 'totalPowerOut', 'netPowerOut', 'distance'];
+
   lapData: LapData[] = [{
     'lapNumber': 0,
     'lapTime': 'time',
@@ -20,11 +21,15 @@ export class DataTableComponent implements OnInit {
     'netPowerOut': 0,
     'distance': 0
   }]
-
+  constructor(private lapService: LapService) { }
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['lapNumber', 'lapTime', 'totalPowerIn', 'totalPowerOut', 'netPowerOut', 'distance'];
 
   ngOnInit() {
-    this.dataSource = new DataTableDataSource(this.paginator, this.sort);
+    this.lapService.lapData$.subscribe(
+      (data: LapData[]) => {
+        this.lapData = data;
+        this.table.renderRows();
+      }
+    );
   }
 }
