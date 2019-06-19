@@ -88,6 +88,8 @@ module.exports.lastPacket = function() {
 
 /**
  * Fetches all the packets in the database between two timestamps (inclusive)
+ * @param {Timestamp} lowestTime
+ * @param {Timestamp} highestTime
  * @return {Promise}
  */
 module.exports.between = function(lowestTime, highestTime) {
@@ -99,7 +101,7 @@ module.exports.between = function(lowestTime, highestTime) {
           'HAVING "timestamp" >= $1 AND "timestamp" <= $2',
     values: [lowestTime, highestTime],
   });
-}
+};
 
 /**
 * Fetches all the laps in the database
@@ -125,7 +127,7 @@ module.exports.lastLap = function() {
           'FROM lap ' +
           'ORDER BY timestamp DESC LIMIT 1',
   });
-}
+};
 
 // Time
 const moment = require('moment');
