@@ -8,7 +8,7 @@ const initOptions = {
   promiseLib: promise,
   // Query handler
   query: function(e) {
-    console.log('QUERY:', e.query);
+    // console.log('QUERY:', e.query);
   },
   // Error handler
   error: function(err, e) {
@@ -157,10 +157,10 @@ module.exports.addLap = function(jsonObj) {
   100,
   100,
   100,
-  100,
-  100,
+  jsonObj.distance,
+  jsonObj.amphours,
   jsonObj.averagePackCurrent,
-  100];
+  jsonObj.batterysecondsremaining];
   return db.one({
     name: `insertLap`,
     text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
