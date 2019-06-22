@@ -11,20 +11,22 @@ import { LapService } from '../../../_services/lap.service';
 export class DataTableComponent implements OnInit {
   @ViewChild('table') table: MatTable<LapData>;
 
-  displayedColumns = ['lapNumber', 'lapTime', 'totalPowerIn', 'totalPowerOut', 'netPowerOut', 'distance'];
+  displayedColumns =
+  ['lapNumber',
+  'lapTime',
+  'totalPowerIn',
+  'totalPowerOut',
+  'netPowerOut',
+  'distance',
+  'amphours',
+  'averagePackCurrent', ];
 
-  lapData: LapData[] = [{
-    'lapNumber': 0,
-    'lapTime': 'time',
-    'totalPowerIn': 0,
-    'totalPowerOut': 0,
-    'netPowerOut': 0,
-    'distance': 0
-  }]
+  lapData: LapData[];
   constructor(private lapService: LapService) { }
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
 
   ngOnInit() {
+    this.lapData = this.lapService.getData()
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
         this.lapData = data;
