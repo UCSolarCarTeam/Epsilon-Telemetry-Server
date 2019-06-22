@@ -54,23 +54,31 @@ amqp.connect(config.rabbitmq.host)
             && volumeDown) {
             db.between(lastLapTimestamp, jsonObj.TimeStamp)
                .then((allPackets) => {
-                 let averagePackCurrent = rc.getAveragePackCurrent(allPackets);
-                 let amphours = jsonObj.Battery.PackAmphours;
-                 let batterysecondsremaining = rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours);
-                 let distance = rc.getDistanceTraveled(allPackets);
-                 // Create Lap JSON Object
-                 let lap = {
-                            'distance': distance,
-                            'amphours': amphours,
-                            'averagePackCurrent': averagePackCurrent,
-                            'batterysecondsremaining': batterysecondsremaining,
-                           };
-                 db.addLap(lap)
-                   .then((insertedRow) => {
-                     console.log('1 row inserted into Lap Table');
-                     insertedRow['msgType'] = 'lap';
-                     wss.broadcast(JSON.stringify(insertedRow));
-                   });
+                  let timestamp = allPackets[0].timestamp;
+                  let averagePowerIn = rc.getAveragePowerIn(allPackets);
+                  let averagePowerOut = rc.getAveragePowerOut(allPackets);
+                  let averagePackCurrent = rc.getAveragePackCurrent(allPackets);
+                  let amphours = jsonObj.Battery.PackAmphours;
+
+                  // Create Lap JSON Object
+                  let lap = {
+                    'timestamp': timestamp,
+                    'secondsdifference': timestamp - lastLapTimestamp,
+                    'totalpowerin': averagePowerIn,
+                    'totalpowerout': averagePowerOut,
+                    'netpowerout': averagePowerOut - averagePowerIn,
+                    'distance': rc.getDistanceTraveled(allPackets),
+                    'amphours': amphours,
+                    'averagePackCurrent': averagePackCurrent,
+                    'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours)
+                  };
+
+                  db.addLap(lap)
+                    .then((insertedRow) => {
+                      console.log('1 row inserted into Lap Table');
+                      insertedRow['msgType'] = 'lap';
+                      wss.broadcast(JSON.stringify(insertedRow));
+                    });
                });
                lastLapTimestamp = jsonObj.TimeStamp;
           }

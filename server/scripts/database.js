@@ -98,7 +98,8 @@ module.exports.between = function(lowestTime, highestTime) {
     text: 'SELECT * ' +
           'FROM packet ' +
           'GROUP BY packet.id ' +
-          'HAVING "timestamp" >= $1 AND "timestamp" <= $2',
+          'HAVING "timestamp" >= $1 AND "timestamp" <= $2 ' +
+          'ORDER BY timestamp DESC',
     values: [lowestTime, highestTime],
   });
 };
@@ -137,34 +138,10 @@ const moment = require('moment');
 **/
 // TODO - Add actual calculations
 module.exports.addLap = function(jsonObj) {
-  const columns =
-  [
-    'timestamp',
-    'secondsdifference',
-    'totalpowerin',
-    'totalpowerout',
-    'netpowerout',
-    'distance',
-    'amphours',
-    'averagepackcurrent',
-    'batterysecondsremaining',
-  ];
-  const tokens =
-  [
-    moment().format('YYYY-MM-DD HH:mm:ss.SSS'),
-    100,
-    100,
-    100,
-    100,
-    jsonObj.distance,
-    jsonObj.amphours,
-    jsonObj.averagePackCurrent,
-    jsonObj.batterysecondsremaining
-  ];
   return db.one({
     name: `insertLap`,
-    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
-    values: tokens,
+    text: `INSERT INTO lap (${Object.keys(jsonObj)}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+    values: Object.values(jsonObj),
   });
 };
 
