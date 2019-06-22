@@ -70,7 +70,7 @@ amqp.connect(config.rabbitmq.host)
                     'distance': rc.getDistanceTraveled(allPackets),
                     'amphours': amphours,
                     'averagePackCurrent': averagePackCurrent,
-                    'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours)
+                    'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours),
                   };
 
                   db.addLap(lap)

@@ -130,9 +130,6 @@ module.exports.lastLap = function() {
   });
 };
 
-// Time
-const moment = require('moment');
-
 /**
 * Function that inserts a new lap entry to the lap table
 **/

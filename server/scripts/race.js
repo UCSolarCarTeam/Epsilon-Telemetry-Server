@@ -51,8 +51,9 @@ module.exports.getDistanceTraveled = function(packetArray) {
 
 module.exports.getAveragePowerIn = function(packetArray) {
     // If no packets, then no power in
-    if(packetArray.length == 0)
+    if (packetArray.length == 0) {
         return 0;
+    }
 
     // Define constants
     const mpptCount = 4;
@@ -63,8 +64,8 @@ module.exports.getAveragePowerIn = function(packetArray) {
         let arrayPower = 0;
         for (let mppt = 0; mppt < mpptCount; mppt++) {
             // Array Power = Array Voltage * Array Current
-            arrayPower += packet["mppt" + mppt + "arrayvoltage"] *
-                          packet["mppt" + mppt + "arraycurrent"];
+            arrayPower += packet['mppt' + mppt + 'arrayvoltage'] *
+                          packet['mppt' + mppt + 'arraycurrent'];
         }
         return arrayPower;
     }).reduce((sum, curr) => sum + (curr / packetArray.length), 0);
@@ -74,19 +75,20 @@ module.exports.getAveragePowerIn = function(packetArray) {
         let regen = 0;
         for (let motor = 0; motor < motorCount; motor++) {
             // Regen = Bus Current * Bus Voltage
-            regen += packet["motor" + motor + "buscurrent"] *
-                     packet["motor" + motor + "busvoltage"];
+            regen += packet['motor' + motor + 'buscurrent'] *
+                     packet['motor' + motor + 'busvoltage'];
         }
         return regen;
     }).reduce((sum, curr) => sum + (curr / packetArray.length), 0);
 
     return mpptPowerIn + regenPowerIn;
-}
+};
 
 module.exports.getAveragePowerOut = function(packetArray) {
     // If no packets, then no power out
-    if(packetArray.length == 0)
+    if (packetArray.length == 0) {
         return 0;
+    }
 
     return packetArray.reduce((sum, curr) => sum + (curr.packcurrent * curr.packvoltage), 0) / packetArray.length;
-}
+};
