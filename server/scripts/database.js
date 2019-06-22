@@ -139,7 +139,6 @@ const moment = require('moment');
 module.exports.addLap = function(jsonObj) {
   const columns =
   [
-    'lapnumber',
     'timestamp',
     'secondsdifference',
     'totalpowerin',
@@ -151,19 +150,20 @@ module.exports.addLap = function(jsonObj) {
     'batterysecondsremaining',
   ];
   const tokens =
-  [0,
-  moment().format('YYYY-MM-DD HH:mm:ss.SSS'),
-  100,
-  100,
-  100,
-  100,
-  jsonObj.distance,
-  jsonObj.amphours,
-  jsonObj.averagePackCurrent,
-  jsonObj.batterysecondsremaining];
+  [
+    moment().format('YYYY-MM-DD HH:mm:ss.SSS'),
+    100,
+    100,
+    100,
+    100,
+    jsonObj.distance,
+    jsonObj.amphours,
+    jsonObj.averagePackCurrent,
+    jsonObj.batterysecondsremaining
+  ];
   return db.one({
     name: `insertLap`,
-    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
     values: tokens,
   });
 };

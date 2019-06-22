@@ -38,6 +38,8 @@ SET default_with_oids = false;
 -- Name: lap; Type: TABLE; Schema: public; Owner: postgres
 --
 
+CREATE SEQUENCE lapnumber_seq;
+
 CREATE TABLE public.lap (
     lapnumber bigint NOT NULL,
     "timestamp" timestamp without time zone NOT NULL,
@@ -50,7 +52,7 @@ CREATE TABLE public.lap (
     averagepackcurrent double precision,
     batterysecondsremaining integer
 );
-
+ALTER SEQUENCE lapnumber_seq OWNED BY public.lap.lapnumber;
 
 ALTER TABLE public.lap OWNER TO postgres;
 
