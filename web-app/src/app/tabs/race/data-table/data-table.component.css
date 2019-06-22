@@ -1,11 +1,14 @@
 .container {
   height: 400px;
   overflow: auto;
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(66, 66, 66);
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: space-between;
 
 }
 .mat-row:nth-child(even){
-  background-color: rgb(61, 61, 61);
+  background-color: rgb(66, 66, 66);
 }
 
 .mat-row:nth-child(odd){
@@ -13,4 +16,22 @@
       }
 table {
   width: 100%;
+}
+
+
+th {
+	display: inline-flex;
+	justify-content: space-between;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+td {
+	display: inline-flex;
+	justify-content: space-between;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+ng-container {
+	display: flex;
+	justify-content: space-between;
 }
