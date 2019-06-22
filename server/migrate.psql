@@ -252,6 +252,7 @@ CREATE TABLE public.packet (
     allowcharge boolean,
     contractorerror boolean,
     highvoltageenable boolean
+    lap boolean
 );
 
 --
