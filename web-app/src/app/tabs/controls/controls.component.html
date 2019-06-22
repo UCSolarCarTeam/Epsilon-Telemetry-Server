@@ -7,7 +7,7 @@
 	    		<div *ngIf="lights.alive; else elseBlock">
 	    			<img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle">
 	    		</div>
-	    		<div class="alive-title">Alive</div>
+	    		<div class="alive-title">Heartbeat</div>
     		</div>
 		</div>
 		<div class="lights-container-grid">
@@ -56,7 +56,7 @@
 				<div *ngIf="controls.alive; else elseBlock">
 					<img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle">
 	    		</div>
-				<div class="alive-title">Alive</div>
+				<div class="alive-title">Heartbeat</div>
 			</div>
 		</div>
 		<div class="sub-container-grid">
@@ -140,7 +140,7 @@
 				</div>
 			</div>
 			<div>
-				<div class="subheader">Acceleration</div>
+				<div class="subheader">Acceleration Pedal</div>
 				<div class="grid-row">
 					<mat-progress-bar class="progress-bar" [value]="controls.acceleration"></mat-progress-bar>
 					<span class="progress-data">{{controls.acceleration}} %</span>
@@ -148,7 +148,7 @@
 			</div>
 			<div></div>
 			<div>
-				<div class="subheader">Regen</div>
+				<div class="subheader">Regen Brake Pedal</div>
 				<div class="grid-row">
 					<mat-progress-bar class="progress-bar" [value]="controls.regenBraking"></mat-progress-bar>
 					<span class="progress-data">{{controls.regenBraking}} %</span>
