@@ -27,9 +27,8 @@ export class HeartbeatService {
   }
 
    heartBeatCheck() {
-    const packetTime = Date.parse(this.packet.timestamp);
-
-    if (Number.isNaN(packetTime) || Date.now() - packetTime > this.interval) {
+    const packetTime = new Date(this.packet.timestamp);
+    if (Date.now() - this.packet.timestamp > this.interval) {
         this.heartBeat$.emit(false);
     } else {
         this.heartBeat$.emit(true);

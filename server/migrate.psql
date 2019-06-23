@@ -38,16 +38,21 @@ SET default_with_oids = false;
 -- Name: lap; Type: TABLE; Schema: public; Owner: postgres
 --
 
+CREATE SEQUENCE public.lapnumber_seq;
+
 CREATE TABLE public.lap (
     lapnumber bigint NOT NULL,
-    "timestamp" timestamp without time zone NOT NULL,
+    "timestamp" bigint NOT NULL,
     secondsdifference integer,
     totalpowerin double precision,
     totalpowerout double precision,
     netpowerout double precision,
-    distance double precision
+    distance double precision,
+    amphours double precision,
+    averagepackcurrent double precision,
+    batterysecondsremaining integer
 );
-
+ALTER SEQUENCE public.lapnumber_seq OWNED BY public.lap.lapnumber;
 
 ALTER TABLE public.lap OWNER TO postgres;
 
@@ -78,7 +83,7 @@ ALTER SEQUENCE public.lap_lapnumber_seq OWNED BY public.lap.lapnumber;
 
 CREATE TABLE public.packet (
     id bigint NOT NULL,
-    "timestamp" timestamp without time zone NOT NULL,
+    "timestamp" bigint NOT NULL,
     name text NOT NULL,
     motor0alive boolean,
     motor0setcurrent double precision,
