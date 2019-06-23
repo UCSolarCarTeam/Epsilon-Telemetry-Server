@@ -1,6 +1,6 @@
 export interface ILapDataInterface {
     lapnumber: number,
-    timestamp: string,
+    secondsdifference: number,
     totalpowerin: number,
     totalpowerout: number,
     netpowerout: number,
