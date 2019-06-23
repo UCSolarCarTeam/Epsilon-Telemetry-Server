@@ -74,6 +74,14 @@ module.exports.getAveragePowerIn = function(packetArray) {
     let regenPowerIn = packetArray.map((packet) => {
         let regen = 0;
         for (let motor = 0; motor < motorCount; motor++) {
+            let busCurrent = packet['motor' + motor + 'buscurrent'];
+            let busVoltage = packet['motor' + motor + 'busvoltage'];
+            
+            // Filter out any values with busCurrent >= 0
+            if(busCurrent >= 0) {
+                continue;
+            }
+            
             // Regen = Bus Current * Bus Voltage
             regen += packet['motor' + motor + 'buscurrent'] *
                      packet['motor' + motor + 'busvoltage'];
