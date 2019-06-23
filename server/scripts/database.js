@@ -8,7 +8,7 @@ const initOptions = {
   promiseLib: promise,
   // Query handler
   query: function(e) {
-    console.log('QUERY:', e.query);
+    // console.log('QUERY:', e.query);
   },
   // Error handler
   error: function(err, e) {
@@ -98,7 +98,8 @@ module.exports.between = function(lowestTime, highestTime) {
     text: 'SELECT * ' +
           'FROM packet ' +
           'GROUP BY packet.id ' +
-          'HAVING "timestamp" >= $1 AND "timestamp" <= $2',
+          'HAVING "timestamp" >= $1 AND "timestamp" <= $2 ' +
+          'ORDER BY timestamp DESC',
     values: [lowestTime, highestTime],
   });
 };
@@ -133,26 +134,11 @@ module.exports.lastLap = function() {
 * Function that inserts a new lap entry to the lap table
 **/
 // TODO - Add actual calculations
-module.exports.addLap = function() {
-  const columns =
-  [
-    'lapnumber',
-    'timestamp',
-    'secondsdifference',
-    'totalpowerin',
-    'totalpowerout',
-    'netpowerout',
-    'distance',
-    'amphours',
-    'averagepackcurrent',
-    'batterysecondsremaining',
-  ];
-
-  const tokens = [0, 0, 100, 100, 100, 100, 100, 100, 100, 100];
+module.exports.addLap = function(jsonObj) {
   return db.one({
     name: `insertLap`,
-    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
-    values: tokens,
+    text: `INSERT INTO lap (${Object.keys(jsonObj)}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+    values: Object.values(jsonObj),
   });
 };
 

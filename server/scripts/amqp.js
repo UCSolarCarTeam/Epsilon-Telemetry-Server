@@ -2,7 +2,18 @@ const amqp = require('amqplib');
 const config = require('../config');
 const db = require('./database');
 const wss = require('./websocket').websocket;
+const rc = require('./race');
+
 let volumeDown = false;
+let lastLapTimestamp;
+
+db.lastLap()
+  .then((lastLap) => {
+    lastLapTimestamp = lastLap.timestamp;
+}).catch(() => {
+    lastLapTimestamp = 0;
+});
+
 /**
  * Setup the AMQP channel with RabbitMQ
  */
@@ -27,20 +38,6 @@ amqp.connect(config.rabbitmq.host)
         return ch.consume(q, function(msg) {
           const jsonObj = JSON.parse(msg.content);
           // save the data into database
-          // Process Lap data
-          // Want to capture when button is released
-          // TODO: Swap VolumeDown with lap button when it's ready
-          if (!jsonObj.DriverControls.VolumeDown
-            && volumeDown) {
-            db.addLap(jsonObj)
-              .then((insertedRow) => {
-                console.log('1 row inserted into Lap Table');
-                insertedRow['msgType'] = 'lap';
-                wss.broadcast(JSON.stringify(insertedRow));
-              });
-          }
-          volumeDown = jsonObj.DriverControls.VolumeDown;
-
           // Process Packet Data
           db.insert('rabbitmq-insert', jsonObj)
             .then((insertedRow) => {
@@ -49,6 +46,44 @@ amqp.connect(config.rabbitmq.host)
               // send to angular clients
               wss.broadcast(JSON.stringify(insertedRow));
             });
+
+          // Process Lap data
+          // Want to capture when button is released
+          // TODO: Swap VolumeDown with lap button when it's ready
+          if (!jsonObj.DriverControls.VolumeDown
+            && volumeDown) {
+            const currentTimeStampEpoch = new Date(jsonObj.TimeStamp).getTime().toFixed(0);
+            db.between(lastLapTimestamp, currentTimeStampEpoch)
+               .then((allPackets) => {
+                  let timestamp = currentTimeStampEpoch;
+                  let averagePowerIn = rc.getAveragePowerIn(allPackets);
+                  let averagePowerOut = rc.getAveragePowerOut(allPackets);
+                  let averagePackCurrent = rc.getAveragePackCurrent(allPackets);
+                  let amphours = jsonObj.Battery.PackAmphours;
+
+                  // Create Lap JSON Object
+                  let lap = {
+                    'timestamp': timestamp,
+                    'secondsdifference': timestamp - lastLapTimestamp,
+                    'totalpowerin': averagePowerIn,
+                    'totalpowerout': averagePowerOut,
+                    'netpowerout': averagePowerOut - averagePowerIn,
+                    'distance': rc.getDistanceTraveled(allPackets),
+                    'amphours': amphours,
+                    'averagePackCurrent': averagePackCurrent,
+                    'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours),
+                  };
+                  db.addLap(lap)
+                    .then((insertedRow) => {
+                      console.log('1 row inserted into Lap Table');
+                      insertedRow['msgType'] = 'lap';
+                      wss.broadcast(JSON.stringify(insertedRow));
+                    });
+                  lastLapTimestamp = currentTimeStampEpoch;
+               });
+          }
+
+          volumeDown = jsonObj.DriverControls.VolumeDown;
         }, {noAck: true});
       });
   })
