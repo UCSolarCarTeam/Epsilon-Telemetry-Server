@@ -11,7 +11,7 @@ db.lastLap()
   .then((lastLap) => {
     lastLapTimestamp = lastLap.timestamp;
 }).catch(() => {
-    lastLapTimestamp = '-infinity';
+    lastLapTimestamp = 0;
 });
 
 /**
@@ -52,9 +52,10 @@ amqp.connect(config.rabbitmq.host)
           // TODO: Swap VolumeDown with lap button when it's ready
           if (!jsonObj.DriverControls.VolumeDown
             && volumeDown) {
-            db.between(lastLapTimestamp, jsonObj.TimeStamp)
+            const currentTimeStampEpoch = new Date(jsonObj.TimeStamp).getTime().toFixed(0);
+            db.between(lastLapTimestamp, currentTimeStampEpoch)
                .then((allPackets) => {
-                  let timestamp = allPackets[0].timestamp;
+                  let timestamp = currentTimeStampEpoch;
                   let averagePowerIn = rc.getAveragePowerIn(allPackets);
                   let averagePowerOut = rc.getAveragePowerOut(allPackets);
                   let averagePackCurrent = rc.getAveragePackCurrent(allPackets);
@@ -72,15 +73,14 @@ amqp.connect(config.rabbitmq.host)
                     'averagePackCurrent': averagePackCurrent,
                     'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours),
                   };
-
                   db.addLap(lap)
                     .then((insertedRow) => {
                       console.log('1 row inserted into Lap Table');
                       insertedRow['msgType'] = 'lap';
                       wss.broadcast(JSON.stringify(insertedRow));
                     });
+                  lastLapTimestamp = currentTimeStampEpoch;
                });
-               lastLapTimestamp = jsonObj.TimeStamp;
           }
 
           volumeDown = jsonObj.DriverControls.VolumeDown;
