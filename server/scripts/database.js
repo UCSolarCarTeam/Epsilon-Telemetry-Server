@@ -151,8 +151,9 @@ module.exports.addLap = function(jsonObj) {
  */
 function jsonToMap(jsonObj) {
   const mapObj = Object.assign(columnMap);
+  const timestamp = (new Date(jsonObj['TimeStamp']).getTime()).toFixed(0);
   mapObj.set('timestamp',
-    `${jsonObj['TimeStamp']}`);
+    `${timestamp}`);
   mapObj.set('name',
     `${jsonObj['PacketTitle']}`);
   mapObj.set('motor0alive',

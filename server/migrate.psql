@@ -42,7 +42,7 @@ CREATE SEQUENCE public.lapnumber_seq;
 
 CREATE TABLE public.lap (
     lapnumber bigint NOT NULL,
-    "timestamp" timestamp without time zone NOT NULL,
+    "timestamp" bigint NOT NULL,
     secondsdifference integer,
     totalpowerin double precision,
     totalpowerout double precision,
@@ -83,7 +83,7 @@ ALTER SEQUENCE public.lap_lapnumber_seq OWNED BY public.lap.lapnumber;
 
 CREATE TABLE public.packet (
     id bigint NOT NULL,
-    "timestamp" timestamp without time zone NOT NULL,
+    "timestamp" bigint NOT NULL,
     name text NOT NULL,
     motor0alive boolean,
     motor0setcurrent double precision,

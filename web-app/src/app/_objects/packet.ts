@@ -1,4 +1,8 @@
 export class Packet {
-  name = 'NO DATA';
-  timestamp = null; // format: yyyy-MM-dd-hh-mm-ss-zzz
+  timestamp: number;
+  name: string;
+  constructor() {
+    this.name = 'NO DATA';
+    this.timestamp = 0;
+  }
 }
