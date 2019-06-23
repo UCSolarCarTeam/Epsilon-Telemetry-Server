@@ -87,7 +87,7 @@ module.exports.getAveragePowerIn = function(packetArray) {
         return regen;
     }).reduce((sum, curr) => sum + (curr / packetArray.length), 0);
 
-    return mpptPowerIn + regenPowerIn;
+    return Math.abs(mpptPowerIn + regenPowerIn);
 };
 
 module.exports.getAveragePowerOut = function(packetArray) {
@@ -96,5 +96,5 @@ module.exports.getAveragePowerOut = function(packetArray) {
         return 0;
     }
 
-    return packetArray.reduce((sum, curr) => sum + (curr.packcurrent * curr.packvoltage), 0) / packetArray.length;
+    return Math.abs(packetArray.reduce((sum, curr) => sum + (curr.packcurrent * curr.packvoltage), 0) / packetArray.length);
 };
