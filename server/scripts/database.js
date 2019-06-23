@@ -129,9 +129,6 @@ module.exports.lastLap = function() {
   });
 };
 
-// Time
-const moment = require('moment');
-
 /**
 * Function that inserts a new lap entry to the lap table
 **/
@@ -151,7 +148,7 @@ module.exports.addLap = function() {
     'batterysecondsremaining',
   ];
 
-  const tokens = [0, moment().format('YYYY-MM-DD HH:mm:ss.SSS'), 100, 100, 100, 100, 100, 100, 100, 100];
+  const tokens = [0, 0, 100, 100, 100, 100, 100, 100, 100, 100];
   return db.one({
     name: `insertLap`,
     text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
@@ -168,8 +165,9 @@ module.exports.addLap = function() {
  */
 function jsonToMap(jsonObj) {
   const mapObj = Object.assign(columnMap);
+  const timestamp = (new Date(jsonObj['TimeStamp']).getTime()).toFixed(0);
   mapObj.set('timestamp',
-    `${jsonObj['TimeStamp']}`);
+    `${timestamp}`);
   mapObj.set('name',
     `${jsonObj['PacketTitle']}`);
   mapObj.set('motor0alive',
