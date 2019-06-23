@@ -29,7 +29,7 @@ export class LapService {
   updateLapData(data: ILapDataInterface): void {
     const newData = new LapData();
     newData.lapNumber = data.lapnumber;
-    newData.lapTime = data.timestamp;
+    newData.lapTime = '22:22:00';
     newData.totalPowerIn = data.totalpowerin;
     newData.totalPowerOut = data.totalpowerout;
     newData.netPowerOut = data.netpowerout;
