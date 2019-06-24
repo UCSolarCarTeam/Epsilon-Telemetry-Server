@@ -2,6 +2,7 @@
   height: 400px;
   overflow: auto;
   background-color: rgb(128, 128, 128);
+  margin-top: 1.5em;
 
 }
 .mat-row:nth-child(even){
@@ -13,4 +14,14 @@
       }
 table {
   width: 100%;
+}
+
+td.mat0cell {
+	text-align: center;
+}
+
+th.mat-cell-header {
+	text-align: center;
+	padding-left: .5em;
+	padding-right: .5em;
 }
