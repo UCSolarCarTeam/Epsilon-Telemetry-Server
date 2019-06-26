@@ -11,7 +11,7 @@ db.lastLap()
   .then((lastLap) => {
     lastLapTimestamp = lastLap.timestamp;
 }).catch(() => {
-    lastLapTimestamp = 0;
+    lastLapTimestamp = undefined;
 });
 
 /**
@@ -64,7 +64,7 @@ amqp.connect(config.rabbitmq.host)
                   // Create Lap JSON Object
                   let lap = {
                     'timestamp': timestamp,
-                    'secondsdifference': timestamp - lastLapTimestamp,
+                    'secondsdifference': timestamp - (lastLapTimestamp != undefined ? lastLapTimestamp : timestamp),
                     'totalpowerin': averagePowerIn,
                     'totalpowerout': averagePowerOut,
                     'netpowerout': averagePowerOut - averagePowerIn,
