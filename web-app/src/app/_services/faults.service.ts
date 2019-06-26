@@ -27,7 +27,7 @@ export class FaultsService {
     this.motor0Faults = new MotorFaults;
     this.motor1Faults = new MotorFaults;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.updateBatteryFaults(data);
         this.updateMotorFaults(data, 0);

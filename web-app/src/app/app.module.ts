@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material';
+import { MatTableModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -20,7 +21,9 @@ import { FaultsComponent } from './tabs/faults/faults.component';
 import { LeftpanelComponent } from './leftpanel/leftpanel.component';
 import { MotorComponent } from './tabs/motor/motor.component';
 import { MpptComponent } from './tabs/mppt/mppt.component';
+import { RaceComponent } from './tabs/race/race.component';
 import { RightpanelComponent } from './rightpanel/rightpanel.component';
+import { DataTableComponent } from './tabs/race/data-table/data-table.component';
 
 import { WebSocketService } from './websocket.service';
 import { DataInitService } from './_services/data.init.service';
@@ -35,7 +38,9 @@ import { APP_INITIALIZER } from '@angular/core';
     LeftpanelComponent,
     MotorComponent,
     MpptComponent,
-    RightpanelComponent
+    RaceComponent,
+    RightpanelComponent,
+    DataTableComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -52,7 +57,7 @@ import { APP_INITIALIZER } from '@angular/core';
     MatInputModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTableModule,
   ],
   providers: [
     WebSocketService,
