@@ -44,7 +44,7 @@
 		</div>
 	</div>
 	<div>
-		<div class="subheader">Motor 0 Faults</div>
+		<div class="subheader">Left Motor Faults</div>
 		<div class="fault-grid">
 			<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.motorOverSpeed, 'off' : !motor0Faults.errorFlags.motorOverSpeed}">Motor Over Speed</div>
 			<div class="item off" [ngClass]="{'on' : motor0Faults.errorFlags.softwareOverCurrent, 'off' : !motor0Faults.errorFlags.softwareOverCurrent}">Software Over Current</div>
@@ -57,7 +57,7 @@
 		</div>
 	</div>
 	<div>
-		<div class="subheader">Motor 0 Limits</div>
+		<div class="subheader">Left Motor Limits</div>
 		<div class="fault-grid">
 			<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.outputVoltagePwm, 'off' : !motor0Faults.limitFlags.outputVoltagePwm}">Output Voltage PWM</div>
 			<div class="item off" [ngClass]="{'on' : motor0Faults.limitFlags.motorCurrent, 'off' : !motor0Faults.limitFlags.motorCurrent}">Motor Current</div>
@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	<div>
-		<div class="subheader">Motor 1 Faults</div>
+		<div class="subheader">Right Motor Faults</div>
 		<div class="fault-grid">
 			<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.motorOverSpeed, 'off' : !motor1Faults.errorFlags.motorOverSpeed}">Motor Over Speed</div>
 			<div class="item off" [ngClass]="{'on' : motor1Faults.errorFlags.softwareOverCurrent, 'off' : !motor1Faults.errorFlags.softwareOverCurrent}">Software Over Current</div>
@@ -82,7 +82,7 @@
 		</div>
 	</div>
 	<div>
-		<div class="subheader">Motor 1 Limits</div>
+		<div class="subheader">Right Motor Limits</div>
 		<div class="fault-grid">
 			<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.outputVoltagePwm, 'off' : !motor1Faults.limitFlags.outputVoltagePwm}">Output Voltage PWM</div>
 			<div class="item off" [ngClass]="{'on' : motor1Faults.limitFlags.motorCurrent, 'off' : !motor1Faults.limitFlags.motorCurrent}">Motor Current</div>
@@ -97,11 +97,11 @@
 		<div class="subheader">RX Error Count</div>
 		<div class="error-count">
 			<div>
-				<div class="data item"> Motor 0 </div>
+				<div class="data item"> Left Motor </div>
 				<div class="data item value">{{motor0Faults.rxErrorCount}}</div>
 			</div>
 			<div>
-				<div class="data item"> Motor 1 </div>
+				<div class="data item"> Right Motor </div>
 				<div class="data item value">{{motor1Faults.rxErrorCount}}</div>
 			</div>
 		</div>
@@ -110,11 +110,11 @@
 		<div class="subheader">TX Error Count</div>
 		<div class="error-count">
 			<div>
-				<div class="data item"> Motor 0 </div>
+				<div class="data item"> Left Motor </div>
 				<div class="data item value">{{motor0Faults.txErrorCount}}</div>
 			</div>
 			<div>
-				<div class="data item"> Motor 1 </div>
+				<div class="data item"> Right Motor </div>
 				<div class="data item value">{{motor1Faults.txErrorCount}}</div>
 			</div>
 		</div>
