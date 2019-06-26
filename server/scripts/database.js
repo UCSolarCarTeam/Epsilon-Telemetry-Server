@@ -287,7 +287,7 @@ function jsonToMap(jsonObj) {
   mapObj.set('controlsmotorreset',
     `${jsonObj['DriverControls']['Reset']}`);
   mapObj.set('lap',
-    `${jsonObj['DriversControl']['Lap']}`);
+    `${jsonObj['DriverControls']['Lap']}`);
   mapObj.set('motor0overspeederror',
     `${jsonObj['MotorFaults'][0]['ErrorFlags']['MotorOverSpeed']}`);
   mapObj.set('motor0softwareovercurrenterror',
