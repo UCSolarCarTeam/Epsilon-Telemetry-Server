@@ -251,7 +251,7 @@ CREATE TABLE public.packet (
     strobebmslight boolean,
     allowcharge boolean,
     contractorerror boolean,
-    highvoltageenable boolean
+    highvoltageenable boolean,
     lap boolean
 );
 
