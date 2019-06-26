@@ -51,5 +51,6 @@ export class ControlsService {
     this.controls.signalRight = data.signalright;
     this.controls.volumeDown = data.volumedown;
     this.controls.volumeUp = data.volumeup;
+    this.controls.lap = data.lap;
   }
 }
