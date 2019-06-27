@@ -2,6 +2,17 @@
 
 Express.js server running in node
 
+== Deploying Server
+First, SSH into the server IP
+`ssh root@138.197.206.227` 
+Refer to Passwords Document or talk to current manager
+`cd Epsilon-Telemetry-Server`
+`git pull`
+`ng build —prod`
+`cp dist/*  to var/www/html/ -rf`
+
+`exit` to leave
+
 == Build
 `npm run start` to run dev server. Can be hit at `http://localhost:4000/`.
 
