@@ -25,9 +25,3 @@ export class RaceComponent implements OnInit {
   }
 
 }
-
-/*export class lapData {
- *   averageTime = (data.lapTime + averageTime) / 2;
- *	lapsRemaining = data.batteryPackSecondsRemaining / averageTime;
- *}
- */
