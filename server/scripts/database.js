@@ -8,7 +8,7 @@ const initOptions = {
   promiseLib: promise,
   // Query handler
   query: function(e) {
-    console.log('QUERY:', e.query);
+    // console.log('QUERY:', e.query);
   },
   // Error handler
   error: function(err, e) {
@@ -87,6 +87,24 @@ module.exports.lastPacket = function() {
 };
 
 /**
+ * Fetches all the packets in the database between two timestamps (inclusive)
+ * @param {Timestamp} lowestTime
+ * @param {Timestamp} highestTime
+ * @return {Promise}
+ */
+module.exports.between = function(lowestTime, highestTime) {
+  return db.any({
+    name: 'select-between',
+    text: 'SELECT * ' +
+          'FROM packet ' +
+          'GROUP BY packet.id ' +
+          'HAVING "timestamp" >= $1 AND "timestamp" <= $2 ' +
+          'ORDER BY timestamp DESC',
+    values: [lowestTime, highestTime],
+  });
+};
+
+/**
 * Fetches all the laps in the database
 * @return {Promise}
 */
@@ -99,30 +117,28 @@ module.exports.laps = function() {
   });
 };
 
-// Time
-const moment = require('moment');
+/**
+ * Fetches the last lap in the database
+ * @return {Promise}
+ */
+module.exports.lastLap = function() {
+  return db.one({
+    name: 'client-last-lap',
+    text: 'SELECT * ' +
+          'FROM lap ' +
+          'ORDER BY timestamp DESC LIMIT 1',
+  });
+};
 
 /**
 * Function that inserts a new lap entry to the lap table
 **/
 // TODO - Add actual calculations
-module.exports.addLap = function() {
-  const columns =
-  [
-    'lapnumber',
-    'timestamp',
-    'secondsdifference',
-    'totalpowerin',
-    'totalpowerout',
-    'netpowerout',
-    'distance',
-  ];
-
-  const tokens = [0, moment().format('YYYY-MM-DD HH:mm:ss.SSS'), 100, 100, 100, 100, 100];
+module.exports.addLap = function(jsonObj) {
   return db.one({
     name: `insertLap`,
-    text: `INSERT INTO lap (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-    values: tokens,
+    text: `INSERT INTO lap (${Object.keys(jsonObj)}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+    values: Object.values(jsonObj),
   });
 };
 
@@ -135,8 +151,9 @@ module.exports.addLap = function() {
  */
 function jsonToMap(jsonObj) {
   const mapObj = Object.assign(columnMap);
+  const timestamp = (new Date(jsonObj['TimeStamp']).getTime()).toFixed(0);
   mapObj.set('timestamp',
-    `${jsonObj['TimeStamp']}`);
+    `${timestamp}`);
   mapObj.set('name',
     `${jsonObj['PacketTitle']}`);
   mapObj.set('motor0alive',

@@ -19,9 +19,9 @@ export class PacketService {
 
     this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
-        this.packet$.emit(this.getData());
         this.packet.name = data.name;
-        this.packet.timestamp = new Date(data.timestamp);
+        this.packet.timestamp = data.timestamp;
+        this.packet$.emit(this.getData());
       }
     );
   }

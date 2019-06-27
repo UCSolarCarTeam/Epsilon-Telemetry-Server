@@ -3,10 +3,9 @@
   overflow: auto;
   background-color: rgb(128, 128, 128);
   margin-top: 1.5em;
-
 }
 .mat-row:nth-child(even){
-  background-color: rgb(61, 61, 61);
+  background-color: rgb(66, 66, 66);
 }
 
 .mat-row:nth-child(odd){

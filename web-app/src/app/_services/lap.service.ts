@@ -29,12 +29,25 @@ export class LapService {
   updateLapData(data: ILapDataInterface): void {
     const newData = new LapData();
     newData.lapNumber = data.lapnumber;
-    newData.lapTime = data.timestamp;
+
+    newData.lapTime = this.getTimeString(data.secondsdifference);
+
     newData.totalPowerIn = data.totalpowerin;
     newData.totalPowerOut = data.totalpowerout;
     newData.netPowerOut = data.netpowerout;
     newData.distance = data.distance;
+    newData.amphours = data.amphours;
+    newData.averagePackCurrent = data.averagepackcurrent;
+    newData.batterySecondsRemaining = data.batterysecondsremaining;
 
-    this.lapDataArray.push(newData)
+    this.lapDataArray.unshift(newData)
+  }
+
+  getTimeString(secondsdifference): string {
+
+    // Display seconds difference as "HH:MM:SS"
+    const date = new Date(null);
+    date.setMilliseconds(secondsdifference);
+    return date.toISOString().substr(11, 8);
   }
 }
