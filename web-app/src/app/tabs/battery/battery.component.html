@@ -2,7 +2,7 @@
 	<div class="header">
 		<div class="alive-group">
 			<span *ngIf="battery.alive; else elseBlock"><img class="circle" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
-			<span class="alive-text">Alive</span>
+			<span class="alive-text">Heartbeat</span>
 		</div>
 	</div>
 	<div class="battery-container-grid">
@@ -153,7 +153,7 @@
 				<div class="column">
 					<span class="item text-align-left">
 						<span *ngIf="auxBms.alive; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
-						<span class="item">Alive</span>
+						<span class="item">Heartbeat</span>
 					</span>
 					<span class="item text-align-left">
 						<span *ngIf="auxBms.strobeBmsLight; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>

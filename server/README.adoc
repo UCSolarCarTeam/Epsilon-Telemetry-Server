@@ -3,7 +3,8 @@
 Express.js server running in node
 
 == Build
-`npm run start` to run dev server. Can be hit at `http://localhost:4000/`.
+'npm install' to install dependencies.
+`npm run start` to run dev server. Can be checked if server is running at `http://localhost:4000/`. When checking on the browser, if it says 'no engine running', this is normal.
 
 == Setting up PostgreSQL
 === Prerequisites
@@ -36,6 +37,14 @@ sudo -u postgres psql
 ....
 While in the psql prompt, `\l` lists the databases and `\du` lists the users. You can quit with vim-style commands by typing `:q`. You can then quit with the `\quit` command.
 
+Creating a user doesn't make the password, to set the password:
+....
+sudo -u postgres psql
+....
+Then in postgres:
+....
+\password user_name
+....
 Finally, import the schema (file is at the root of this repository)
 ....
 sudo -u postgres psql epsilontelemetrydb < migrate.psql
