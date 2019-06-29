@@ -194,5 +194,6 @@ export interface ITelemetryData {
   strobebmslight: boolean,
   allowcharge: boolean,
   contractorerror: boolean,
-  highvoltageenable: boolean
+  highvoltageenable: boolean,
+  lap: boolean
 }

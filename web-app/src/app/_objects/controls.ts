@@ -20,4 +20,5 @@ export class Controls {
   signalRight = false;
   volumeDown = false;
   volumeUp = false;
+  lap = false;
 }
