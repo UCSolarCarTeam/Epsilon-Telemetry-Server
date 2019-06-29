@@ -4,21 +4,18 @@
   background-color: rgb(128, 128, 128);
   margin-top: 1.5em;
 }
-.mat-row:nth-child(even){
+.mat-row:nth-child(even) {
   background-color: rgb(66, 66, 66);
 }
-
-.mat-row:nth-child(odd){
+.mat-row:nth-child(odd) {
       background-color: rgb(102, 99, 99);
-      }
+}
 table {
   width: 100%;
 }
-
 td.mat-cell {
 	text-align: center;
 }
-
 th.mat-cell-header {
 	text-align: center;
 	padding-left: .5em;
