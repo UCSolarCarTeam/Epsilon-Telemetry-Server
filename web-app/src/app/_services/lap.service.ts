@@ -39,8 +39,6 @@ export class LapService {
     newData.amphours = data.amphours;
     newData.averagePackCurrent = data.averagepackcurrent;
     newData.batterySecondsRemaining = data.batterysecondsremaining;
-    newData.averageTime = (data.secondsdifference + data.averagetime) / 2;
-    newData.lapsRemaining = data.batterysecondsremaining / data.averagetime;
 
     this.lapDataArray.unshift(newData)
   }

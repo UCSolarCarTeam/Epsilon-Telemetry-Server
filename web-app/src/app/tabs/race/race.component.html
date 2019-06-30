@@ -1,14 +1,14 @@
 <app-data-table></app-data-table>
-<div>
+<div class="predictors">
 	<div class ="subheader">End of Day Predictors</div>
-		<div class="grid-container dataset">
-		 <div class="item">
-					Laps Remaining
-					<div class="data">{{lapDataArray.lapsRemaining}} More Laps</div>
-			</div>
-			<div class="item">
-					Battery Time Remaining
-					<div class="data">{{lapDataArray.batterySecondsRemaining}}</div>
-			</div>
-		</div>
+	<div class="grid-container dataset">
+	 <div class="item">
+		Laps Left on Battery (FSGP)
+		<div class="data">{{estimatedLapsRemaining}}</div>
 	</div>
+	<div class="item">
+		Battery Time Remaining
+		<div class="data">{{batteryTimeRemainingString}}</div>
+	</div>
+	</div>
+</div>

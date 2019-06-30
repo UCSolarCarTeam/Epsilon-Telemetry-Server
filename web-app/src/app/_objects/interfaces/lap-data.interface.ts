@@ -8,6 +8,5 @@ export interface ILapDataInterface {
     amphours: number,
     averagepackcurrent: number,
     batterysecondsremaining: number,
-    averagetime: number,
     lapsremaining: number,
 }

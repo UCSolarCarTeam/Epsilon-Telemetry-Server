@@ -28,3 +28,6 @@
 	display: grid;
 	grid-template-columns: repeat(2, 2fr);
 }
+.predictors {
+	margin-top: 3em;
+}
