@@ -4,6 +4,7 @@ const db = require('./database');
 const wss = require('./websocket').websocket;
 const rc = require('./race');
 
+let lap = false;
 let lastLapTimestamp;
 
 db.lastLap()
@@ -49,6 +50,7 @@ amqp.connect(config.rabbitmq.host)
           // Process Lap data
           // Want to capture when button is released
           if (!jsonObj.DriverControls.Lap
+            && lap) {
             const currentTimeStampEpoch = new Date(jsonObj.TimeStamp).getTime().toFixed(0);
             db.between(lastLapTimestamp, currentTimeStampEpoch)
                .then((allPackets) => {
@@ -81,6 +83,7 @@ amqp.connect(config.rabbitmq.host)
                });
           }
 
+          lap = jsonObj.DriverControls.Lap;
         }, {noAck: true});
       });
   })
