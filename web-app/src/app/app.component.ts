@@ -50,9 +50,9 @@ export class AppComponent implements OnInit {
         index: 4
       },
       {
-        label: '\xa0\xa0 Race\xa0\xa0\xa0\xa0',
+        label: 'Race\xa0\xa0\xa0\xa0\xa0',
         link: './race',
-        icon: 'faults_icon',
+        // icon: 'faults_icon',
         index: 5
       }
     ];
