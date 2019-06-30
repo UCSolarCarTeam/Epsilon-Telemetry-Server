@@ -98,3 +98,12 @@ module.exports.getAveragePowerOut = function(packetArray) {
 
     return Math.abs(packetArray.reduce((sum, curr) => sum + (curr.packcurrent * curr.packvoltage), 0) / packetArray.length);
 };
+
+module.exports.getAverageSpeed = function(packetArray) {
+    // If no packets, then no power out
+    if (packetArray.length == 0) {
+        return 0;
+    }
+
+    return Math.abs(packetArray.reduce((sum, curr) => sum + (curr.motor0vehiclevelocity + curr.motor1vehiclevelocity) / 2, 0) / packetArray.length);
+}

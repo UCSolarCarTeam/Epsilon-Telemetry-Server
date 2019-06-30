@@ -25,7 +25,6 @@ export class RaceComponent implements OnInit {
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
         this.lapDataArray = data;
-        console.log(this.lapDataArray[0].batterySecondsRemaining)
         this.batteryTimeRemainingString = this.getTimeString(this.lapDataArray[0].batterySecondsRemaining);
         this.estimatedLapsRemaining = this.getEstimatedLapsRemaining(this.lapDataArray[0]);
       }
@@ -33,15 +32,11 @@ export class RaceComponent implements OnInit {
   }
 
   getTimeString(secondsdifference): string {
-    let hours = Math.floor(secondsdifference / 3600);
-    let minutes = Math.floor((secondsdifference - (hours * 3600)) / 60);
-    let seconds = secondsdifference - (hours * 3600) - (minutes * 60);
+    const hours = Math.floor(secondsdifference / 3600);
+    const minutes = Math.floor((secondsdifference - (hours * 3600)) / 60);
+    const seconds = secondsdifference - (hours * 3600) - (minutes * 60);
 
-    console.log(hours);
-    console.log(minutes)
-    console.log(seconds)
-
-    let timestring = hours + ' hours, '
+    const timestring = hours + ' hours, '
                    + minutes + ' minutes'
     return timestring;
   }

@@ -41,6 +41,7 @@ export class LapService {
     newData.amphours = this.rdService.getRoundedValue(data.amphours, 2);
     newData.averagePackCurrent = this.rdService.getRoundedValue(data.averagepackcurrent, 2);
     newData.batterySecondsRemaining = data.batterysecondsremaining;
+    newData.averageSpeed = this.rdService.getRoundedValue(data.averagespeed, 2);
 
     this.lapDataArray.unshift(newData)
   }

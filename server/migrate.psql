@@ -50,6 +50,7 @@ CREATE TABLE public.lap (
     distance double precision,
     amphours double precision,
     averagepackcurrent double precision,
+    averagespeed double precision,
     batterysecondsremaining integer
 );
 ALTER SEQUENCE public.lapnumber_seq OWNED BY public.lap.lapnumber;

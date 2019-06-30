@@ -2,7 +2,7 @@
   <table mat-table #table [dataSource]="lapData">
 
     <ng-container matColumnDef="lapNumber">
-      <th mat-header-cell *matHeaderCellDef> Data Point Number </th>
+      <th mat-header-cell *matHeaderCellDef> Data Point</th>
       <td mat-cell *matCellDef="let lap"> {{lap.lapNumber}} </td>
     </ng-container>
 
@@ -24,6 +24,11 @@
     <ng-container matColumnDef="netPowerOut">
       <th mat-header-cell *matHeaderCellDef> Net Power Out </th>
       <td mat-cell *matCellDef="let lap"> {{lap.netPowerOut}} W</td>
+    </ng-container>
+
+    <ng-container matColumnDef="averageSpeed">
+      <th mat-header-cell *matHeaderCellDef> Average Speed </th>
+      <td mat-cell *matCellDef="let lap"> {{lap.averageSpeed}} km</td>
     </ng-container>
 
     <ng-container matColumnDef="distance">

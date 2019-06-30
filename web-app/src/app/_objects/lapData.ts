@@ -9,4 +9,5 @@ export class LapData {
     averagePackCurrent = -1;
     batterySecondsRemaining = -1;
     lapsRemaining = -1;
+    averageSpeed = -1;
 }

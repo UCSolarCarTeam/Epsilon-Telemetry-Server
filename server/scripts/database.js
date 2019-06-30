@@ -137,7 +137,7 @@ module.exports.lastLap = function() {
 module.exports.addLap = function(jsonObj) {
   return db.one({
     name: `insertLap`,
-    text: `INSERT INTO lap (${Object.keys(jsonObj)}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+    text: `INSERT INTO lap (${Object.keys(jsonObj)}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
     values: Object.values(jsonObj),
   });
 };

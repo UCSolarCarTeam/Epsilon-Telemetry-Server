@@ -9,4 +9,5 @@ export interface ILapDataInterface {
     averagepackcurrent: number,
     batterysecondsremaining: number,
     lapsremaining: number,
+    averagespeed: number,
 }
