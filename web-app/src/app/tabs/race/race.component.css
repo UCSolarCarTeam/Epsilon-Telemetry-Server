@@ -6,27 +6,28 @@
 	color: rgba(255, 255, 255, 0.75);
 }
 .item {
-	font-family: Arial, sans-serif;
-	color: rgb(255, 255, 255);
 	color: rgba(255, 255, 255, 0.9);
 	font-size: 0.8rem;
-	margin-left: 1.2em;
 	margin-right: 1px;
 	margin-bottom: 1em;
 	white-space: nowrap;
+}
+.wrap {
+	word-wrap: break-word;
 }
 .text-align-left {
 	text-align: left;
 }
 .data {
-	margin: 5px 20px 10px 20px;
+	margin: 5px 0px 10px 0px;
 	padding: 5px;
 	background-color: transparent;
 	border-bottom: 1px solid white;
 }
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(2, 2fr);
+	column-gap: 10px;
+	grid-template-columns: repeat(2, 1fr);
 }
 .predictors {
 	margin-top: 3em;
