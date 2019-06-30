@@ -42,10 +42,10 @@ export class RaceComponent implements OnInit {
   }
 
   getEstimatedLapsRemaining(lapData): string {
-    let averageDrivingSpeed = 60;
-    let batteryHoursRemaining = lapData.batterySecondsRemaining / 3600;
+    const averageDrivingSpeed = lapData.averageSpeed;
+    const batteryHoursRemaining = lapData.batterySecondsRemaining / 3600;
 
-    let estimatedLapsRemainingNumber = Math.floor(averageDrivingSpeed
+    const estimatedLapsRemainingNumber = Math.floor(averageDrivingSpeed
                                      * batteryHoursRemaining
                                      / this.FSGP_TRACK_DISTANCE);
     return estimatedLapsRemainingNumber + ' more laps at this rate';

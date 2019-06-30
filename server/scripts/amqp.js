@@ -71,7 +71,7 @@ amqp.connect(config.rabbitmq.host)
                     'amphours': amphours,
                     'averagepackCurrent': averagePackCurrent,
                     'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours),
-                    'averagespeed': rc.getAverageSpeed(allPackets)
+                    'averagespeed': rc.getAverageSpeed(allPackets),
                   };
                   db.addLap(lap)
                     .then((insertedRow) => {

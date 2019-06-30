@@ -106,4 +106,4 @@ module.exports.getAverageSpeed = function(packetArray) {
     }
 
     return Math.abs(packetArray.reduce((sum, curr) => sum + (curr.motor0vehiclevelocity + curr.motor1vehiclevelocity) / 2, 0) / packetArray.length);
-}
+};
