@@ -17,7 +17,8 @@ export class RaceComponent implements OnInit {
   private FSGP_TRACK_DISTANCE = 5.513;
 
   constructor(private lapService: LapService) {
-    this.batteryTimeRemainingString = 'Forever'
+    this.batteryTimeRemainingString = 'Forever';
+    this.estimatedLapsRemaining = 'Unknown'
   }
 
   ngOnInit() {
