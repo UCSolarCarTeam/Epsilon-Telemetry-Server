@@ -15,7 +15,7 @@ export class WebSocketService {
   lapMultiplex$: Observable<any>;
 
   constructor() {
-    this.socket$ = webSocket('ws://localhost:4000');
+    this.socket$ = webSocket('ws://138.197.206.227:4000');
     this.packetMultiplex$ = this.socket$.multiplex(
          () => ({subscribe: ''}),
          () => ({unsubscribe: ''}),

@@ -11,8 +11,8 @@ import { LapService } from '../../_services/lap.service';
 export class RaceComponent implements OnInit {
 
   private lapDataArray: LapData[];
-  private batteryTimeRemainingString: string;
-  private estimatedLapsRemaining: string;
+  batteryTimeRemainingString: string;
+  estimatedLapsRemaining: string;
 
   private FSGP_TRACK_DISTANCE = 5.513;
 
