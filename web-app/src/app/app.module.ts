@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { DataTableComponent } from './tabs/race/data-table/data-table.component'
 import { WebSocketService } from './websocket.service';
 import { DataInitService } from './_services/data.init.service';
 import { APP_INITIALIZER } from '@angular/core';
+import { ExportDirective } from './export.directive';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { APP_INITIALIZER } from '@angular/core';
     RaceComponent,
     RightpanelComponent,
     DataTableComponent,
+    ExportDirective,
   ],
   imports: [
     AppRoutingModule,
@@ -57,6 +60,7 @@ import { APP_INITIALIZER } from '@angular/core';
     MatInputModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     MatTableModule,
   ],
   providers: [
