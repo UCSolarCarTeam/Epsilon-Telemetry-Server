@@ -8,7 +8,13 @@ module.exports.getAveragePackCurrent = function(packetArray) {
 };
 
 module.exports.getSecondsRemainingUntilChargedOrDepleted = function(averagePackCurrent, packAmpHours) {
-    let hoursUntilChargedOrDepleted = packAmpHours / averagePackCurrent;
+    let amphoursLeft = 0;
+    if(averagePackCurrent >= 0) {
+        amphoursLeft = packAmpHours;
+    } else {
+        amphoursLeft = 165.6 - packAmpHours;
+    }
+    let hoursUntilChargedOrDepleted = amphoursLeft / Math.abs(averagePackCurrent);
     let secondsUntilChargedOrDepleted = hoursUntilChargedOrDepleted * 3600;
     if (isNaN(secondsUntilChargedOrDepleted)) {
         return -1;
@@ -100,7 +106,7 @@ module.exports.getAveragePowerOut = function(packetArray) {
 };
 
 module.exports.getAverageSpeed = function(packetArray) {
-    // If no packets, then no power out
+    // If no packets, then no average speed
     if (packetArray.length == 0) {
         return 0;
     }

@@ -25,19 +25,25 @@ export class RaceComponent implements OnInit {
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
         this.lapDataArray = data;
-        this.batteryTimeRemainingString = this.getTimeString(this.lapDataArray[0].batterySecondsRemaining);
+        this.batteryTimeRemainingString = this.getTimeString(this.lapDataArray[0].batterySecondsRemaining, (this.lapDataArray[0].averagePackCurrent < 0));
         this.estimatedLapsRemaining = this.getEstimatedLapsRemaining(this.lapDataArray[0]);
       }
     );
   }
 
-  getTimeString(secondsdifference): string {
+  getTimeString(secondsdifference, isCharging): string {
     const hours = Math.floor(secondsdifference / 3600);
     const minutes = Math.floor((secondsdifference - (hours * 3600)) / 60);
     const seconds = secondsdifference - (hours * 3600) - (minutes * 60);
 
-    const timestring = hours + ' hours, '
+    let timestring = hours + ' hours, '
                    + minutes + ' minutes'
+
+    if(!isCharging) {
+      timestring += ' until depletion'
+    } else {
+      timestring += ' until charged'
+    }
     return timestring;
   }
 
