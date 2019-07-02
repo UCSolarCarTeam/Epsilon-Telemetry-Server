@@ -20,7 +20,11 @@ export class DataTableComponent implements OnInit {
   'averageSpeed',
   'distance',
   'amphours',
-  'averagePackCurrent', ];
+  'averagePackCurrent',
+  'dataLabel', ];
+
+  picklist: string[] = 
+  ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Full lap', 'Charging', 'Stationary', 'Testing']
 
   lapData: LapData[];
   constructor(private lapService: LapService) { }
