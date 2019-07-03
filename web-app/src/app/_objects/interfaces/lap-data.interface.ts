@@ -10,4 +10,6 @@ export interface ILapDataInterface {
     batterysecondsremaining: number,
     lapsremaining: number,
     averagespeed: number,
+    label: string,
+    driver: string,
 }

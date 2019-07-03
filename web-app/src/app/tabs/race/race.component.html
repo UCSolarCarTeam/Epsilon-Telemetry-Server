@@ -1,7 +1,11 @@
-<button type="button" [appExport]="lapData" fileName="lapData" class="btn btn-danger">
-	Export
-</button>
-<app-data-table></app-data-table>
+<div class="column">
+	<app-data-table></app-data-table>
+	<div class="button">
+		<button type="button" ng-controller="save" [appExport]="lapData" fileName="lapData" class="btn btn-danger">
+			Export
+		</button>
+	</div>
+</div>
 <div class="predictors">
 	<div class ="subheader">End of Day Predictors</div>
 	<div class="grid-container dataset">

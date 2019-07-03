@@ -3,7 +3,7 @@
 
     <ng-container matColumnDef="lapNumber">
       <th mat-header-cell *matHeaderCellDef> Data Point</th>
-      <td mat-cell *matCellDef="let lap"> {{lap.lapNumber}} </td>
+      <td mat-cell *matCellDef="let lap" id="lapnumber"> {{lap.lapNumber}} </td>
     </ng-container>
 
     <ng-container matColumnDef="lapTime">
@@ -51,9 +51,22 @@
       <td mat-cell *matCellDef=" let lap"> 
         <mat-form-field>
           <mat-label>Label</mat-label>
-          <mat-select>
+          <mat-select (selectionChange)="saveLabel($event)">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let label of picklist" [value]="label">{{label}}</mat-option>
+            <mat-option *ngFor="let label of picklist" [value]="label" id="label">{{label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="driverLabel">
+      <th mat-header-cell *matHeaderCellDef> Driver </th>
+      <td mat-cell *matCellDef=" let lap"> 
+        <mat-form-field>
+          <mat-label>Driver</mat-label>
+          <mat-select (selectionChange)="saveDriver($event)">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let driver of driverlist" [value]="driver" id="driver">{{driver}}</mat-option>
           </mat-select>
         </mat-form-field>
       </td>
@@ -63,3 +76,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+<button (click)="save()"> {{label}},  {{ driver }}</button>
