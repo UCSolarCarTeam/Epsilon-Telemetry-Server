@@ -25,6 +25,7 @@ import { RightpanelComponent } from './rightpanel/rightpanel.component';
 import { WebSocketService } from './websocket.service';
 import { DataInitService } from './_services/data.init.service';
 import { APP_INITIALIZER } from '@angular/core';
+import { TimestampComponent } from './timestamp/timestamp.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { APP_INITIALIZER } from '@angular/core';
     LeftpanelComponent,
     MotorComponent,
     MpptComponent,
-    RightpanelComponent
+    RightpanelComponent,
+    TimestampComponent
   ],
   imports: [
     AppRoutingModule,

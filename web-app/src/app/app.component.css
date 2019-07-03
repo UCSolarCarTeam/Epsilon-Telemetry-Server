@@ -10,8 +10,6 @@
 /* Tabs */
 .tabs {
   margin: 0.5% 6px;
-  display: inline-block;
-  width: 65%;
 }
 
 .mat-tab-link-active {
@@ -36,9 +34,9 @@
 }
 
 .tab-icons {
-  font-size: 18px;
-  margin-right: 5px;
-  margin-left: 5px;
+  font-size: 1em;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
   transform: scale(1.2);
 }
 
@@ -46,6 +44,12 @@
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 @media only screen
@@ -65,9 +69,12 @@ and (max-width: 992px){
 }
 @media only screen
 and (min-width: 992px)
-and (max-width: 1100px){
+and (max-width: 1500px){
   .tabs{
     margin-right: 3em;
+  }
+  app-timestamp {
+    display: none;
   }
 }
 @media only screen
@@ -75,5 +82,8 @@ and (min-width: 1100px)
 and (max-width: 1200px){
   .tabs{
     margin-right: 2em;
+  }
+  app-timestamp {
+    display: none;
   }
 }

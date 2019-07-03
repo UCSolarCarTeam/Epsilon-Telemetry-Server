@@ -1,31 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Packet } from '../_objects/packet';
 import { PacketService } from '../_services/packet.service';
 import { HeartbeatService } from '../_services/heartbeat.service';
 
-import { TimestampComponent } from '../timestamp/timestamp.component';
-
 @Component({
-  selector: 'app-leftpanel',
-  templateUrl: './leftpanel.component.html',
-  styleUrls: ['./leftpanel.component.css']
+  selector: 'app-timestamp',
+  templateUrl: './timestamp.component.html',
+  styleUrls: ['./timestamp.component.css']
 })
-export class LeftpanelComponent implements OnInit {
-  // declare empty public variable
+export class TimestampComponent implements OnInit {
   packet: Packet;
-
   heartBeat: Boolean;
-  // inject the PacketService
+
   constructor(private packetService: PacketService, private heartbeatService: HeartbeatService) {
-  }
+}
 
   ngOnInit() {
-    // initialize with default values
     this.packet = this.packetService.getData();
-    // observe changes and update public variable when changed
-    // note the dollar sign, this means you can subscribe to the object
-    // see _services/packet.service.ts
     this.packetService.packet$.subscribe(
       (data: Packet) => {
         this.packet = data;
@@ -33,8 +24,9 @@ export class LeftpanelComponent implements OnInit {
       }
     );
     this.heartbeatService.heartBeat$.subscribe(
-        (heartBeat: Boolean) => {
-            this.heartBeat = heartBeat;
-        })
+      (heartBeat: Boolean) => {
+        this.heartBeat = heartBeat;
+      }
+    )
   }
 }

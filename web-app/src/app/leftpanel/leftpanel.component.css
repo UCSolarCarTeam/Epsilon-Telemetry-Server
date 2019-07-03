@@ -50,11 +50,15 @@
     .packet {
       padding: 12px;
     }
+
+    app-timestamp {
+      display: block;
+    }
 }
 
 @media screen
   and (max-width: 768px) {
     :host {
       display: none;
-    };
+    }
   }
