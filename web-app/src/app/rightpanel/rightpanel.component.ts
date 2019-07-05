@@ -150,7 +150,7 @@ export class RightpanelComponent implements OnInit {
     const mppt1ArrayPower: number = this.mppt1.arrayCurrent * this.mppt1.arrayVoltage;
     const mppt2ArrayPower: number = this.mppt2.arrayCurrent * this.mppt2.arrayVoltage;
     const mppt3ArrayPower: number = this.mppt3.arrayCurrent * this.mppt3.arrayVoltage;
-    return mppt0ArrayPower + mppt1ArrayPower + mppt2ArrayPower;
+    return mppt0ArrayPower + mppt1ArrayPower + mppt2ArrayPower + mppt3ArrayPower;
   }
   getBatteryPower(): number {
     return this.battery.packVoltage * this.battery.packCurrent;
