@@ -33,6 +33,13 @@
 	margin-top: 3em;
 }
 button {
-	float: right;
+	display: flex;
+	margin-right: 0;
+	margin-left: auto;
 	height: 2em;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.column {
+	display: flex;
+	flex-direction: column;
 }

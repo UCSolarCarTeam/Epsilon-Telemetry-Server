@@ -53,7 +53,7 @@
           <mat-label>Label</mat-label>
           <mat-select (selectionChange)="saveLabel($event)">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let label of picklist" [value]="label" id="label">{{label}}</mat-option>
+            <mat-option *ngFor="let label of picklist" [value]="label" id="label">{{lap.label}}</mat-option>
           </mat-select>
         </mat-form-field>
       </td>
@@ -66,7 +66,7 @@
           <mat-label>Driver</mat-label>
           <mat-select (selectionChange)="saveDriver($event)">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let driver of driverlist" [value]="driver" id="driver">{{driver}}</mat-option>
+            <mat-option *ngFor="let driver of driverlist" [value]="driver" id="driver">{{lap.driver}}</mat-option>
           </mat-select>
         </mat-form-field>
       </td>

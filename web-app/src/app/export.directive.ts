@@ -15,10 +15,9 @@ export class ExportDirective {
 
   @HostListener('click', ['$event']) onClick($event) {
     console.log('clicked: ' + $event);
-    console.log('Lap Data ' + this.lapData);
-
-    console.log('Label' + this.lapData[9]);
     this.lapData = this.lapService.getData();
+    console.log('Lap Data ' + this.lapData);
+    console.log('Label' + this.lapData[0]);
 
     this.exportService.exportExcel(this.lapData, this.fileName);
   }

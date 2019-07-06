@@ -28,14 +28,19 @@ export class DataTableComponent implements OnInit {
   'driverLabel', ];
 
   picklist: string[] = 
-  ['Quarter 1', 
-  'Quarter 2', 
-  'Quarter 3', 
-  'Full lap', 
+  ['1st Quarter',
+  '2nd Quarter',
+  '3rd Quarter',
+  '4th Quarter',
+  '1st Half', 
+  '2nd Half',  
+  'Full lap',
+  'Pit Stop',
+  'Pushing', 
   'Charging', 
+  'Stopped',
   'Stationary', 
-  'Testing',
-  'Pit Stop'];
+  'Testing',];
 
   driverlist: string[] =
   ['Colton', 
