@@ -29,6 +29,7 @@ export class RightpanelComponent implements OnInit {
   mppt0: Mppt;
   mppt1: Mppt;
   mppt2: Mppt;
+  mppt3: Mppt;
   state = State;
 
   constructor(private auxBmsService: AuxBmsService,
@@ -48,6 +49,7 @@ export class RightpanelComponent implements OnInit {
     this.mppt0 = this.mpptService.getData(0);
     this.mppt1 = this.mpptService.getData(1);
     this.mppt2 = this.mpptService.getData(2);
+    this.mppt3 = this.mpptService.getData(3);
 
     this.auxBmsService.auxbms$.subscribe(
       (data: AuxBms) => {
@@ -102,6 +104,12 @@ export class RightpanelComponent implements OnInit {
         this.mppt2 = data;
       }
     );
+
+    this.mpptService.mppt3$.subscribe(
+      (data: Mppt) => {
+        this.mppt3 = data;
+      }
+    );
   }
 
   getAvgSetCurrent(): number {
@@ -141,6 +149,10 @@ export class RightpanelComponent implements OnInit {
     const mppt0ArrayPower: number = this.mppt0.arrayCurrent * this.mppt0.arrayVoltage;
     const mppt1ArrayPower: number = this.mppt1.arrayCurrent * this.mppt1.arrayVoltage;
     const mppt2ArrayPower: number = this.mppt2.arrayCurrent * this.mppt2.arrayVoltage;
+    const mppt3ArrayPower: number = this.mppt3.arrayCurrent * this.mppt3.arrayVoltage;
     return mppt0ArrayPower + mppt1ArrayPower + mppt2ArrayPower;
+  }
+  getBatteryPower(): number {
+    return this.battery.packVoltage * this.battery.packCurrent;
   }
 }
