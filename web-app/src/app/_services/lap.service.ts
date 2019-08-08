@@ -4,6 +4,8 @@ import { LapData } from '../_objects/lapData';
 import { WebSocketService } from '../websocket.service';
 import { RoundingService } from './rounding.service';
 
+import { DataTableComponent } from './../tabs/race/data-table/data-table.component'
+;
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +44,8 @@ export class LapService {
     newData.averagePackCurrent = this.rdService.getRoundedValue(data.averagepackcurrent, 2);
     newData.batterySecondsRemaining = data.batterysecondsremaining;
     newData.averageSpeed = this.rdService.getRoundedValue(data.averagespeed, 2);
+
+    newData.label = this.saveLabel();
 
     this.lapDataArray.unshift(newData)
   }
