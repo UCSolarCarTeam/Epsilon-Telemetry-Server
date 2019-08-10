@@ -66,6 +66,13 @@
       readonly="true"
     >
   </mat-form-field>
+  <mat-form-field>
+    <input matInput
+      placeholder="Battery Power"
+      value="{{getBatteryPower() | number: '1.2-2'}} W"
+      readonly="true"
+    >
+  </mat-form-field>
   <div class="spinners">
     <mat-progress-spinner
       id="overlay-0"
