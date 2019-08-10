@@ -10,8 +10,6 @@ import { LapService } from '../../../_services/lap.service';
 })
 export class DataTableComponent implements OnInit {
   @ViewChild('table') table: MatTable<LapData>;
-  //@Input() label: string;
-  //@Input driver: string;
 
   displayedColumns =
   ['lapNumber',
@@ -22,7 +20,7 @@ export class DataTableComponent implements OnInit {
   'averageSpeed',
   'distance',
   'amphours',
-  'averagePackCurrent',];
+  'averagePackCurrent', ];
 
   lapData: LapData[];
   constructor(private lapService: LapService) { }
@@ -33,9 +31,6 @@ export class DataTableComponent implements OnInit {
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
         this.lapData = data;
-        //console.log(this.lapData);
-        //console.log('LABEL: ' + this.label);
-        //console.log('DRIVER: ' + this.driver);
         this.table.renderRows();
       }
     );

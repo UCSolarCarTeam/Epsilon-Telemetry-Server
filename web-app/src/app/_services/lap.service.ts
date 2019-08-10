@@ -4,8 +4,8 @@ import { LapData } from '../_objects/lapData';
 import { WebSocketService } from '../websocket.service';
 import { RoundingService } from './rounding.service';
 
-import { DataTableComponent } from './../tabs/race/data-table/data-table.component'
-;
+import { DataTableComponent } from './../tabs/race/data-table/data-table.component';
+
 @Injectable({
   providedIn: 'root'
 })
