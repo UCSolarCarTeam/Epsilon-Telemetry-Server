@@ -4,7 +4,7 @@ const db = require('./database');
 const wss = require('./websocket').websocket;
 const rc = require('./race');
 
-let volumeDown = false;
+let lap = false;
 let lastLapTimestamp;
 
 db.lastLap()
@@ -49,9 +49,8 @@ amqp.connect(config.rabbitmq.host)
 
           // Process Lap data
           // Want to capture when button is released
-          // TODO: Swap VolumeDown with lap button when it's ready
-          if (!jsonObj.DriverControls.VolumeDown
-            && volumeDown) {
+          if (!jsonObj.DriverControls.Lap
+            && lap) {
             const currentTimeStampEpoch = new Date(jsonObj.TimeStamp).getTime().toFixed(0);
             db.between(lastLapTimestamp, currentTimeStampEpoch)
                .then((allPackets) => {
@@ -70,8 +69,9 @@ amqp.connect(config.rabbitmq.host)
                     'netpowerout': averagePowerOut - averagePowerIn,
                     'distance': rc.getDistanceTraveled(allPackets),
                     'amphours': amphours,
-                    'averagePackCurrent': averagePackCurrent,
+                    'averagepackCurrent': averagePackCurrent,
                     'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours),
+                    'averagespeed': rc.getAverageSpeed(allPackets),
                   };
                   db.addLap(lap)
                     .then((insertedRow) => {
@@ -83,7 +83,7 @@ amqp.connect(config.rabbitmq.host)
                });
           }
 
-          volumeDown = jsonObj.DriverControls.VolumeDown;
+          lap = jsonObj.DriverControls.Lap;
         }, {noAck: true});
       });
   })

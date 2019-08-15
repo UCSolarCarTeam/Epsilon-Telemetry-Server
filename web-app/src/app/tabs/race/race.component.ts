@@ -11,17 +11,53 @@ import { LapService } from '../../_services/lap.service';
 export class RaceComponent implements OnInit {
 
   private lapDataArray: LapData[];
+  batteryTimeRemainingString: string;
+  estimatedLapsRemaining: string;
 
-  constructor(private lapService: LapService) { }
+  private FSGP_TRACK_DISTANCE = 5.513;
+
+  constructor(private lapService: LapService) {
+    this.batteryTimeRemainingString = 'Forever';
+    this.estimatedLapsRemaining = 'Unknown'
+  }
 
   ngOnInit() {
     this.lapDataArray = this.lapService.getData();
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
         this.lapDataArray = data;
-        console.log(this.lapDataArray)
+        this.batteryTimeRemainingString = this.getTimeString(
+          this.lapDataArray[0].batterySecondsRemaining,
+          (this.lapDataArray[0].averagePackCurrent < 0));
+        this.estimatedLapsRemaining = this.getEstimatedLapsRemaining(this.lapDataArray[0]);
       }
     );
+  }
+
+  getTimeString(secondsdifference, isCharging): string {
+    const hours = Math.floor(secondsdifference / 3600);
+    const minutes = Math.floor((secondsdifference - (hours * 3600)) / 60);
+    const seconds = secondsdifference - (hours * 3600) - (minutes * 60);
+
+    let timestring = hours + ' hours, '
+                   + minutes + ' minutes'
+
+    if (!isCharging) {
+      timestring += ' until depletion'
+    } else {
+      timestring += ' until charged'
+    }
+    return timestring;
+  }
+
+  getEstimatedLapsRemaining(lapData): string {
+    const averageDrivingSpeed = lapData.averageSpeed;
+    const batteryHoursRemaining = lapData.batterySecondsRemaining / 3600;
+
+    const estimatedLapsRemainingNumber = Math.floor(averageDrivingSpeed
+                                     * batteryHoursRemaining
+                                     / this.FSGP_TRACK_DISTANCE);
+    return estimatedLapsRemainingNumber + ' more laps at this rate';
   }
 
 }

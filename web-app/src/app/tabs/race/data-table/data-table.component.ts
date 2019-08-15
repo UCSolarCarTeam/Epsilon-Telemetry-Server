@@ -17,6 +17,7 @@ export class DataTableComponent implements OnInit {
   'totalPowerIn',
   'totalPowerOut',
   'netPowerOut',
+  'averageSpeed',
   'distance',
   'amphours',
   'averagePackCurrent', ];
