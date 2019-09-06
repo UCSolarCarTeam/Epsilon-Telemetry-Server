@@ -26,34 +26,46 @@ module.exports.getSecondsRemainingUntilChargedOrDepleted = function(averagePackC
     }
 };
 
-module.exports.getDistanceTraveled = function(packetArray) {
+const checkIfMotorReset = function(motorOdometer, motorDistanceTraveledSession) {
+    let motorReset = false;
+    if (Math.round(motorOdometer) == 0
+    && Math.abs(motorOdometer - motorDistanceTraveledSession) > 1.0) {
+        motorReset = true;
+    }
+
+    return motorReset;
+};
+
+const calculateMotorDistance = function(packetArray, odometer) {
     // The Motor's Odometer resets every time a motor trips or the car power cycles
-
-    // Get motor 0 distance travelled
-    let motor0DistanceTravelledTotal = 0;
-    let motor0DistanceTravelledSession = 0;
-
-    let motor1DistanceTravelledTotal = 0;
-    let motor1DistanceTravelledSession = 0;
-
-    // Making assumption that the motor odometer will always increment
-    // If it is found less, then a trip or reset has to have occurred
+    let totalDistanceTraveled = 0;
+    let motorDistanceTraveledSession = 0;
 
     for (let i = 0; i < packetArray.length; i++) {
-        if (packetArray[i].motor0odometer < motor0DistanceTravelledSession) {
-            motor0DistanceTravelledTotal += motor0DistanceTravelledSession;
-            motor0DistanceTravelledSession = 0;
+        // Check if the motor had reset, keep a tally of the distance travelled
+        if (checkIfMotorReset(packetArray[i][odometer], motorDistanceTraveledSession)) {
+            totalDistanceTraveled += motorDistanceTraveledSession;
         }
-        motor0DistanceTravelledSession = packetArray[i].motor0odometer;
 
-        if (packetArray[i].motor1odometer < motor1DistanceTravelledSession) {
-            motor1DistanceTravelledTotal += motor1DistanceTravelledSession;
-            motor1DistanceTravelledSession = 0;
-        }
-        motor1DistanceTravelledSession = packetArray[i].motor1odometer;
+        motorDistanceTraveledSession = packetArray[i][odometer];
     }
-    motor0DistanceTravelledTotal += motor0DistanceTravelledSession;
-    motor1DistanceTravelledTotal += motor1DistanceTravelledSession;
+    totalDistanceTraveled += motorDistanceTraveledSession;
+    // Remove the initial distance
+    totalDistanceTraveled -= packetArray[0][odometer];
+    // Convert to kilometers (odometer reports as meters)
+    totalDistanceTraveled /= 1000;
+
+    return totalDistanceTraveled;
+};
+module.exports.getDistanceTraveled = function(packetArray) {
+    if (packetArray.length == 0) {
+        return 0;
+    }
+    // Reverse the array so we can iterate it in chronological order
+    // slice is used to make a shallow copy - packetArray is reversed only in this function
+    let chronologicalArray = packetArray.slice(0).reverse();
+    let motor0DistanceTravelledTotal = calculateMotorDistance(chronologicalArray, 'motor0odometer');
+    let motor1DistanceTravelledTotal = calculateMotorDistance(chronologicalArray, 'motor1odometer');
 
     return (motor0DistanceTravelledTotal + motor1DistanceTravelledTotal) / 2;
 };
