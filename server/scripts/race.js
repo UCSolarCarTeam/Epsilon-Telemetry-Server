@@ -8,6 +8,9 @@ module.exports.getAveragePackCurrent = function(packetArray) {
 };
 
 module.exports.getSecondsRemainingUntilChargedOrDepleted = function(averagePackCurrent, packAmpHours) {
+    if (averagePackCurrent == 0) {
+        return -1;
+    }
     let amphoursLeft = 0;
     if (averagePackCurrent >= 0) {
         amphoursLeft = packAmpHours;
