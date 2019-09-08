@@ -17,24 +17,24 @@ export class RaceComponent implements OnInit {
   private FSGP_TRACK_DISTANCE = 5.513;
 
   constructor(private lapService: LapService) {
-    this.batteryTimeRemainingString = 'Forever';
-    this.estimatedLapsRemaining = 'Unknown'
   }
 
   ngOnInit() {
     this.lapDataArray = this.lapService.getData();
+    this.updatePredictors();
+
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
         this.lapDataArray = data;
-        this.batteryTimeRemainingString = this.getTimeString(
-          this.lapDataArray[0].batterySecondsRemaining,
-          (this.lapDataArray[0].averagePackCurrent < 0));
-        this.estimatedLapsRemaining = this.getEstimatedLapsRemaining(this.lapDataArray[0]);
+        this.updatePredictors();
       }
     );
   }
 
   getTimeString(secondsdifference, isCharging): string {
+    if (secondsdifference < 0) {
+      return 'Unknown (No Pack Current)'
+    }
     const hours = Math.floor(secondsdifference / 3600);
     const minutes = Math.floor((secondsdifference - (hours * 3600)) / 60);
     const seconds = secondsdifference - (hours * 3600) - (minutes * 60);
@@ -57,7 +57,22 @@ export class RaceComponent implements OnInit {
     const estimatedLapsRemainingNumber = Math.floor(averageDrivingSpeed
                                      * batteryHoursRemaining
                                      / this.FSGP_TRACK_DISTANCE);
-    return estimatedLapsRemainingNumber + ' more laps at this rate';
+    let numberLapsString = 'Unknown (No Pack Current)';
+    if (estimatedLapsRemainingNumber >= 0) {
+      numberLapsString = estimatedLapsRemainingNumber + ' more laps at this rate';
+    }
+    return numberLapsString;
   }
 
+  updatePredictors() {
+    if (this.lapDataArray.length > 0) {
+      this.estimatedLapsRemaining = this.getEstimatedLapsRemaining(this.lapDataArray[0]);
+      this.batteryTimeRemainingString = this.getTimeString(
+        this.lapDataArray[0].batterySecondsRemaining,
+        (this.lapDataArray[0].averagePackCurrent < 0));
+    } else {
+      this.batteryTimeRemainingString = 'Unknown';
+      this.estimatedLapsRemaining = 'Unknown'
+    }
+  }
 }
