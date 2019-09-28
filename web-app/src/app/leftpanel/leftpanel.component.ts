@@ -14,6 +14,7 @@ export class LeftpanelComponent implements OnInit {
   packet: Packet;
 
   heartBeat: Boolean;
+  timestamp: Date;
   // inject the PacketService
   constructor(private packetService: PacketService, private heartbeatService: HeartbeatService) {
   }
@@ -21,14 +22,12 @@ export class LeftpanelComponent implements OnInit {
   ngOnInit() {
     // initialize with default values
     this.packet = this.packetService.getData();
-
-    // observe changes and update public variable when changed
-    // note the dollar sign, this means you can subscribe to the object
-    // see _services/packet.service.ts
+    this.timestamp = new Date(Number(this.packet.timestamp))
     this.packetService.packet$.subscribe(
       (data: Packet) => {
         this.packet = data;
         this.heartBeat = true;
+        this.timestamp  = new Date(Number(this.packet.timestamp))
       }
     );
     this.heartbeatService.heartBeat$.subscribe(

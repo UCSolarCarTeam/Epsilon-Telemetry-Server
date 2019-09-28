@@ -18,7 +18,7 @@ export class BatteryService {
     this.battery$ = new EventEmitter<Battery>();
     this.battery = new Battery;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.updateBattery(data);
         this.battery$.emit(this.getData());

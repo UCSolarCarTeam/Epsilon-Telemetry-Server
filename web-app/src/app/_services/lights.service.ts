@@ -17,7 +17,7 @@ export class LightsService {
     this.lights$ = new EventEmitter<Lights>();
     this.lights = new Lights;
 
-    this.wsService.socket$.subscribe(
+    this.wsService.packetMultiplex$.subscribe(
       (data: ITelemetryData) => {
         this.updateLights(data);
         this.lights$.emit(this.getData());

@@ -1,6 +1,6 @@
 export interface ITelemetryData {
   id: number,
-  timestamp: string,
+  timestamp: number,
   name: string,
   motor0alive: boolean,
   motor0setcurrent: number,
@@ -194,5 +194,6 @@ export interface ITelemetryData {
   strobebmslight: boolean,
   allowcharge: boolean,
   contractorerror: boolean,
-  highvoltageenable: boolean
+  highvoltageenable: boolean,
+  lap: boolean
 }

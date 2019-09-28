@@ -7,6 +7,7 @@ Please follow the https://angular.io/guide/styleguide[style guide].
 
 == Development server
 
+Please run 'npm install' to install dependencies before running the next command.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 == Code scaffolding
