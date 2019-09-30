@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule } from '@angular/core';
 
@@ -20,7 +21,9 @@ import { FaultsComponent } from './tabs/faults/faults.component';
 import { LeftpanelComponent } from './leftpanel/leftpanel.component';
 import { MotorComponent } from './tabs/motor/motor.component';
 import { MpptComponent } from './tabs/mppt/mppt.component';
+import { RaceComponent } from './tabs/race/race.component';
 import { RightpanelComponent } from './rightpanel/rightpanel.component';
+import { DataTableComponent } from './tabs/race/data-table/data-table.component';
 
 import { WebSocketService } from './websocket.service';
 import { DataInitService } from './_services/data.init.service';
@@ -36,8 +39,10 @@ import { TimestampComponent } from './timestamp/timestamp.component';
     LeftpanelComponent,
     MotorComponent,
     MpptComponent,
+    RaceComponent,
     RightpanelComponent,
-    TimestampComponent
+    DataTableComponent,
+    TimeStampComponent
   ],
   imports: [
     AppRoutingModule,
@@ -54,7 +59,7 @@ import { TimestampComponent } from './timestamp/timestamp.component';
     MatInputModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTableModule,
   ],
   providers: [
     WebSocketService,

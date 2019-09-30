@@ -39,7 +39,8 @@ describe('AppComponent', () => {
         ControlsComponent,
         FaultsComponent,
         MotorComponent,
-        MpptComponent
+        MpptComponent,
+        DataTableComponent
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue : '/' }

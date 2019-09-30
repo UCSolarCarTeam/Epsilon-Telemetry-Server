@@ -48,6 +48,12 @@ export class AppComponent implements OnInit {
         link: './faults',
         icon: 'faults_icon',
         index: 4
+      },
+      {
+        label: 'Race\xa0\xa0\xa0\xa0\xa0',
+        link: './race',
+        // icon: 'faults_icon',
+        index: 5
       }
     ];
   }
