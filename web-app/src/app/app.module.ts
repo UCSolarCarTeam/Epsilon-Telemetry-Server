@@ -42,7 +42,7 @@ import { TimestampComponent } from './timestamp/timestamp.component';
     RaceComponent,
     RightpanelComponent,
     DataTableComponent,
-    TimeStampComponent
+    TimestampComponent
   ],
   imports: [
     AppRoutingModule,
