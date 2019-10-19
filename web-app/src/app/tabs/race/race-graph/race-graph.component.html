@@ -1,0 +1,23 @@
+<section id="raceGraphContainer" class="container-row">
+  <mat-radio-group
+    class="graphOptionsRadioGroup"
+    [(ngModel)]="selectedGraph">
+    <mat-radio-button 
+      class="graphRadioButtons"  
+      *ngFor="let graph of graphOptions"
+      [value]="graph" 
+      (change)="radioChangeHandler($event)">
+      {{graph}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <!-- 
+    - Note id must match graph id within .ts file
+    - Remember to Move styling to CSS?
+    - Use appropriate elements
+    - Add radio buttons for selecting graphs
+  -->
+
+  <div class="raceGraph" id="raceGraph">
+  </div>
+  
+</section>

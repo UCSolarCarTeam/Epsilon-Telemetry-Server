@@ -1,0 +1,40 @@
+ 
+ #raceGraphContainer{
+     height: 100%;
+     width: 100%;
+     margin-top: 15px;
+     margin-left: 0px;
+
+    display: flex;
+    flex-direction: row;
+ }
+
+ .graphOptionsRadioGroup{
+    
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    float: left;
+    height: 100%;
+    width: 15%;
+ }
+
+ .graphRadioButtons{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 0;
+
+    font-size: 18px;
+    color: whitesmoke;
+
+    float: left;
+}
+
+#raceGraph{
+    height: 100%;
+    width: 85%;
+    float: left;
+}
+
