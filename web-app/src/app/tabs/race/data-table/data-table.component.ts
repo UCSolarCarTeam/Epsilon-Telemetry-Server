@@ -9,7 +9,7 @@ import { LapService } from '../../../_services/lap.service';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit {
-  @ViewChild('table') table: MatTable<LapData>;
+  @ViewChild('table', {static: false}) table: MatTable<LapData>;
 
   displayedColumns =
   ['lapNumber',

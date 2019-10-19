@@ -23,9 +23,6 @@ export class LeftpanelComponent implements OnInit {
     // initialize with default values
     this.packet = this.packetService.getData();
     this.timestamp = new Date(Number(this.packet.timestamp))
-    // observe changes and update public variable when changed
-    // note the dollar sign, this means you can subscribe to the object
-    // see _services/packet.service.ts
     this.packetService.packet$.subscribe(
       (data: Packet) => {
         this.packet = data;
