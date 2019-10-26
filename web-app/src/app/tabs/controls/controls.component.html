@@ -45,6 +45,12 @@
 					<ng-template #lightsSignalNotRight>
 						<span><img src="../../../assets/TurnSignalRightOff.png" alt="Right signal off" class="light-icon"></span>
 					</ng-template>
+					<span *ngIf="lights.brakes; else lightsBrake">
+						<img src="../../../assets/BrakeLightOn.svg" alt="Brake lights on" class="light-icon">
+					</span>
+					<ng-template #lightsBrake>
+						<span><img src="../../../assets/BrakeLightOff.svg" alt="Brake lights off" class="brake-light-icon"></span>
+					</ng-template>
 				</div>
 			</div>
 		</div>
