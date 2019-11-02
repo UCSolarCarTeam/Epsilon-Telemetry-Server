@@ -30,6 +30,7 @@ export class DataTableComponent implements OnInit {
     this.lapData = this.lapService.getData()
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
+        console.log("New Data in table ");
         this.lapData = data;
         this.table.renderRows();
       }

@@ -4,7 +4,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { LapService } from '../../../_services/lap.service';
 import { LapData } from '../../../_objects/lapData';
 
-import * as CanvasJS from '../../../../assets/thirdParty/canvasjs.min';
+import * as CanvasJS from '../../../../assets/thirdParty/canvasjs.min.js';
 
 @Component({
   selector: 'app-race-graph',
@@ -20,7 +20,7 @@ export class RaceGraphComponent implements OnInit {
   amphoursArray:graphDataPoint[];
   averagePackCurrentArray:graphDataPoint[];
   batterySecondsRemainingArray:graphDataPoint[];
-  lapData:LapData[];
+  lapData:any;
 
   graphOptions:string[] = ['Time', 'Power', 'Distance', 'Amp Hours', 'Current', 'Battery' ];
   currLap:number;
@@ -33,11 +33,12 @@ export class RaceGraphComponent implements OnInit {
   ngOnInit() {
     this.currLap = 0;
     this.lapData = this.lapService.getData();
+    console.log(this.lapData);
     this.initializeDataArrays();
 
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
-        this.addLapData(data[0]) //most recent data point is at array beginning
+        this.addLapData(data[0])//most recent data point is at array beginning
         this.updateChart();
       });
 
@@ -78,6 +79,9 @@ export class RaceGraphComponent implements OnInit {
   }
 
   initializeDataArrays(){
+    let testData = this.lapData;
+    console.log(testData[0])
+
     for (let dataPoint of this.lapData)
     {
       this.currLap++;
@@ -90,11 +94,13 @@ export class RaceGraphComponent implements OnInit {
       this.averagePackCurrentArray.unshift({x: this.currLap, y: dataPoint.averagePackCurrent});
       this.batterySecondsRemainingArray.unshift({x: this.currLap, y: dataPoint.batterySecondsRemaining});
     }
+    console.log("Done initializing data arrays. CurrIdx = " + this.currLap)
+    // console.log(this.lapTimeArray);
   }
 
   addLapData(dataPoint:LapData)
   {
-    this.currLap++;
+      this.currLap++;
       this.lapTimeArray.push({x: this.currLap, y: +dataPoint.lapTime});
       this.totalPowerInArray.push({x: this.currLap, y: dataPoint.totalPowerIn});
       this.totalPowerInArray.push({x: this.currLap, y: dataPoint.totalPowerOut});
@@ -166,9 +172,9 @@ export class RaceGraphComponent implements OnInit {
     
     this.chart.options.title.text = graphHeader;
     this.chart.options.axisY.title = yLabel;
-    this.chart.options.data.dataPoints[0] = arrayToDisplay;
-    this.chart.options.data.dataPoints[1] = arrayToDisplayTwo;
-    this.chart.options.data.dataPoints[2] = arrayToDisplayThree;
+    this.chart.options.data[0].dataPoints = arrayToDisplay;
+    this.chart.options.data[1].dataPoints = arrayToDisplayTwo;
+    this.chart.options.data[2].dataPoints = arrayToDisplayThree;
 
     console.log(this.chart);
     this.chart.render();
