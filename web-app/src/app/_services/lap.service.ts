@@ -27,7 +27,7 @@ export class LapService {
     );
   }
 
-  getData() {
+getData() {
       return this.lapDataArray;
   }
   updateLapData(data: ILapDataInterface): void {

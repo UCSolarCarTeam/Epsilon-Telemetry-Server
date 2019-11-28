@@ -12,15 +12,15 @@ import * as CanvasJS from '../../../../assets/thirdParty/canvasjs.min.js';
   styleUrls: ['./race-graph.component.css']
 })
 export class RaceGraphComponent implements OnInit {
-  lapTimeArray:graphDataPoint[];
-  totalPowerInArray:graphDataPoint[];
-  totalPowerOutArray:graphDataPoint[] ;
-  netPowerOutArray:graphDataPoint[];
-  distanceArray:graphDataPoint[];
-  amphoursArray:graphDataPoint[];
-  averagePackCurrentArray:graphDataPoint[];
-  batterySecondsRemainingArray:graphDataPoint[];
-  lapData:any;
+  lapTimeArray:graphDataPoint[] = [];
+  totalPowerInArray:graphDataPoint[] = [];
+  totalPowerOutArray:graphDataPoint[] = [];
+  netPowerOutArray:graphDataPoint[] = [];
+  distanceArray:graphDataPoint[] = [];
+  amphoursArray:graphDataPoint[] = [];
+  averagePackCurrentArray:graphDataPoint[] = [];
+  batterySecondsRemainingArray:graphDataPoint[] = [];
+  lapData:LapData[] = [];
 
   graphOptions:string[] = ['Time', 'Power', 'Distance', 'Amp Hours', 'Current', 'Battery' ];
   currLap:number;
@@ -28,13 +28,15 @@ export class RaceGraphComponent implements OnInit {
   selectedGraph:string;
   chart: CanvasJS.Chart;
 
-  constructor(private lapService: LapService) { }
-
-  ngOnInit() {
-    this.currLap = 0;
+  constructor(private lapService: LapService) 
+  { 
     this.lapData = this.lapService.getData();
-    console.log(this.lapData);
+  }
+
+   ngOnInit() {
+    this.currLap = 0;
     this.initializeDataArrays();
+    console.log(this.lapData);
 
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
@@ -52,15 +54,15 @@ export class RaceGraphComponent implements OnInit {
         fontSize: 20
       },
       data: [{
-        type: "spline",
+        type: "line",
         dataPoints : this.distanceArray, // Start off by displaying lap distance graph
       },
       { 
-        type: "spline",
+        type: "line",
         dataPoints: [],
       },
       {
-        type: "spline",
+        type: "line",
         dataPoints: [],
       }],
 
@@ -78,23 +80,30 @@ export class RaceGraphComponent implements OnInit {
   this.chart.render();
   }
 
-  initializeDataArrays(){
-    let testData = this.lapData;
-    console.log(testData[0])
+  async initializeDataArrays(){
+    this.lapData = this.lapService.getData()
+    this.currLap = this.lapData.length;
+    var lapDataIdx =  this.lapData.length;
+
+    // waitsFor(function(){
+    //   this.lapData = this.lapService.getData()
+    //   return true
+    // }, 'Lap Data fetch taking too long', 1000)
+    console.log(this)
 
     for (let dataPoint of this.lapData)
     {
-      this.currLap++;
-      this.lapTimeArray.unshift({x: this.currLap, y: +dataPoint.lapTime});
-      this.totalPowerInArray.unshift({x: this.currLap, y: dataPoint.totalPowerIn});
-      this.totalPowerInArray.unshift({x: this.currLap, y: dataPoint.totalPowerOut});
-      this.netPowerOutArray.unshift({x: this.currLap, y: dataPoint.netPowerOut});
-      this.distanceArray.unshift({x: this.currLap, y: dataPoint.distance});
-      this.amphoursArray.unshift({x: this.currLap,y: dataPoint.amphours});
-      this.averagePackCurrentArray.unshift({x: this.currLap, y: dataPoint.averagePackCurrent});
-      this.batterySecondsRemainingArray.unshift({x: this.currLap, y: dataPoint.batterySecondsRemaining});
+      this.lapTimeArray.unshift({x: lapDataIdx, y: +dataPoint.lapTime});
+      this.totalPowerInArray.unshift({x: lapDataIdx, y: dataPoint.totalPowerIn});
+      this.totalPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.totalPowerOut});
+      this.netPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.netPowerOut});
+      this.distanceArray.unshift({x: lapDataIdx, y: dataPoint.distance});
+      this.amphoursArray.push({x: lapDataIdx,y: dataPoint.amphours});
+      this.averagePackCurrentArray.unshift({x: lapDataIdx, y: dataPoint.averagePackCurrent});
+      this.batterySecondsRemainingArray.unshift({x: lapDataIdx, y: dataPoint.batterySecondsRemaining});
+      lapDataIdx--
     }
-    console.log("Done initializing data arrays. CurrIdx = " + this.currLap)
+    console.log("Done initializing data arrays. CurrIdx = " + lapDataIdx)
     // console.log(this.lapTimeArray);
   }
 
@@ -103,14 +112,14 @@ export class RaceGraphComponent implements OnInit {
       this.currLap++;
       this.lapTimeArray.push({x: this.currLap, y: +dataPoint.lapTime});
       this.totalPowerInArray.push({x: this.currLap, y: dataPoint.totalPowerIn});
-      this.totalPowerInArray.push({x: this.currLap, y: dataPoint.totalPowerOut});
+      this.totalPowerOutArray.push({x: this.currLap, y: dataPoint.totalPowerOut});
       this.netPowerOutArray.push({x: this.currLap, y: dataPoint.netPowerOut});
       this.distanceArray.push({x: this.currLap, y: dataPoint.distance});
       this.amphoursArray.push({x: this.currLap,y: dataPoint.amphours});
       this.averagePackCurrentArray.push({x: this.currLap, y: dataPoint.averagePackCurrent});
       this.batterySecondsRemainingArray.push({x: this.currLap, y: dataPoint.batterySecondsRemaining});
   }
-
+wer
   //event Handler for radio button selection change
   radioChangeHandler (event: any){
     this.selectedGraph = event.value;
@@ -122,6 +131,8 @@ export class RaceGraphComponent implements OnInit {
     var arrayToDisplay: graphDataPoint[];
     var arrayToDisplayTwo: graphDataPoint[];
     var arrayToDisplayThree: graphDataPoint[];
+    var legend: string[] =  ["Total Power In", "Total Power Out", "Net Power Out"];
+    var showLegend: boolean[] = [false, false, false]
     var graphHeader: String;
     var yLabel: String;
 
@@ -132,51 +143,67 @@ export class RaceGraphComponent implements OnInit {
       arrayToDisplay = this.distanceArray;
       arrayToDisplayTwo = [];
       arrayToDisplayThree = [];
+      showLegend = [false, false, false]
     }
     else if (this.selectedGraph == 'Power'){
       graphHeader = 'Total Power';
-      yLabel = 'Power';
+      yLabel = 'Power (W)';
       arrayToDisplay = this.totalPowerInArray;
       arrayToDisplayTwo = this.totalPowerOutArray;
       arrayToDisplayThree = this.netPowerOutArray;
+      showLegend = [true, true, true]
     }
     else if (this.selectedGraph == 'Distance'){
       graphHeader = 'Distance  Remaining';
-      yLabel = 'Distance (m)';
+      yLabel = 'Distance (km)';
       arrayToDisplay = this.distanceArray;
       arrayToDisplayTwo = [];
       arrayToDisplayThree = [];
+      showLegend = [false, false, false]
     }
     else if (this.selectedGraph == 'Amp Hours'){
       graphHeader = 'Amp Hours';
-      yLabel = 'Amp Hours'
+      yLabel = 'Amp Hours (Ah)'
       arrayToDisplay = this.amphoursArray;
       arrayToDisplayTwo = [];
       arrayToDisplayThree = [];
+      showLegend = [false, false, false]
     }
     else if (this.selectedGraph == 'Current'){
       graphHeader = 'Average Pack Current';
-      yLabel = 'Current (Amp)';
+      yLabel = 'Current (A)';
       arrayToDisplay = this.averagePackCurrentArray;
       arrayToDisplayTwo = [];
       arrayToDisplayThree = [];
+      showLegend = [false, false, false]
     }
     else if (this.selectedGraph == 'Battery'){
       graphHeader = 'Battery Secs Remaining';
-      yLabel = 'Time (seconds)'
+      yLabel = 'Time'
       arrayToDisplay = this.batterySecondsRemainingArray;
       arrayToDisplayTwo = [];
       arrayToDisplayThree = [];
+      showLegend = [false, false, false]
     }
 
-    
+    this.chart.options.axisX.maximum = this.currLap + 1
     this.chart.options.title.text = graphHeader;
     this.chart.options.axisY.title = yLabel;
+    
     this.chart.options.data[0].dataPoints = arrayToDisplay;
     this.chart.options.data[1].dataPoints = arrayToDisplayTwo;
     this.chart.options.data[2].dataPoints = arrayToDisplayThree;
 
+    this.chart.options.data[0].showInLegend = showLegend[0];
+    this.chart.options.data[1].showInLegend = showLegend[1];
+    this.chart.options.data[2].showInLegend = showLegend[2];
+
+    this.chart.options.data[0].legendText = legend[0];
+    this.chart.options.data[1].legendText = legend[1];
+    this.chart.options.data[2].legendText = legend[2];
+
     console.log(this.chart);
+    console.log(arrayToDisplay);
     this.chart.render();
   }
 }

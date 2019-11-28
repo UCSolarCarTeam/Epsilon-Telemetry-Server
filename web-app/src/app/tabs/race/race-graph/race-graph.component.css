@@ -9,6 +9,9 @@
     flex-direction: row;
  }
 
+ .subheader{
+    margin-top: 1.5em;
+ }
  .graphOptionsRadioGroup{
     
     display: flex;
