@@ -83,14 +83,8 @@ export class RaceGraphComponent implements OnInit {
     this.currLap = this.lapData.length;
     let lapDataIdx =  this.lapData.length;
 
-    // waitsFor(function(){
-    //   this.lapData = this.lapService.getData()
-    //   return true
-    // }, 'Lap Data fetch taking too long', 1000)
-    console.log(this)
-
     for (const dataPoint of this.lapData) {
-      this.lapTimeArray.unshift({x: lapDataIdx, y: +dataPoint.lapTime});
+      this.lapTimeArray.unshift({x: lapDataIdx, y: this.convertToMinutes(dataPoint.lapTime)});
       this.totalPowerInArray.unshift({x: lapDataIdx, y: dataPoint.totalPowerIn});
       this.totalPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.totalPowerOut});
       this.netPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.netPowerOut});
@@ -100,13 +94,11 @@ export class RaceGraphComponent implements OnInit {
       this.batterySecondsRemainingArray.unshift({x: lapDataIdx, y: dataPoint.batterySecondsRemaining});
       lapDataIdx--
     }
-    console.log('Done initializing data arrays. CurrIdx = ' + lapDataIdx)
-    // console.log(this.lapTimeArray);
   }
 
   addLapData(dataPoint: LapData) {
       this.currLap++;
-      this.lapTimeArray.push({x: this.currLap, y: +dataPoint.lapTime});
+      this.lapTimeArray.push({x: this.currLap, y: this.convertToMinutes(dataPoint.lapTime)});
       this.totalPowerInArray.push({x: this.currLap, y: dataPoint.totalPowerIn});
       this.totalPowerOutArray.push({x: this.currLap, y: dataPoint.totalPowerOut});
       this.netPowerOutArray.push({x: this.currLap, y: dataPoint.netPowerOut});
@@ -123,6 +115,11 @@ export class RaceGraphComponent implements OnInit {
     this.updateChart();
   }
 
+  convertToMinutes(timeString: string) {
+    const splitTime = timeString.split(':', 3)
+    return Number(splitTime[0]) * 60 + Number(splitTime[1]) + Number(splitTime[2]) / 60
+  }
+
   updateChart() {
     let arrayToDisplay: GraphDataPoint[];
     let arrayToDisplayTwo: GraphDataPoint[];
@@ -135,8 +132,8 @@ export class RaceGraphComponent implements OnInit {
     // Update graph inputs
     if (this.selectedGraph === 'Time') {
       graphHeader = 'Lap Time';
-      yLabel = 'Time';
-      arrayToDisplay = this.distanceArray;
+      yLabel = 'Time (minutes)';
+      arrayToDisplay = this.lapTimeArray;
       arrayToDisplayTwo = [];
       arrayToDisplayThree = [];
       showLegend = [false, false, false]
@@ -148,7 +145,7 @@ export class RaceGraphComponent implements OnInit {
       arrayToDisplayThree = this.netPowerOutArray;
       showLegend = [true, true, true]
     } else if (this.selectedGraph === 'Distance') {
-      graphHeader = 'Distance  Remaining';
+      graphHeader = 'Distance Remaining';
       yLabel = 'Distance (km)';
       arrayToDisplay = this.distanceArray;
       arrayToDisplayTwo = [];
@@ -169,8 +166,8 @@ export class RaceGraphComponent implements OnInit {
       arrayToDisplayThree = [];
       showLegend = [false, false, false]
     } else if (this.selectedGraph === 'Battery') {
-      graphHeader = 'Battery Secs Remaining';
-      yLabel = 'Time'
+      graphHeader = 'Battery Seconds Remaining';
+      yLabel = 'Time (seconds)'
       arrayToDisplay = this.batterySecondsRemainingArray;
       arrayToDisplayTwo = [];
       arrayToDisplayThree = [];
@@ -193,8 +190,6 @@ export class RaceGraphComponent implements OnInit {
     this.chart.options.data[1].legendText = legend[1];
     this.chart.options.data[2].legendText = legend[2];
 
-    console.log(this.chart);
-    console.log(arrayToDisplay);
     this.chart.render();
   }
 }
