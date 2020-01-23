@@ -50,9 +50,9 @@ export class AppComponent implements OnInit {
         index: 4
       },
       {
-        label: 'Race\xa0\xa0\xa0\xa0\xa0',
+        label: '\xa0\xa0Race\xa0\xa0\xa0',
         link: './race',
-        // icon: 'faults_icon',
+        icon: 'race_icon',
         index: 5
       }
     ];
@@ -102,6 +102,12 @@ export class AppComponent implements OnInit {
       'faults_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/faults_icon.svg')
+    );
+    
+    this.matIconRegistry.addSvgIcon(
+      'race_icon',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/race_icon.svg')
     );
   }
 }
