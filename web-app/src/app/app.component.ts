@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
       this.domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/faults_icon.svg')
     );
-    
+
     this.matIconRegistry.addSvgIcon(
       'race_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
