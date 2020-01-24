@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { LapService } from '../../../_services/lap.service';
 import { LapData } from '../../../_objects/lapData';
@@ -12,6 +12,7 @@ import * as CanvasJS from '../../../../assets/thirdParty/canvasjs.min.js';
   styleUrls: ['./race-graph.component.css']
 })
 export class RaceGraphComponent implements OnInit {
+
   lapTimeArray: GraphDataPoint[] = [];
   totalPowerInArray: GraphDataPoint[] = [];
   totalPowerOutArray: GraphDataPoint[] = [];
@@ -89,7 +90,7 @@ export class RaceGraphComponent implements OnInit {
       this.totalPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.totalPowerOut});
       this.netPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.netPowerOut});
       this.distanceArray.unshift({x: lapDataIdx, y: dataPoint.distance});
-      this.amphoursArray.push({x: lapDataIdx, y: dataPoint.amphours});
+      this.amphoursArray.unshift({x: lapDataIdx, y: dataPoint.amphours});
       this.averagePackCurrentArray.unshift({x: lapDataIdx, y: dataPoint.averagePackCurrent});
       this.batterySecondsRemainingArray.unshift({x: lapDataIdx, y: dataPoint.batterySecondsRemaining});
       lapDataIdx--
@@ -121,75 +122,43 @@ export class RaceGraphComponent implements OnInit {
   }
 
   updateChart() {
-    let arrayToDisplay: GraphDataPoint[];
-    let arrayToDisplayTwo: GraphDataPoint[];
-    let arrayToDisplayThree: GraphDataPoint[];
-    const legend: string[] =  ['Total Power In', 'Total Power Out', 'Net Power Out'];
-    let showLegend: boolean[] = [false, false, false]
     let graphHeader: String;
     let yLabel: String;
+    const graphInput: GraphInputData[] = [];
 
     // Update graph inputs
     if (this.selectedGraph === 'Time') {
       graphHeader = 'Lap Time';
       yLabel = 'Time (minutes)';
-      arrayToDisplay = this.lapTimeArray;
-      arrayToDisplayTwo = [];
-      arrayToDisplayThree = [];
-      showLegend = [false, false, false]
+      graphInput.push({type: 'line', dataPoints: this.lapTimeArray, showInLegend: false, legendText: ''})
     } else if (this.selectedGraph === 'Power') {
       graphHeader = 'Total Power';
       yLabel = 'Power (W)';
-      arrayToDisplay = this.totalPowerInArray;
-      arrayToDisplayTwo = this.totalPowerOutArray;
-      arrayToDisplayThree = this.netPowerOutArray;
-      showLegend = [true, true, true]
+      graphInput.push({type: 'line', dataPoints: this.totalPowerInArray, showInLegend: true, legendText: 'Total Power In'})
+      graphInput.push({type: 'line', dataPoints: this.totalPowerOutArray, showInLegend: true, legendText: 'Total Power Out'})
+      graphInput.push({type: 'line', dataPoints: this.netPowerOutArray, showInLegend: true, legendText: 'Net Power Out'})
     } else if (this.selectedGraph === 'Distance') {
       graphHeader = 'Distance Remaining';
       yLabel = 'Distance (km)';
-      arrayToDisplay = this.distanceArray;
-      arrayToDisplayTwo = [];
-      arrayToDisplayThree = [];
-      showLegend = [false, false, false]
+      graphInput.push({type: 'line', dataPoints: this.distanceArray, showInLegend: false, legendText: ''})
     } else if (this.selectedGraph === 'Amp Hours') {
       graphHeader = 'Amp Hours';
-      yLabel = 'Amp Hours (Ah)'
-      arrayToDisplay = this.amphoursArray;
-      arrayToDisplayTwo = [];
-      arrayToDisplayThree = [];
-      showLegend = [false, false, false]
+      yLabel = 'Amp Hours (Ah)';
+      graphInput.push({type: 'line', dataPoints: this.amphoursArray, showInLegend: false, legendText: ''})
     } else if (this.selectedGraph === 'Current') {
       graphHeader = 'Average Pack Current';
       yLabel = 'Current (A)';
-      arrayToDisplay = this.averagePackCurrentArray;
-      arrayToDisplayTwo = [];
-      arrayToDisplayThree = [];
-      showLegend = [false, false, false]
+      graphInput.push({type: 'line', dataPoints: this.averagePackCurrentArray, showInLegend: false, legendText: ''})
     } else if (this.selectedGraph === 'Battery') {
       graphHeader = 'Battery Seconds Remaining';
       yLabel = 'Time (seconds)'
-      arrayToDisplay = this.batterySecondsRemainingArray;
-      arrayToDisplayTwo = [];
-      arrayToDisplayThree = [];
-      showLegend = [false, false, false]
+      graphInput.push({type: 'line', dataPoints: this.batterySecondsRemainingArray, showInLegend: false, legendText: ''})
     }
 
     this.chart.options.axisX.maximum = this.currLap + 1
     this.chart.options.title.text = graphHeader;
     this.chart.options.axisY.title = yLabel;
-
-    this.chart.options.data[0].dataPoints = arrayToDisplay;
-    this.chart.options.data[1].dataPoints = arrayToDisplayTwo;
-    this.chart.options.data[2].dataPoints = arrayToDisplayThree;
-
-    this.chart.options.data[0].showInLegend = showLegend[0];
-    this.chart.options.data[1].showInLegend = showLegend[1];
-    this.chart.options.data[2].showInLegend = showLegend[2];
-
-    this.chart.options.data[0].legendText = legend[0];
-    this.chart.options.data[1].legendText = legend[1];
-    this.chart.options.data[2].legendText = legend[2];
-
+    this.chart.options.data = graphInput;
     this.chart.render();
   }
 }
@@ -197,4 +166,14 @@ export class RaceGraphComponent implements OnInit {
 interface GraphDataPoint {
   x: number,
   y: number
+}
+
+interface GraphInputData {
+  // Note: More data customizations can be done here.
+  // see https://canvasjs.com/docs/charts/chart-options/data/ for customizable options
+
+  type: string,
+  dataPoints: GraphDataPoint[],
+  showInLegend: boolean,
+  legendText: string
 }

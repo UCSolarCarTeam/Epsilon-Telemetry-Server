@@ -1,10 +1,9 @@
  
- #raceGraphContainer{
-     height: 100%;
-     width: 100%;
-     margin-top: 15px;
-     margin-left: 0px;
-
+ .raceGraphContainer{
+    height: 100%;
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 0px;
     display: flex;
     flex-direction: row;
  }
@@ -12,8 +11,7 @@
  .subheader{
     margin-top: 1.5em;
  }
- .graphOptionsRadioGroup{
-    
+ .graphOptionsRadioGroup{ 
     display: flex;
     flex-direction: column;
     margin-top: 50px;
@@ -28,14 +26,12 @@
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 0;
-
     font-size: 18px;
     color: whitesmoke;
-
     float: left;
 }
 
-#raceGraph{
+.raceGraph{
     height: 100%;
     width: 85%;
     float: left;
