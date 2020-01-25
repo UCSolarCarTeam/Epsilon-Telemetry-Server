@@ -21,6 +21,9 @@
 	padding-top: 10%;
 	margin: .1em;
 }
+.brake-light-icon {
+	width: 50px;
+}
 .grid-row {
 	display: flex;
 	flex-direction: row;
