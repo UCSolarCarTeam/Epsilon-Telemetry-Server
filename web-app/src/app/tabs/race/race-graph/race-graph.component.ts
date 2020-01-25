@@ -26,17 +26,15 @@ export class RaceGraphComponent implements OnInit {
   graphOptions: string[] = ['Time', 'Power', 'Distance', 'Amp Hours', 'Current', 'Battery' ];
   currLap: number;
   graphHeader: string;
-  selectedGraph: string;
+  selectedGraph = 'Distance';
   chart: CanvasJS.Chart;
 
   constructor(private lapService: LapService) {
-    this.lapData = this.lapService.getData();
   }
 
    ngOnInit() {
     this.currLap = 0;
     this.initializeDataArrays();
-    console.log(this.lapData);
 
     this.lapService.lapData$.subscribe(
       (data: LapData[]) => {
@@ -49,12 +47,12 @@ export class RaceGraphComponent implements OnInit {
       theme: 'dark1',
       backgroundColor: 'transparent',
       title: {
-        text : 'Distance Remaining',
+        text : '',
         fontSize: 20
       },
       data: [{
         type: 'line',
-        dataPoints : this.distanceArray, // Start off by displaying lap distance graph
+        dataPoints : []
       },
       {
         type: 'line',
@@ -71,21 +69,22 @@ export class RaceGraphComponent implements OnInit {
       },
 
       axisY: {
-        title: 'Distance (m)',
+        title: '',
         fontSize: 15,
       }
     });
 
   this.chart.render();
+  this.updateChart()
   }
 
-  async initializeDataArrays() {
+  initializeDataArrays() {
     this.lapData = this.lapService.getData()
     this.currLap = this.lapData.length;
     let lapDataIdx =  this.lapData.length;
 
     for (const dataPoint of this.lapData) {
-      this.lapTimeArray.unshift({x: lapDataIdx, y: this.convertToMinutes(dataPoint.lapTime)});
+      this.lapTimeArray.unshift({x: lapDataIdx, y: this.convertTimeStampToMinutes(dataPoint.lapTime)});
       this.totalPowerInArray.unshift({x: lapDataIdx, y: dataPoint.totalPowerIn});
       this.totalPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.totalPowerOut});
       this.netPowerOutArray.unshift({x: lapDataIdx, y: dataPoint.netPowerOut});
@@ -99,7 +98,7 @@ export class RaceGraphComponent implements OnInit {
 
   addLapData(dataPoint: LapData) {
       this.currLap++;
-      this.lapTimeArray.push({x: this.currLap, y: this.convertToMinutes(dataPoint.lapTime)});
+      this.lapTimeArray.push({x: this.currLap, y: this.convertTimeStampToMinutes(dataPoint.lapTime)});
       this.totalPowerInArray.push({x: this.currLap, y: dataPoint.totalPowerIn});
       this.totalPowerOutArray.push({x: this.currLap, y: dataPoint.totalPowerOut});
       this.netPowerOutArray.push({x: this.currLap, y: dataPoint.netPowerOut});
@@ -112,11 +111,10 @@ export class RaceGraphComponent implements OnInit {
   // event Handler for radio button selection change
   radioChangeHandler (event: any) {
     this.selectedGraph = event.value;
-    console.log('Graph selection changed to ' + event.value);
     this.updateChart();
   }
 
-  convertToMinutes(timeString: string) {
+  convertTimeStampToMinutes(timeString: string) {
     const splitTime = timeString.split(':', 3)
     return Number(splitTime[0]) * 60 + Number(splitTime[1]) + Number(splitTime[2]) / 60
   }
@@ -130,29 +128,69 @@ export class RaceGraphComponent implements OnInit {
     if (this.selectedGraph === 'Time') {
       graphHeader = 'Lap Time';
       yLabel = 'Time (minutes)';
-      graphInput.push({type: 'line', dataPoints: this.lapTimeArray, showInLegend: false, legendText: ''})
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.lapTimeArray,
+        showInLegend: false,
+        legendText: ''
+      })
     } else if (this.selectedGraph === 'Power') {
       graphHeader = 'Total Power';
       yLabel = 'Power (W)';
-      graphInput.push({type: 'line', dataPoints: this.totalPowerInArray, showInLegend: true, legendText: 'Total Power In'})
-      graphInput.push({type: 'line', dataPoints: this.totalPowerOutArray, showInLegend: true, legendText: 'Total Power Out'})
-      graphInput.push({type: 'line', dataPoints: this.netPowerOutArray, showInLegend: true, legendText: 'Net Power Out'})
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.totalPowerInArray,
+        showInLegend: true,
+        legendText: 'Total Power In'
+      })
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.totalPowerOutArray,
+        showInLegend: true,
+        legendText: 'Total Power Out'
+      })
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.netPowerOutArray,
+        showInLegend: true,
+        legendText: 'Net Power Out'
+      })
     } else if (this.selectedGraph === 'Distance') {
       graphHeader = 'Distance Remaining';
       yLabel = 'Distance (km)';
-      graphInput.push({type: 'line', dataPoints: this.distanceArray, showInLegend: false, legendText: ''})
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.distanceArray,
+        showInLegend: false,
+        legendText: ''
+      })
     } else if (this.selectedGraph === 'Amp Hours') {
       graphHeader = 'Amp Hours';
       yLabel = 'Amp Hours (Ah)';
-      graphInput.push({type: 'line', dataPoints: this.amphoursArray, showInLegend: false, legendText: ''})
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.amphoursArray,
+        showInLegend: false,
+        legendText: ''
+      })
     } else if (this.selectedGraph === 'Current') {
       graphHeader = 'Average Pack Current';
       yLabel = 'Current (A)';
-      graphInput.push({type: 'line', dataPoints: this.averagePackCurrentArray, showInLegend: false, legendText: ''})
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.averagePackCurrentArray,
+        showInLegend: false,
+        legendText: ''
+      })
     } else if (this.selectedGraph === 'Battery') {
       graphHeader = 'Battery Seconds Remaining';
       yLabel = 'Time (seconds)'
-      graphInput.push({type: 'line', dataPoints: this.batterySecondsRemainingArray, showInLegend: false, legendText: ''})
+      graphInput.push({
+        type: 'line',
+        dataPoints: this.batterySecondsRemainingArray,
+        showInLegend: false,
+        legendText: ''
+      })
     }
 
     this.chart.options.axisX.maximum = this.currLap + 1
