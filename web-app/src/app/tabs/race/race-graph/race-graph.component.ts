@@ -50,24 +50,11 @@ export class RaceGraphComponent implements OnInit {
         text : '',
         fontSize: 20
       },
-      data: [{
-        type: 'line',
-        dataPoints : []
-      },
-      {
-        type: 'line',
-        dataPoints: [],
-      },
-      {
-        type: 'line',
-        dataPoints: [],
-      }],
-
+      data: [],
       axisX: {
         title: 'Lap Number',
         fontSize: 15,
       },
-
       axisY: {
         title: '',
         fontSize: 15,
