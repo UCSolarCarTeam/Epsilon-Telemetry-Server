@@ -24,7 +24,7 @@
 .mat-tab-link {
   line-height: 30px !important;
   height: 3em !important;
-  min-width: 16.66666%;
+  min-width: 16.66666% !important;
   border: 1px solid #7e7e7e;
   color: white;
   font-size: 18px;
