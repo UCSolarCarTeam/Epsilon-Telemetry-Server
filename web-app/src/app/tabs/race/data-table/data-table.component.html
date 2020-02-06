@@ -2,7 +2,7 @@
   <table mat-table #table [dataSource]="lapData">
 
     <ng-container matColumnDef="lapNumber">
-      <th mat-header-cell *matHeaderCellDef> Data Point</th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info here yuhh" matTooltipClass = "infoHover" [formControl] = "position"> Data Point</th>
       <td mat-cell *matCellDef="let lap" id="lapnumber"> {{lap.lapNumber}} </td>
     </ng-container>
 

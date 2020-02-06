@@ -10,6 +10,9 @@
 .mat-row:nth-child(odd) {
       background-color: rgb(102, 99, 99);
 }
+.infoHover {
+  background-color: red;
+}
 table {
   width: 100%;
 }
