@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTable, MatTooltipModule } from '@angular/material';
-import { FormControl } from '@angular/forms';
-import { TooltipPosition } from '@angular/material/tooltip';
+import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { LapData } from '../../../_objects/lapData';
 import { LapService } from '../../../_services/lap.service';
 
@@ -12,9 +10,6 @@ import { LapService } from '../../../_services/lap.service';
 })
 export class DataTableComponent implements OnInit {
   @ViewChild('table', {static: false}) table: MatTable<LapData>;
-
-  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-  position = new FormControl(this.positionOptions[2]);
 
   displayedColumns =
   ['lapNumber',

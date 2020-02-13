@@ -10,9 +10,6 @@
 .mat-row:nth-child(odd) {
       background-color: rgb(102, 99, 99);
 }
-.infoHover {
-  background-color: red;
-}
 table {
   width: 100%;
 }
@@ -23,4 +20,7 @@ th.mat-cell-header {
 	text-align: center;
 	padding-left: .5em;
 	padding-right: .5em;
+}
+th.mat-header-cell {
+  text-align: center;
 }
