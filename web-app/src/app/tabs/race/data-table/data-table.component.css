@@ -8,7 +8,7 @@
   background-color: rgb(66, 66, 66);
 }
 .mat-row:nth-child(odd) {
-      background-color: rgb(102, 99, 99);
+  background-color: rgb(102, 99, 99);
 }
 table {
   width: 100%;
