@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule } from '@angular/core';
@@ -29,6 +30,7 @@ import { WebSocketService } from './websocket.service';
 import { DataInitService } from './_services/data.init.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { TimestampComponent } from './timestamp/timestamp.component';
+import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { TimestampComponent } from './timestamp/timestamp.component';
     RaceComponent,
     RightpanelComponent,
     DataTableComponent,
-    TimestampComponent
+    TimestampComponent,
+    RaceGraphComponent
   ],
   imports: [
     AppRoutingModule,
@@ -60,6 +63,7 @@ import { TimestampComponent } from './timestamp/timestamp.component';
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    MatRadioModule
   ],
   providers: [
     WebSocketService,
