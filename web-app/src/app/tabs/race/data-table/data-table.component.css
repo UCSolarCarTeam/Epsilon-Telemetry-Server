@@ -21,3 +21,6 @@ th.mat-cell-header {
 	padding-left: .5em;
 	padding-right: .5em;
 }
+th.mat-header-cell {
+  text-align: center;
+}
