@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -61,7 +62,8 @@ import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component'
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule
   ],
   providers: [
     WebSocketService,
