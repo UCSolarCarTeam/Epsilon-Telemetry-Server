@@ -2,47 +2,47 @@
   <table mat-table #table [dataSource]="lapData">
 
     <ng-container matColumnDef="lapNumber">
-      <th mat-header-cell *matHeaderCellDef> Data Point</th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about data points" matTooltipPosition="above"> Data Point</th>
       <td mat-cell *matCellDef="let lap" id="lapnumber"> {{lap.lapNumber}} </td>
     </ng-container>
 
     <ng-container matColumnDef="lapTime">
-      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about lap times" matTooltipPosition="above"> Time </th>
       <td mat-cell *matCellDef="let lap"> {{lap.lapTime}} </td>
     </ng-container>
 
     <ng-container matColumnDef="totalPowerIn">
-      <th mat-header-cell *matHeaderCellDef> Power In </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about power in" matTooltipPosition="above"> Power In </th>
       <td mat-cell *matCellDef="let lap"> {{lap.totalPowerIn}} W</td>
     </ng-container>
 
     <ng-container matColumnDef="totalPowerOut">
-      <th mat-header-cell *matHeaderCellDef> Power Out </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about power out" matTooltipPosition="above"> Power Out </th>
       <td mat-cell *matCellDef="let lap"> {{lap.totalPowerOut}} W</td>
     </ng-container>
 
     <ng-container matColumnDef="netPowerOut">
-      <th mat-header-cell *matHeaderCellDef> Net Power Out </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about net power out" matTooltipPosition="above"> Net Power Out </th>
       <td mat-cell *matCellDef="let lap"> {{lap.netPowerOut}} W</td>
     </ng-container>
 
     <ng-container matColumnDef="averageSpeed">
-      <th mat-header-cell *matHeaderCellDef> Avg Speed </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about avg speed" matTooltipPosition="above"> Avg Speed </th>
       <td mat-cell *matCellDef="let lap"> {{lap.averageSpeed}} km</td>
     </ng-container>
 
     <ng-container matColumnDef="distance">
-      <th mat-header-cell *matHeaderCellDef> Dist </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about distance" matTooltipPosition="above"> Dist </th>
       <td mat-cell *matCellDef="let lap"> {{lap.distance}} km</td>
     </ng-container>
 
     <ng-container matColumnDef="amphours">
-      <th mat-header-cell *matHeaderCellDef> Amphours </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about current" matTooltipPosition="above"> Amphours </th>
       <td mat-cell *matCellDef="let lap"> {{lap.amphours}} Ah</td>
     </ng-container>
 
     <ng-container matColumnDef="averagePackCurrent">
-      <th mat-header-cell *matHeaderCellDef> Avg Pack Current </th>
+      <th mat-header-cell *matHeaderCellDef matTooltip = "Info about avg pack current" matTooltipPosition="above"> Avg Pack Current </th>
       <td mat-cell *matCellDef="let lap"> {{lap.averagePackCurrent}} A</td>
     </ng-container>
     
