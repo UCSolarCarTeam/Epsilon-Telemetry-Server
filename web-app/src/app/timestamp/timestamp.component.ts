@@ -10,7 +10,7 @@ import { HeartbeatService } from '../_services/heartbeat.service';
 })
 export class TimestampComponent implements OnInit {
   packet: Packet;
-  heartBeat: Boolean;
+  heartbeat: Boolean;
 
   constructor(private packetService: PacketService, private heartbeatService: HeartbeatService) {
 }
@@ -20,12 +20,12 @@ export class TimestampComponent implements OnInit {
     this.packetService.packet$.subscribe(
       (data: Packet) => {
         this.packet = data;
-        this.heartBeat = true;
+        this.heartbeat = true;
       }
     );
-    this.heartbeatService.heartBeat$.subscribe(
-      (heartBeat: Boolean) => {
-        this.heartBeat = heartBeat;
+    this.heartbeatService.heartbeat$.subscribe(
+      (heartbeat: Boolean) => {
+        this.heartbeat = heartbeat;
       }
     )
   }

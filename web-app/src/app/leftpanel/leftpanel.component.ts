@@ -15,7 +15,7 @@ export class LeftpanelComponent implements OnInit {
   // declare empty public variable
   packet: Packet;
 
-  heartBeat: Boolean;
+  heartbeat: Boolean;
   timestamp: Date;
   // inject the PacketService
   constructor(private packetService: PacketService, private heartbeatService: HeartbeatService) {
@@ -28,13 +28,13 @@ export class LeftpanelComponent implements OnInit {
     this.packetService.packet$.subscribe(
       (data: Packet) => {
         this.packet = data;
-        this.heartBeat = true;
+        this.heartbeat = true;
         this.timestamp  = new Date(Number(this.packet.timestamp))
       }
     );
-    this.heartbeatService.heartBeat$.subscribe(
-        (heartBeat: Boolean) => {
-            this.heartBeat = heartBeat;
+    this.heartbeatService.heartbeat$.subscribe(
+        (heartbeat: Boolean) => {
+            this.heartbeat = heartbeat;
         })
   }
 }

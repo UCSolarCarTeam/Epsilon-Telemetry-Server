@@ -5,7 +5,7 @@
 	    value="{{packet.timestamp | date: 'MMM d, y, h:mm:ss a'}}"
 	    readonly="true">
 	</mat-form-field>
-	<span *ngIf="!heartBeat" class="disconnected short-text">D/C</span>
+	<span *ngIf="!heartbeat" class="disconnected short-text">D/C</span>
 </mat-card>
 <mat-card class="packet full-size">
 	<mat-form-field>
@@ -14,5 +14,5 @@
 	    value="{{packet.timestamp | date: 'MMM d, y, h:mm:ss a'}}"
 	    readonly="true">
 	</mat-form-field>
-	<span *ngIf="!heartBeat" class="disconnected">Disconnected</span>
+	<span *ngIf="!heartbeat" class="disconnected">Disconnected</span>
 </mat-card>
