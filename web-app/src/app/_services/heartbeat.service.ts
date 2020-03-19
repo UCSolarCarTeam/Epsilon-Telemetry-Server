@@ -7,7 +7,7 @@ import { PacketService } from './packet.service';
 })
 export class HeartbeatService {
 
-  heartBeat$: EventEmitter<Boolean>;
+  heartbeat$: EventEmitter<Boolean>;
   packet: Packet;
   interval: number;
 
@@ -20,18 +20,18 @@ export class HeartbeatService {
         }
       );
 
-    this.heartBeat$ = new EventEmitter<Boolean>();
+    this.heartbeat$ = new EventEmitter<Boolean>();
     setInterval(() => {
-        this.heartBeatCheck()
+        this.heartbeatCheck()
     }, this.interval)
   }
 
-   heartBeatCheck() {
+   heartbeatCheck() {
     const packetTime = new Date(this.packet.timestamp);
     if (Date.now() - this.packet.timestamp > this.interval) {
-        this.heartBeat$.emit(false);
+        this.heartbeat$.emit(false);
     } else {
-        this.heartBeat$.emit(true);
+        this.heartbeat$.emit(true);
     }
    }
 }

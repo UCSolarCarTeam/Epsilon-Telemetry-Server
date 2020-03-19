@@ -1,0 +1,18 @@
+<mat-card class="packet short-size">
+	<mat-form-field>
+	  <input matInput
+	    placeholder="Packet Timestamp"
+	    value="{{packet.timestamp | date: 'MMM d, y, h:mm:ss a'}}"
+	    readonly="true">
+	</mat-form-field>
+	<span *ngIf="!heartbeat" class="disconnected short-text">D/C</span>
+</mat-card>
+<mat-card class="packet full-size">
+	<mat-form-field>
+	<input matInput
+	    placeholder="Packet Timestamp"
+	    value="{{packet.timestamp | date: 'MMM d, y, h:mm:ss a'}}"
+	    readonly="true">
+	</mat-form-field>
+	<span *ngIf="!heartbeat" class="disconnected">Disconnected</span>
+</mat-card>

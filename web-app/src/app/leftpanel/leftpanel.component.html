@@ -5,12 +5,5 @@
       <mat-card-title id="solar-title">Calgary<br>Solar<br>Car<br>Team</mat-card-title>
     </mat-card-header>
   </div>
-  <mat-form-field>
-    <input matInput
-      placeholder="Packet Timestamp"
-      value="{{timestamp | date: 'MMM d, y, h:mm:ss a'}}"
-      readonly="true"
-    >
-  </mat-form-field>
-  <span *ngIf="!heartBeat" class="disconnected">Car Disconnected</span>
+  <app-timestamp></app-timestamp>
 </mat-card>

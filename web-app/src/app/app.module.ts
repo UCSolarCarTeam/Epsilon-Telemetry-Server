@@ -30,6 +30,7 @@ import { DataTableComponent } from './tabs/race/data-table/data-table.component'
 import { WebSocketService } from './websocket.service';
 import { DataInitService } from './_services/data.init.service';
 import { APP_INITIALIZER } from '@angular/core';
+import { TimestampComponent } from './timestamp/timestamp.component';
 import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component';
 
 @NgModule({
@@ -44,7 +45,8 @@ import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component'
     RaceComponent,
     RightpanelComponent,
     DataTableComponent,
-    RaceGraphComponent,
+    TimestampComponent,
+    RaceGraphComponent
   ],
   imports: [
     AppRoutingModule,
