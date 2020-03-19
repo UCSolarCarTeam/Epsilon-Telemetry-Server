@@ -69,8 +69,7 @@ and (max-width: 992px){
 }
 
 @media only screen
-and (min-width: 992px)
-and (max-width: 1200px){
+and (min-width: 992px){
   app-timestamp {
     display: none;
   }
@@ -83,7 +82,8 @@ and (max-width: 1100px){
   }
 }
 @media only screen
-and (min-width: 1100px){
+and (min-width: 1100px)
+and (max-width: 1200px){
   .tabs{
     margin-right: 2em;
   }
