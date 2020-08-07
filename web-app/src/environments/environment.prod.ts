@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serverIP: 'ws://138.197.206.227:4000'
 };
