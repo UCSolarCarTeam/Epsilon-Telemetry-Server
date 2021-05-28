@@ -22,7 +22,7 @@
     "pg-promise": "^8.4.6",
     "promise": "^8.0.2",
     "url-parse": "^1.4.7",
-    "ws": "^5.2.2"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
