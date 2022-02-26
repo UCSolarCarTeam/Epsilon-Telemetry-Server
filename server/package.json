@@ -21,7 +21,7 @@
     "morgan": "^1.9.1",
     "pg-promise": "^8.4.6",
     "promise": "^8.0.2",
-    "url-parse": "^1.4.7",
+    "url-parse": "^1.5.8",
     "ws": "^5.2.2"
   },
   "devDependencies": {
