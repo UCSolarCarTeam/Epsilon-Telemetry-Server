@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { INewTelemetryData } from '../_objects/interfaces/new-telemetry-data.interface';
 import { Mppt } from '../_objects/mppt';
 import { WebSocketService } from '../websocket.service';
 
@@ -31,7 +31,7 @@ export class MpptService {
     this.mppt3 = new Mppt;
 
     this.wsService.packetMultiplex$.subscribe(
-      (data: ITelemetryData) => {
+      (data: INewTelemetryData) => {
         this.updateMppt(data, 0);
         this.updateMppt(data, 1);
         this.updateMppt(data, 2);
@@ -49,11 +49,11 @@ export class MpptService {
     return this[`mppt${num}`];
   }
 
-  private updateMppt(data: ITelemetryData, num: number): void {
-    this[`mppt${num}`].alive = data[`mppt${num}alive`];
-    this[`mppt${num}`].arrayCurrent = data[`mppt${num}arraycurrent`];
-    this[`mppt${num}`].arrayVoltage = data[`mppt${num}arrayvoltage`];
-    this[`mppt${num}`].batteryVoltage = data[`mppt${num}batteryvoltage`];
-    this[`mppt${num}`].temperature = data[`mppt${num}temperature`];
+  private updateMppt(data: INewTelemetryData, num: number): void {
+    this[`mppt${num}`].alive = data.mppt[num].alive;
+    this[`mppt${num}`].arrayCurrent = data.mppt[num].arrayCurrent;
+    this[`mppt${num}`].arrayVoltage = data.mppt[num].arrayVoltage;
+    this[`mppt${num}`].batteryVoltage = data.mppt[num].batteryVoltage;
+    this[`mppt${num}`].temperature = data.mppt[num].temperature;
   }
 }

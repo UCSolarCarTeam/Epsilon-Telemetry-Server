@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { INewTelemetryData } from '../_objects/interfaces/new-telemetry-data.interface';
 import { Packet } from '../_objects/packet';
 import { WebSocketService } from '../websocket.service';
 
@@ -18,8 +18,8 @@ export class PacketService {
     this.packet = new Packet;
 
     this.wsService.packetMultiplex$.subscribe(
-      (data: ITelemetryData) => {
-        this.packet.name = data.name;
+      (data: INewTelemetryData) => {
+        this.packet.name = data.packetTitle;
         this.packet.timestamp = data.timestamp;
         this.packet$.emit(this.getData());
       }

@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
 import { AuxBms, State } from '../_objects/aux-bms';
-import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { INewTelemetryData } from '../_objects/interfaces/new-telemetry-data.interface';
 import { WebSocketService } from '../websocket.service';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class AuxBmsService {
     this.auxbms = new AuxBms;
 
     this.wsService.packetMultiplex$.subscribe(
-      (data: ITelemetryData) => {
+      (data: INewTelemetryData) => {
         this.updateAuxBms(data);
         this.auxbms$.emit(this.getData());
       }
@@ -29,14 +29,14 @@ export class AuxBmsService {
     return this.auxbms;
   }
 
-  private updateAuxBms(data: ITelemetryData): void {
-    const pState = data.prechargestate as keyof typeof State;
-    this.auxbms.alive = data.auxbmsalive;
-    this.auxbms.allowCharge = data.allowcharge;
-    this.auxbms.auxVoltage = data.auxvoltage;
-    this.auxbms.contactorError = data.contractorerror;
+  private updateAuxBms(data: INewTelemetryData): void {
+    const pState = data.battery.preChargeState as keyof typeof State;
+    this.auxbms.alive = data.battery.auxBMSAlive;
+    this.auxbms.allowCharge = false; // TODO: add the correct value
+    this.auxbms.auxVoltage = data.battery.auxVoltage;
+    this.auxbms.contactorError = false; // TODO: add the correct value
     this.auxbms.prechargeState = State[pState];
-    this.auxbms.strobeBmsLight = data.strobebmslight;
-    this.auxbms.highVoltageEnable = data.highvoltageenable;
+    this.auxbms.strobeBmsLight = data.lights.BMSStrobeLight;
+    this.auxbms.highVoltageEnable = false; // TODO: add the correct value
   }
 }

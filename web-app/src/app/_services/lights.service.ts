@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { INewTelemetryData } from '../_objects/interfaces/new-telemetry-data.interface';
 import { Lights } from '../_objects/lights';
 import { WebSocketService } from '../websocket.service';
 
@@ -18,7 +18,7 @@ export class LightsService {
     this.lights = new Lights;
 
     this.wsService.packetMultiplex$.subscribe(
-      (data: ITelemetryData) => {
+      (data: INewTelemetryData) => {
         this.updateLights(data);
         this.lights$.emit(this.getData());
       }
@@ -29,13 +29,13 @@ export class LightsService {
     return this.lights;
   }
 
-  private updateLights(data: ITelemetryData): void {
-    this.lights.alive = data.lightsalive;
-    this.lights.bmsStrobeLight = data.bmsstrobelight;
-    this.lights.brakes = data.brakelights;
-    this.lights.highBeams = data.highbeams;
-    this.lights.leftSignal = data.leftsignal;
-    this.lights.lowBeams = data.lowbeams;
-    this.lights.rightSignal = data.rightsignal;
+  private updateLights(data: INewTelemetryData): void {
+    this.lights.alive = data.lights.lightAlive;
+    this.lights.bmsStrobeLight = data.lights.BMSStrobeLight;
+    this.lights.brakes = data.lights.brakes;
+    this.lights.highBeams = data.lights.highBeams;
+    this.lights.leftSignal = data.lights.leftSignal;
+    this.lights.lowBeams = data.lights.lowBeams;
+    this.lights.rightSignal = data.lights.rightSignal;
   }
 }

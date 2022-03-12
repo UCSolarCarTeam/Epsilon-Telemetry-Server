@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
 import { Controls } from '../_objects/controls';
-import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { INewTelemetryData } from '../_objects/interfaces/new-telemetry-data.interface';
 import { WebSocketService } from '../websocket.service';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class ControlsService {
     this.controls = new Controls;
 
     this.wsService.packetMultiplex$.subscribe(
-      (data: ITelemetryData) => {
+      (data: INewTelemetryData) => {
         this.updateControls(data);
         this.controls$.emit(this.getData());
       }
@@ -29,28 +29,28 @@ export class ControlsService {
     return this.controls;
   }
 
-  private updateControls(data: ITelemetryData): void {
-    this.controls.acceleration = data.acceleration;
-    this.controls.alive = data.drivercontrolsalive;
-    this.controls.aux = data.aux;
-    this.controls.brakes = data.brakes;
-    this.controls.forward = data.controlsforward;
-    this.controls.hazard = data.hazard;
-    this.controls.headlightsHigh = data.headlightshigh;
-    this.controls.headlightsLow = data.headlightslow;
-    this.controls.headlightsOff = data.headlightsoff;
-    this.controls.horn = data.horn;
-    this.controls.interior = data.interior;
-    this.controls.nextSong = data.nextsong;
-    this.controls.prevSong = data.prevsong;
-    this.controls.pushToTalk = data.pushtotalk;
-    this.controls.regenBraking = data.regenbraking;
-    this.controls.reset = data.controlsmotorreset;
-    this.controls.reverse = data.controlsreverse;
-    this.controls.signalLeft = data.signalleft;
-    this.controls.signalRight = data.signalright;
-    this.controls.volumeDown = data.volumedown;
-    this.controls.volumeUp = data.volumeup;
-    this.controls.lap = data.lap;
+  private updateControls(data: INewTelemetryData): void {
+    this.controls.acceleration = data.driverControls.acceleration;
+    this.controls.alive = data.driverControls.alive;
+    this.controls.aux = data.driverControls.aux;
+    this.controls.brakes = data.driverControls.brakes;
+    this.controls.forward = data.driverControls.forward;
+    this.controls.hazard = data.driverControls.hazard;
+    this.controls.headlightsHigh = data.driverControls.headlightsHigh;
+    this.controls.headlightsLow = data.driverControls.headlightsLow;
+    this.controls.headlightsOff = data.driverControls.headlightsOff;
+    this.controls.horn = data.driverControls.horn;
+    this.controls.interior = data.driverControls.interior;
+    this.controls.nextSong = data.driverControls.nextSong;
+    this.controls.prevSong = data.driverControls.prevSong;
+    this.controls.pushToTalk = data.driverControls.pushToTalk;
+    this.controls.regenBraking = data.driverControls.regenBraking;
+    this.controls.reset = data.driverControls.reset;
+    this.controls.reverse = data.driverControls.reverse;
+    this.controls.signalLeft = data.driverControls.signalLeft;
+    this.controls.signalRight = data.driverControls.signalRight;
+    this.controls.volumeDown = data.driverControls.volumeDown;
+    this.controls.volumeUp = data.driverControls.volumeUp;
+    this.controls.lap = false; // TODO: update this value
   }
 }
