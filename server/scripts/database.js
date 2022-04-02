@@ -78,12 +78,12 @@ module.exports.insert = function(queryName, jsonObj) {
  * @return {Promise}
  */
 module.exports.lastPacket = function() {
-  // return db.one({
-  //   name: 'client-init',
-  //   text: 'SELECT * ' +
-  //         'FROM packet ' +
-  //         'ORDER BY timestamp DESC LIMIT 1',
-  // });
+  return db.one({
+    name: 'client-init',
+    text: 'SELECT * ' +
+          'FROM packet ' +
+          'ORDER BY timestamp DESC LIMIT 1',
+  });
 };
 
 /**
@@ -109,12 +109,12 @@ module.exports.between = function(lowestTime, highestTime) {
 * @return {Promise}
 */
 module.exports.laps = function() {
-  // return db.any({
-  //   name: 'client-init-lap',
-  //   text: 'SELECT * ' +
-  //         'FROM lap ' +
-  //         'ORDER BY timestamp DESC',
-  // });
+  return db.any({
+    name: 'client-init-lap',
+    text: 'SELECT * ' +
+          'FROM lap ' +
+          'ORDER BY timestamp DESC',
+  });
 };
 
 /**
@@ -122,12 +122,12 @@ module.exports.laps = function() {
  * @return {Promise}
  */
 module.exports.lastLap = function() {
-  // return db.one({
-  //   name: 'client-last-lap',
-  //   text: 'SELECT * ' +
-  //         'FROM lap ' +
-  //         'ORDER BY timestamp DESC LIMIT 1',
-  // });
+  return db.one({
+    name: 'client-last-lap',
+    text: 'SELECT * ' +
+          'FROM lap ' +
+          'ORDER BY timestamp DESC LIMIT 1',
+  });
 };
 
 /**
