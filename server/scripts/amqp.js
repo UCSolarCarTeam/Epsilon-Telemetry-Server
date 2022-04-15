@@ -39,13 +39,13 @@ amqp.connect(config.rabbitmq.host)
           const jsonObj = JSON.parse(msg.content);
           // save the data into database
           // Process Packet Data
-          // db.insert('rabbitmq-insert', jsonObj)
-          //   .then((insertedRow) => {
-          //     console.log('1 row inserted from RabbitMQ');
-          //     insertedRow['msgType'] = 'packet';
-          //     // send to angular clients
-          //     wss.broadcast(JSON.stringify(insertedRow));
-          //   });
+          db.insert('rabbitmq-insert', jsonObj);
+            // .then((insertedRow) => {
+            //   console.log('1 row inserted from RabbitMQ');
+            //   insertedRow['msgType'] = 'packet';
+            //   // send to angular clients
+            //   wss.broadcast(JSON.stringify(insertedRow));
+            // });
           console.log('boradcasted a message!');
           wss.broadcast(jsonObj); // temp
 

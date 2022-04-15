@@ -64,4 +64,4 @@ module.exports.server = server;
  */
 require('../scripts/database');
 require('../scripts/websocket');
-require('../scripts/amqp');
+//require('../scripts/amqp');

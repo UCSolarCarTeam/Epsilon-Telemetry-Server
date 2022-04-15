@@ -1,4 +1,5 @@
 const promise = require('promise');
+const { MongoClient } = require('mongodb');
 const config = require('../config');
 
 /**
@@ -35,6 +36,26 @@ const pgp = require('pg-promise')(initOptions);
 const db = pgp(config.database);
 
 /**
+ * Connect to Mongo
+ */
+ const uri =
+ "mongodb+srv://JensVarughese:test1234@cluster0.63bmf.mongodb.net/test";
+ const client = new MongoClient(uri);
+
+ async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log('connected to mongo database')
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+
+connectToDatabase();
+
+
+/**
  * Get table columns and store in a global variable
  */
 console.log('Updating column names...');
@@ -63,6 +84,7 @@ const columnMap = new Map();
  * @return {Promise}
  */
 module.exports.insert = function(queryName, jsonObj) {
+  insertPacket(jsonObj);
   // const mapObj = jsonToMap(jsonObj);
   // const tokens = [...Array(mapObj.size).keys()].map((x) => `$${x+1}`).join();
 
@@ -72,6 +94,13 @@ module.exports.insert = function(queryName, jsonObj) {
   //   values: [...mapObj.values()],
   // });
 };
+
+async function insertPacket(jsonPacket) {
+  const database = client.db('Test');
+  const collection = database.collection('Packets');
+  await collection.insertOne(jsonPacket);
+  console.log('packet inserted!')
+}
 
 /**
  * Fetches the last row in the database.
