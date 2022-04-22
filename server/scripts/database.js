@@ -38,8 +38,7 @@ const db = pgp(config.database);
 /**
  * Connect to Mongo
  */
- const uri =
- "mongodb+srv://JensVarughese:test1234@cluster0.63bmf.mongodb.net/test";
+ const uri = config.mongoUri;
  const client = new MongoClient(uri);
  const database = client.db('Test');
  const collection = database.collection('Packets');
