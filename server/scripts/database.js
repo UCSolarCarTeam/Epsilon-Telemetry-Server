@@ -41,18 +41,17 @@ const db = pgp(config.database);
  const uri =
  "mongodb+srv://JensVarughese:test1234@cluster0.63bmf.mongodb.net/test";
  const client = new MongoClient(uri);
+ const database = client.db('Test');
+ const collection = database.collection('Packets');
 
- async function connectToDatabase() {
-  try {
-    await client.connect();
-    console.log('connected to mongo database')
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-
-connectToDatabase();
+client.connect()
+ .then(function (db) { // <- db as first argument
+   
+   console.log('connected to mongo database')
+ })
+ .catch(function (err) {
+   console.log(err);
+ });
 
 
 /**
@@ -84,35 +83,21 @@ const columnMap = new Map();
  * @return {Promise}
  */
 module.exports.insert = function(queryName, jsonObj) {
-  insertPacket(jsonObj);
-  // const mapObj = jsonToMap(jsonObj);
-  // const tokens = [...Array(mapObj.size).keys()].map((x) => `$${x+1}`).join();
-
-  // return db.one({
-  //   name: queryName,
-  //   text: `INSERT INTO packet (${this.getColumns()}) VALUES (${tokens}) RETURNING *`,
-  //   values: [...mapObj.values()],
-  // });
+  return collection.insertOne(jsonObj);
 };
-
-async function insertPacket(jsonPacket) {
-  const database = client.db('Test');
-  const collection = database.collection('Packets');
-  await collection.insertOne(jsonPacket);
-  console.log('packet inserted!')
-}
 
 /**
  * Fetches the last row in the database.
  * @return {Promise}
  */
 module.exports.lastPacket = function() {
-  return db.one({
-    name: 'client-init',
-    text: 'SELECT * ' +
-          'FROM packet ' +
-          'ORDER BY timestamp DESC LIMIT 1',
-  });
+  return collection.find().sort({TimeStamp : -1}).limit(1).toArray();
+  // return db.one({
+  //   name: 'client-init',
+  //   text: 'SELECT * ' +
+  //         'FROM packet ' +
+  //         'ORDER BY timestamp DESC LIMIT 1',
+  // });
 };
 
 /**
