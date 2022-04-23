@@ -32,6 +32,7 @@ import { DataInitService } from './_services/data.init.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { TimestampComponent } from './timestamp/timestamp.component';
 import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component';
+import { TestComponentComponent } from './test-component/test-component.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component'
     RightpanelComponent,
     DataTableComponent,
     TimestampComponent,
-    RaceGraphComponent
+    RaceGraphComponent,
+    TestComponentComponent
   ],
   imports: [
     AppRoutingModule,
