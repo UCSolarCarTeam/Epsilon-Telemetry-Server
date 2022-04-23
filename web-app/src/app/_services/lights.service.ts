@@ -30,12 +30,12 @@ export class LightsService {
   }
 
   private updateLights(data: INewTelemetryData): void {
-    this.lights.alive = data.lights.lightAlive;
-    this.lights.bmsStrobeLight = data.lights.BMSStrobeLight;
-    this.lights.brakes = data.lights.brakes;
-    this.lights.highBeams = data.lights.highBeams;
-    this.lights.leftSignal = data.lights.leftSignal;
-    this.lights.lowBeams = data.lights.lowBeams;
-    this.lights.rightSignal = data.lights.rightSignal;
+    this.lights.alive = data.Lights.Alive;
+    this.lights.bmsStrobeLight = data.Lights.BMSStrobeLight;
+    this.lights.brakes = data.Lights.Brakes;
+    this.lights.highBeams = data.Lights.HighBeams;
+    this.lights.leftSignal = data.Lights.LeftSignal;
+    this.lights.lowBeams = data.Lights.LowBeams;
+    this.lights.rightSignal = data.Lights.RightSignal;
   }
 }

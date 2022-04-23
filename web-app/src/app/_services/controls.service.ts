@@ -30,27 +30,27 @@ export class ControlsService {
   }
 
   private updateControls(data: INewTelemetryData): void {
-    this.controls.acceleration = data.driverControls.acceleration;
-    this.controls.alive = data.driverControls.alive;
-    this.controls.aux = data.driverControls.aux;
-    this.controls.brakes = data.driverControls.brakes;
-    this.controls.forward = data.driverControls.forward;
-    this.controls.hazard = data.driverControls.hazard;
-    this.controls.headlightsHigh = data.driverControls.headlightsHigh;
-    this.controls.headlightsLow = data.driverControls.headlightsLow;
-    this.controls.headlightsOff = data.driverControls.headlightsOff;
-    this.controls.horn = data.driverControls.horn;
-    this.controls.interior = data.driverControls.interior;
-    this.controls.nextSong = data.driverControls.nextSong;
-    this.controls.prevSong = data.driverControls.prevSong;
-    this.controls.pushToTalk = data.driverControls.pushToTalk;
-    this.controls.regenBraking = data.driverControls.regenBraking;
-    this.controls.reset = data.driverControls.reset;
-    this.controls.reverse = data.driverControls.reverse;
-    this.controls.signalLeft = data.driverControls.signalLeft;
-    this.controls.signalRight = data.driverControls.signalRight;
-    this.controls.volumeDown = data.driverControls.volumeDown;
-    this.controls.volumeUp = data.driverControls.volumeUp;
+    this.controls.acceleration = data.DriverControls.Acceleration;
+    this.controls.alive = data.DriverControls.Alive;
+    this.controls.aux = data.DriverControls.Aux;
+    this.controls.brakes = data.DriverControls.Brakes;
+    this.controls.forward = data.DriverControls.Forward;
+    this.controls.hazard = data.DriverControls.Hazard;
+    this.controls.headlightsHigh = data.DriverControls.HeadlightsHigh;
+    this.controls.headlightsLow = data.DriverControls.HeadlightsLow;
+    this.controls.headlightsOff = data.DriverControls.HeadlightsOff;
+    this.controls.horn = data.DriverControls.Horn;
+    this.controls.interior = data.DriverControls.Interior;
+    this.controls.nextSong = data.DriverControls.NextSong;
+    this.controls.prevSong = data.DriverControls.PrevSong;
+    this.controls.pushToTalk = data.DriverControls.PushToTalk;
+    this.controls.regenBraking = data.DriverControls.RegenBraking;
+    this.controls.reset = data.DriverControls.Reset;
+    this.controls.reverse = data.DriverControls.Reverse;
+    this.controls.signalLeft = data.DriverControls.SignalLeft;
+    this.controls.signalRight = data.DriverControls.SignalRight;
+    this.controls.volumeDown = data.DriverControls.VolumeDown;
+    this.controls.volumeUp = data.DriverControls.VolumeUp;
     this.controls.lap = false; // TODO: update this value
   }
 }

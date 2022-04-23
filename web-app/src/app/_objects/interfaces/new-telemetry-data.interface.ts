@@ -1,196 +1,226 @@
 export interface INewTelemetryData {
-    packetTitle: string,
-    timestamp: number,
-    keyMotor: IKeyMotor[],
-    motorDetails: IMotorDetail[],
-    driverControls: IDriverControls,
-    motorFaults: IMotorFault[],
-    batteryFaults: IBatteryFault,
-    battery: IBattery,
-    mppt: IMPPT[]
-    lights: ILights,
+    PacketTitle: string,
+    Timestamp: number,
+    AuxBms: IAuxBms,
+    KeyMotor: IKeyMotor[],
+    MotorDetails: IMotorDetail[],
+    DriverControls: IDriverControls,
+    MotorFaults: IMotorFault[],
+    BatteryFaults: IBatteryFault,
+    Battery: IBattery,
+    Ccs: ICcs,
+    Mppt: IMPPT[]
+    Lights: ILights,
+}
+
+export interface IAuxBms {
+  AllowCharge: boolean,
+  AllowDischarge: boolean,
+  AuxBmsAlive: boolean,
+  AuxVoltage: number,
+  ChargeContactorError: boolean,
+  ChargeOpenButShouldBeClosed: boolean,
+  ChargeShouldTrip: boolean,
+  ChargeTripDueToHighCellVoltage: boolean,
+  ChargeTripDueToHighTemperatureAndCurrent: boolean,
+  ChargeTripDueToPackCurrent: boolean,
+  CommonContactorError: boolean,
+  DischargeContactorError: boolean,
+  DischargeOpenButShouldBeClosed: boolean,
+  DischargeShouldTrip: boolean,
+  DischargeTripDueToHighTemperatureAndCurrent: boolean,
+  DischargeTripDueToLowCellVoltage: boolean,
+  DischargeTripDueToPackCurrent: boolean,
+  HighVoltageEnableState: boolean,
+  OrionCANReceivedRecently: boolean,
+  PrechargeState: string,
+  ProtectionTrip: boolean,
+  StrobeBmsLight: boolean
 }
 
 export interface IKeyMotor {
-    alive: boolean,
-    setCurrent: number,
-    setVelocity: number,
-    busCurrent: number,
-    busVoltage: number,
-    vehicleVoltage: number
+    Alive: boolean,
+    SetCurrent: number,
+    SetVelocity: number,
+    BusCurrent: number,
+    BusVoltage: number,
+    VehicleVelocity: number
 }
 
 export interface IMotorDetail {
-    phaseCCurrent: number,
-    phaseBCurrent: number,
-    motorVoltageReal: number,
-    motorVoltageImaginary: number,
-    motorCurrentReal: number,
-    motorCurrentImaginary: number,
-    backEmfReal: number,
-    backEmfImaginary: number,
-    voltageRail15VSupply: number
-    voltageRail3VSupply: number,
-    voltageRail1VSupply: number,
-    heatSinkTemp: number,
-    motorTemp: number,
-    dspBoardTemp: number,
-    dcBusAmpHours: number,
-    odometer: number,
-    slipSpeed: number
+    PhaseCCurrent: number,
+    PhaseBCurrent: number,
+    MotorVoltageReal: number,
+    MotorVoltageImaginary: number,
+    MotorCurrentReal: number,
+    MotorCurrentImaginary: number,
+    BackEmf: number,
+    VoltageRail15VSupply: number
+    VoltageRail3VSupply: number,
+    VoltageRail1VSupply: number,
+    HeatSinkTemp: number,
+    MotorTemp: number,
+    DspBoardTemp: number,
+    DcBusAmpHours: number,
+    Odometer: number,
+    SlipSpeed: number
 }
 
 export interface IDriverControls {
-    alive: boolean,
-    headlightsOff: boolean,
-    headlightsLow: boolean,
-    headlightsHigh: boolean,
-    signalRight: boolean,
-    signalLeft: boolean,
-    hazard: boolean,
-    interior: boolean,
-    aux: boolean,
-    volumeUp: boolean,
-    volumeDown: boolean,
-    nextSong: boolean,
-    prevSong: boolean,
-    acceleration: number,
-    regenBraking: number,
-    brakes: boolean,
-    forward: boolean,
-    reverse: boolean,
-    pushToTalk: boolean,
-    horn: boolean,
-    reset: boolean
+    Alive: boolean,
+    HeadlightsOff: boolean,
+    HeadlightsLow: boolean,
+    HeadlightsHigh: boolean,
+    SignalRight: boolean,
+    SignalLeft: boolean,
+    Hazard: boolean,
+    Interior: boolean,
+    Aux: boolean,
+    VolumeUp: boolean,
+    VolumeDown: boolean,
+    NextSong: boolean,
+    PrevSong: boolean,
+    Acceleration: number,
+    RegenBraking: number,
+    Brakes: boolean,
+    Forward: boolean,
+    Reverse: boolean,
+    PushToTalk: boolean,
+    Horn: boolean,
+    Reset: boolean
 }
 
 export interface ILights {
-    lowBeams: boolean,
-    highBeams: boolean,
-    brakes: boolean,
-    leftSignal: boolean,
-    rightSignal: boolean,
+    LowBeams: boolean,
+    HighBeams: boolean,
+    Brakes: boolean,
+    LeftSignal: boolean,
+    RightSignal: boolean,
     BMSStrobeLight: boolean,
-    lightAlive: boolean
+    Alive: boolean
 }
 
 export interface IBatteryFault {
-    errorFlags: IBatteryErrorFlags,
-    limitFlags: IBatteryLimitFlags
+    ErrorFlags: IBatteryErrorFlags,
+    LimitFlags: IBatteryLimitFlags
 }
 
 export interface IBatteryErrorFlags {
-    internalCommunicationFault: boolean,
-    internalConversionFault: boolean,
-    weakCellFault: boolean,
-    lowCellVoltageFault: boolean,
-    openWiringFault: boolean,
-    currentSensorFault: boolean,
-    packVoltageSensorFault: boolean,
-    weakPackFault: boolean,
-    voltageRedundancyFault: boolean,
-    fanMonitorFault: boolean,
+    InternalCommunicationFault: boolean,
+    InternalConversionFault: boolean,
+    WeakCellFault: boolean,
+    LowCellVoltageFault: boolean,
+    OpenWiringFault: boolean,
+    CurrentSensorFault: boolean,
+    PackVoltageSensorFault: boolean,
+    WeakPackFault: boolean,
+    VoltageRedundancyFault: boolean,
+    FanMonitorFault: boolean,
     thermistorFault: boolean,
     CANBUSCommunicationFault: boolean,
-    alwaysOnSupplyFault: boolean,
-    highVoltageIsolationFault: boolean,
-    powerSupply12VFault: boolean,
-    chargeLimitEnforcementFault: boolean,
-    dischargeLimitEnforcementFault: boolean,
-    chargerSafetyRelayFault: boolean,
-    internalMemoryFault: boolean,
-    internalThermistorsFault: boolean,
-    internalLogicFault: boolean
+    AlwaysOnSupplyFault: boolean,
+    HighVoltageIsolationFault: boolean,
+    '12vPowerSupplyFault': boolean,
+    ChargeLimitEnforcementFault: boolean,
+    DischargeLimitEnforcementFault: boolean,
+    ChargerSafetyRelayFault: boolean,
+    InternalMemoryFault: boolean,
+    InternalThermistorsFault: boolean,
+    InternalLogicFault: boolean
 }
 
 export interface IBatteryLimitFlags {
-    dclReducedDueToLowSoc: boolean,
-    dclReducedDueToHighCellResistance: boolean,
-    dclReducedDueToTemperature: boolean,
-    dclReducedDueToLowCellVoltage: boolean,
-    dclReducedDueToLowPackVoltage: boolean,
-    dclAndCclReducedDueToVoltageFailsafe: boolean,
-    dclAndCclReducedDueToCommunicationFailsafe: boolean,
-    cclReducedDueToHighSoc: boolean,
-    cclReducedDueToHighCellResistance: boolean,
-    cclReducedDueToTemperature: boolean,
-    cclReducedDueToHighCellVoltage: boolean,
-    cclReducedDueToHighPackVoltage: boolean,
-    cclReducedDueToChargerLatch: boolean,
-    cclReducedDueToAlternateCurrentLimit: boolean
+    DclReducedDueToLowSoc: boolean,
+    DclReducedDueToHighCellResistance: boolean,
+    DclReducedDueToTemperature: boolean,
+    DclReducedDueToLowCellVoltage: boolean,
+    DclReducedDueToLowPackVoltage: boolean,
+    DclAndCclReducedDueToVoltageFailsafe: boolean,
+    DclAndCclReducedDueToCommunicationFailsafe: boolean,
+    DclReducedDueToHighSoc: boolean,
+    CclReducedDueToHighCellResistance: boolean,
+    CclReducedDueToTemperature: boolean,
+    CclReducedDueToHighCellVoltage: boolean,
+    CclReducedDueToHighPackVoltage: boolean,
+    CclReducedDueToChargerLatch: boolean,
+    CclReducedDueToAlternateCurrentLimit: boolean
+}
+
+export interface ICcs {
+  CcsAlive: boolean,
 }
 
 export interface IMPPT {
-    alive: boolean,
-    arrayVoltage: number,
-    arrayCurrent: number,
-    batteryVoltage: number,
-    temperature: number
+    Alive: boolean,
+    ArrayVoltage: number,
+    ArrayCurrent: number,
+    BatteryVoltage: number,
+    Temperature: number
 }
 
 export interface IMotorFault {
-    errorFlags: IMotorErrorFlags,
-    limitFlags: IMotorLimitFlags,
-    rxErrorCount: number,
-    txErrorCount: number
+    ErrorFlags: IMotorErrorFlags,
+    LimitFlags: IMotorLimitFlags,
+    RxErrorCount: number,
+    TxErrorCount: number
 }
 
 export interface IMotorErrorFlags{
-    motorOverSpeed: boolean,
-    softwareOverCurrent: boolean,
-    dcBusOverVoltage: boolean,
-    badMotorPositionHallSequence: boolean,
-    watchdogCausedLastReset: boolean,
-    configReadError: boolean,
-    rail15VUnderVoltageLockOut: boolean,
-    desaturationFault: boolean
+    MotorOverSpeed: boolean,
+    SoftwareOverCurrent: boolean,
+    DcBusOverVoltage: boolean,
+    BadMotorPositionHallSequence: boolean,
+    WatchdogCausedLastReset: boolean,
+    ConfigReadError: boolean,
+    Wail15VUnderVoltageLockOut: boolean,
+    DesaturationFault: boolean
 }
 export interface IMotorLimitFlags{
-    outputVoltagePwm: boolean,
-    motorCurrent: boolean,
-    velocity: boolean,
-    busCurrent: false,
-    busVoltageUpper: boolean,
-    busVoltageLower: boolean,
-    ipmOrMotorTemperature: true
+    OutputVoltagePwm: boolean,
+    MotorCurrent: boolean,
+    Velocity: boolean,
+    BusCurrent: false,
+    BusVoltageUpper: boolean,
+    BusVoltageLower: boolean,
+    IpmOrMotorTemperature: true
 }
 
 export interface IBattery {
-    alive: boolean,
+    Alive: boolean,
     BMSRelayStatusFlags: IBMSRelayStatusFlags,
-    populatedCells: number,
-    inputVoltage12V: number,
-    fanVoltage: number,
-    packCurrent: number,
-    packVoltage: number,
-    packStateofCharge: number,
-    packAmphours: number,
-    packDepthofDischarge: number,
-    highTemperature: number,
-    highThermistorID: number,
-    lowTemperature: number,
-    lowTermistorID: number,
-    averageTemperature: number,
-    internalTemperature: number,
-    fanSpeed: number,
-    requestedFanSpeed: number,
-    lowCellVoltage: number,
-    lowCellVoltageID: number,
-    highCellVoltage: number,
-    highCellVoltageID: number,
-    averageCellVoltage: number,
-    preChargeState: string,
-    auxVoltage: number,
-    auxBMSAlive: boolean
+    PopulatedCells: number,
+    "12vInputVoltage": number,
+    FanVoltage: number,
+    PackCurrent: number,
+    PackVoltage: number,
+    PackStateofCharge: number,
+    PackAmphours: number,
+    PackDepthofDischarge: number,
+    HighTemperature: number,
+    HighThermistorID: number,
+    LowTemperature: number,
+    LowTermistorID: number,
+    AverageTemperature: number,
+    InternalTemperature: number,
+    FanSpeed: number,
+    RequestedFanSpeed: number,
+    LowCellVoltage: number,
+    LowCellVoltageID: number,
+    HighCellVoltage: number,
+    HighCellVoltageID: number,
+    AverageCellVoltage: number,
+    PreChargeState: string,
+    AuxVoltage: number,
+    AuxBMSAlive: boolean
 }
 
 export interface IBMSRelayStatusFlags {
-    dischargeRelayEnabled: boolean,
-    chargeRelayEnabled: boolean,
-    chargerSafetyEnabled: boolean,
-    malfunctionIndicatorActive: boolean,
-    multiPurposeInputSignalStatus: boolean,
-    alwaysOnSignalStatus: boolean,
-    isReadySignalStatus: boolean,
-    isChargingSignalStatus: boolean
+    DischargeRelayEnabled: boolean,
+    ChargeRelayEnabled: boolean,
+    ChargerSafetyEnabled: boolean,
+    MalfunctionIndicatorActive: boolean,
+    MultiPurposeInputSignalStatus: boolean,
+    AlwaysOnSignalStatus: boolean,
+    IsReadySignalStatus: boolean,
+    IsChargingSignalStatus: boolean
 }
