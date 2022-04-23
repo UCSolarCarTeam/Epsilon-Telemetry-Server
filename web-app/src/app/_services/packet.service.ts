@@ -20,7 +20,7 @@ export class PacketService {
     this.wsService.packetMultiplex$.subscribe(
       (data: INewTelemetryData) => {
         this.packet.name = data.PacketTitle;
-        this.packet.timestamp = data.Timestamp;
+        this.packet.timestamp = Date.parse(data.TimeStamp);
         this.packet$.emit(this.getData());
       }
     );

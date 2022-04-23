@@ -1,6 +1,6 @@
 export interface INewTelemetryData {
     PacketTitle: string,
-    Timestamp: number,
+    TimeStamp: string,
     AuxBms: IAuxBms,
     KeyMotor: IKeyMotor[],
     MotorDetails: IMotorDetail[],
