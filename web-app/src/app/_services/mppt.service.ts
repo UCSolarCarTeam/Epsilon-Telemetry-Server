@@ -50,10 +50,10 @@ export class MpptService {
   }
 
   private updateMppt(data: INewTelemetryData, num: number): void {
-    this[`mppt${num}`].alive = data.Mppt[num].Alive;
-    this[`mppt${num}`].arrayCurrent = data.Mppt[num].ArrayCurrent;
-    this[`mppt${num}`].arrayVoltage = data.Mppt[num].ArrayVoltage;
-    this[`mppt${num}`].batteryVoltage = data.Mppt[num].BatteryVoltage;
-    this[`mppt${num}`].temperature = data.Mppt[num].Temperature;
+    this[`mppt${num}`].alive = data.MPPT[num].Alive;
+    this[`mppt${num}`].arrayCurrent = data.MPPT[num].ArrayCurrent;
+    this[`mppt${num}`].arrayVoltage = data.MPPT[num].ArrayVoltage;
+    this[`mppt${num}`].batteryVoltage = data.MPPT[num].BatteryVoltage;
+    this[`mppt${num}`].temperature = data.MPPT[num].Temperature;
   }
 }

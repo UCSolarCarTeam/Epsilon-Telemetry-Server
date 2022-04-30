@@ -9,7 +9,7 @@ export interface INewTelemetryData {
     BatteryFaults: IBatteryFault,
     Battery: IBattery,
     Ccs: ICcs,
-    Mppt: IMPPT[]
+    MPPT: IMPPT[]
     Lights: ILights,
 }
 
