@@ -1,11 +1,10 @@
 :host {
   display: flex;
-  height: 98%;
+  height: 100%;
   min-width: 260px;
   max-width: 20%;
-  margin: 0.5%% auto;
+  margin: 0.5% auto;
 }
-
 .packet {
   display: flex;
   width: 90%;
@@ -41,14 +40,13 @@
   and (max-width: 1600px) {
 
     :host {
-      height: 96%;
+      height: 100%;
     }
 
     .packet {
       padding: 12px;
     }
-}
-
+  }
 
 @media screen
   and (max-width: 768px) {
@@ -61,4 +59,118 @@
     app-timestamp {
       display: block;
     }
+  }
+#overlay-0 {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
 }
+#overlay-1 {
+  position: absolute;
+  z-index: 1;
+}
+#overlay-2 {
+  position: absolute;
+  z-index: 2;
+  display: none;
+}
+  
+.direction,
+.warning {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.forward,
+.reverse,
+.brakes,
+.hazard
+ {
+  display: flex;
+  flex-direction: left;
+  align-items: center;
+  overflow: hidden;
+  padding: 5px;
+}
+.velocity-data {
+  display: flex;
+  height: 30%;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  position:  relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.velocity-data p{
+  margin: 0;
+}
+
+.velocity-number {
+  font-size: 18px;
+}
+
+#set-velocity {
+  color: #c2185b;
+}
+
+#vehicle-velocity {
+  color: #f44336;
+}
+
+.progress-bars {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bars p {
+  margin: 0 3px;
+}
+.spinners {
+  align-self: center;
+  position: relative !important;
+  justify-content: center;
+  margin: auto 0;
+  display: flex;
+  height: 150%;
+  width: 86%;
+}
+
+.mat-progress-spinner {
+  position:  relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  align-self: center;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mat-progress-spinner ::ng-deep svg {
+  align-self: center;
+  width: max-content !important;
+  height: max-content !important;
+}
+.bus-current,
+.battery-power{
+	text-align: right;
+  width: 35%;
+}
+.mat-card{
+  height: 110%;
+}
+
+
+
+
+
+
+
+  

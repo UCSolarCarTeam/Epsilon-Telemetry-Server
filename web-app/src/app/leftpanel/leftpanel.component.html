@@ -6,4 +6,108 @@
     </mat-card-header>
   </div>
   <app-timestamp></app-timestamp>
+  <!-- Car Right Panel -->
+<mat-card class="car-misc">
+  <div class="direction">
+    <div class="reverse" [ngClass]="{'active': controls.reverse, 'inactive': !controls.reverse}">
+      <span>
+        <mat-icon id="back-arrow-1">arrow_back_ios</mat-icon>
+        <mat-icon id="back-arrow-2">arrow_back_ios</mat-icon>
+      </span>
+      <label>Reverse</label>
+    </div>
+    <div class="forward" [ngClass]="{'active': controls.forward, 'inactive': !controls.forward}">
+      <span>
+        <mat-icon id="forward-arrow-1">arrow_forward_ios</mat-icon>
+        <mat-icon id="forward-arrow-2">arrow_forward_ios</mat-icon>
+      </span>
+      <label>Forward</label>
+    </div>
+  </div>
+  <div class="warning">
+    <div class="brakes" [ngClass]="{'active': controls.brakes, 'inactive': !controls.brakes}">
+      <mat-icon id="brakes-icon">error_outline</mat-icon>
+      <label>Brakes</label>
+    </div>
+    <div class="hazard" [ngClass]="{'active': controls.hazard, 'inactive': !controls.hazard}">
+      <mat-icon id="hazard-icon">warning</mat-icon>
+      <label>Hazard</label>
+    </div>
+  </div>
+  <div class="braking">
+    <label class="main-label">Regen Brake Pedal</label>
+    <div class="progress-bars">
+      <mat-progress-bar mode="determinate" value="{{controls.regenBraking}}">
+      </mat-progress-bar>
+      <p>{{controls.regenBraking}}%</p>
+    </div>
+  </div>
+  <div class="acceleration">
+    <label class="main-label">Acceleration Pedal</label>
+    <div class="progress-bars">
+      <mat-progress-bar mode="determinate" value="{{controls.acceleration}}">
+      </mat-progress-bar>
+      <p>{{controls.acceleration}}%</p>
+    </div>
+  </div>
+  <div>
+    <mat-divider></mat-divider>
+  </div>
+  <mat-form-field class="set-current">
+    <input matInput
+      placeholder="Set Current"
+      value="{{getAvgSetCurrent() | number: '1.2-2'}} A"
+      readonly="true"
+    >
+  </mat-form-field>
+  <mat-form-field class="bus-current">
+    <input matInput 
+      placeholder="Bus Current"
+      value="{{getAvgBusCurrent() | number: '1.2-2'}} A"
+      readonly="true"
+    >
+  </mat-form-field>
+  <mat-form-field class="bus-voltage">
+    <input matInput 
+      placeholder="Bus Voltage"
+      value="{{getAvgBusVoltage() | number: '1.2-2'}} A"
+      readonly="true"
+    >
+  </mat-form-field>
+  <mat-form-field class="battery-power">
+    <input matInput 
+      placeholder="Battery Power"
+      value="{{getBatteryPower() | number: '1.2-2'}} W"
+      readonly="true"
+    >
+  </mat-form-field>
+  <div class="spinners"> 
+    <mat-progress-spinner
+      id="overlay-0"
+      color="accent"
+      value="100"
+      diameter="180"
+      strokeWidth="10"
+    >
+    </mat-progress-spinner>
+    <mat-progress-spinner
+      id="overlay-2"
+      color="warn"
+      value="{{getVehicleVelocityPercentage()}}"
+      diameter="180"
+      strokeWidth="10"
+    >
+    </mat-progress-spinner>
+    <div class="velocity-data">
+      <label>Vehicle Velocity</label>
+      <p id="vehicle-velocity">
+        <span class="velocity-number">
+          {{getVehicleVelocity() | number: '1.2-2'}}
+        </span>
+        km/h
+      </p>
+    </div>
+  </div>
 </mat-card>
+
+
