@@ -20,7 +20,7 @@ export class WebSocketService {
     this.packetMultiplex$ = this.socket$.multiplex(
          () => ({subscribe: ''}),
          () => ({unsubscribe: ''}),
-         message => (message.msgType === 'packet') // Messages will go through if this passes
+         message => (message.msgType != 'lap') // Messages will go through if this passes
         )
     this.lapMultiplex$ = this.socket$.multiplex(
          () => ({subscribe: ''}),

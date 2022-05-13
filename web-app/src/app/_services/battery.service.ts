@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
 import { Battery } from '../_objects/battery';
-import { ITelemetryData } from '../_objects/interfaces/telemetry-data.interface';
+import { INewTelemetryData } from '../_objects/interfaces/new-telemetry-data.interface';
 import { WebSocketService } from '../websocket.service';
 import { RoundingService } from './rounding.service';
 
@@ -19,7 +19,7 @@ export class BatteryService {
     this.battery = new Battery;
 
     this.wsService.packetMultiplex$.subscribe(
-      (data: ITelemetryData) => {
+      (data: INewTelemetryData) => {
         this.updateBattery(data);
         this.battery$.emit(this.getData());
       }
@@ -30,40 +30,40 @@ export class BatteryService {
     return this.battery;
   }
 
-  private updateBattery(data: ITelemetryData): void {
-    this.battery.alive = data.batteryalive;
-    this.battery.averageCellVoltage = data.averagecellvoltage;
-    this.battery.averageTemperature = data.averagetemperature;
-    this.battery.bmsRelayStatusFlags.alwaysOnSignalStatus = data.alwaysonsignalstatus;
-    this.battery.bmsRelayStatusFlags.chargeRelayEnabled = data.chargerelayenabled;
-    this.battery.bmsRelayStatusFlags.chargerSafetyEnabled = data.chargersafetyenabled;
-    this.battery.bmsRelayStatusFlags.dischargeRelayEnabled = data.dischargerelayenabled;
-    this.battery.bmsRelayStatusFlags.isChargingSignalStatus = data.ischargingsignalstatus;
-    this.battery.bmsRelayStatusFlags.isReadySignalStatus = data.isreadysignalstatus;
-    this.battery.bmsRelayStatusFlags.malfunctionIndicatorActive = data.malfunctionindicatoractive;
-    this.battery.bmsRelayStatusFlags.multiPurposeInputSignalStatus = data.multipurposeinputsignalstatus;
-    this.battery.fanSpeed = data.fanspeed;
-    this.battery.fanVoltage = this.rService.getRoundedValue(data.fanvoltage, 2);
-    this.battery.highCellVoltage = data.highcellvoltage;
-    this.battery.highCellVoltageId = data.highcellvoltageid;
-    this.battery.highTemperature = data.hightemperature;
-    this.battery.highThermistorId = data.highthermistorid;
-    this.battery.internalTemperature = data.internaltemperature;
-    this.battery.lowCellVoltage = data.lowcellvoltage;
-    this.battery.lowCellVoltageId = data.lowcellvoltageid;
-    this.battery.lowTemperature = data.lowtemperature;
-    this.battery.lowThermistorId = data.lowthermistorid;
-    this.battery.packAmphours = this.rService.getRoundedValue(data.packamphours, 2);
-    this.battery.packCurrent = this.rService.getRoundedValue(data.packcurrent, 2);
-    this.battery.packDepthOfDischarge = this.rService.getRoundedValue(data.packdepthofdischarge, 2);
-    this.battery.packStateOfCharge = this.rService.getRoundedValue(data.packstateofcharge, 2);
-    this.battery.packVoltage = this.rService.getRoundedValue(data.packvoltage, 2);
-    this.battery.populatedCells = data.populatedcells;
-    this.battery.requestedFanSpeed = data.requestedfanspeed;
+  private updateBattery(data: INewTelemetryData): void {
+    this.battery.alive = data.Battery.Alive;
+    this.battery.averageCellVoltage = data.Battery.AverageCellVoltage;
+    this.battery.averageTemperature = data.Battery.AverageTemperature;
+    this.battery.bmsRelayStatusFlags.alwaysOnSignalStatus = data.Battery.BMSRelayStatusFlags.AlwaysOnSignalStatus;
+    this.battery.bmsRelayStatusFlags.chargeRelayEnabled = data.Battery.BMSRelayStatusFlags.ChargeRelayEnabled;
+    this.battery.bmsRelayStatusFlags.chargerSafetyEnabled = data.Battery.BMSRelayStatusFlags.ChargerSafetyEnabled;
+    this.battery.bmsRelayStatusFlags.dischargeRelayEnabled = data.Battery.BMSRelayStatusFlags.DischargeRelayEnabled;
+    this.battery.bmsRelayStatusFlags.isChargingSignalStatus = data.Battery.BMSRelayStatusFlags.IsChargingSignalStatus;
+    this.battery.bmsRelayStatusFlags.isReadySignalStatus = data.Battery.BMSRelayStatusFlags.IsReadySignalStatus;
+    this.battery.bmsRelayStatusFlags.malfunctionIndicatorActive = data.Battery.BMSRelayStatusFlags.MalfunctionIndicatorActive;
+    this.battery.bmsRelayStatusFlags.multiPurposeInputSignalStatus = data.Battery.BMSRelayStatusFlags.MultiPurposeInputSignalStatus;
+    this.battery.fanSpeed = data.Battery.FanSpeed;
+    this.battery.fanVoltage = this.rService.getRoundedValue(data.Battery.FanVoltage, 2);
+    this.battery.highCellVoltage = data.Battery.HighCellVoltage;
+    this.battery.highCellVoltageId = data.Battery.HighCellVoltageID;
+    this.battery.highTemperature = data.Battery.HighTemperature;
+    this.battery.highThermistorId = data.Battery.HighThermistorID;
+    this.battery.internalTemperature = data.Battery.InternalTemperature;
+    this.battery.lowCellVoltage = data.Battery.LowCellVoltage;
+    this.battery.lowCellVoltageId = data.Battery.LowCellVoltageID;
+    this.battery.lowTemperature = data.Battery.LowTemperature;
+    this.battery.lowThermistorId = data.Battery.LowTermistorID;
+    this.battery.packAmphours = this.rService.getRoundedValue(data.Battery.PackAmphours, 2);
+    this.battery.packCurrent = this.rService.getRoundedValue(data.Battery.PackCurrent, 2);
+    this.battery.packDepthOfDischarge = this.rService.getRoundedValue(data.Battery.PackDepthofDischarge, 2);
+    this.battery.packStateOfCharge = this.rService.getRoundedValue(data.Battery.PackStateofCharge, 2);
+    this.battery.packVoltage = this.rService.getRoundedValue(data.Battery.PackVoltage, 2);
+    this.battery.populatedCells = data.Battery.PopulatedCells;
+    this.battery.requestedFanSpeed = data.Battery.RequestedFanSpeed;
     this.battery.totalPackCapacity = 168;
-    this.battery.twelvevinputVoltage = this.rService.getRoundedValue(data.twelvevinputvoltage, 2);
-    this.battery.averageCellVoltage = data.averagecellvoltage / 1000;
-    this.battery.lowCellVoltage = data.lowcellvoltage / 1000;
-    this.battery.highCellVoltage = data.highcellvoltage / 1000;
+    this.battery.twelvevinputVoltage = this.rService.getRoundedValue(data.Battery['12vInputVoltage'], 2);
+    this.battery.averageCellVoltage = data.Battery.AverageCellVoltage / 1000;
+    this.battery.lowCellVoltage = data.Battery.LowCellVoltage / 1000;
+    this.battery.highCellVoltage = data.Battery.HighCellVoltage / 1000;
   }
 }

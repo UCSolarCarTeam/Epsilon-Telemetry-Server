@@ -39,14 +39,22 @@ amqp.connect(config.rabbitmq.host)
           const jsonObj = JSON.parse(msg.content);
           // save the data into database
           // Process Packet Data
-          db.insert('rabbitmq-insert', jsonObj)
-            .then((insertedRow) => {
-              console.log('1 row inserted from RabbitMQ');
-              insertedRow['msgType'] = 'packet';
-              // send to angular clients
-              wss.broadcast(JSON.stringify(insertedRow));
-            });
-
+          if(jsonObj.Ccs.CcsAlive === true){
+            try {
+              db.insert('rabbitmq-insert', jsonObj)
+              .then(() => {
+                wss.broadcast(JSON.stringify(jsonObj));
+              });
+            }
+            catch {
+              console.error('Could not insert packet into database')
+              wss.broadcast(JSON.stringify(jsonObj));
+            }
+          }
+          else {
+            wss.broadcast(JSON.stringify(jsonObj));
+          }
+          
           // Process Lap data
           // Want to capture when button is released
           if (!jsonObj.DriverControls.Lap
