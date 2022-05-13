@@ -4,6 +4,7 @@
         "selector-pseudo-element-no-unknown": [
             true,
             { "ignorePseudoElements": ["ng-deep"] }
-        ]    
+        ],
+        "selector-class-pattern": ".+"
     }
 }

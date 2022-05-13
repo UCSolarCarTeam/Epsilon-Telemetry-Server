@@ -32,5 +32,3 @@ export class TesttingService {
     this.testPacket = data;
   }
 }
-
-
