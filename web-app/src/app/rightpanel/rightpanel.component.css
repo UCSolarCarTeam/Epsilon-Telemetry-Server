@@ -9,7 +9,7 @@
 .car-misc,
 .battery-misc {
   width: 40%;
-  min-width:120px;
+  min-width: 120px;
   font-size: 12px;
   display: flex;
   justify-content: space-between;
@@ -17,6 +17,7 @@
   background-color: #212121;
   margin: 0 2px;
 }
+
 .direction,
 .warning {
   display: flex;
@@ -44,8 +45,7 @@
 }
 
 #back-arrow-2,
-#forward-arrow-2
-{
+#forward-arrow-2 {
   margin-left: -12px;
 }
 
@@ -57,12 +57,11 @@
 }
 
 .mat-progress-spinner {
-  position:  absolute;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-
   align-self: center;
   width: 100% !important;
   height: 100% !important;
@@ -123,7 +122,7 @@ mat-divider {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position:  absolute;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -162,7 +161,6 @@ mat-divider {
   screen
   and (min-height: 600px)
   and (max-height: 800px) {
-
   :host {
     height: 96%;
   }
@@ -189,17 +187,16 @@ mat-divider {
 
 @media screen
   and (max-width: 768px) {
-    :host {
-      display: none;
-    }
+  :host {
+    display: none;
   }
+}
 
 @media screen
   and (min-width: 768px)
   and (max-width: 1200px) {
-    .car-misc,
-    .battery-misc {
-      width: 120px;
-    }
+  .car-misc,
+  .battery-misc {
+    width: 120px;
   }
-  
+}
