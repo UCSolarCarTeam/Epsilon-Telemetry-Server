@@ -66,7 +66,7 @@ export class FaultsService {
     this.batteryFaults.errorFlags.openWiringFault = data.BatteryFaults.ErrorFlags.OpenWiringFault;
     this.batteryFaults.errorFlags.packVoltageSensorFault = data.BatteryFaults.ErrorFlags.PackVoltageSensorFault;
     this.batteryFaults.errorFlags.thermistorFault = data.BatteryFaults.ErrorFlags.thermistorFault;
-    this.batteryFaults.errorFlags.twelvevpowerSupplyFault = data.BatteryFaults.ErrorFlags["12vPowerSupplyFault"];
+    this.batteryFaults.errorFlags.twelvevpowerSupplyFault = data.BatteryFaults.ErrorFlags['12vPowerSupplyFault'];
     this.batteryFaults.errorFlags.voltageRedundancyFault = data.BatteryFaults.ErrorFlags.VoltageRedundancyFault;
     this.batteryFaults.errorFlags.weakCellFault = data.BatteryFaults.ErrorFlags.WeakCellFault;
     this.batteryFaults.errorFlags.weakPackFault = data.BatteryFaults.ErrorFlags.WeakPackFault;
@@ -82,7 +82,8 @@ export class FaultsService {
     this.batteryFaults.limitFlags.dclReducedDueToLowPackVoltage = data.BatteryFaults.LimitFlags.DclReducedDueToLowPackVoltage;
     this.batteryFaults.limitFlags.dclReducedDueToLowSoc = data.BatteryFaults.LimitFlags.DclReducedDueToLowSoc;
     this.batteryFaults.limitFlags.dclReducedDueToTemperature = data.BatteryFaults.LimitFlags.DclReducedDueToTemperature;
-    this.batteryFaults.limitFlags.dclandcclReducedDueToCommunicationFailsafe = data.BatteryFaults.LimitFlags.DclAndCclReducedDueToCommunicationFailsafe;
+    this.batteryFaults.limitFlags.dclandcclReducedDueToCommunicationFailsafe =
+      data.BatteryFaults.LimitFlags.DclAndCclReducedDueToCommunicationFailsafe;
     this.batteryFaults.limitFlags.dclandcclReducedDueToVoltageFailsafe = data.BatteryFaults.LimitFlags.DclAndCclReducedDueToVoltageFailsafe;
   }
 

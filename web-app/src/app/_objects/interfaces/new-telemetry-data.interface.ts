@@ -165,7 +165,7 @@ export interface IMotorFault {
     TxErrorCount: number
 }
 
-export interface IMotorErrorFlags{
+export interface IMotorErrorFlags {
     MotorOverSpeed: boolean,
     SoftwareOverCurrent: boolean,
     DcBusOverVoltage: boolean,
@@ -175,7 +175,7 @@ export interface IMotorErrorFlags{
     Wail15VUnderVoltageLockOut: boolean,
     DesaturationFault: boolean
 }
-export interface IMotorLimitFlags{
+export interface IMotorLimitFlags {
     OutputVoltagePwm: boolean,
     MotorCurrent: boolean,
     Velocity: boolean,
@@ -189,7 +189,7 @@ export interface IBattery {
     Alive: boolean,
     BMSRelayStatusFlags: IBMSRelayStatusFlags,
     PopulatedCells: number,
-    "12vInputVoltage": number,
+    '12vInputVoltage': number,
     FanVoltage: number,
     PackCurrent: number,
     PackVoltage: number,
