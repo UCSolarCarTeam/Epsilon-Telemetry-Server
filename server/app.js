@@ -4,11 +4,12 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const app = express();
 const db = require('./scripts/database');
+const cors = require('cors');
 
 // Used to parse POST data from Angular app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(cors( { origin: 'http://localhost:4200' } ));
 app.use(logger('combined'));
 //app.use(express.static(path.join(__dirname, '../web-app/dist')));
 
@@ -19,7 +20,9 @@ app.use(logger('combined'));
 app.get('/', (req, res) => res.send(''))
 
 app.use('/api/test', (req, res) => {
-  res.send('Test call works!');
+  res.send( {
+    test: 'test call works!'
+  });
 });
 
 app.use('/api/getPackets', (req, res) => {
