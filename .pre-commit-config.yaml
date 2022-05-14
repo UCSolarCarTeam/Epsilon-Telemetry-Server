@@ -1,0 +1,19 @@
+exclude: '^node_modules/|server/'
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: mixed-line-ending
+- repo: https://github.com/thibaudcolas/pre-commit-stylelint
+  rev: v14.4.0
+  hooks:
+    - id: stylelint
+      args: [--fix]
+-   repo: https://github.com/awebdeveloper/pre-commit-tslint/
+    rev: v0.0.2
+    hooks:
+    -   id: tslint
+        additional_dependencies: ['tslint@5.0.0']

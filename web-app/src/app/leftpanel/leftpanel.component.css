@@ -3,7 +3,7 @@
   height: 98%;
   min-width: 260px;
   max-width: 20%;
-  margin: 0.5%% auto;
+  margin: 0.5% auto;
 }
 
 .packet {
@@ -39,26 +39,25 @@
 @media screen
   and (min-width: 1200px)
   and (max-width: 1600px) {
+  :host {
+    height: 96%;
+  }
 
-    :host {
-      height: 96%;
-    }
-
-    .packet {
-      padding: 12px;
-    }
+  .packet {
+    padding: 12px;
+  }
 }
-
 
 @media screen
   and (max-width: 768px) {
-    :host {
-      display: none;
-    }
+  :host {
+    display: none;
+  }
 }
-  @media screen
+
+@media screen
   and (min-width: 768px) {
-    app-timestamp {
-      display: block;
-    }
+  app-timestamp {
+    display: block;
+  }
 }
