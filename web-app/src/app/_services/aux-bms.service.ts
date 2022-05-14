@@ -30,7 +30,7 @@ export class AuxBmsService {
   }
 
   private updateAuxBms(data: INewTelemetryData): void {
-    const pState = data.Battery.PreChargeState as keyof typeof State;
+    const pState = data.Battery.PrechargeState as keyof typeof State;
     this.auxbms.alive = data.Battery.AuxBMSAlive;
     this.auxbms.allowCharge = false; // TODO: add the correct value
     this.auxbms.auxVoltage = data.Battery.AuxVoltage;
