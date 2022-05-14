@@ -3,10 +3,10 @@
   <mat-radio-group
     class="graphOptionsRadioGroup"
     [(ngModel)]="selectedGraph">
-    <mat-radio-button 
-      class="graphRadioButtons"  
+    <mat-radio-button
+      class="graphRadioButtons"
       *ngFor="let graph of graphOptions"
-      [value]="graph" 
+      [value]="graph"
       (change)="radioChangeHandler($event)">
       {{graph}}
     </mat-radio-button>

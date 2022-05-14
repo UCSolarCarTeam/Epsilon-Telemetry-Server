@@ -1,75 +1,84 @@
-/*Added on to from src/styles.css*/
+/* Added on to from src/styles.css */
 .circle {
-	float: left;
+  float: left;
 }
-.subheader-flex {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-.subheader .title {
-	width: 70%;
-	float: center;
-	white-space: nowrap;
 
+.subheader-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
 .title {
-	float: center;
+  float: center;
 }
+
+.subheader .title {
+  width: 70%;
+  float: center;
+  white-space: nowrap;
+}
+
 .alive-group {
-	margin-right:1em;
+  margin-right: 1em;
 }
+
 .alive-text {
-	color: #D5FEFF;
-	width: 5%;
-	margin-left: .4em;
+  color: #d5feff;
+  width: 5%;
+  margin-left: 0.4em;
 }
+
 .flex-row {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	padding-top: .2em;
-	margin-top: 0.1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 0.2em;
+  margin-top: 0.1em;
 }
+
 .item {
-	font-family: Arial, sans-serif;
-	color: rgba(255, 255, 255, 0.75);
-	font-size: 0.75em;
-	border-bottom: 1px solid white;
-	margin-bottom: 10px;
-	text-align: center;
+  font-family: Arial, sans-serif;
+  color: rgb(255 255 255 / 75%);
+  font-size: 0.75em;
+  border-bottom: 1px solid white;
+  margin-bottom: 10px;
+  text-align: center;
 }
+
 .data {
-	margin-top: 5px;
-	padding: 5px;
-	white-space: nowrap;
-	justify-content: center;
-	text-align: center;
+  margin-top: 5px;
+  padding: 5px;
+  white-space: nowrap;
+  justify-content: center;
+  text-align: center;
 }
+
 .underline {
-	justify-content: center;
+  justify-content: center;
 }
 
 .grid-container {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	column-gap: 5px;
-	margin-left: 1.2em;
-	margin-right: 1.2em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 5px;
+  margin-left: 1.2em;
+  margin-right: 1.2em;
 }
+
 .motor-grid-container {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	padding-top: .2em;
-	margin-top: 0.1em;
-	column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 0.2em;
+  margin-top: 0.1em;
+  column-gap: 10px;
 }
 
 @media only screen
-and (max-width: 768px){
-	.motor-grid-container{
-		grid-template-columns: repeat(1, 1fr);
-		margin-left: 5px;
-		margin-right: 5px;
-	}
+  and (max-width: 768px) {
+  .motor-grid-container {
+    grid-template-columns: repeat(1, 1fr);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
