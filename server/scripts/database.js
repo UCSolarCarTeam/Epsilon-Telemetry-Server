@@ -1,6 +1,7 @@
 const promise = require('promise');
 const { MongoClient } = require('mongodb');
 const config = require('../config');
+const { ObjectId } = require('mongodb');
 
 /**
  * Postgres options and handlers
@@ -40,7 +41,7 @@ const db = pgp(config.database);
  */
  const uri = config.mongoUri;
  const client = new MongoClient(uri);
- const database = client.db('Test');
+ const database = client.db('Elysia');
  const collection = database.collection('Packets');
 
  module.exports.connectToDatabase = function() {
@@ -63,12 +64,6 @@ module.exports.insert = function(queryName, jsonObj) {
  */
 module.exports.lastPacket = function() {
   return collection.find().sort({TimeStamp : -1}).limit(1).toArray();
-  // return db.one({
-  //   name: 'client-init',
-  //   text: 'SELECT * ' +
-  //         'FROM packet ' +
-  //         'ORDER BY timestamp DESC LIMIT 1',
-  // });
 };
 
 /**
@@ -78,16 +73,23 @@ module.exports.lastPacket = function() {
  * @return {Promise}
  */
 module.exports.between = function(lowestTime, highestTime) {
-  // return db.any({
-  //   name: 'select-between',
-  //   text: 'SELECT * ' +
-  //         'FROM packet ' +
-  //         'GROUP BY packet.id ' +
-  //         'HAVING "timestamp" >= $1 AND "timestamp" <= $2 ' +
-  //         'ORDER BY timestamp DESC',
-  //   values: [lowestTime, highestTime],
-  // });
+  return collection.find({ "TimeStamp" : { $gte: lowestTime, $lte: highestTime} }).toArray();
 };
+
+// module.exports.conversionTest = async function() {
+//   var packets = collection.find();
+//   var newPackets = new Array();
+
+//   await packets.forEach((packet) => {
+//     packet.TimeStamp = new Date(packet.TimeStamp + "Z").getTime();
+//     newPackets.push(packet);
+//   });
+
+//   collection2.insertMany(newPackets).then(() => {
+//     console.log('Conversion complete');
+//   });
+
+// };
 
 /**
 * Fetches all the laps in the database
