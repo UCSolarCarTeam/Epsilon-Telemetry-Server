@@ -67,5 +67,5 @@ module.exports.server = server;
    .then(() => {
     console.log('connected to mongo database');
     require('../scripts/websocket');
-    //require('../scripts/amqp');
+    require('../scripts/amqp');
  });

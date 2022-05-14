@@ -103,5 +103,4 @@ amqp.connect(config.rabbitmq.host)
   // catch RabbitMQ queue creation errors
   .catch(function(e) {
     console.error(`ERROR: Cannot create channel. Are you sure RabbitMQ is online at ${config.rabbitmq.host}?`);
-    process.exit(1);
   });
