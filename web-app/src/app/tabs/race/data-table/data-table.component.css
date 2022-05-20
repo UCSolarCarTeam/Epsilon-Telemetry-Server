@@ -35,6 +35,7 @@ th.mat-cell-header {
 
 th.mat-header-cell {
   text-align: center;
+  width: 11.11%;
   border: 0.5px solid white;
   background: #212121;
 }
