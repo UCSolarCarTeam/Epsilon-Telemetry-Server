@@ -33,6 +33,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { TimestampComponent } from './timestamp/timestamp.component';
 import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component';
 import { TestComponentComponent } from './test-component/test-component.component';
+import { PlaybackComponent } from './tabs/playback/playback.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TestComponentComponent } from './test-component/test-component.componen
     DataTableComponent,
     TimestampComponent,
     RaceGraphComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    PlaybackComponent
   ],
   imports: [
     AppRoutingModule,

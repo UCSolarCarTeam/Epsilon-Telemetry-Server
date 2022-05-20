@@ -54,6 +54,12 @@ export class AppComponent implements OnInit {
         link: './race',
         icon: 'race_icon',
         index: 5
+      },
+      {
+        label: '\xa0\xa0Playback\xa0\xa0\xa0',
+        link: './playback',
+        icon: 'race_icon',
+        index: 6
       }
     ];
   }
