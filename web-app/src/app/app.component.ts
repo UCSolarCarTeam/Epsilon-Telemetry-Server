@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
       {
         label: '\xa0\xa0Playback\xa0\xa0\xa0',
         link: './playback',
-        icon: 'race_icon',
+        icon: 'download_icon',
         index: 6
       }
     ];
@@ -114,6 +114,12 @@ export class AppComponent implements OnInit {
       'race_icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
         '../assets/icons/race_icon.svg')
+    );
+
+    this.matIconRegistry.addSvgIcon(
+      'download_icon',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/download_icon.svg')
     );
   }
 }
