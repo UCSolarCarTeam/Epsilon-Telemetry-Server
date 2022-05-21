@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -69,7 +70,8 @@ import { PlaybackComponent } from './tabs/playback/playback.component';
     MatProgressSpinnerModule,
     MatTableModule,
     MatRadioModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CommonModule
   ],
   providers: [
     WebSocketService,
