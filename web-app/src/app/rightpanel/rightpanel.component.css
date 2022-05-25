@@ -1,7 +1,6 @@
-
 :host {
   display: flex;
-  height: 98%;
+  height: 110%;
   width: 25%;
   margin: 0.5%;
   justify-content: space-around;
@@ -15,6 +14,7 @@
 .progress-bars p {
   margin: 0 3px;
 }
+
 .spinners {
   align-self: center;
   position: relative !important;
@@ -47,14 +47,17 @@
   position: absolute;
   z-index: 0;
 }
+
 #overlay-1 {
   position: absolute;
   z-index: 1;
 }
+
 #overlay-2 {
   position: absolute;
   z-index: 2;
 }
+
 .precharge-state-dots {
   margin-top: 5px;
   display: flex;
@@ -106,15 +109,11 @@ mat-divider {
 
 @media screen
   and (min-width: 1200px)
-  and (max-width: 1600px),
-  screen
-  and (min-height: 600px)
-  and (max-height: 800px) {
+  and (max-width: 1600px) {
 
   :host {
-    height: 96%;
+    height: 120%;
   }
-
 
   .battery-misc {
     padding: 12px;
@@ -125,10 +124,11 @@ mat-divider {
     font-size: 12px;
   }
 
-  .label {
+  label {
     font-size: 14px;
   }
 }
+
 #bms-strobe-label {
   text-align: left;
   display: block;
@@ -144,12 +144,3 @@ mat-divider {
   .mat-card{
     height: 102%;
   }
-  .mat-form-field-underline{
-    width: 150%;
-  }
-  
-
-  
-  
-
-

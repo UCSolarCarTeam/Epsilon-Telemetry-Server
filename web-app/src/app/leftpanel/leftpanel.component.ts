@@ -168,14 +168,6 @@ export class LeftpanelComponent implements OnInit {
   getPackKWh(): number {
     return this.battery.packAmphours * this.battery.packVoltage / 1000;
   }
-
-  getTotalArrayPower(): number {
-    const mppt0ArrayPower: number = this.mppt0.arrayCurrent * this.mppt0.arrayVoltage;
-    const mppt1ArrayPower: number = this.mppt1.arrayCurrent * this.mppt1.arrayVoltage;
-    const mppt2ArrayPower: number = this.mppt2.arrayCurrent * this.mppt2.arrayVoltage;
-    const mppt3ArrayPower: number = this.mppt3.arrayCurrent * this.mppt3.arrayVoltage;
-    return mppt0ArrayPower + mppt1ArrayPower + mppt2ArrayPower + mppt3ArrayPower;
-  }
   getBatteryPower(): number {
     return this.battery.packVoltage * this.battery.packCurrent;
   }
