@@ -9,6 +9,6 @@ export class ApiHttpService {
   constructor( private http: HttpClient ) { }
 
   public get(url: string, options?: any){
-    return this.http.get(url);
+    return this.http.get(`http://localhost:3000/api/${url}`);
   }
 }

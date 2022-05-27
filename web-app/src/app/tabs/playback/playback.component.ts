@@ -34,7 +34,7 @@ export class PlaybackComponent {
   constructor(private apiService: ApiHttpService) { }
 
   onPacketDownloadButton() {
-    this.apiService.get(`http://localhost:3000/api/getPackets?startTime=${this.startTime}&endTime=${this.endTime}`)
+    this.apiService.get(`getPackets?startTime=${this.startTime}&endTime=${this.endTime}`)
     .subscribe((result: INewTelemetryData[]) => {
         this.downloadedPacketText = JSON.stringify(result);
         this.packets = result;
