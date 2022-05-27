@@ -5,30 +5,48 @@
       <input id="endTime" placeholder="" type="number" [(ngModel)]="endTime">
       <button id="packetDownloadButton" (click)="onPacketDownloadButton()">Download Packet Data</button>
 
+      <ul class="white-text">
+        <li>Timestamp <input type="checkbox" [(ngModel)]="showTimeStamp"></li>
+        <li>Packet Title <input type="checkbox" [(ngModel)]="showPacketTitle"></li>
+        <li>Aux Bms <input type="checkbox" [(ngModel)]="showAuxBms"></li>
+        <li>Key Motor <input type="checkbox" [(ngModel)]="showKeyMotor"></li>
+        <li>Motor Details <input type="checkbox" [(ngModel)]="showMotorDetails"></li>
+        <li>Driver Controls <input type="checkbox" [(ngModel)]="showDriverControls"></li>
+        <li>Motor Faults <input type="checkbox" [(ngModel)]="showMotorFaults"></li>
+        <li>Battery Faults <input type="checkbox" [(ngModel)]="showBatteryFaults"></li>
+        <li>Battery <input type="checkbox" [(ngModel)]="showBattery"></li>
+        <li>Ccs <input type="checkbox" [(ngModel)]="showCcs"></li>
+        <li>Mppt <input type="checkbox" [(ngModel)]="showMppt"></li>
+        <li>Lights <input type="checkbox" [(ngModel)]="showLights"></li>
+      </ul>
+
       <div style="background-color: grey; overflow-x:auto; white-space: nowrap;">
         <table>
           <thead>
             <tr>
-              <th>Timestamp</th>
-              <th>Packet Title</th>
-              <th>Aux Bms</th>
-              <th>Key Motor</th>
-              <th>Motor Details</th>
-              <th>Driver Controls</th>
-              <th>Motor Faults</th>
-              <th>Battery Faults</th>
-              <th>Battery</th>
-              <th>Ccs</th>
-              <th>Mppt</th>
-              <th>Lights</th>
+              <th *ngIf="showTimeStamp">Timestamp</th>
+              <th *ngIf="showPacketTitle">Packet Title</th>
+              <th *ngIf="showAuxBms">Aux Bms</th>
+              <th *ngIf="showKeyMotor">Key Motor</th>
+              <th *ngIf="showMotorDetails">Motor Details</th>
+              <th *ngIf="showDriverControls">Driver Controls</th>
+              <th *ngIf="showMotorFaults">Motor Faults</th>
+              <th *ngIf="showBatteryFaults">Battery Faults </th>
+              <th *ngIf="showBattery">Battery </th>
+              <th *ngIf="showCcs">Ccs</th>
+              <th *ngIf="showMppt">Mppt</th>
+              <th *ngIf="showLights">Lights</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let packet of packets" class="small-font">
-              <td class="white-text">{{getTime(packet.TimeStamp)}}</td>
-              <td class="white-text">{{packet.PacketTitle}}</td>
-              <td>
-                <ul>
+              <td class="white-text" *ngIf="showTimeStamp">
+                {{getTime(packet.TimeStamp)}}
+              </td>
+              <td class="white-text" *ngIf="showPacketTitle">
+                {{packet.PacketTitle}}
+              </td>
+              <td *ngIf="showAuxBms">
                   <li>AllowCharge: <span class="white-text">{{packet.AuxBms.AllowCharge}}</span></li>
                   <li>AllowDischarge: <span class="white-text">{{packet.AuxBms.AllowDischarge}}</span></li>
                   <li>AuxBmsAlive: <span class="white-text">{{packet.AuxBms.AuxBmsAlive}}</span></li>
@@ -51,39 +69,38 @@
                   <li>PrechargeState: <span class="white-text">{{packet.AuxBms.PrechargeState}}</span></li>
                   <li>ProtectionTrip: <span class="white-text">{{packet.AuxBms.ProtectionTrip}}</span></li>
                   <li>StrobeBmsLight: <span class="white-text">{{packet.AuxBms.StrobeBmsLight}}</span></li>
-                </ul>
               </td>
-              <td>
-                <ul *ngFor="let keyMotor of packet.KeyMotor">
-                  <li>Alive: <span class="white-text">{{keyMotor.Alive}}</span></li>
-                  <li>SetCurrent: <span class="white-text">{{keyMotor.SetCurrent}}</span></li>
-                  <li>SetVelocity: <span class="white-text">{{keyMotor.SetVelocity}}</span></li>
-                  <li>BusCurrent: <span class="white-text">{{keyMotor.BusCurrent}}</span></li>
-                  <li>BusVoltage: <span class="white-text">{{keyMotor.BusVoltage}}</span></li>
-                  <li>VehicleVelocity: <span class="white-text">{{keyMotor.VehicleVelocity}}</span></li>
-                </ul>
+              <td *ngIf="showKeyMotor">
+                  <ul *ngFor="let keyMotor of packet.KeyMotor">
+                    <li>Alive: <span class="white-text">{{keyMotor.Alive}}</span></li>
+                    <li>SetCurrent: <span class="white-text">{{keyMotor.SetCurrent}}</span></li>
+                    <li>SetVelocity: <span class="white-text">{{keyMotor.SetVelocity}}</span></li>
+                    <li>BusCurrent: <span class="white-text">{{keyMotor.BusCurrent}}</span></li>
+                    <li>BusVoltage: <span class="white-text">{{keyMotor.BusVoltage}}</span></li>
+                    <li>VehicleVelocity: <span class="white-text">{{keyMotor.VehicleVelocity}}</span></li>
+                  </ul>
               </td>
-              <td>
-                <ul *ngFor="let motorDetail of packet.MotorDetails">
-                  <li>PhaseCCurrent: <span class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
-                  <li>PhaseBCurrent: <span class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
-                  <li>MotorVoltageReal: <span class="white-text">{{motorDetail.MotorVoltageReal}}</span></li>
-                  <li>MotorVoltageImaginary: <span class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
-                  <li>MotorCurrentReal: <span class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
-                  <li>MotorCurrentImaginary: <span class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
-                  <li>BackEmf: <span class="white-text">{{motorDetail.BackEmf}}</span></li>
-                  <li>VoltageRail15VSupply: <span class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
-                  <li>VoltageRail3VSupply: <span class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
-                  <li>VoltageRail1VSupply: <span class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
-                  <li>HeatSinkTemp: <span class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
-                  <li>MotorTemp: <span class="white-text">{{motorDetail.MotorTemp}}</span></li>
-                  <li>DspBoardTemp: <span class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
-                  <li>DcBusAmpHours: <span class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
-                  <li>Odometer: <span class="white-text">{{motorDetail.Odometer}}</span></li>
-                  <li>SlipSpeed: <span class="white-text">{{motorDetail.SlipSpeed}}</span></li>
-                </ul>
+              <td *ngIf="showMotorDetails">
+                  <ul *ngFor="let motorDetail of packet.MotorDetails">
+                    <li>PhaseCCurrent: <span class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
+                    <li>PhaseBCurrent: <span class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
+                    <li>MotorVoltageReal: <span class="white-text">{{motorDetail.MotorVoltageReal}}</span></li>
+                    <li>MotorVoltageImaginary: <span class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
+                    <li>MotorCurrentReal: <span class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
+                    <li>MotorCurrentImaginary: <span class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
+                    <li>BackEmf: <span class="white-text">{{motorDetail.BackEmf}}</span></li>
+                    <li>VoltageRail15VSupply: <span class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
+                    <li>VoltageRail3VSupply: <span class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
+                    <li>VoltageRail1VSupply: <span class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
+                    <li>HeatSinkTemp: <span class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
+                    <li>MotorTemp: <span class="white-text">{{motorDetail.MotorTemp}}</span></li>
+                    <li>DspBoardTemp: <span class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
+                    <li>DcBusAmpHours: <span class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
+                    <li>Odometer: <span class="white-text">{{motorDetail.Odometer}}</span></li>
+                    <li>SlipSpeed: <span class="white-text">{{motorDetail.SlipSpeed}}</span></li>
+                  </ul>
               </td>
-              <td>
+              <td *ngIf="showDriverControls">
                 <ul>
                   <li>Alive: <span class="white-text">{{packet.DriverControls.Alive}}</span></li>
                   <li>HeadlightsOff: <span class="white-text">{{packet.DriverControls.HeadlightsOff}}</span></li>
@@ -108,7 +125,7 @@
                   <li>Reset: <span class="white-text">{{packet.DriverControls.Reset}}</span></li>
                 </ul>
               </td>
-              <td>
+              <td *ngIf="showMotorFaults">
                 <ul *ngFor="let motorFault of packet.MotorFaults">
                   <li>ErrorFlags:
                     <ul>
@@ -137,7 +154,7 @@
                   <li>TxErrorCount: <span class="white-text">{{motorFault.TxErrorCount}}</span></li>
                 </ul>
               </td>
-              <td>
+              <td *ngIf="showBatteryFaults">
                 <ul>
                   <li>ErrorFlags
                     <ul>
@@ -184,7 +201,7 @@
                   </li>
                 </ul>
               </td>
-              <td>
+              <td *ngIf="showBattery">
                 <ul>
                   <li>Alive: <span class="white-text">{{packet.Battery.Alive}}</span></li>
                   <li>BMSRelayStatusFlags:
@@ -222,10 +239,10 @@
                   <li>AverageCellVoltage: <span class="white-text">{{packet.Battery.AverageCellVoltage}}</span></li>
                 </ul>
               </td>
-              <td>
+              <td *ngIf="showCcs">
                 Ccs Alive: <span class="white-text">{{packet.Ccs.CcsAlive}}</span>
               </td>
-              <td>
+              <td *ngIf="showMppt">
                 <ul *ngFor="let mppt of packet.MPPT">
                   <li>Alive: <span class="white-text">{{mppt.Alive}}</span></li>
                   <li>ArrayVoltage: <span class="white-text">{{mppt.ArrayVoltage}}</span></li>
@@ -234,7 +251,7 @@
                   <li>Temperature: <span class="white-text">{{mppt.Temperature}}</span></li>
                 </ul>
               </td>
-              <td>
+              <td *ngIf="showLights">
                 <ul>
                   <li>LowBeams: <span class="white-text">{{packet.Lights.LowBeams}}</span></li>
                   <li>HighBeams: <span class="white-text">{{packet.Lights.HighBeams}}</span></li>

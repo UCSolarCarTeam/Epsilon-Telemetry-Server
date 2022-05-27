@@ -5,6 +5,7 @@ const logger = require('morgan');
 const app = express();
 const db = require('./scripts/database');
 const cors = require('cors');
+const { config } = require('bluebird');
 
 // Used to parse POST data from Angular app
 app.use(bodyParser.json());
@@ -64,7 +65,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, function() {
+app.listen(config.server.port, function() {
   console.log('Express server listening on port 3000');
   });
 
