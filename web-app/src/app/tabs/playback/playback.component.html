@@ -1,9 +1,10 @@
-<p>playback works!</p>
 <html>
     <body>
-      <input id="startTime" placeholder="" type="number" [(ngModel)]="startTime">
-      <input id="endTime" placeholder="" type="number" [(ngModel)]="endTime">
-      <button id="packetDownloadButton" (click)="onPacketDownloadButton()">Download Packet Data</button>
+      <form [formGroup]="findPacketsForm" (ngSubmit)="onPacketDownloadButton()" novalidate>
+        <input id="startTime" formControlName="startTime" type="datetime-local" required>
+        <input id="endTime" formControlName="endTime" type="datetime-local" required>
+        <button id="packetDownloadButton" type="submit" >Download Packet Data</button>
+      </form>
 
       <ul class="white-text">
         <li>Timestamp <input type="checkbox" [(ngModel)]="showTimeStamp"></li>

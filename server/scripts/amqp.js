@@ -1,4 +1,5 @@
 const amqp = require('amqplib');
+const app = require('../app');
 const config = require('../config');
 const db = require('./database');
 const wss = require('./websocket').websocket;
@@ -103,4 +104,5 @@ amqp.connect(config.rabbitmq.host)
   // catch RabbitMQ queue creation errors
   .catch(function(e) {
     console.error(`ERROR: Cannot create channel. Are you sure RabbitMQ is online at ${config.rabbitmq.host}?`);
+    process.exit(1);
   });

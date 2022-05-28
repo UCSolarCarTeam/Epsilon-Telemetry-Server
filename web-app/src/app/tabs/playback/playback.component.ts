@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { INewTelemetryData } from 'app/_objects/interfaces/new-telemetry-data.interface';
 import { ApiHttpService } from 'app/_services/api-http.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-playback',
@@ -9,12 +10,13 @@ import { ApiHttpService } from 'app/_services/api-http.service';
 })
 
 export class PlaybackComponent {
+  findPacketsForm: FormGroup;
 
   public downloadedPacketText: string = '';
   public packets: INewTelemetryData[];
 
-  public startTime: number = 1651354920000;
-  public endTime:number = 1651354920000;
+  public startTime: Date = new Date();
+  public endTime:Date = new Date();
 
   public showTimeStamp: boolean = true;
   public showPacketTitle: boolean = true;
@@ -31,10 +33,18 @@ export class PlaybackComponent {
 
   public test: number = 0;
 
-  constructor(private apiService: ApiHttpService) { }
+  constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder) {
+    this.findPacketsForm = this.formBuilder.group({
+      startTime: ['2022-04-30T15:42'],
+      endTime: ['2022-04-30T15:42'],
+    });
+  }
 
   onPacketDownloadButton() {
-    this.apiService.get(`getPackets?startTime=${this.startTime}&endTime=${this.endTime}`)
+    this.startTime= new Date(this.findPacketsForm.get('startTime').value);
+    this.endTime= new Date(this.findPacketsForm.get('endTime').value);
+
+    this.apiService.get(`getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}`)
     .subscribe((result: INewTelemetryData[]) => {
         this.downloadedPacketText = JSON.stringify(result);
         this.packets = result;
