@@ -12,26 +12,24 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PlaybackComponent {
   findPacketsForm: FormGroup;
 
-  public downloadedPacketText: string = '';
+  public downloadedPacketText = '';
   public packets: INewTelemetryData[];
 
   public startTime: Date = new Date();
-  public endTime:Date = new Date();
+  public endTime: Date = new Date();
 
-  public showTimeStamp: boolean = true;
-  public showPacketTitle: boolean = true;
-  public showAuxBms: boolean = false;
-  public showKeyMotor: boolean = false;
-  public showMotorDetails: boolean = false;
-  public showDriverControls: boolean = false;
-  public showMotorFaults: boolean = true;
-  public showBatteryFaults: boolean = true;
-  public showBattery: boolean = false;
-  public showCcs: boolean = false;
-  public showMppt: boolean = false;
-  public showLights: boolean = false;
-
-  public test: number = 0;
+  public showTimeStamp = true;
+  public showPacketTitle = true;
+  public showAuxBms = false;
+  public showKeyMotor = false;
+  public showMotorDetails = false;
+  public showDriverControls = false;
+  public showMotorFaults = true;
+  public showBatteryFaults = true;
+  public showBattery = false;
+  public showCcs = false;
+  public showMppt = false;
+  public showLights = false;
 
   constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder) {
     this.findPacketsForm = this.formBuilder.group({
@@ -41,8 +39,8 @@ export class PlaybackComponent {
   }
 
   onPacketDownloadButton() {
-    this.startTime= new Date(this.findPacketsForm.get('startTime').value);
-    this.endTime= new Date(this.findPacketsForm.get('endTime').value);
+    this.startTime = new Date(this.findPacketsForm.get('startTime').value);
+    this.endTime = new Date(this.findPacketsForm.get('endTime').value);
 
     this.apiService.get(`getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}`)
     .subscribe((result: INewTelemetryData[]) => {
