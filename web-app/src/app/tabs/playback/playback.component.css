@@ -1,14 +1,46 @@
-table, th, td {
+table,
+th,
+td {
   border: 1px solid white;
 }
+
 table {
   min-width: 100%;
+}
+
+input[type="checkbox"] {
+  accent-color: #c2185b;
 }
 
 .small-font {
   font-size: x-small;
 }
 
+.form-spacing {
+  margin: 0 10px;
+}
+
 .white-text {
   color: white;
+}
+
+.yasss-text {
+  color: #c2185b;
+}
+
+.pages {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 20%;
+  margin: auto;
+}
+
+.page-btn {
+  background-color: transparent;
+  border: none;
+  font-size: x-large;
+}
+
+.page-btn:disabled {
+  color: grey;
 }
