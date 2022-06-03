@@ -23,4 +23,4 @@ jobs:
     - run: npm install -g @angular/cli
     - run: npm run lint
     - run: npx stylelint src/**.css
-    - run: ng build --prod
+    - run: npm run build
