@@ -1,7 +1,6 @@
 name: Web App CI
 
 on:
-  push:
   pull_request:
 
 jobs:
