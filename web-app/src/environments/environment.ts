@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  serverIP: 'ws://localhost:4000'
+  serverIP: 'ws://localhost:4000',
+  serverRequestUrl: 'http://localhost:3000/api/'
 };
