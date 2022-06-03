@@ -50,7 +50,7 @@ export class FaultsService {
 
   private updateBatteryFaults(data: INewTelemetryData): void {
     this.batteryFaults.errorFlags.alwaysOnSupplyFault = data.BatteryFaults.ErrorFlags.AlwaysOnSupplyFault;
-    this.batteryFaults.errorFlags.canbusCommunicationsFault = data.BatteryFaults.ErrorFlags.CANBUSCommunicationFault;
+    this.batteryFaults.errorFlags.canbusCommunicationsFault = data.BatteryFaults.ErrorFlags.CANBUSCommunicationsFault;
     this.batteryFaults.errorFlags.chargeLimitEnforcementFault = data.BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault;
     this.batteryFaults.errorFlags.chargerSafetyRelayFault = data.BatteryFaults.ErrorFlags.ChargerSafetyRelayFault;
     this.batteryFaults.errorFlags.currentSensorFault = data.BatteryFaults.ErrorFlags.CurrentSensorFault;
@@ -65,7 +65,7 @@ export class FaultsService {
     this.batteryFaults.errorFlags.lowCellVoltageFault = data.BatteryFaults.ErrorFlags.LowCellVoltageFault;
     this.batteryFaults.errorFlags.openWiringFault = data.BatteryFaults.ErrorFlags.OpenWiringFault;
     this.batteryFaults.errorFlags.packVoltageSensorFault = data.BatteryFaults.ErrorFlags.PackVoltageSensorFault;
-    this.batteryFaults.errorFlags.thermistorFault = data.BatteryFaults.ErrorFlags.thermistorFault;
+    this.batteryFaults.errorFlags.thermistorFault = data.BatteryFaults.ErrorFlags.ThermistorFault;
     this.batteryFaults.errorFlags.twelvevpowerSupplyFault = data.BatteryFaults.ErrorFlags['12vPowerSupplyFault'];
     this.batteryFaults.errorFlags.voltageRedundancyFault = data.BatteryFaults.ErrorFlags.VoltageRedundancyFault;
     this.batteryFaults.errorFlags.weakCellFault = data.BatteryFaults.ErrorFlags.WeakCellFault;
@@ -75,7 +75,7 @@ export class FaultsService {
     this.batteryFaults.limitFlags.cclReducedDueToHighCellResistance = data.BatteryFaults.LimitFlags.CclReducedDueToHighCellResistance;
     this.batteryFaults.limitFlags.cclReducedDueToHighCellVoltage = data.BatteryFaults.LimitFlags.CclReducedDueToHighCellVoltage;
     this.batteryFaults.limitFlags.cclReducedDueToHighPackVoltage = data.BatteryFaults.LimitFlags.CclReducedDueToHighPackVoltage;
-    this.batteryFaults.limitFlags.cclReducedDueToHighSoc = data.BatteryFaults.LimitFlags.DclReducedDueToHighSoc;
+    this.batteryFaults.limitFlags.cclReducedDueToHighSoc = data.BatteryFaults.LimitFlags.CclReducedDueToHighSoc;
     this.batteryFaults.limitFlags.cclReducedDueToTemperature = data.BatteryFaults.LimitFlags.CclReducedDueToTemperature;
     this.batteryFaults.limitFlags.dclReducedDueToHighCellResistance = data.BatteryFaults.LimitFlags.DclReducedDueToHighCellResistance;
     this.batteryFaults.limitFlags.dclReducedDueToLowCellVoltage = data.BatteryFaults.LimitFlags.DclReducedDueToLowCellVoltage;
@@ -83,8 +83,8 @@ export class FaultsService {
     this.batteryFaults.limitFlags.dclReducedDueToLowSoc = data.BatteryFaults.LimitFlags.DclReducedDueToLowSoc;
     this.batteryFaults.limitFlags.dclReducedDueToTemperature = data.BatteryFaults.LimitFlags.DclReducedDueToTemperature;
     this.batteryFaults.limitFlags.dclandcclReducedDueToCommunicationFailsafe =
-      data.BatteryFaults.LimitFlags.DclAndCclReducedDueToCommunicationFailsafe;
-    this.batteryFaults.limitFlags.dclandcclReducedDueToVoltageFailsafe = data.BatteryFaults.LimitFlags.DclAndCclReducedDueToVoltageFailsafe;
+      data.BatteryFaults.LimitFlags.DclandCclReducedDueToCommunicationFailsafe;
+    this.batteryFaults.limitFlags.dclandcclReducedDueToVoltageFailsafe = data.BatteryFaults.LimitFlags.DclandCclReducedDueToVoltageFailsafe;
   }
 
   private updateMotorFaults(data: INewTelemetryData, num: number): void {

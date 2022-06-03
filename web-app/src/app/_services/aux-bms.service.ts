@@ -30,13 +30,13 @@ export class AuxBmsService {
   }
 
   private updateAuxBms(data: INewTelemetryData): void {
-    const pState = data.Battery.PrechargeState as keyof typeof State;
-    this.auxbms.alive = data.Battery.AuxBMSAlive;
-    this.auxbms.allowCharge = false; // TODO: add the correct value
-    this.auxbms.auxVoltage = data.Battery.AuxVoltage;
-    this.auxbms.contactorError = false; // TODO: add the correct value
+    const pState = data.AuxBms.PrechargeState as keyof typeof State;
+    this.auxbms.alive = data.AuxBms.AuxBmsAlive;
+    this.auxbms.allowCharge = data.AuxBms.AllowCharge; // TODO: add the correct value
+    this.auxbms.auxVoltage = data.AuxBms.AuxVoltage;
+    this.auxbms.contactorError = data.AuxBms.CommonContactorError; // TODO: add the correct value
     this.auxbms.prechargeState = State[pState];
-    this.auxbms.strobeBmsLight = data.Lights.BMSStrobeLight;
-    this.auxbms.highVoltageEnable = false; // TODO: add the correct value
+    this.auxbms.strobeBmsLight = data.AuxBms.StrobeBmsLight;
+    this.auxbms.highVoltageEnable = data.AuxBms.HighVoltageEnableState; // TODO: add the correct value
   }
 }

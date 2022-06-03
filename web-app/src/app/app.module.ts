@@ -14,6 +14,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +35,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { TimestampComponent } from './timestamp/timestamp.component';
 import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component';
 import { TestComponentComponent } from './test-component/test-component.component';
+import { PlaybackComponent } from './tabs/playback/playback.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import { TestComponentComponent } from './test-component/test-component.componen
     DataTableComponent,
     TimestampComponent,
     RaceGraphComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    PlaybackComponent
   ],
   imports: [
     AppRoutingModule,
@@ -67,7 +71,9 @@ import { TestComponentComponent } from './test-component/test-component.componen
     MatProgressSpinnerModule,
     MatTableModule,
     MatRadioModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [
     WebSocketService,

@@ -31,7 +31,7 @@ export class LightsService {
 
   private updateLights(data: INewTelemetryData): void {
     this.lights.alive = data.Lights.Alive;
-    this.lights.bmsStrobeLight = data.Lights.BMSStrobeLight;
+    this.lights.bmsStrobeLight = data.Lights.BmsStrobeLight;
     this.lights.brakes = data.Lights.Brakes;
     this.lights.highBeams = data.Lights.HighBeams;
     this.lights.leftSignal = data.Lights.LeftSignal;

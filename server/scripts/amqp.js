@@ -1,4 +1,5 @@
 const amqp = require('amqplib');
+const app = require('../app');
 const config = require('../config');
 const db = require('./database');
 const wss = require('./websocket').websocket;
@@ -41,6 +42,11 @@ amqp.connect(config.rabbitmq.host)
           // Process Packet Data
           if(jsonObj.Ccs.CcsAlive === true){
             try {
+              // convert timeestamp from string to Date
+              if(!isNaN(jsonObj.TimeStamp)) {
+                jsonObj.TimeStamp = new Date(jsonObj.TimeStamp + 'Z').getTime();
+              }
+
               db.insert('rabbitmq-insert', jsonObj)
               .then(() => {
                 wss.broadcast(JSON.stringify(jsonObj));

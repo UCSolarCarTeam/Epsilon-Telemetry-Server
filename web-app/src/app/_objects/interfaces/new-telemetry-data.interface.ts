@@ -1,6 +1,6 @@
 export interface INewTelemetryData {
     PacketTitle: string,
-    TimeStamp: string,
+    TimeStamp: number,
     AuxBms: IAuxBms,
     KeyMotor: IKeyMotor[],
     MotorDetails: IMotorDetail[],
@@ -96,7 +96,7 @@ export interface ILights {
     Brakes: boolean,
     LeftSignal: boolean,
     RightSignal: boolean,
-    BMSStrobeLight: boolean,
+    BmsStrobeLight: boolean,
     Alive: boolean
 }
 
@@ -116,8 +116,8 @@ export interface IBatteryErrorFlags {
     WeakPackFault: boolean,
     VoltageRedundancyFault: boolean,
     FanMonitorFault: boolean,
-    thermistorFault: boolean,
-    CANBUSCommunicationFault: boolean,
+    ThermistorFault: boolean,
+    CANBUSCommunicationsFault: boolean,
     AlwaysOnSupplyFault: boolean,
     HighVoltageIsolationFault: boolean,
     '12vPowerSupplyFault': boolean,
@@ -135,9 +135,9 @@ export interface IBatteryLimitFlags {
     DclReducedDueToTemperature: boolean,
     DclReducedDueToLowCellVoltage: boolean,
     DclReducedDueToLowPackVoltage: boolean,
-    DclAndCclReducedDueToVoltageFailsafe: boolean,
-    DclAndCclReducedDueToCommunicationFailsafe: boolean,
-    DclReducedDueToHighSoc: boolean,
+    DclandCclReducedDueToVoltageFailsafe: boolean,
+    DclandCclReducedDueToCommunicationFailsafe: boolean,
+    CclReducedDueToHighSoc: boolean,
     CclReducedDueToHighCellResistance: boolean,
     CclReducedDueToTemperature: boolean,
     CclReducedDueToHighCellVoltage: boolean,
@@ -209,9 +209,6 @@ export interface IBattery {
     HighCellVoltage: number,
     HighCellVoltageId: number,
     AverageCellVoltage: number,
-    PrechargeState: string,
-    AuxVoltage: number,
-    AuxBMSAlive: boolean
 }
 
 export interface IBMSRelayStatusFlags {

@@ -1,0 +1,14 @@
+table, th, td {
+  border: 1px solid white;
+}
+table {
+  min-width: 100%;
+}
+
+.small-font {
+  font-size: x-small;
+}
+
+.white-text {
+  color: white;
+}
