@@ -1,9 +1,11 @@
 <html>
     <body>
       <form [formGroup]="findPacketsForm" (ngSubmit)="onPacketDownloadButton()" novalidate>
+        <label class="white-text form-spacing" for="startTime">Start:</label>
         <input id="startTime" formControlName="startTime" type="datetime-local" required>
+        <label class="white-text form-spacing" for="endTime">End:</label>
         <input id="endTime" formControlName="endTime" type="datetime-local" required>
-        <button id="packetDownloadButton" type="submit" >Download Packet Data</button>
+        <button id="packetDownloadButton" class="form-spacing" type="submit" >Load Packet Data</button>
       </form>
 
       <ul class="white-text">
@@ -20,6 +22,12 @@
         <li>Mppt <input type="checkbox" [(ngModel)]="showMppt"></li>
         <li>Lights <input type="checkbox" [(ngModel)]="showLights"></li>
       </ul>
+
+      <div class="pages">
+        <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
+        <p class="white-text" style="margin: auto;">{{ page }}</p>
+        <button class="page-btn yasss-text" (click)="nextPage()">→</button>
+      </div>
 
       <div style="background-color: grey; overflow-x:auto; white-space: nowrap;">
         <table>
@@ -268,5 +276,14 @@
         </table>
       </div>
 
+<<<<<<< HEAD
+      <div class="pages" *ngIf="packets != undefined && packets.length > 0">
+        <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
+        <p class="white-text" style="margin: auto;">{{ page }}</p>
+        <button class="page-btn yasss-text" (click)="nextPage()">→</button>
+      </div>
+
+=======
+>>>>>>> master
     </body>
 </html>

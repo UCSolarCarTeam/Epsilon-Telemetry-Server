@@ -70,10 +70,13 @@ module.exports.lastPacket = function() {
  * Fetches all the packets in the database between two timestamps (inclusive)
  * @param {Timestamp} lowestTime
  * @param {Timestamp} highestTime
+ * @param {Number} page
  * @return {Promise}
  */
-module.exports.between = function(lowestTime, highestTime) {
-  return collection.find({ "TimeStamp" : { $gte: lowestTime, $lte: highestTime} }).toArray();
+module.exports.between = function(lowestTime, highestTime, page = 1) { 
+  const pageSize = 10;
+  return collection.find({ "TimeStamp" : { $gte: lowestTime, $lte: highestTime} })
+    .skip((page - 1) * pageSize).limit(pageSize).toArray();
 };
 
 // module.exports.conversionTest = async function() {

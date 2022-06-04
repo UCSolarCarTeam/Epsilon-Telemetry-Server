@@ -29,7 +29,8 @@ app.use('/api/test', (req, res) => {
 app.use('/api/getPackets', (req, res) => {
   // API code will be here
   // 1651354920000, 1651354930000
-  db.between(Number(req.query.startTime), Number(req.query.endTime)).then(function(result) {
+  db.between(Number(req.query.startTime), Number(req.query.endTime),
+    Number(req.query.page)).then(function(result) {
     res.send(result)
   }).catch((err) => {
     console.log(err);

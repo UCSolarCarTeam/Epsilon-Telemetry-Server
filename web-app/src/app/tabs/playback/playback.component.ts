@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PlaybackComponent {
   findPacketsForm: FormGroup;
 
+  public page = 1;
   public downloadedPacketText = '';
   public packets: INewTelemetryData[];
 
@@ -42,11 +43,22 @@ export class PlaybackComponent {
     this.startTime = new Date(this.findPacketsForm.get('startTime').value);
     this.endTime = new Date(this.findPacketsForm.get('endTime').value);
 
-    this.apiService.get(`getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}`)
+    this.apiService.get(
+      `getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}&page=${this.page}`)
     .subscribe((result: INewTelemetryData[]) => {
         this.downloadedPacketText = JSON.stringify(result);
         this.packets = result;
     });
+  }
+
+  previousPage() {
+    this.page--;
+    this.onPacketDownloadButton();
+  }
+
+  nextPage() {
+    this.page++;
+    this.onPacketDownloadButton();
   }
 
   getTime(timestamp: number) {
