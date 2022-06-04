@@ -117,6 +117,17 @@ mat-divider {
   }
 
   @media screen
+and (min-width: 1200px)
+and (max-width: 1600px){
+  :host{
+    height: 100%;
+  }
+
+  .soc-data{
+    height: 50%;
+  }
+}
+  @media screen
   and (min-width: 1200px)
   and (max-width: 1600px),
   screen
@@ -132,11 +143,6 @@ mat-divider {
     font-size: 14px;
   }
 
-  .velocity-number {
-    font-size: 24px;
-  }
-
-  
   .soc-data p {
     font-size: 12px;
   }

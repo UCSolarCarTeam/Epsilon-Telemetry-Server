@@ -52,6 +52,18 @@
 
 @media screen
 and (min-width: 1200px)
+and (max-width: 1600px){
+  :host{
+    height: 100%;
+  }
+
+  .velocity-data{
+    height: 50%;
+  }
+}
+
+@media screen
+and (min-width: 1200px)
 and (max-width: 1600px),
 screen
   and (min-height: 600px)
