@@ -1,6 +1,6 @@
 :host {
   display: flex;
-  height: 110%;
+  height: 100%;
   width: 25%;
   margin: 0.5%;
   justify-content: space-around;
@@ -87,7 +87,7 @@ mat-divider {
 
 .soc-data {
   display: flex;
-  height: 80%;
+  height: 90%;
   justify-content: center;
   align-items: left;
   flex-direction: column;
@@ -107,19 +107,36 @@ mat-divider {
   color: #f44336;
 }
 
-@media screen
-  and (min-width: 1200px)
-  and (max-width: 1600px) {
+#bms-strobe-label {
+  text-align: left;
+  display: block;
+}
 
-  :host {
-    height: 120%;
+  .mat-card{
+    height: 95%;
   }
 
+  @media screen
+  and (min-width: 1200px)
+  and (max-width: 1600px),
+  screen
+  and (min-height: 600px)
+  and (max-height: 800px) {
+  :host {
+    height: 96%;
+  }
+
+  .car-misc,
   .battery-misc {
     padding: 12px;
     font-size: 14px;
   }
 
+  .velocity-number {
+    font-size: 24px;
+  }
+
+  
   .soc-data p {
     font-size: 12px;
   }
@@ -129,18 +146,17 @@ mat-divider {
   }
 }
 
-#bms-strobe-label {
-  text-align: left;
-  display: block;
+@media screen
+  and (max-width: 768px) {
+  :host {
+    display: none;
+  }
 }
 
 @media screen
-  and (max-width: 768px) {
-    :host {
-      display: none;
-    }
-  }
- 
-  .mat-card{
-    height: 102%;
-  }
+  and (min-width: 768px)
+  and (max-width: 1200px) {
+  .car-misc,
+  .battery-misc {
+    width: 120px;
+  }}
