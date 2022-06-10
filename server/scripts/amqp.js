@@ -6,11 +6,12 @@ const wss = require('./websocket').websocket;
 const rc = require('./race');
 
 let lap = false;
-let lastLapTimestamp;
+let lastLapTimestamp = undefined;
 
 db.lastLap()
   .then((lastLap) => {
-    lastLapTimestamp = lastLap.timestamp;
+    if(lastLap[0] != null)
+      lastLapTimestamp = lastLap[0].timestamp;
 }).catch(() => {
     lastLapTimestamp = undefined;
 });
@@ -66,7 +67,7 @@ amqp.connect(config.rabbitmq.host)
           if (!jsonObj.DriverControls.Lap
             && lap) {
             const currentTimeStampEpoch = new Date(jsonObj.TimeStamp).getTime().toFixed(0);
-            db.between(lastLapTimestamp, currentTimeStampEpoch)
+            db.betweenLap(lastLapTimestamp, currentTimeStampEpoch)
                .then((allPackets) => {
                   let timestamp = currentTimeStampEpoch;
                   let averagePowerIn = rc.getAveragePowerIn(allPackets);
@@ -86,12 +87,11 @@ amqp.connect(config.rabbitmq.host)
                     'averagepackCurrent': averagePackCurrent,
                     'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours),
                     'averagespeed': rc.getAverageSpeed(allPackets),
+                    'msgType': 'lap'
                   };
                   db.addLap(lap)
-                    .then((insertedRow) => {
-                      console.log('1 row inserted into Lap Table');
-                      insertedRow['msgType'] = 'lap';
-                      wss.broadcast(JSON.stringify(insertedRow));
+                    .then(() => {
+                      wss.broadcast(JSON.stringify(lap));
                     });
                   lastLapTimestamp = currentTimeStampEpoch;
                });
