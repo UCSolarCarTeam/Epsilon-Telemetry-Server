@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { INewTelemetryData } from 'app/_objects/interfaces/new-telemetry-data.interface';
 import { ApiHttpService } from 'app/_services/api-http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-playback',
@@ -32,7 +33,7 @@ export class PlaybackComponent {
   public showMppt = false;
   public showLights = false;
 
-  constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder) {
+  constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder, private snackBar: MatSnackBar) {
     this.findPacketsForm = this.formBuilder.group({
       startTime: ['2022-04-30T15:42'],
       endTime: ['2022-04-30T15:42'],
@@ -43,12 +44,17 @@ export class PlaybackComponent {
     this.startTime = new Date(this.findPacketsForm.get('startTime').value);
     this.endTime = new Date(this.findPacketsForm.get('endTime').value);
 
-    this.apiService.get(
-      `getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}&page=${this.page}`)
-    .subscribe((result: INewTelemetryData[]) => {
-        this.downloadedPacketText = JSON.stringify(result);
-        this.packets = result;
-    });
+      this.apiService.get(
+        `getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}&page=${this.page}`)
+      .subscribe((result: INewTelemetryData[]) => {
+          this.downloadedPacketText = JSON.stringify(result);
+          this.packets = result;
+          this.openSnackBar("Loaded data", "Dismiss", "mat-accent");
+      }, (err) => {
+        this.openSnackBar("Error Loading Data", "Dismiss", "mat-warn");
+        console.log(err);
+      });
+
   }
 
   previousPage() {
@@ -63,5 +69,12 @@ export class PlaybackComponent {
 
   getTime(timestamp: number) {
     return new Date(timestamp).toLocaleTimeString();
+  }
+
+  openSnackBar(message: string, action: string, type: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: ['mat-toolbar', type]
+    });
   }
 }
