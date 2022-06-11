@@ -1,15 +1,101 @@
+body {
+  font: medium "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
 table,
 th,
 td {
-  border: 1px solid white;
+  border-collapse: collapse;
+  border: none;
+}
+
+td {
+  color: white;
+  font-size: medium;
+  vertical-align: top;
+  padding: 0.75em;
+  border: 3px solid rgb(60, 60, 60);
+  border-top: none;
+  border-bottom: none;
+}
+
+td:first-child {
+  border-left: none;
+}
+
+td:last-child {
+  border-right: none;
+}
+
+th {
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-size: large;
+  padding: 0.75em;
+  position: sticky;
+  top: 0;
+  font-weight: bold;
 }
 
 table {
   min-width: 100%;
+  position: relative;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: rgb(80, 80, 80);
+}
+
+p,
+ul,
+li {
+  margin: 0 0 0.75em 0;
+}
+
+.second-list {
+  margin: 0.75em 0 0 0;
 }
 
 input[type="checkbox"] {
   accent-color: #c2185b;
+}
+
+.page-number {
+  margin: auto;
+}
+
+.table-container {
+  background-color: black;
+  overflow-x:auto;
+  white-space: nowrap;
+  height: 100vh;
+  max-width: 1163px;
+}
+
+tr {
+  background-color: rgb(40, 40, 40);
+}
+
+tr:nth-child(2n) {
+  background-color: rgb(33, 33, 33);
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: red;
+}
+
+.table-container::-webkit-scrollbar-button,
+.table-container::-webkit-scrollbar-track,
+.table-container::-webkit-scrollbar-track-piece,
+.table-container::-webkit-scrollbar-corner,
+.table-container::-webkit-resizer {
+  display: none;
 }
 
 .small-font {

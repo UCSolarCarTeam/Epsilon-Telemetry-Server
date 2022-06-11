@@ -31,6 +31,7 @@ export class PlaybackComponent {
   public showCcs = false;
   public showMppt = false;
   public showLights = false;
+  public showTable = false;
 
   constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder) {
     this.findPacketsForm = this.formBuilder.group({
@@ -49,6 +50,8 @@ export class PlaybackComponent {
         this.downloadedPacketText = JSON.stringify(result);
         this.packets = result;
     });
+
+    this.showTable = true;
   }
 
   previousPage() {
