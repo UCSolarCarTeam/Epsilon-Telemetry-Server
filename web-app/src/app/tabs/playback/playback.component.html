@@ -23,197 +23,200 @@
         <li>Lights <input type="checkbox" [(ngModel)]="showLights"></li>
       </ul>
 
-      <div class="pages">
-        <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
-        <p class="white-text" style="margin: auto;">{{ page }}</p>
-        <button class="page-btn yasss-text" (click)="nextPage()">→</button>
-      </div>
+      <div *ngIf="showTable">
+        <div class="pages">
+          <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
+          <p class="white-text page-number">{{ page }}</p>
+          <button class="page-btn yasss-text" (click)="nextPage()">→</button>
+        </div>
 
-      <div style="background-color: grey; overflow-x:auto; white-space: nowrap;">
-        <table>
-          <thead>
-            <tr>
-              <th *ngIf="showTimeStamp">Timestamp</th>
-              <th *ngIf="showPacketTitle">Packet Title</th>
-              <th *ngIf="showAuxBms">Aux Bms</th>
-              <th *ngIf="showKeyMotor">Key Motor</th>
-              <th *ngIf="showMotorDetails">Motor Details</th>
-              <th *ngIf="showDriverControls">Driver Controls</th>
-              <th *ngIf="showMotorFaults">Motor Faults</th>
-              <th *ngIf="showBatteryFaults">Battery Faults </th>
-              <th *ngIf="showBattery">Battery </th>
-              <th *ngIf="showCcs">Ccs</th>
-              <th *ngIf="showMppt">Mppt</th>
-              <th *ngIf="showLights">Lights</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let packet of packets" class="small-font">
-              <td class="white-text" *ngIf="showTimeStamp">
-                {{getTime(packet.TimeStamp)}}
-              </td>
-              <td class="white-text" *ngIf="showPacketTitle">
-                {{packet.PacketTitle}}
-              </td>
-              <td *ngIf="showAuxBms">
-                  <li>AllowCharge: <span class="white-text">{{packet.AuxBms.AllowCharge}}</span></li>
-                  <li>AllowDischarge: <span class="white-text">{{packet.AuxBms.AllowDischarge}}</span></li>
-                  <li>AuxBmsAlive: <span class="white-text">{{packet.AuxBms.AuxBmsAlive}}</span></li>
-                  <li>AuxVoltage: <span class="white-text">{{packet.AuxBms.AuxVoltage}}</span></li>
-                  <li>ChargeContactorError: <span class="white-text">{{packet.AuxBms.ChargeContactorError}}</span></li>
-                  <li>ChargeOpenButShouldBeClosed: <span class="white-text">{{packet.AuxBms.ChargeOpenButShouldBeClosed}}</span></li>
-                  <li>ChargeShouldTrip: <span class="white-text">{{packet.AuxBms.ChargeShouldTrip}}</span></li>
-                  <li>ChargeTripDueToHighCellVoltage: <span class="white-text">{{packet.AuxBms.ChargeTripDueToHighCellVoltage}}</span></li>
-                  <li>ChargeTripDueToHighTemperatureAndCurrent: <span class="white-text">{{packet.AuxBms.ChargeTripDueToHighTemperatureAndCurrent}}</span></li>
-                  <li>ChargeTripDueToPackCurrent: <span class="white-text">{{packet.AuxBms.ChargeTripDueToPackCurrent}}</span></li>
-                  <li>CommonContactorError: <span class="white-text">{{packet.AuxBms.CommonContactorError}}</span></li>
-                  <li>DischargeContactorError: <span class="white-text">{{packet.AuxBms.DischargeContactorError}}</span></li>
-                  <li>DischargeOpenButShouldBeClosed: <span class="white-text">{{packet.AuxBms.DischargeOpenButShouldBeClosed}}</span></li>
-                  <li>DischargeShouldTrip: <span class="white-text">{{packet.AuxBms.DischargeShouldTrip}}</span></li>
-                  <li>DischargeTripDueToHighTemperatureAndCurrent: <span class="white-text">{{packet.AuxBms.DischargeTripDueToHighTemperatureAndCurrent}}</span></li>
-                  <li>DischargeTripDueToLowCellVoltage: <span class="white-text">{{packet.AuxBms.DischargeTripDueToLowCellVoltage}}</span></li>
-                  <li>DischargeTripDueToPackCurrent: <span class="white-text">{{packet.AuxBms.DischargeTripDueToPackCurrent}}</span></li>
-                  <li>HighVoltageEnableState: <span class="white-text">{{packet.AuxBms.HighVoltageEnableState}}</span></li>
-                  <li>OrionCANReceivedRecently: <span class="white-text">{{packet.AuxBms.OrionCANReceivedRecently}}</span></li>
-                  <li>PrechargeState: <span class="white-text">{{packet.AuxBms.PrechargeState}}</span></li>
-                  <li>ProtectionTrip: <span class="white-text">{{packet.AuxBms.ProtectionTrip}}</span></li>
-                  <li>StrobeBmsLight: <span class="white-text">{{packet.AuxBms.StrobeBmsLight}}</span></li>
-              </td>
-              <td *ngIf="showKeyMotor">
-                  <ul *ngFor="let keyMotor of packet.KeyMotor">
-                    <li>Alive: <span class="white-text">{{keyMotor.Alive}}</span></li>
-                    <li>SetCurrent: <span class="white-text">{{keyMotor.SetCurrent}}</span></li>
-                    <li>SetVelocity: <span class="white-text">{{keyMotor.SetVelocity}}</span></li>
-                    <li>BusCurrent: <span class="white-text">{{keyMotor.BusCurrent}}</span></li>
-                    <li>BusVoltage: <span class="white-text">{{keyMotor.BusVoltage}}</span></li>
-                    <li>VehicleVelocity: <span class="white-text">{{keyMotor.VehicleVelocity}}</span></li>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th *ngIf="showTimeStamp">Timestamp</th>
+                <th *ngIf="showPacketTitle">Packet Title</th>
+                <th *ngIf="showAuxBms">Aux Bms</th>
+                <th *ngIf="showKeyMotor">Key Motor</th>
+                <th *ngIf="showMotorDetails">Motor Details</th>
+                <th *ngIf="showDriverControls">Driver Controls</th>
+                <th *ngIf="showMotorFaults">Motor Faults</th>
+                <th *ngIf="showBatteryFaults">Battery Faults </th>
+                <th *ngIf="showBattery">Battery </th>
+                <th *ngIf="showCcs">CCS</th>
+                <th *ngIf="showMppt">MPPT</th>
+                <th *ngIf="showLights">Lights</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let packet of packets" class="small-font">
+                <td class="white-text" *ngIf="showTimeStamp">
+                  {{getTime(packet.TimeStamp)}}
+                </td>
+                <td class="white-text" *ngIf="showPacketTitle">
+                  {{packet.PacketTitle}}
+                </td>
+                <td *ngIf="showAuxBms">
+                    <p>AllowCharge: <span class="white-text">{{packet.AuxBms.AllowCharge}}</span></p>
+                    <p>AllowDischarge: <span class="white-text">{{packet.AuxBms.AllowDischarge}}</span></p>
+                    <p>AuxBmsAlive: <span class="white-text">{{packet.AuxBms.AuxBmsAlive}}</span></p>
+                    <p>AuxVoltage: <span class="white-text">{{packet.AuxBms.AuxVoltage}}</span></p>
+                    <p>ChargeContactorError: <span class="white-text">{{packet.AuxBms.ChargeContactorError}}</span></p>
+                    <p>ChargeOpenButShouldBeClosed: <span class="white-text">{{packet.AuxBms.ChargeOpenButShouldBeClosed}}</span></p>
+                    <p>ChargeShouldTrip: <span class="white-text">{{packet.AuxBms.ChargeShouldTrip}}</span></p>
+                    <p>ChargeTripDueToHighCellVoltage: <span class="white-text">{{packet.AuxBms.ChargeTripDueToHighCellVoltage}}</span></p>
+                    <p>ChargeTripDueToHighTemperatureAndCurrent: <span class="white-text">{{packet.AuxBms.ChargeTripDueToHighTemperatureAndCurrent}}</span></p>
+                    <p>ChargeTripDueToPackCurrent: <span class="white-text">{{packet.AuxBms.ChargeTripDueToPackCurrent}}</span></p>
+                    <p>CommonContactorError: <span class="white-text">{{packet.AuxBms.CommonContactorError}}</span></p>
+                    <p>DischargeContactorError: <span class="white-text">{{packet.AuxBms.DischargeContactorError}}</span></p>
+                    <p>DischargeOpenButShouldBeClosed: <span class="white-text">{{packet.AuxBms.DischargeOpenButShouldBeClosed}}</span></p>
+                    <p>DischargeShouldTrip: <span class="white-text">{{packet.AuxBms.DischargeShouldTrip}}</span></p>
+                    <p>DischargeTripDueToHighTemperatureAndCurrent: <span class="white-text">{{packet.AuxBms.DischargeTripDueToHighTemperatureAndCurrent}}</span></p>
+                    <p>DischargeTripDueToLowCellVoltage: <span class="white-text">{{packet.AuxBms.DischargeTripDueToLowCellVoltage}}</span></p>
+                    <p>DischargeTripDueToPackCurrent: <span class="white-text">{{packet.AuxBms.DischargeTripDueToPackCurrent}}</span></p>
+                    <p>HighVoltageEnableState: <span class="white-text">{{packet.AuxBms.HighVoltageEnableState}}</span></p>
+                    <p>OrionCANReceivedRecently: <span class="white-text">{{packet.AuxBms.OrionCANReceivedRecently}}</span></p>
+                    <p>PrechargeState: <span class="white-text">{{packet.AuxBms.PrechargeState}}</span></p>
+                    <p>ProtectionTrip: <span class="white-text">{{packet.AuxBms.ProtectionTrip}}</span></p>
+                    <p>StrobeBmsLight: <span class="white-text">{{packet.AuxBms.StrobeBmsLight}}</span></p>
+                </td>
+                <td *ngIf="showKeyMotor">
+                    <div *ngFor="let keyMotor of packet.KeyMotor; let keyMotorIndex = index">
+                      <p>Key Motor {{ keyMotorIndex }}</p>
+                      <ul>
+                        <li>Alive: <span class="white-text">{{keyMotor.Alive}}</span></li>
+                        <li>SetCurrent: <span class="white-text">{{keyMotor.SetCurrent}}</span></li>
+                        <li>SetVelocity: <span class="white-text">{{keyMotor.SetVelocity}}</span></li>
+                        <li>BusCurrent: <span class="white-text">{{keyMotor.BusCurrent}}</span></li>
+                        <li>BusVoltage: <span class="white-text">{{keyMotor.BusVoltage}}</span></li>
+                        <li>VehicleVelocity: <span class="white-text">{{keyMotor.VehicleVelocity}}</span></li>
+                      </ul>
+                    </div>
+                </td>
+                <td *ngIf="showMotorDetails">
+                  <div *ngFor="let motorDetail of packet.MotorDetails; let motorDetailsIndex = index">
+                    <p>Motor Details {{ motorDetailsIndex }}</p>
+                    <ul>
+                      <li>PhaseCCurrent: <span class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
+                      <li>PhaseBCurrent: <span class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
+                      <li>MotorVoltageReal: <span class="white-text">{{motorDetail.MotorVoltageReal}}</span></li>
+                      <li>MotorVoltageImaginary: <span class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
+                      <li>MotorCurrentReal: <span class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
+                      <li>MotorCurrentImaginary: <span class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
+                      <li>BackEmf: <span class="white-text">{{motorDetail.BackEmf}}</span></li>
+                      <li>VoltageRail15VSupply: <span class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
+                      <li>VoltageRail3VSupply: <span class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
+                      <li>VoltageRail1VSupply: <span class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
+                      <li>HeatSinkTemp: <span class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
+                      <li>MotorTemp: <span class="white-text">{{motorDetail.MotorTemp}}</span></li>
+                      <li>DspBoardTemp: <span class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
+                      <li>DcBusAmpHours: <span class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
+                      <li>Odometer: <span class="white-text">{{motorDetail.Odometer}}</span></li>
+                      <li>SlipSpeed: <span class="white-text">{{motorDetail.SlipSpeed}}</span></li>
+                    </ul>
+                  </div>
+                </td>
+                <td *ngIf="showDriverControls">
+                  <p>Alive: <span class="white-text">{{packet.DriverControls.Alive}}</span></p>
+                  <p>HeadlightsOff: <span class="white-text">{{packet.DriverControls.HeadlightsOff}}</span></p>
+                  <p>HeadlightsLow: <span class="white-text">{{packet.DriverControls.HeadlightsLow}}</span></p>
+                  <p>HeadlightsHigh: <span class="white-text">{{packet.DriverControls.HeadlightsHigh}}</span></p>
+                  <p>SignalRight: <span class="white-text">{{packet.DriverControls.SignalRight}}</span></p>
+                  <p>SignalLeft: <span class="white-text">{{packet.DriverControls.SignalLeft}}</span></p>
+                  <p>Hazard: <span class="white-text">{{packet.DriverControls.Hazard}}</span></p>
+                  <p>Interior: <span class="white-text">{{packet.DriverControls.Interior}}</span></p>
+                  <p>Aux: <span class="white-text">{{packet.DriverControls.Aux}}</span></p>
+                  <p>VolumeUp: <span class="white-text">{{packet.DriverControls.VolumeUp}}</span></p>
+                  <p>VolumeDown: <span class="white-text">{{packet.DriverControls.VolumeDown}}</span></p>
+                  <p>NextSong: <span class="white-text">{{packet.DriverControls.NextSong}}</span></p>
+                  <p>PrevSong: <span class="white-text">{{packet.DriverControls.PrevSong}}</span></p>
+                  <p>Acceleration: <span class="white-text">{{packet.DriverControls.Acceleration}}</span></p>
+                  <p>RegenBraking: <span class="white-text">{{packet.DriverControls.RegenBraking}}</span></p>
+                  <p>Brakes: <span class="white-text">{{packet.DriverControls.Brakes}}</span></p>
+                  <p>Forward: <span class="white-text">{{packet.DriverControls.Forward}}</span></p>
+                  <p>Reverse: <span class="white-text">{{packet.DriverControls.Reverse}}</span></p>
+                  <p>PushToTalk: <span class="white-text">{{packet.DriverControls.PushToTalk}}</span></p>
+                  <p>Horn: <span class="white-text">{{packet.DriverControls.Horn}}</span></p>
+                  <p>Reset: <span class="white-text">{{packet.DriverControls.Reset}}</span></p>
+                </td>
+                <td *ngIf="showMotorFaults">
+                  <div *ngFor="let motorFault of packet.MotorFaults; let motorFaultsIndex = index">
+                    <p>Motor Faults {{ motorFaultsIndex }}</p>
+                    <ul>
+                      <li>ErrorFlags:
+                        <ul class="second-list">
+                          <li>MotorOverSpeed: <span class="white-text">{{motorFault.ErrorFlags.MotorOverSpeed}}</span></li>
+                          <li>SoftwareOverCurrent: <span class="white-text">{{motorFault.ErrorFlags.SoftwareOverCurrent}}</span></li>
+                          <li>DcBusOverVoltage: <span class="white-text">{{motorFault.ErrorFlags.DcBusOverVoltage}}</span></li>
+                          <li>BadMotorPositionHallSequence: <span class="white-text">{{motorFault.ErrorFlags.BadMotorPositionHallSequence}}</span></li>
+                          <li>WatchdogCausedLastReset: <span class="white-text">{{motorFault.ErrorFlags.WatchdogCausedLastReset}}</span></li>
+                          <li>ConfigReadError: <span class="white-text">{{motorFault.ErrorFlags.ConfigReadError}}</span></li>
+                          <li>Wail15VUnderVoltageLockOut: <span class="white-text">{{motorFault.ErrorFlags.Wail15VUnderVoltageLockOut}}</span></li>
+                          <li>DesaturationFault: <span class="white-text">{{motorFault.ErrorFlags.DesaturationFault}}</span></li>
+                        </ul>
+                      </li>
+                      <li>LimitFlags:
+                        <ul class="second-list">
+                          <li>OutputVoltagePwm: <span class="white-text">{{motorFault.LimitFlags.OutputVoltagePwm}}</span></li>
+                          <li>MotorCurrent: <span class="white-text">{{motorFault.LimitFlags.MotorCurrent}}</span></li>
+                          <li>Velocity: <span class="white-text">{{motorFault.LimitFlags.Velocity}}</span></li>
+                          <li>BusCurrent: <span class="white-text">{{motorFault.LimitFlags.BusCurrent}}</span></li>
+                          <li>BusVoltageUpper: <span class="white-text">{{motorFault.LimitFlags.BusVoltageUpper}}</span></li>
+                          <li>BusVoltageLower: <span class="white-text">{{motorFault.LimitFlags.BusVoltageLower}}</span></li>
+                          <li>IpmOrMotorTemperature: <span class="white-text">{{motorFault.LimitFlags.IpmOrMotorTemperature}}</span></li>
+                        </ul>
+                      </li>
+                      <li>RxErrorCount: <span class="white-text">{{motorFault.RxErrorCount}}</span></li>
+                      <li>TxErrorCount: <span class="white-text">{{motorFault.TxErrorCount}}</span></li>
+                    </ul>
+                  </div>
+                </td>
+                <td *ngIf="showBatteryFaults">
+                  <p>Error Flags</p>
+                  <ul>
+                    <li>InternalCommunicationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalCommunicationFault}}</span></li>
+                    <li>InternalConversionFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalConversionFault}}</span></li>
+                    <li>WeakCellFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakCellFault}}</span></li>
+                    <li>LowCellVoltageFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.LowCellVoltageFault}}</span></li>
+                    <li>OpenWiringFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.OpenWiringFault}}</span></li>
+                    <li>CurrentSensorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.CurrentSensorFault}}</span></li>
+                    <li>PackVoltageSensorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.PackVoltageSensorFault}}</span></li>
+                    <li>WeakPackFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakPackFault}}</span></li>
+                    <li>VoltageRedundancyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.VoltageRedundancyFault}}</span></li>
+                    <li>FanMonitorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.FanMonitorFault}}</span></li>
+                    <li>ThermistorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ThermistorFault}}</span></li>
+                    <li>CANBUSCommunicationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.CANBUSCommunicationsFault}}</span></li>
+                    <li>AlwaysOnSupplyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.AlwaysOnSupplyFault}}</span></li>
+                    <li>HighVoltageIsolationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.HighVoltageIsolationFault}}</span></li>
+                    <li>12vPowerSupplyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags['12vPowerSupplyFault']}}</span></li>
+                    <li>ChargeLimitEnforcementFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault}}</span></li>
+                    <li>DischargeLimitEnforcementFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.DischargeLimitEnforcementFault}}</span></li>
+                    <li>ChargerSafetyRelayFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargerSafetyRelayFault}}</span></li>
+                    <li>InternalMemoryFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalMemoryFault}}</span></li>
+                    <li>InternalThermistorsFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalThermistorsFault}}</span></li>
+                    <li>InternalLogicFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalLogicFault}}</span></li>
                   </ul>
-              </td>
-              <td *ngIf="showMotorDetails">
-                  <ul *ngFor="let motorDetail of packet.MotorDetails">
-                    <li>PhaseCCurrent: <span class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
-                    <li>PhaseBCurrent: <span class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
-                    <li>MotorVoltageReal: <span class="white-text">{{motorDetail.MotorVoltageReal}}</span></li>
-                    <li>MotorVoltageImaginary: <span class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
-                    <li>MotorCurrentReal: <span class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
-                    <li>MotorCurrentImaginary: <span class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
-                    <li>BackEmf: <span class="white-text">{{motorDetail.BackEmf}}</span></li>
-                    <li>VoltageRail15VSupply: <span class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
-                    <li>VoltageRail3VSupply: <span class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
-                    <li>VoltageRail1VSupply: <span class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
-                    <li>HeatSinkTemp: <span class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
-                    <li>MotorTemp: <span class="white-text">{{motorDetail.MotorTemp}}</span></li>
-                    <li>DspBoardTemp: <span class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
-                    <li>DcBusAmpHours: <span class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
-                    <li>Odometer: <span class="white-text">{{motorDetail.Odometer}}</span></li>
-                    <li>SlipSpeed: <span class="white-text">{{motorDetail.SlipSpeed}}</span></li>
+                  <p>Limit Flags</p>
+                  <ul>
+                    <li>DclReducedDueToLowSoc: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToLowSoc}}</span></li>
+                    <li>DclReducedDueToHighCellResistance: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToHighCellResistance}}</span></li>
+                    <li>DclReducedDueToTemperature: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToTemperature}}</span></li>
+                    <li>DclReducedDueToLowCellVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToLowCellVoltage}}</span></li>
+                    <li>DclReducedDueToLowPackVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToLowPackVoltage}}</span></li>
+                    <li>DclAndCclReducedDueToVoltageFailsafe: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclandCclReducedDueToVoltageFailsafe}}</span></li>
+                    <li>DclAndCclReducedDueToCommunicationFailsafe: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclandCclReducedDueToCommunicationFailsafe}}</span></li>
+                    <li>CclReducedDueToHighSoc: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighSoc}}</span></li>
+                    <li>CclReducedDueToHighCellResistance: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighCellResistance}}</span></li>
+                    <li>CclReducedDueToTemperature: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToTemperature}}</span></li>
+                    <li>CclReducedDueToHighCellVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighCellVoltage}}</span></li>
+                    <li>CclReducedDueToHighPackVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighPackVoltage}}</span></li>
+                    <li>CclReducedDueToChargerLatch: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToChargerLatch}}</span></li>
+                    <li>CclReducedDueToAlternateCurrentLimit: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToAlternateCurrentLimit}}</span></li>
                   </ul>
-              </td>
-              <td *ngIf="showDriverControls">
-                <ul>
-                  <li>Alive: <span class="white-text">{{packet.DriverControls.Alive}}</span></li>
-                  <li>HeadlightsOff: <span class="white-text">{{packet.DriverControls.HeadlightsOff}}</span></li>
-                  <li>HeadlightsLow: <span class="white-text">{{packet.DriverControls.HeadlightsLow}}</span></li>
-                  <li>HeadlightsHigh: <span class="white-text">{{packet.DriverControls.HeadlightsHigh}}</span></li>
-                  <li>SignalRight: <span class="white-text">{{packet.DriverControls.SignalRight}}</span></li>
-                  <li>SignalLeft: <span class="white-text">{{packet.DriverControls.SignalLeft}}</span></li>
-                  <li>Hazard: <span class="white-text">{{packet.DriverControls.Hazard}}</span></li>
-                  <li>Interior: <span class="white-text">{{packet.DriverControls.Interior}}</span></li>
-                  <li>Aux: <span class="white-text">{{packet.DriverControls.Aux}}</span></li>
-                  <li>VolumeUp: <span class="white-text">{{packet.DriverControls.VolumeUp}}</span></li>
-                  <li>VolumeDown: <span class="white-text">{{packet.DriverControls.VolumeDown}}</span></li>
-                  <li>NextSong: <span class="white-text">{{packet.DriverControls.NextSong}}</span></li>
-                  <li>PrevSong: <span class="white-text">{{packet.DriverControls.PrevSong}}</span></li>
-                  <li>Acceleration: <span class="white-text">{{packet.DriverControls.Acceleration}}</span></li>
-                  <li>RegenBraking: <span class="white-text">{{packet.DriverControls.RegenBraking}}</span></li>
-                  <li>Brakes: <span class="white-text">{{packet.DriverControls.Brakes}}</span></li>
-                  <li>Forward: <span class="white-text">{{packet.DriverControls.Forward}}</span></li>
-                  <li>Reverse: <span class="white-text">{{packet.DriverControls.Reverse}}</span></li>
-                  <li>PushToTalk: <span class="white-text">{{packet.DriverControls.PushToTalk}}</span></li>
-                  <li>Horn: <span class="white-text">{{packet.DriverControls.Horn}}</span></li>
-                  <li>Reset: <span class="white-text">{{packet.DriverControls.Reset}}</span></li>
-                </ul>
-              </td>
-              <td *ngIf="showMotorFaults">
-                <ul *ngFor="let motorFault of packet.MotorFaults">
-                  <li>ErrorFlags:
-                    <ul>
-                      <li>MotorOverSpeed: <span class="white-text">{{motorFault.ErrorFlags.MotorOverSpeed}}</span></li>
-                      <li>SoftwareOverCurrent: <span class="white-text">{{motorFault.ErrorFlags.SoftwareOverCurrent}}</span></li>
-                      <li>DcBusOverVoltage: <span class="white-text">{{motorFault.ErrorFlags.DcBusOverVoltage}}</span></li>
-                      <li>BadMotorPositionHallSequence: <span class="white-text">{{motorFault.ErrorFlags.BadMotorPositionHallSequence}}</span></li>
-                      <li>WatchdogCausedLastReset: <span class="white-text">{{motorFault.ErrorFlags.WatchdogCausedLastReset}}</span></li>
-                      <li>ConfigReadError: <span class="white-text">{{motorFault.ErrorFlags.ConfigReadError}}</span></li>
-                      <li>Wail15VUnderVoltageLockOut: <span class="white-text">{{motorFault.ErrorFlags.Wail15VUnderVoltageLockOut}}</span></li>
-                      <li>DesaturationFault: <span class="white-text">{{motorFault.ErrorFlags.DesaturationFault}}</span></li>
-                    </ul>
-                  </li>
-                  <li>LimitFlags:
-                    <ul>
-                      <li>OutputVoltagePwm: <span class="white-text">{{motorFault.LimitFlags.OutputVoltagePwm}}</span></li>
-                      <li>MotorCurrent: <span class="white-text">{{motorFault.LimitFlags.MotorCurrent}}</span></li>
-                      <li>Velocity: <span class="white-text">{{motorFault.LimitFlags.Velocity}}</span></li>
-                      <li>BusCurrent: <span class="white-text">{{motorFault.LimitFlags.BusCurrent}}</span></li>
-                      <li>BusVoltageUpper: <span class="white-text">{{motorFault.LimitFlags.BusVoltageUpper}}</span></li>
-                      <li>BusVoltageLower: <span class="white-text">{{motorFault.LimitFlags.BusVoltageLower}}</span></li>
-                      <li>IpmOrMotorTemperature: <span class="white-text">{{motorFault.LimitFlags.IpmOrMotorTemperature}}</span></li>
-                    </ul>
-                  </li>
-                  <li>RxErrorCount: <span class="white-text">{{motorFault.RxErrorCount}}</span></li>
-                  <li>TxErrorCount: <span class="white-text">{{motorFault.TxErrorCount}}</span></li>
-                </ul>
-              </td>
-              <td *ngIf="showBatteryFaults">
-                <ul>
-                  <li>ErrorFlags
-                    <ul>
-                      <li>InternalCommunicationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalCommunicationFault}}</span></li>
-                      <li>InternalConversionFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalConversionFault}}</span></li>
-                      <li>WeakCellFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakCellFault}}</span></li>
-                      <li>LowCellVoltageFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.LowCellVoltageFault}}</span></li>
-                      <li>OpenWiringFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.OpenWiringFault}}</span></li>
-                      <li>CurrentSensorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.CurrentSensorFault}}</span></li>
-                      <li>PackVoltageSensorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.PackVoltageSensorFault}}</span></li>
-                      <li>WeakPackFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakPackFault}}</span></li>
-                      <li>VoltageRedundancyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.VoltageRedundancyFault}}</span></li>
-                      <li>FanMonitorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.FanMonitorFault}}</span></li>
-                      <li>ThermistorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ThermistorFault}}</span></li>
-                      <li>CANBUSCommunicationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.CANBUSCommunicationsFault}}</span></li>
-                      <li>AlwaysOnSupplyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.AlwaysOnSupplyFault}}</span></li>
-                      <li>HighVoltageIsolationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.HighVoltageIsolationFault}}</span></li>
-                      <li>12vPowerSupplyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags['12vPowerSupplyFault']}}</span></li>
-                      <li>ChargeLimitEnforcementFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault}}</span></li>
-                      <li>DischargeLimitEnforcementFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.DischargeLimitEnforcementFault}}</span></li>
-                      <li>ChargerSafetyRelayFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargerSafetyRelayFault}}</span></li>
-                      <li>InternalMemoryFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalMemoryFault}}</span></li>
-                      <li>InternalThermistorsFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalThermistorsFault}}</span></li>
-                      <li>InternalLogicFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalLogicFault}}</span></li>
-                    </ul>
-                  </li>
-                  <li>LimitFlags
-                    <ul>
-                      <li>DclReducedDueToLowSoc: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToLowSoc}}</span></li>
-                      <li>DclReducedDueToHighCellResistance: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToHighCellResistance}}</span></li>
-                      <li>DclReducedDueToTemperature: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToTemperature}}</span></li>
-                      <li>DclReducedDueToLowCellVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToLowCellVoltage}}</span></li>
-                      <li>DclReducedDueToLowPackVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclReducedDueToLowPackVoltage}}</span></li>
-                      <li>DclAndCclReducedDueToVoltageFailsafe: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclandCclReducedDueToVoltageFailsafe}}</span></li>
-                      <li>DclAndCclReducedDueToCommunicationFailsafe: <span class="white-text">{{packet.BatteryFaults.LimitFlags.DclandCclReducedDueToCommunicationFailsafe}}</span></li>
-                      <li>CclReducedDueToHighSoc: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighSoc}}</span></li>
-                      <li>CclReducedDueToHighCellResistance: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighCellResistance}}</span></li>
-                      <li>CclReducedDueToTemperature: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToTemperature}}</span></li>
-                      <li>CclReducedDueToHighCellVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighCellVoltage}}</span></li>
-                      <li>CclReducedDueToHighPackVoltage: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToHighPackVoltage}}</span></li>
-                      <li>CclReducedDueToChargerLatch: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToChargerLatch}}</span></li>
-                      <li>CclReducedDueToAlternateCurrentLimit: <span class="white-text">{{packet.BatteryFaults.LimitFlags.CclReducedDueToAlternateCurrentLimit}}</span></li>
-                    </ul>
-                  </li>
-                </ul>
-              </td>
-              <td *ngIf="showBattery">
-                <ul>
-                  <li>Alive: <span class="white-text">{{packet.Battery.Alive}}</span></li>
-                  <li>BMSRelayStatusFlags:
+                </td>
+                <td *ngIf="showBattery">
+                    <p>Alive: <span class="white-text">{{packet.Battery.Alive}}</span></p>
+                    <p>BMSRelayStatusFlags:</p>
                     <ul>
                       <li>DischargeRelayEnabled: <span class="white-text">{{packet.Battery.BMSRelayStatusFlags.DischargeRelayEnabled}}</span></li>
                       <li>ChargeRelayEnabled: <span class="white-text">{{packet.Battery.BMSRelayStatusFlags.ChargeRelayEnabled}}</span></li>
@@ -224,66 +227,63 @@
                       <li>IsReadySignalStatus: <span class="white-text">{{packet.Battery.BMSRelayStatusFlags.IsReadySignalStatus}}</span></li>
                       <li>IsChargingSignalStatus: <span class="white-text">{{packet.Battery.BMSRelayStatusFlags.IsChargingSignalStatus}}</span></li>
                     </ul>
-                  </li>
-                  <li>PopulatedCells: <span class="white-text">{{packet.Battery.PopulatedCells}}</span></li>
-                  <li>12vInputVoltage: <span class="white-text">{{packet.Battery['12vInputVoltage']}}</span></li>
-                  <li>FanVoltage: <span class="white-text">{{packet.Battery.FanVoltage}}</span></li>
-                  <li>PackCurrent: <span class="white-text">{{packet.Battery.PackCurrent}}</span></li>
-                  <li>PackVoltage: <span class="white-text">{{packet.Battery.PackVoltage}}</span></li>
-                  <li>PackStateOfCharge: <span class="white-text">{{packet.Battery.PackStateOfCharge}}</span></li>
-                  <li>PackAmphours: <span class="white-text">{{packet.Battery.PackAmphours}}</span></li>
-                  <li>PackDepthOfDischarge: <span class="white-text">{{packet.Battery.PackDepthOfDischarge}}</span></li>
-                  <li>HighTemperature: <span class="white-text">{{packet.Battery.HighTemperature}}</span></li>
-                  <li>HighThermistorId: <span class="white-text">{{packet.Battery.HighThermistorId}}</span></li>
-                  <li>LowTemperature: <span class="white-text">{{packet.Battery.LowTemperature}}</span></li>
-                  <li>LowThermistorId: <span class="white-text">{{packet.Battery.LowThermistorId}}</span></li>
-                  <li>AverageTemperature: <span class="white-text">{{packet.Battery.AverageTemperature}}</span></li>
-                  <li>InternalTemperature: <span class="white-text">{{packet.Battery.InternalTemperature}}</span></li>
-                  <li>FanSpeed: <span class="white-text">{{packet.Battery.FanSpeed}}</span></li>
-                  <li>RequestedFanSpeed: <span class="white-text">{{packet.Battery.RequestedFanSpeed}}</span></li>
-                  <li>LowCellVoltage: <span class="white-text">{{packet.Battery.LowCellVoltage}}</span></li>
-                  <li>LowCellVoltageId: <span class="white-text">{{packet.Battery.LowCellVoltageId}}</span></li>
-                  <li>HighCellVoltage: <span class="white-text">{{packet.Battery.HighCellVoltage}}</span></li>
-                  <li>HighCellVoltageId: <span class="white-text">{{packet.Battery.HighCellVoltageId}}</span></li>
-                  <li>AverageCellVoltage: <span class="white-text">{{packet.Battery.AverageCellVoltage}}</span></li>
-                </ul>
-              </td>
-              <td *ngIf="showCcs">
-                Ccs Alive: <span class="white-text">{{packet.Ccs.CcsAlive}}</span>
-              </td>
-              <td *ngIf="showMppt">
-                <ul *ngFor="let mppt of packet.MPPT">
-                  <li>Alive: <span class="white-text">{{mppt.Alive}}</span></li>
-                  <li>ArrayVoltage: <span class="white-text">{{mppt.ArrayVoltage}}</span></li>
-                  <li>ArrayCurrent: <span class="white-text">{{mppt.ArrayCurrent}}</span></li>
-                  <li>BatteryVoltage: <span class="white-text">{{mppt.BatteryVoltage}}</span></li>
-                  <li>Temperature: <span class="white-text">{{mppt.Temperature}}</span></li>
-                </ul>
-              </td>
-              <td *ngIf="showLights">
-                <ul>
-                  <li>LowBeams: <span class="white-text">{{packet.Lights.LowBeams}}</span></li>
-                  <li>HighBeams: <span class="white-text">{{packet.Lights.HighBeams}}</span></li>
-                  <li>Brakes: <span class="white-text">{{packet.Lights.Brakes}}</span></li>
-                  <li>LeftSignal: <span class="white-text">{{packet.Lights.LeftSignal}}</span></li>
-                  <li>RightSignal: <span class="white-text">{{packet.Lights.RightSignal}}</span></li>
-                  <li>BmsStrobeLight: <span class="white-text">{{packet.Lights.BmsStrobeLight}}</span></li>
-                  <li>Alive: <span class="white-text">{{packet.Lights.Alive}}</span></li>
-                </ul>
-              </td>
-          </tr>
-          </tbody>
-        </table>
+                    <p>PopulatedCells: <span class="white-text">{{packet.Battery.PopulatedCells}}</span></p>
+                    <p>12vInputVoltage: <span class="white-text">{{packet.Battery['12vInputVoltage']}}</span></p>
+                    <p>FanVoltage: <span class="white-text">{{packet.Battery.FanVoltage}}</span></p>
+                    <p>PackCurrent: <span class="white-text">{{packet.Battery.PackCurrent}}</span></p>
+                    <p>PackVoltage: <span class="white-text">{{packet.Battery.PackVoltage}}</span></p>
+                    <p>PackStateOfCharge: <span class="white-text">{{packet.Battery.PackStateOfCharge}}</span></p>
+                    <p>PackAmphours: <span class="white-text">{{packet.Battery.PackAmphours}}</span></p>
+                    <p>PackDepthOfDischarge: <span class="white-text">{{packet.Battery.PackDepthOfDischarge}}</span></p>
+                    <p>HighTemperature: <span class="white-text">{{packet.Battery.HighTemperature}}</span></p>
+                    <p>HighThermistorId: <span class="white-text">{{packet.Battery.HighThermistorId}}</span></p>
+                    <p>LowTemperature: <span class="white-text">{{packet.Battery.LowTemperature}}</span></p>
+                    <p>LowThermistorId: <span class="white-text">{{packet.Battery.LowThermistorId}}</span></p>
+                    <p>AverageTemperature: <span class="white-text">{{packet.Battery.AverageTemperature}}</span></p>
+                    <p>InternalTemperature: <span class="white-text">{{packet.Battery.InternalTemperature}}</span></p>
+                    <p>FanSpeed: <span class="white-text">{{packet.Battery.FanSpeed}}</span></p>
+                    <p>RequestedFanSpeed: <span class="white-text">{{packet.Battery.RequestedFanSpeed}}</span></p>
+                    <p>LowCellVoltage: <span class="white-text">{{packet.Battery.LowCellVoltage}}</span></p>
+                    <p>LowCellVoltageId: <span class="white-text">{{packet.Battery.LowCellVoltageId}}</span></p>
+                    <p>HighCellVoltage: <span class="white-text">{{packet.Battery.HighCellVoltage}}</span></p>
+                    <p>HighCellVoltageId: <span class="white-text">{{packet.Battery.HighCellVoltageId}}</span></p>
+                    <p>AverageCellVoltage: <span class="white-text">{{packet.Battery.AverageCellVoltage}}</span></p>
+                </td>
+                <td *ngIf="showCcs">
+                  Ccs Alive: <span class="white-text">{{packet.Ccs.CcsAlive}}</span>
+                </td>
+                <td *ngIf="showMppt">
+                  <div *ngFor="let mppt of packet.MPPT; let mpptIndex = index">
+                    <p>MPPT {{ mpptIndex }}</p>
+                    <ul>
+                      <li>Alive: <span class="white-text">{{mppt.Alive}}</span></li>
+                      <li>ArrayVoltage: <span class="white-text">{{mppt.ArrayVoltage}}</span></li>
+                      <li>ArrayCurrent: <span class="white-text">{{mppt.ArrayCurrent}}</span></li>
+                      <li>BatteryVoltage: <span class="white-text">{{mppt.BatteryVoltage}}</span></li>
+                      <li>Temperature: <span class="white-text">{{mppt.Temperature}}</span></li>
+                    </ul>
+                  </div>
+                </td>
+                <td *ngIf="showLights">
+                    <p>LowBeams: <span class="white-text">{{packet.Lights.LowBeams}}</span></p>
+                    <p>HighBeams: <span class="white-text">{{packet.Lights.HighBeams}}</span></p>
+                    <p>Brakes: <span class="white-text">{{packet.Lights.Brakes}}</span></p>
+                    <p>LeftSignal: <span class="white-text">{{packet.Lights.LeftSignal}}</span></p>
+                    <p>RightSignal: <span class="white-text">{{packet.Lights.RightSignal}}</span></p>
+                    <p>BmsStrobeLight: <span class="white-text">{{packet.Lights.BmsStrobeLight}}</span></p>
+                    <p>Alive: <span class="white-text">{{packet.Lights.Alive}}</span></p>
+                </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pages" *ngIf="packets != undefined && packets.length > 0">
+          <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
+          <p class="white-text page-number">{{ page }}</p>
+          <button class="page-btn yasss-text" (click)="nextPage()">→</button>
+        </div>
       </div>
 
-<<<<<<< HEAD
-      <div class="pages" *ngIf="packets != undefined && packets.length > 0">
-        <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
-        <p class="white-text" style="margin: auto;">{{ page }}</p>
-        <button class="page-btn yasss-text" (click)="nextPage()">→</button>
-      </div>
-
-=======
->>>>>>> master
     </body>
 </html>
