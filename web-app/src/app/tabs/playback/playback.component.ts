@@ -49,9 +49,9 @@ export class PlaybackComponent {
       .subscribe((result: INewTelemetryData[]) => {
           this.downloadedPacketText = JSON.stringify(result);
           this.packets = result;
-          this.openSnackBar("Loaded data", "Dismiss", "mat-accent");
+          this.openSnackBar('Loaded data', 'Dismiss', 'mat-accent');
       }, (err) => {
-        this.openSnackBar("Error Loading Data", "Dismiss", "mat-warn");
+        this.openSnackBar('Error Loading Data', 'Dismiss', 'mat-warn');
         console.log(err);
       });
 
