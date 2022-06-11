@@ -5,12 +5,17 @@ const logger = require('morgan');
 const app = express();
 const db = require('./scripts/database');
 const cors = require('cors');
-const { config } = require('bluebird');
+const config = require('./config');
 
 // Used to parse POST data from Angular app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cors( { origin: 'http://localhost:4200' } ));
+if(config.isProd) {
+  app.use(cors( { origin: 'http://telemetry.calgarysolarcar.ca' } ));
+}
+else {
+  app.use(cors( { origin: 'http://localhost:4200' } ));
+}
 app.use(logger('combined'));
 //app.use(express.static(path.join(__dirname, '../web-app/dist')));
 
