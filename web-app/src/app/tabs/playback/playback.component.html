@@ -58,25 +58,25 @@
               <td *ngIf="showAuxBms">
                   <li>AllowCharge: <span class="white-text">{{packet.AuxBms.AllowCharge}}</span></li>
                   <li>AllowDischarge: <span class="white-text">{{packet.AuxBms.AllowDischarge}}</span></li>
-                  <li>AuxBmsAlive: <span class="white-text">{{packet.AuxBms.AuxBmsAlive}}</span></li>
-                  <li>AuxVoltage: <span class="white-text">{{packet.AuxBms.AuxVoltage}}</span></li>
-                  <li>ChargeContactorError: <span class="white-text">{{packet.AuxBms.ChargeContactorError}}</span></li>
-                  <li>ChargeOpenButShouldBeClosed: <span class="white-text">{{packet.AuxBms.ChargeOpenButShouldBeClosed}}</span></li>
+                  <li>AuxBmsAlive: <span [style.color]="getPropertyStyling('AuxBms.AuxBmsAlive', packet.AuxBms.AuxBmsAlive)" class="white-text">{{packet.AuxBms.AuxBmsAlive}}</span></li>
+                  <li>AuxVoltage: <span [style.color]="getPropertyStyling('AuxBms.AuxVoltage', packet.AuxBms.AuxVoltage)" class="white-text">{{packet.AuxBms.AuxVoltage}}</span></li>
+                  <li>ChargeContactorError: <span [style.color]="getPropertyStyling('AuxBms.ChargeContactorError', packet.AuxBms.ChargeContactorError)" class="white-text">{{packet.AuxBms.ChargeContactorError}}</span></li>
+                  <li>ChargeOpenButShouldBeClosed: <span [style.color]="getPropertyStyling('AuxBms.ChargeOpenButShouldBeClosed', packet.AuxBms.ChargeOpenButShouldBeClosed)" class="white-text">{{packet.AuxBms.ChargeOpenButShouldBeClosed}}</span></li>
                   <li>ChargeShouldTrip: <span class="white-text">{{packet.AuxBms.ChargeShouldTrip}}</span></li>
-                  <li>ChargeTripDueToHighCellVoltage: <span class="white-text">{{packet.AuxBms.ChargeTripDueToHighCellVoltage}}</span></li>
-                  <li>ChargeTripDueToHighTemperatureAndCurrent: <span class="white-text">{{packet.AuxBms.ChargeTripDueToHighTemperatureAndCurrent}}</span></li>
-                  <li>ChargeTripDueToPackCurrent: <span class="white-text">{{packet.AuxBms.ChargeTripDueToPackCurrent}}</span></li>
-                  <li>CommonContactorError: <span class="white-text">{{packet.AuxBms.CommonContactorError}}</span></li>
-                  <li>DischargeContactorError: <span class="white-text">{{packet.AuxBms.DischargeContactorError}}</span></li>
-                  <li>DischargeOpenButShouldBeClosed: <span class="white-text">{{packet.AuxBms.DischargeOpenButShouldBeClosed}}</span></li>
+                  <li>ChargeTripDueToHighCellVoltage: <span [style.color]="getPropertyStyling('AuxBms.ChargeTripDueToHighCellVoltage', packet.AuxBms.ChargeTripDueToHighCellVoltage)" class="white-text">{{packet.AuxBms.ChargeTripDueToHighCellVoltage}}</span></li>
+                  <li>ChargeTripDueToHighTemperatureAndCurrent: <span [style.color]="getPropertyStyling('AuxBms.ChargeTripDueToHighTemperatureAndCurrent', packet.AuxBms.ChargeTripDueToHighTemperatureAndCurrent)" class="white-text">{{packet.AuxBms.ChargeTripDueToHighTemperatureAndCurrent}}</span></li>
+                  <li>ChargeTripDueToPackCurrent: <span [style.color]="getPropertyStyling('AuxBms.ChargeTripDueToPackCurrent', packet.AuxBms.ChargeTripDueToPackCurrent)"class="white-text">{{packet.AuxBms.ChargeTripDueToPackCurrent}}</span></li>
+                  <li>CommonContactorError: <span [style.color]="getPropertyStyling('AuxBms.CommonContactorError', packet.AuxBms.CommonContactorError)" class="white-text">{{packet.AuxBms.CommonContactorError}}</span></li>
+                  <li>DischargeContactorError: <span [style.color]="getPropertyStyling('AuxBms.DischargeContactorError', packet.AuxBms.DischargeContactorError)" class="white-text">{{packet.AuxBms.DischargeContactorError}}</span></li>
+                  <li>DischargeOpenButShouldBeClosed: <span [style.color]="getPropertyStyling('AuxBms.DischargeOpenButShouldBeClosed', packet.AuxBms.DischargeOpenButShouldBeClosed)" class="white-text">{{packet.AuxBms.DischargeOpenButShouldBeClosed}}</span></li>
                   <li>DischargeShouldTrip: <span class="white-text">{{packet.AuxBms.DischargeShouldTrip}}</span></li>
-                  <li>DischargeTripDueToHighTemperatureAndCurrent: <span class="white-text">{{packet.AuxBms.DischargeTripDueToHighTemperatureAndCurrent}}</span></li>
-                  <li>DischargeTripDueToLowCellVoltage: <span class="white-text">{{packet.AuxBms.DischargeTripDueToLowCellVoltage}}</span></li>
-                  <li>DischargeTripDueToPackCurrent: <span class="white-text">{{packet.AuxBms.DischargeTripDueToPackCurrent}}</span></li>
+                  <li>DischargeTripDueToHighTemperatureAndCurrent: <span [style.color]="getPropertyStyling('AuxBms.DischargeTripDueToHighTemperatureAndCurrent', packet.AuxBms.DischargeTripDueToHighTemperatureAndCurrent)" class="white-text">{{packet.AuxBms.DischargeTripDueToHighTemperatureAndCurrent}}</span></li>
+                  <li>DischargeTripDueToLowCellVoltage: <span [style.color]="getPropertyStyling('AuxBms.DischargeTripDueToLowCellVoltage', packet.AuxBms.DischargeTripDueToLowCellVoltage)" class="white-text">{{packet.AuxBms.DischargeTripDueToLowCellVoltage}}</span></li>
+                  <li>DischargeTripDueToPackCurrent: <span [style.color]="getPropertyStyling('AuxBms.DischargeTripDueToPackCurrent', packet.AuxBms.DischargeTripDueToPackCurrent)" class="white-text">{{packet.AuxBms.DischargeTripDueToPackCurrent}}</span></li>
                   <li>HighVoltageEnableState: <span class="white-text">{{packet.AuxBms.HighVoltageEnableState}}</span></li>
                   <li>OrionCANReceivedRecently: <span class="white-text">{{packet.AuxBms.OrionCANReceivedRecently}}</span></li>
                   <li>PrechargeState: <span class="white-text">{{packet.AuxBms.PrechargeState}}</span></li>
-                  <li>ProtectionTrip: <span class="white-text">{{packet.AuxBms.ProtectionTrip}}</span></li>
+                  <li>ProtectionTrip: <span [style.color]="getPropertyStyling('AuxBms.ProtectionTrip', packet.AuxBms.ProtectionTrip)" class="white-text">{{packet.AuxBms.ProtectionTrip}}</span></li>
                   <li>StrobeBmsLight: <span class="white-text">{{packet.AuxBms.StrobeBmsLight}}</span></li>
               </td>
               <td *ngIf="showKeyMotor">
@@ -84,27 +84,26 @@
                     <li>Alive: <span class="white-text">{{keyMotor.Alive}}</span></li>
                     <li>SetCurrent: <span class="white-text">{{keyMotor.SetCurrent}}</span></li>
                     <li>SetVelocity: <span class="white-text">{{keyMotor.SetVelocity}}</span></li>
-                    <li>BusCurrent: <span class="white-text">{{keyMotor.BusCurrent}}</span></li>
-                    <li>BusVoltage: <span class="white-text">{{keyMotor.BusVoltage}}</span></li>
+                    <li>BusCurrent: <span [style.color]="getPropertyStyling('KeyMotor.BusCurrent', keyMotor.BusCurrent)" class="white-text">{{keyMotor.BusCurrent}}</span></li>
+                    <li>BusVoltage: <span [style.color]="getPropertyStyling('KeyMotor.BusVoltage', keyMotor.BusVoltage)" class="white-text">{{keyMotor.BusVoltage}}</span></li>
                     <li>VehicleVelocity: <span class="white-text">{{keyMotor.VehicleVelocity}}</span></li>
                   </ul>
               </td>
               <td *ngIf="showMotorDetails">
                   <ul *ngFor="let motorDetail of packet.MotorDetails">
-                    <li>PhaseCCurrent: <span class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
-                    <li>PhaseBCurrent: <span class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
-                    <li>MotorVoltageReal: <span class="white-text">{{motorDetail.MotorVoltageReal}}</span></li>
-                    <li>MotorVoltageImaginary: <span class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
-                    <li>MotorCurrentReal: <span class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
-                    <li>MotorCurrentImaginary: <span class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
-                    <li>BackEmf: <span class="white-text">{{motorDetail.BackEmf}}</span></li>
-                    <li>VoltageRail15VSupply: <span class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
-                    <li>VoltageRail3VSupply: <span class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
-                    <li>VoltageRail1VSupply: <span class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
-                    <li>HeatSinkTemp: <span class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
-                    <li>MotorTemp: <span class="white-text">{{motorDetail.MotorTemp}}</span></li>
-                    <li>DspBoardTemp: <span class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
-                    <li>DcBusAmpHours: <span class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
+                    <li>PhaseCCurrent: <span [style.color]="getPropertyStyling('MotorDetails.PhaseCCurrent', MotorDetails.PhaseCCurrent)" class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
+                    <li>PhaseBCurrent: <span [style.color]="getPropertyStyling('MotorDetails.PhaseBCurrent', MotorDetails.PhaseBCurrent)" class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
+                    <li>MotorVoltageImaginary: <span [style.color]="getPropertyStyling('MotorDetails.MotorVoltageImaginary', MotorDetails.MotorVoltageImaginary)" class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
+                    <li>MotorCurrentReal: <span [style.color]="getPropertyStyling('MotorDetails.MotorCurrentReal', MotorDetails.MotorCurrentReal)" class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
+                    <li>MotorCurrentImaginary: <span [style.color]="getPropertyStyling('MotorDetails.MotorCurrentImaginary', MotorDetails.MotorCurrentImaginary)" class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
+                    <li>BackEmf: <span [style.color]="getPropertyStyling('MotorDetails.BackEmf', MotorDetails.BackEmf)" class="white-text">{{motorDetail.BackEmf}}</span></li>
+                    <li>VoltageRail15VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail15VSupply', MotorDetails.VoltageRail15VSupply)" class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
+                    <li>VoltageRail3VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail3VSupply', MotorDetails.VoltageRail3VSupply)" class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
+                    <li>VoltageRail1VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail1VSupply', MotorDetails.VoltageRail1VSupply)" class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
+                    <li>HeatSinkTemp: <span [style.color]="getPropertyStyling('MotorDetails.HeatSinkTemp', MotorDetails.HeatSinkTemp)" class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
+                    <li>MotorTemp: <span [style.color]="getPropertyStyling('MotorDetails.MotorTemp', MotorDetails.MotorTemp)" class="white-text">{{motorDetail.MotorTemp}}</span></li>
+                    <li>DspBoardTemp: <span [style.color]="getPropertyStyling('MotorDetails.DspBoardTemp', MotorDetails.DspBoardTemp)" class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
+                    <li>DcBusAmpHours: <span [style.color]="getPropertyStyling('MotorDetails.DcBusAmpHours', MotorDetails.DcBusAmpHours)" class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
                     <li>Odometer: <span class="white-text">{{motorDetail.Odometer}}</span></li>
                     <li>SlipSpeed: <span class="white-text">{{motorDetail.SlipSpeed}}</span></li>
                   </ul>
@@ -276,14 +275,11 @@
         </table>
       </div>
 
-<<<<<<< HEAD
       <div class="pages" *ngIf="packets != undefined && packets.length > 0">
         <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
         <p class="white-text" style="margin: auto;">{{ page }}</p>
         <button class="page-btn yasss-text" (click)="nextPage()">→</button>
       </div>
 
-=======
->>>>>>> master
     </body>
 </html>
