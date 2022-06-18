@@ -91,19 +91,19 @@
               </td>
               <td *ngIf="showMotorDetails">
                   <ul *ngFor="let motorDetail of packet.MotorDetails">
-                    <li>PhaseCCurrent: <span [style.color]="getPropertyStyling('MotorDetails.PhaseCCurrent', MotorDetails.PhaseCCurrent)" class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
-                    <li>PhaseBCurrent: <span [style.color]="getPropertyStyling('MotorDetails.PhaseBCurrent', MotorDetails.PhaseBCurrent)" class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
-                    <li>MotorVoltageImaginary: <span [style.color]="getPropertyStyling('MotorDetails.MotorVoltageImaginary', MotorDetails.MotorVoltageImaginary)" class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
-                    <li>MotorCurrentReal: <span [style.color]="getPropertyStyling('MotorDetails.MotorCurrentReal', MotorDetails.MotorCurrentReal)" class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
-                    <li>MotorCurrentImaginary: <span [style.color]="getPropertyStyling('MotorDetails.MotorCurrentImaginary', MotorDetails.MotorCurrentImaginary)" class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
-                    <li>BackEmf: <span [style.color]="getPropertyStyling('MotorDetails.BackEmf', MotorDetails.BackEmf)" class="white-text">{{motorDetail.BackEmf}}</span></li>
-                    <li>VoltageRail15VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail15VSupply', MotorDetails.VoltageRail15VSupply)" class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
-                    <li>VoltageRail3VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail3VSupply', MotorDetails.VoltageRail3VSupply)" class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
-                    <li>VoltageRail1VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail1VSupply', MotorDetails.VoltageRail1VSupply)" class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
-                    <li>HeatSinkTemp: <span [style.color]="getPropertyStyling('MotorDetails.HeatSinkTemp', MotorDetails.HeatSinkTemp)" class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
-                    <li>MotorTemp: <span [style.color]="getPropertyStyling('MotorDetails.MotorTemp', MotorDetails.MotorTemp)" class="white-text">{{motorDetail.MotorTemp}}</span></li>
-                    <li>DspBoardTemp: <span [style.color]="getPropertyStyling('MotorDetails.DspBoardTemp', MotorDetails.DspBoardTemp)" class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
-                    <li>DcBusAmpHours: <span [style.color]="getPropertyStyling('MotorDetails.DcBusAmpHours', MotorDetails.DcBusAmpHours)" class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
+                    <li>PhaseBCurrent: <span [style.color]="getPropertyStyling('MotorDetails.PhaseBCurrent', motorDetails.PhaseBCurrent)" class="white-text">{{motorDetail.PhaseBCurrent}}</span></li>
+                    <li>PhaseCCurrent: <span [style.color]="getPropertyStyling('MotorDetails.PhaseCCurrent', motorDetails.PhaseCCurrent)" class="white-text">{{motorDetail.PhaseCCurrent}}</span></li>
+                    <li>MotorVoltageImaginary: <span [style.color]="getPropertyStyling('MotorDetails.MotorVoltageImaginary', motorDetails.MotorVoltageImaginary)" class="white-text">{{motorDetail.MotorVoltageImaginary}}</span></li>
+                    <li>MotorCurrentReal: <span [style.color]="getPropertyStyling('MotorDetails.MotorCurrentReal', motorDetails.MotorCurrentReal)" class="white-text">{{motorDetail.MotorCurrentReal}}</span></li>
+                    <li>MotorCurrentImaginary: <span [style.color]="getPropertyStyling('MotorDetails.MotorCurrentImaginary', motorDetails.MotorCurrentImaginary)" class="white-text">{{motorDetail.MotorCurrentImaginary}}</span></li>
+                    <li>BackEmf: <span [style.color]="getPropertyStyling('MotorDetails.BackEmf', motorDetails.BackEmf)" class="white-text">{{motorDetail.BackEmf}}</span></li>
+                    <li>VoltageRail15VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail15VSupply', motorDetails.VoltageRail15VSupply)" class="white-text">{{motorDetail.VoltageRail15VSupply}}</span></li>
+                    <li>VoltageRail3VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail3VSupply', motorDetails.VoltageRail3VSupply)" class="white-text">{{motorDetail.VoltageRail3VSupply}}</span></li>
+                    <li>VoltageRail1VSupply: <span [style.color]="getPropertyStyling('MotorDetails.VoltageRail1VSupply', motorDetails.VoltageRail1VSupply)" class="white-text">{{motorDetail.VoltageRail1VSupply}}</span></li>
+                    <li>HeatSinkTemp: <span [style.color]="getPropertyStyling('MotorDetails.HeatSinkTemp', motorDetails.HeatSinkTemp)" class="white-text">{{motorDetail.HeatSinkTemp}}</span></li>
+                    <li>MotorTemp: <span [style.color]="getPropertyStyling('MotorDetails.MotorTemp', motorDetails.MotorTemp)" class="white-text">{{motorDetail.MotorTemp}}</span></li>
+                    <li>DspBoardTemp: <span [style.color]="getPropertyStyling('MotorDetails.DspBoardTemp', motorDetails.DspBoardTemp)" class="white-text">{{motorDetail.DspBoardTemp}}</span></li>
+                    <li>DcBusAmpHours: <span [style.color]="getPropertyStyling('MotorDetails.DcBusAmpHours', motorDetails.DcBusAmpHours)" class="white-text">{{motorDetail.DcBusAmpHours}}</span></li>
                     <li>Odometer: <span class="white-text">{{motorDetail.Odometer}}</span></li>
                     <li>SlipSpeed: <span class="white-text">{{motorDetail.SlipSpeed}}</span></li>
                   </ul>
@@ -137,14 +137,14 @@
                 <ul *ngFor="let motorFault of packet.MotorFaults">
                   <li>ErrorFlags:
                     <ul>
-                      <li>MotorOverSpeed: <span class="white-text">{{motorFault.ErrorFlags.MotorOverSpeed}}</span></li>
-                      <li>SoftwareOverCurrent: <span class="white-text">{{motorFault.ErrorFlags.SoftwareOverCurrent}}</span></li>
-                      <li>DcBusOverVoltage: <span class="white-text">{{motorFault.ErrorFlags.DcBusOverVoltage}}</span></li>
-                      <li>BadMotorPositionHallSequence: <span class="white-text">{{motorFault.ErrorFlags.BadMotorPositionHallSequence}}</span></li>
-                      <li>WatchdogCausedLastReset: <span class="white-text">{{motorFault.ErrorFlags.WatchdogCausedLastReset}}</span></li>
-                      <li>ConfigReadError: <span class="white-text">{{motorFault.ErrorFlags.ConfigReadError}}</span></li>
-                      <li>Wail15VUnderVoltageLockOut: <span class="white-text">{{motorFault.ErrorFlags.Wail15VUnderVoltageLockOut}}</span></li>
-                      <li>DesaturationFault: <span class="white-text">{{motorFault.ErrorFlags.DesaturationFault}}</span></li>
+                      <li>MotorOverSpeed: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.MotorOverSpeed', motorFaults.ErrorFlags.MotorOverSpeed)" class="white-text">{{motorFault.ErrorFlags.MotorOverSpeed}}</span></li>
+                      <li>SoftwareOverCurrent: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.SoftwareOverCurrent', motorFaults.ErrorFlags.SoftwareOverCurrent)" class="white-text">{{motorFault.ErrorFlags.SoftwareOverCurrent}}</span></li>
+                      <li>DcBusOverVoltage: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.DcBusOverVoltage', motorFaults.ErrorFlags.DcBusOverVoltage)" class="white-text">{{motorFault.ErrorFlags.DcBusOverVoltage}}</span></li>
+                      <li>BadMotorPositionHallSequence: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.BadMotorPositionHallSequence', motorFault.ErrorFlags.BadMotorPositionHallSequence)" class="white-text">{{motorFault.ErrorFlags.BadMotorPositionHallSequence}}</span></li>
+                      <li>WatchdogCausedLastReset: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.WatchdogCausedLastReset', motorFaults.ErrorFlags.WatchdogCausedLastReset)" class="white-text">{{motorFault.ErrorFlags.WatchdogCausedLastReset}}</span></li>
+                      <li>ConfigReadError: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.ConfigReadError', motorFaults.ErrorFlags.ConfigReadError)" class="white-text">{{motorFault.ErrorFlags.ConfigReadError}}</span></li>
+                      <li>Wail15VUnderVoltageLockOut: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.Wail15VUnderVoltageLockOut', motorFaults.ErrorFlags.Wail15VUnderVoltageLockOut)" class="white-text">{{motorFault.ErrorFlags.Wail15VUnderVoltageLockOut}}</span></li>
+                      <li>DesaturationFault: <span [style.color]="getPropertyStyling('MotorFaults.ErrorFlags.DesaturationFault', motorFaults.ErrorFlags.DesaturationFault)" class="white-text">{{motorFault.ErrorFlags.DesaturationFault}}</span></li>
                     </ul>
                   </li>
                   <li>LimitFlags:
@@ -166,27 +166,27 @@
                 <ul>
                   <li>ErrorFlags
                     <ul>
-                      <li>InternalCommunicationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalCommunicationFault}}</span></li>
-                      <li>InternalConversionFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalConversionFault}}</span></li>
-                      <li>WeakCellFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakCellFault}}</span></li>
-                      <li>LowCellVoltageFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.LowCellVoltageFault}}</span></li>
-                      <li>OpenWiringFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.OpenWiringFault}}</span></li>
-                      <li>CurrentSensorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.CurrentSensorFault}}</span></li>
-                      <li>PackVoltageSensorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.PackVoltageSensorFault}}</span></li>
-                      <li>WeakPackFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakPackFault}}</span></li>
-                      <li>VoltageRedundancyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.VoltageRedundancyFault}}</span></li>
-                      <li>FanMonitorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.FanMonitorFault}}</span></li>
-                      <li>ThermistorFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ThermistorFault}}</span></li>
-                      <li>CANBUSCommunicationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.CANBUSCommunicationsFault}}</span></li>
-                      <li>AlwaysOnSupplyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.AlwaysOnSupplyFault}}</span></li>
-                      <li>HighVoltageIsolationFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.HighVoltageIsolationFault}}</span></li>
-                      <li>12vPowerSupplyFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags['12vPowerSupplyFault']}}</span></li>
-                      <li>ChargeLimitEnforcementFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault}}</span></li>
-                      <li>DischargeLimitEnforcementFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.DischargeLimitEnforcementFault}}</span></li>
-                      <li>ChargerSafetyRelayFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargerSafetyRelayFault}}</span></li>
-                      <li>InternalMemoryFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalMemoryFault}}</span></li>
-                      <li>InternalThermistorsFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalThermistorsFault}}</span></li>
-                      <li>InternalLogicFault: <span class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalLogicFault}}</span></li>
+                      <li>InternalCommunicationFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.InternalCommunicationFault', packet.BatteryFaults.ErrorFlags.InternalCommunicationFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalCommunicationFault}}</span></li>
+                      <li>InternalConversionFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.InternalConversionFault', packet.BatteryFaults.ErrorFlags.InternalConversionFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalConversionFault}}</span></li>
+                      <li>WeakCellFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.WeakCellFault', packet.BatteryFaults.ErrorFlags.WeakCellFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakCellFault}}</span></li>
+                      <li>LowCellVoltageFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.LowCellVoltageFault', packet.BatteryFaults.ErrorFlags.LowCellVoltageFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.LowCellVoltageFault}}</span></li>
+                      <li>OpenWiringFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.OpenWiringFault', packet.BatteryFaults.ErrorFlags.OpenWiringFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.OpenWiringFault}}</span></li>
+                      <li>CurrentSensorFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.CurrentSensorFault', packet.BatteryFaults.ErrorFlags.CurrentSensorFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.CurrentSensorFault}}</span></li>
+                      <li>PackVoltageSensorFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.PackVoltageSensorFault', packet.BatteryFaults.ErrorFlags.PackVoltageSensorFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.PackVoltageSensorFault}}</span></li>
+                      <li>WeakPackFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.WeakPackFault', packet.BatteryFaults.ErrorFlags.WeakPackFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.WeakPackFault}}</span></li>
+                      <li>VoltageRedundancyFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.VoltageRedundancyFault', packet.BatteryFaults.ErrorFlags.VoltageRedundancyFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.VoltageRedundancyFault}}</span></li>
+                      <li>FanMonitorFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.FanMonitorFault', packet.BatteryFaults.ErrorFlags.FanMonitorFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.FanMonitorFault}}</span></li>
+                      <li>ThermistorFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.ThermistorFault', packet.BatteryFaults.ErrorFlags.ThermistorFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.ThermistorFault}}</span></li>
+                      <li>CANBUSCommunicationFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.CANBUSCommunicationFault', packet.BatteryFaults.ErrorFlags.CANBUSCommunicationsFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.CANBUSCommunicationsFault}}</span></li>
+                      <li>AlwaysOnSupplyFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.AlwaysOnSupplyFault', packet.BatteryFaults.ErrorFlags.AlwaysOnSupplyFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.AlwaysOnSupplyFault}}</span></li>
+                      <li>HighVoltageIsolationFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.HighVoltageIsolationFault', packet.BatteryFaults.ErrorFlags.HighVoltageIsolationFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.HighVoltageIsolationFault}}</span></li>
+                      <li>12vPowerSupplyFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.12vPowerSupplyFault', packet.BatteryFaults.ErrorFlags['12vPowerSupplyFault'])" class="white-text">{{packet.BatteryFaults.ErrorFlags['12vPowerSupplyFault']}}</span></li>
+                      <li>ChargeLimitEnforcementFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault', packet.BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault}}</span></li>
+                      <li>DischargeLimitEnforcementFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.DischargeLimitEnforcementFault', packet.BatteryFaults.ErrorFlags.DischargeLimitEnforcementFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.DischargeLimitEnforcementFault}}</span></li>
+                      <li>ChargerSafetyRelayFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.ChargerSafetyRelayFault', packet.BatteryFaults.ErrorFlags.ChargerSafetyRelayFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.ChargerSafetyRelayFault}}</span></li>
+                      <li>InternalMemoryFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.InternalMemoryFault', packet.BatteryFaults.ErrorFlags.InternalMemoryFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalMemoryFault}}</span></li>
+                      <li>InternalThermistorsFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.InternalThermistorsFault', packet.BatteryFaults.ErrorFlags.InternalThermistorsFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalThermistorsFault}}</span></li>
+                      <li>InternalLogicFault: <span [style.color]="getPropertyStyling('BatteryFaults.ErrorFlags.InternalLogicFault', packet.BatteryFaults.ErrorFlags.InternalLogicFault)" class="white-text">{{packet.BatteryFaults.ErrorFlags.InternalLogicFault}}</span></li>
                     </ul>
                   </li>
                   <li>LimitFlags

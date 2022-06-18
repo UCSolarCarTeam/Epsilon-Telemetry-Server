@@ -167,6 +167,39 @@ export class PlaybackComponent {
           return 'red';
         }
         break;
+      case 'MotorFauls.ErrorFlags.MotorOverSpeed':
+      case 'MotorFauls.ErrorFlags.SoftwareOverCurrent':
+      case 'MotorFauls.ErrorFlags.DcBusOverVoltage':
+      case 'MotorFauls.ErrorFlags.BadMotorPositionHallSequence':
+      case 'MotorFauls.ErrorFlags.WatchdogCausedLastReset':
+      case 'MotorFauls.ErrorFlags.ConfigReadError':
+      case 'MotorFauls.ErrorFlags.Wail15VUnderVoltageLockOut':
+      case 'MotorFauls.ErrorFlags.DesaturationFault':
+      case 'BatteryFaults.ErrorFlags.InternalCommunicationFault':
+      case 'BatteryFaults.ErrorFlags.InternalConversionFault':
+      case 'BatteryFaults.ErrorFlags.WeakCellFault':
+      case 'BatteryFaults.ErrorFlags.LowCellVoltageFault':
+      case 'BatteryFaults.ErrorFlags.OpenWiringFault':
+      case 'BatteryFaults.ErrorFlags.CurrentSensorFault':
+      case 'BatteryFaults.ErrorFlags.PackVoltageSensorFault':
+      case 'BatteryFaults.ErrorFlags.WeakPackFault':
+      case 'BatteryFaults.ErrorFlags.VoltageRedundancyFault':
+      case 'BatteryFaults.ErrorFlags.FanMonitorFault':
+      case 'BatteryFaults.ErrorFlags.ThermistorFault':
+      case 'BatteryFaults.ErrorFlags.CANBUSCommunicationFault':
+      case 'BatteryFaults.ErrorFlags.AlwaysOnSupplyFault':
+      case 'BatteryFaults.ErrorFlags.HighVoltageIsolationFault':
+      case 'BatteryFaults.ErrorFlags.12vPowerSupplyFault':
+      case 'BatteryFaults.ErrorFlags.ChargeLimitEnforcementFault':
+      case 'BatteryFaults.ErrorFlags.DischargeLimitEnforcementFault':
+      case 'BatteryFaults.ErrorFlags.ChargerSafetyRelayFault':
+      case 'BatteryFaults.ErrorFlags.InternalMemoryFault':
+      case 'BatteryFaults.ErrorFlags.InternalThermistorsFault':
+      case 'BatteryFaults.ErrorFlags.InternalLogicFault':
+        if (value) {
+          return 'red';
+        }
+        break;
     }
     return 'white';
   }
