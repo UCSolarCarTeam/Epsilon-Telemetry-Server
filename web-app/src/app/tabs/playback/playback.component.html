@@ -1,26 +1,31 @@
 <html>
     <body>
       <form [formGroup]="findPacketsForm" (ngSubmit)="onPacketDownloadButton()" novalidate>
-        <label class="white-text form-spacing" for="startTime">Start:</label>
-        <input id="startTime" formControlName="startTime" type="datetime-local" required>
-        <label class="white-text form-spacing" for="endTime">End:</label>
-        <input id="endTime" formControlName="endTime" type="datetime-local" required>
-        <button id="packetDownloadButton" class="form-spacing" type="submit" >Load Packet Data</button>
+        <div class="center">
+          <label class="date-label" for="startTime">Start Date:</label>
+          <input id="startTime" formControlName="startTime" type="datetime-local" required>
+          <label class="date-label" for="endTime">End Date:</label>
+          <input id="endTime" formControlName="endTime" type="datetime-local" required>
+        </div>
+        <button mat-raised-button id="packetDownloadButton" 
+        class="form-spacing submit-btn center" type="submit">
+        Load Packet Data
+        </button>
       </form>
 
-      <ul class="white-text">
-        <li>Timestamp <input type="checkbox" [(ngModel)]="showTimeStamp"></li>
-        <li>Packet Title <input type="checkbox" [(ngModel)]="showPacketTitle"></li>
-        <li>Aux Bms <input type="checkbox" [(ngModel)]="showAuxBms"></li>
-        <li>Key Motor <input type="checkbox" [(ngModel)]="showKeyMotor"></li>
-        <li>Motor Details <input type="checkbox" [(ngModel)]="showMotorDetails"></li>
-        <li>Driver Controls <input type="checkbox" [(ngModel)]="showDriverControls"></li>
-        <li>Motor Faults <input type="checkbox" [(ngModel)]="showMotorFaults"></li>
-        <li>Battery Faults <input type="checkbox" [(ngModel)]="showBatteryFaults"></li>
-        <li>Battery <input type="checkbox" [(ngModel)]="showBattery"></li>
-        <li>Ccs <input type="checkbox" [(ngModel)]="showCcs"></li>
-        <li>Mppt <input type="checkbox" [(ngModel)]="showMppt"></li>
-        <li>Lights <input type="checkbox" [(ngModel)]="showLights"></li>
+      <ul class="white-text playback-checkboxes">
+        <li><label>Timestamp <input type="checkbox" [(ngModel)]="showTimeStamp"></label></li>
+        <li><label>Packet Title <input type="checkbox" [(ngModel)]="showPacketTitle"></label></li>
+        <li><label>Aux Bms <input type="checkbox" [(ngModel)]="showAuxBms"></label></li>
+        <li><label>Key Motor <input type="checkbox" [(ngModel)]="showKeyMotor"></label></li>
+        <li><label>Motor Details <input type="checkbox" [(ngModel)]="showMotorDetails"></label></li>
+        <li><label>Driver Controls <input type="checkbox" [(ngModel)]="showDriverControls"></label></li>
+        <li><label>Motor Faults <input type="checkbox" [(ngModel)]="showMotorFaults"></label></li>
+        <li><label>Battery Faults <input type="checkbox" [(ngModel)]="showBatteryFaults"></label></li>
+        <li><label>Battery <input type="checkbox" [(ngModel)]="showBattery"></label></li>
+        <li><label>Ccs <input type="checkbox" [(ngModel)]="showCcs"></label></li>
+        <li><label>Mppt <input type="checkbox" [(ngModel)]="showMppt"></label></li>
+        <li><label>Lights <input type="checkbox" [(ngModel)]="showLights"></label></li>
       </ul>
 
       <div *ngIf="showTable">

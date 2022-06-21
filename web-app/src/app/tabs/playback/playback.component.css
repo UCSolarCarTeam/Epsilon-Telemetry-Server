@@ -98,6 +98,19 @@ tr:nth-child(2n) {
   display: none;
 }
 
+input[type="datetime-local"] {
+  padding: 5px 8px;
+  margin: 15px 5px;
+  display: inline-block;
+  border: 1px solid rgb(50, 50, 50);
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: large;
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+
 .small-font {
   font-size: x-small;
 }
@@ -129,4 +142,44 @@ tr:nth-child(2n) {
 
 .page-btn:disabled {
   color: grey;
+}
+
+.playback-checkboxes{
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+  user-select: none;
+}
+
+.playback-checkboxes li{
+  border-radius: 4px;
+  padding:3px;
+  margin:5px;
+  margin-left:10px;
+  display: inline-block;
+  background-color: rgb(255,255,255,0.1);
+}
+
+.playback-checkboxes li:hover{
+  background-color: rgb(255,255,255,0.3);
+}
+
+.submit-btn {
+  margin: auto;
+}
+
+.date-label {
+  color: white;
+  margin: 0 10px;
+  border-bottom: #c2185b;
+  border-bottom-style: solid;
+  font-size: large;
+}
+
+.center {
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }

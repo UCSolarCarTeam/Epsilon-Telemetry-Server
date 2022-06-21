@@ -22,13 +22,12 @@ wss.on('connection', function(ws, req) {
     .catch((err) => {
       ws.send({error: errors.SELECT_ERROR});
     });
-  // db.laps()
-  // .then((laps) => {
-  //   for (let lap = laps.length - 1; lap >= 0; --lap) {
-  //     laps[lap]['msgType'] = 'lap';
-  //     ws.send(JSON.stringify(laps[lap]));
-  //   }
-  // });
+  db.laps()
+  .then((laps) => {
+    laps.forEach(lap => {
+      ws.send(JSON.stringify(lap));
+    })
+  });
 });
 
 wss.broadcast = function broadcast(data) {
