@@ -33,10 +33,11 @@ export class PlaybackComponent {
   public showCcs = false;
   public showMppt = false;
   public showLights = false;
+  public showTable = false;
 
   constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder, private snackBar: MatSnackBar) {
     this.findPacketsForm = this.formBuilder.group({
-      startTime: [environment.production ? '' : '2022-04-30T15:42'],
+      startTime: [environment.production ? '' : '2022-04-30T15:41'],
       endTime: [environment.production ? '' : '2022-04-30T15:42'],
     });
   }
@@ -45,17 +46,17 @@ export class PlaybackComponent {
     this.startTime = new Date(this.findPacketsForm.get('startTime').value);
     this.endTime = new Date(this.findPacketsForm.get('endTime').value);
 
-      this.apiService.get(
-        `getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}&page=${this.page}`)
-      .subscribe((result: INewTelemetryData[]) => {
-          this.downloadedPacketText = JSON.stringify(result);
-          this.packets = result;
-          this.openSnackBar('Loaded data', 'Dismiss', 'mat-accent');
-      }, (err) => {
-        this.openSnackBar('Error Loading Data', 'Dismiss', 'mat-warn');
-        console.log(err);
-      });
-
+    this.apiService.get(
+      `getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}&page=${this.page}`)
+    .subscribe((result: INewTelemetryData[]) => {
+        this.downloadedPacketText = JSON.stringify(result);
+        this.packets = result;
+        this.showTable = true;
+        this.openSnackBar('Loaded data', 'Dismiss', 'mat-accent');
+    }, (err) => {
+      this.openSnackBar('Error Loading Data', 'Dismiss', 'mat-warn');
+      console.log(err);
+    });
   }
 
   previousPage() {
