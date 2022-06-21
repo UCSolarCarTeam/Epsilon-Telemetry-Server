@@ -11,7 +11,7 @@ td {
 
 td {
   color: white;
-  font-size: medium;
+  font-size: small;
   vertical-align: top;
   padding: 0.75em;
   border: 3px solid rgb(60, 60, 60);
@@ -30,7 +30,7 @@ td:last-child {
 th {
   background-color: rgb(25, 25, 25);
   color: white;
-  font-size: large;
+  font-size: medium;
   padding: 0.75em;
   position: sticky;
   top: 0;
