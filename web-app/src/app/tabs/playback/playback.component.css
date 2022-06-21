@@ -15,11 +15,16 @@ input[type="checkbox"] {
 }
 
 input[type="datetime-local"] {
-  padding: 12px, 20px;
-  margin: 8px 0;
+  padding: 5px 8px;
+  margin: 15px 5px;
+  display: inline-block;
+  border: 1px solid rgb(50, 50, 50);
+  border-radius: 4px;
   box-sizing: border-box;
-  font-size: large;
   text-align: center;
+  font-size: large;
+  background-color: rgb(50, 50, 50);
+  color: white;
 }
 
 .small-font {
@@ -87,7 +92,6 @@ input[type="datetime-local"] {
   border-bottom: #c2185b;
   border-bottom-style: solid;
   font-size: large;
-  background-color: rgb(255,255,255,0.1);
 }
 
 .center {
