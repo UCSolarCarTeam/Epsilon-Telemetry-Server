@@ -1,7 +1,8 @@
 module.exports.getAveragePackCurrent = function(packetArray) {
     let totalPackCurrent = 0;
     for (let i = 0; i < packetArray.length; ++i) {
-        totalPackCurrent += packetArray[i].packcurrent;
+        //totalPackCurrent += packetArray[i].packcurrent;
+        totalPackCurrent += packetArray[i].Battery.PackCurrent;
     }
     const averagePackCurrent = totalPackCurrent / packetArray.length;
     return Number(averagePackCurrent.toFixed(2));
@@ -36,22 +37,22 @@ const checkIfMotorReset = function(motorOdometer, motorDistanceTraveledSession) 
     return motorReset;
 };
 
-const calculateMotorDistance = function(packetArray, odometer) {
+const calculateMotorDistance = function(packetArray, odometerIndex) {
     // The Motor's Odometer resets every time a motor trips or the car power cycles
     let totalDistanceTraveled = 0;
     let motorDistanceTraveledSession = 0;
 
     for (let i = 0; i < packetArray.length; i++) {
         // Check if the motor had reset, keep a tally of the distance travelled
-        if (checkIfMotorReset(packetArray[i][odometer], motorDistanceTraveledSession)) {
+        if (checkIfMotorReset(packetArray[i].MotorDetails[odometerIndex].Odometer, motorDistanceTraveledSession)) {
             totalDistanceTraveled += motorDistanceTraveledSession;
         }
 
-        motorDistanceTraveledSession = packetArray[i][odometer];
+        motorDistanceTraveledSession = packetArray[i].MotorDetails[odometerIndex].Odometer;
     }
     totalDistanceTraveled += motorDistanceTraveledSession;
     // Remove the initial distance
-    totalDistanceTraveled -= packetArray[0][odometer];
+    totalDistanceTraveled -= packetArray[0].MotorDetails[odometerIndex].Odometer;
     // Convert to kilometers (odometer reports as meters)
     totalDistanceTraveled /= 1000;
 
@@ -64,8 +65,8 @@ module.exports.getDistanceTraveled = function(packetArray) {
     // Reverse the array so we can iterate it in chronological order
     // slice is used to make a shallow copy - packetArray is reversed only in this function
     let chronologicalArray = packetArray.slice(0).reverse();
-    let motor0DistanceTravelledTotal = calculateMotorDistance(chronologicalArray, 'motor0odometer');
-    let motor1DistanceTravelledTotal = calculateMotorDistance(chronologicalArray, 'motor1odometer');
+    let motor0DistanceTravelledTotal = calculateMotorDistance(chronologicalArray, 0);
+    let motor1DistanceTravelledTotal = calculateMotorDistance(chronologicalArray, 1);
 
     return (motor0DistanceTravelledTotal + motor1DistanceTravelledTotal) / 2;
 };
@@ -85,8 +86,10 @@ module.exports.getAveragePowerIn = function(packetArray) {
         let arrayPower = 0;
         for (let mppt = 0; mppt < mpptCount; mppt++) {
             // Array Power = Array Voltage * Array Current
-            arrayPower += packet['mppt' + mppt + 'arrayvoltage'] *
-                          packet['mppt' + mppt + 'arraycurrent'];
+            // arrayPower += packet['mppt' + mppt + 'arrayvoltage'] *
+            //               packet['mppt' + mppt + 'arraycurrent'];
+            arrayPower += packet.Mppt[mppt].ArrayVoltage *
+                        packet.Mppt[mppt].ArrayCurrent;
         }
         return arrayPower;
     }).reduce((sum, curr) => sum + (curr / packetArray.length), 0);
@@ -95,8 +98,10 @@ module.exports.getAveragePowerIn = function(packetArray) {
     let regenPowerIn = packetArray.map((packet) => {
         let regen = 0;
         for (let motor = 0; motor < motorCount; motor++) {
-            let busCurrent = packet['motor' + motor + 'buscurrent'];
-            let busVoltage = packet['motor' + motor + 'busvoltage'];
+            // let busCurrent = packet['motor' + motor + 'buscurrent'];
+            // let busVoltage = packet['motor' + motor + 'busvoltage'];
+            let busCurrent = packet.KeyMotor[motor].BusCurrent;
+            let busVoltage = packet.KeyMotor[motor].BusVoltage;
 
             // Filter out any values with busCurrent >= 0
             if (busCurrent >= 0) {
@@ -117,7 +122,8 @@ module.exports.getAveragePowerOut = function(packetArray) {
         return 0;
     }
 
-    return Math.abs(packetArray.reduce((sum, curr) => sum + (curr.packcurrent * curr.packvoltage), 0) / packetArray.length);
+    return Math.abs(packetArray.reduce((sum, curr) => 
+    sum + (curr.Battery.PackCurrent * curr.Battery.PackVoltage), 0) / packetArray.length);
 };
 
 module.exports.getAverageSpeed = function(packetArray) {
@@ -126,5 +132,6 @@ module.exports.getAverageSpeed = function(packetArray) {
         return 0;
     }
 
-    return Math.abs(packetArray.reduce((sum, curr) => sum + (curr.motor0vehiclevelocity + curr.motor1vehiclevelocity) / 2, 0) / packetArray.length);
+    return Math.abs(packetArray.reduce((sum, curr) => 
+    sum + (curr.KeyMotor[0].VehicleVelocity + curr.KeyMotor[1].VehicleVelocity) / 2, 0) / packetArray.length);
 };
