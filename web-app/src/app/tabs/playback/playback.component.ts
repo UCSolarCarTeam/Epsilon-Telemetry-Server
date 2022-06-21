@@ -37,7 +37,7 @@ export class PlaybackComponent {
 
   constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder, private snackBar: MatSnackBar) {
     this.findPacketsForm = this.formBuilder.group({
-      startTime: [environment.production ? '' : '2022-04-30T15:42'],
+      startTime: [environment.production ? '' : '2022-04-30T15:41'],
       endTime: [environment.production ? '' : '2022-04-30T15:42'],
     });
   }

@@ -74,7 +74,8 @@ input[type="checkbox"] {
   background-color: black;
   overflow-x:auto;
   white-space: nowrap;
-  height: 100vh;
+  height: 80vh;
+  height: calc(100vh - 150px);
   max-width: 1163px;
 }
 
