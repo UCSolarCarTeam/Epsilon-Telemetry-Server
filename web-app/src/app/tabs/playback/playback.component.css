@@ -14,6 +14,19 @@ input[type="checkbox"] {
   accent-color: #c2185b;
 }
 
+input[type="datetime-local"] {
+  padding: 5px 8px;
+  margin: 15px 5px;
+  display: inline-block;
+  border: 1px solid rgb(50, 50, 50);
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: large;
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+
 .small-font {
   font-size: x-small;
 }
@@ -64,6 +77,25 @@ input[type="checkbox"] {
   display: inline-block;
   background-color: rgb(255,255,255,0.1);
 }
+
 .playback-checkboxes li:hover{
   background-color: rgb(255,255,255,0.3);
+}
+
+.submit-btn {
+  margin: auto;
+}
+
+.date-label {
+  color: white;
+  margin: 0 10px;
+  border-bottom: #c2185b;
+  border-bottom-style: solid;
+  font-size: large;
+}
+
+.center {
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }

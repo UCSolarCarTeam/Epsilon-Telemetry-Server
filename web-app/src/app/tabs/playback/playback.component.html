@@ -1,11 +1,16 @@
 <html>
     <body>
       <form [formGroup]="findPacketsForm" (ngSubmit)="onPacketDownloadButton()" novalidate>
-        <label class="white-text form-spacing" for="startTime">Start:</label>
-        <input id="startTime" formControlName="startTime" type="datetime-local" required>
-        <label class="white-text form-spacing" for="endTime">End:</label>
-        <input id="endTime" formControlName="endTime" type="datetime-local" required>
-        <button id="packetDownloadButton" class="form-spacing" type="submit" >Load Packet Data</button>
+        <div class="center">
+          <label class="date-label" for="startTime">Start Date:</label>
+          <input id="startTime" formControlName="startTime" type="datetime-local" required>
+          <label class="date-label" for="endTime">End Date:</label>
+          <input id="endTime" formControlName="endTime" type="datetime-local" required>
+        </div>
+        <button mat-raised-button id="packetDownloadButton" 
+        class="form-spacing submit-btn center" type="submit">
+        Load Packet Data
+        </button>
       </form>
 
       <ul class="white-text playback-checkboxes">
@@ -277,14 +282,11 @@
         </table>
       </div>
 
-<<<<<<< HEAD
       <div class="pages" *ngIf="packets != undefined && packets.length > 0">
         <button class="page-btn yasss-text" [disabled]="page < 2" (click)="previousPage()">←</button>
         <p class="white-text" style="margin: auto;">{{ page }}</p>
         <button class="page-btn yasss-text" (click)="nextPage()">→</button>
       </div>
 
-=======
->>>>>>> master
     </body>
 </html>

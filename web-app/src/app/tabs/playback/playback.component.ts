@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { INewTelemetryData } from 'app/_objects/interfaces/new-telemetry-data.interface';
 import { ApiHttpService } from 'app/_services/api-http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { environment } from 'environments/environment';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -35,8 +36,8 @@ export class PlaybackComponent {
 
   constructor(private apiService: ApiHttpService, private formBuilder: FormBuilder, private snackBar: MatSnackBar) {
     this.findPacketsForm = this.formBuilder.group({
-      startTime: ['2022-04-30T15:42'],
-      endTime: ['2022-04-30T15:42'],
+      startTime: [environment.production ? '' : '2022-04-30T15:42'],
+      endTime: [environment.production ? '' : '2022-04-30T15:42'],
     });
   }
 
