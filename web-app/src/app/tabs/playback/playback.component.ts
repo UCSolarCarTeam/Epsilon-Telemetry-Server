@@ -45,10 +45,10 @@ export class PlaybackComponent {
 
     this.apiService.get(
       `getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}&page=${this.page}`)
-    .subscribe((result: INewTelemetryData[]) => {
+      .subscribe((result: INewTelemetryData[]) => {
         this.downloadedPacketText = JSON.stringify(result);
         this.packets = result;
-    });
+      });
   }
 
   previousPage() {
@@ -68,6 +68,10 @@ export class PlaybackComponent {
   getPropertyStyling(property: string, value) {
     switch (property) {
       case 'AuxBms.AuxBmsAlive':
+      case 'DriverControls.Alive':
+      case 'Ccs.Alive':
+      case 'Mppt.Alive':
+      case 'Battery.Alive':
         if (!value) {
           return 'red';
         }
@@ -98,72 +102,56 @@ export class PlaybackComponent {
         }
         break;
       case 'KeyMotor.BusVoltage':
-        if (value > 12.5 || value < 11.5) {
+        if (value > 130 || value < 78) {
           return 'red';
         }
         break;
-      case 'MotorDetails.PhaseCCurrent':
-        if (value > 12.5 || value < 11.5) {
-          return 'red';
-        }
-        break;
-      case 'MotorDetails.PhaseBCurrent':
-        if (value > 12.5 || value < 11.5) {
-          return 'red';
-        }
-        break;
-      case 'MotorDetails.MotorVoltageImaginary':
-        if (value > 12.5 || value < 11.5) {
-          return 'red';
-        }
-        break;
-      case 'MotorDetails.MotorCurrentReal':
-        if (value > 12.5 || value < 11.5) {
-          return 'red';
-        }
-        break;
-      case 'MotorDetails.MotorCurrentImaginary':
-        if (value > 12.5 || value < 11.5) {
-          return 'red';
-        }
-        break;
-      case 'MotorDetails.BackEmf':
-        if (value > 12.5 || value < 11.5) {
-          return 'red';
-        }
-        break;
+      // case 'MotorDetails.PhaseCCurrent':
+      //   if (value > 12.5 || value < 11.5) {
+      //     return 'red';
+      //   }
+      //   break;
+      // case 'MotorDetails.PhaseBCurrent':
+      //   if (value > 12.5 || value < 11.5) {
+      //     return 'red';
+      //   }
+      //   break;
+      // case 'MotorDetails.MotorCurrentReal':
+      //   if (value > 100 || value < -48) {
+      //     return 'red';
+      //   }
       case 'MotorDetails.VoltageRail15VSupply':
-        if (value > 12.5 || value < 11.5) {
+        if (value > 16 || value < 14) {
           return 'red';
         }
         break;
       case 'MotorDetails.VoltageRail3VSupply':
-        if (value > 12.5 || value < 11.5) {
+        if (value > 4 || value < 2) {
           return 'red';
         }
         break;
       case 'MotorDetails.VoltageRail1VSupply':
-        if (value > 12.5 || value < 11.5) {
+        if (value > 2 || value < 0.5) {
           return 'red';
         }
         break;
       case 'MotorDetails.HeatSinkTemp':
-        if (value > 12.5 || value < 11.5) {
+        if (value > 90 || value < 15) {
           return 'red';
         }
         break;
       case 'MotorDetails.MotorTemp':
-        if (value > 12.5 || value < 11.5) {
+        if (value > 90 || value < 15) {
           return 'red';
         }
         break;
       case 'MotorDetails.DspBoardTemp':
-        if (value > 12.5 || value < 11.5) {
+        if (value > 90 || value < 15) {
           return 'red';
         }
         break;
       case 'MotorDetails.DcBusAmpHours':
-        if (value > 12.5 || value < 11.5) {
+        if (value < 0) {
           return 'red';
         }
         break;
@@ -196,7 +184,77 @@ export class PlaybackComponent {
       case 'BatteryFaults.ErrorFlags.InternalMemoryFault':
       case 'BatteryFaults.ErrorFlags.InternalThermistorsFault':
       case 'BatteryFaults.ErrorFlags.InternalLogicFault':
-        if (value) {
+        if (value !== undefined && value) {
+          return 'red';
+        }
+        break;
+      case 'Mppt.ArrayVoltage':
+        if (value > 120 || value < 15) {
+          return 'red';
+        }
+        break;
+      case 'Mppt.ArrayCurrent':
+        if (value > 50 || value < 0) {
+          return 'red';
+        }
+        break;
+      case 'Mppt.BatteryVoltage':
+        if (value > 130 || value < 78) {
+          return 'red';
+        }
+        break;
+      case 'Mppt.Temperature':
+        if (value > 60 || value < 20) {
+          return 'red';
+        }
+        break;
+      case 'Battery.TwelveVoltInputVoltage':
+        if (value > 13 || value < 11) {
+          return 'red';
+        }
+        break;
+      case 'Battery.PackCurrent':
+        if (value > 230 || value < -50) {
+          return 'red';
+        }
+        break;
+      case 'Battery.PackVoltage':
+        if (value > 125 || value < 78) {
+          return 'red';
+        }
+        break;
+      case 'Battery.HighTemperature':
+        if (value > 60 || value < 20) {
+          return 'red';
+        }
+        break;
+      case 'Battery.LowTemperature':
+        if (value > 50 || value < 10) {
+          return 'red';
+        }
+        break;
+      case 'Battery.AverageTemperature':
+        if (value > 55 || value < 15) {
+          return 'red';
+        }
+        break;
+      case 'Battery.InternalTemperature':
+        if (value > 60 || value < 15) {
+          return 'red';
+        }
+        break;
+      case 'Battery.LowCellVoltage':
+        if (value > 4100 || value < 3900) {
+          return 'red';
+        }
+        break;
+      case 'Battery.HighCellVoltage':
+        if (value > 4100 || value < 3900) {
+          return 'red';
+        }
+        break;
+      case 'Battery.AverageCellVoltage':
+        if (value > 4100 || value < 3900) {
           return 'red';
         }
         break;
