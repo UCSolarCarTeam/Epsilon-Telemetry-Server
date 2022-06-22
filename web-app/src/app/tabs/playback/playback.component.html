@@ -3,9 +3,11 @@
       <form [formGroup]="findPacketsForm" (ngSubmit)="onPacketDownloadButton()" novalidate>
         <div class="center">
           <label class="date-label" for="startTime">Start Date:</label>
-          <input id="startTime" formControlName="startTime" type="datetime-local" required>
+          <input id="startTime" class="search-input" formControlName="startTime" type="datetime-local" required>
           <label class="date-label" for="endTime">End Date:</label>
-          <input id="endTime" formControlName="endTime" type="datetime-local" required>
+          <input id="endTime" class="search-input" formControlName="endTime" type="datetime-local" required>
+          <label class="date-label" for="pageSize">Page Size:</label>
+          <input id="pageSize" class="search-input" formControlName="pageSize" type="number">
         </div>
         <button mat-raised-button id="packetDownloadButton"
         class="form-spacing submit-btn center" type="submit">
@@ -35,7 +37,7 @@
           <button class="page-btn yasss-text" (click)="nextPage()">→</button>
         </div>
 
-      <div class="table-container">
+      <div class="table-container table-width">
         <table>
           <thead>
             <tr>
