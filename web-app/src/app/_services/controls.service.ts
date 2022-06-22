@@ -51,6 +51,6 @@ export class ControlsService {
     this.controls.signalRight = data.DriverControls.SignalRight;
     this.controls.volumeDown = data.DriverControls.VolumeDown;
     this.controls.volumeUp = data.DriverControls.VolumeUp;
-    this.controls.lap = false; // TODO: update this value
+    this.controls.lap = data.DriverControls.Lap;
   }
 }
