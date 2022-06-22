@@ -76,7 +76,18 @@ input[type="checkbox"] {
   white-space: nowrap;
   height: 80vh;
   height: calc(100vh - 150px);
-  max-width: 1163px;
+
+}
+
+.table-width {
+  max-width: calc(90vw - 600px);
+}
+
+@media(max-width: 1800px)
+{
+  .table-width {
+    max-width: 1167px;
+  }
 }
 
 tr {
@@ -99,7 +110,7 @@ tr:nth-child(2n) {
   display: none;
 }
 
-input[type="datetime-local"] {
+.search-input {
   padding: 5px 8px;
   margin: 15px 5px;
   display: inline-block;
@@ -110,6 +121,18 @@ input[type="datetime-local"] {
   font-size: large;
   background-color: rgb(50, 50, 50);
   color: white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .small-font {

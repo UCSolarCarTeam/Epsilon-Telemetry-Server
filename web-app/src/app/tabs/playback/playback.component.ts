@@ -20,6 +20,7 @@ export class PlaybackComponent {
 
   public startTime: Date = new Date();
   public endTime: Date = new Date();
+  public pageSize: Number = 10;
 
   public showTimeStamp = true;
   public showPacketTitle = true;
@@ -39,15 +40,20 @@ export class PlaybackComponent {
     this.findPacketsForm = this.formBuilder.group({
       startTime: [environment.production ? '' : '2022-04-30T15:41'],
       endTime: [environment.production ? '' : '2022-04-30T15:42'],
+      pageSize: this.pageSize
     });
   }
 
   onPacketDownloadButton() {
     this.startTime = new Date(this.findPacketsForm.get('startTime').value);
     this.endTime = new Date(this.findPacketsForm.get('endTime').value);
+    this.pageSize = this.findPacketsForm.get('pageSize').value;
 
     this.apiService.get(
-      `getPackets?startTime=${this.startTime.getTime()}&endTime=${this.endTime.getTime()}&page=${this.page}`)
+      `getPackets?startTime=${this.startTime.getTime()}
+      &endTime=${this.endTime.getTime()}
+      &page=${this.page}
+      &pageSize=${this.pageSize}`)
     .subscribe((result: INewTelemetryData[]) => {
         this.downloadedPacketText = JSON.stringify(result);
         this.packets = result;

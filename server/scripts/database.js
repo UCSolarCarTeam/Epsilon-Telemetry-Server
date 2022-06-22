@@ -74,8 +74,9 @@ module.exports.lastPacket = function() {
  * @param {Number} page
  * @return {Promise}
  */
-module.exports.between = function(lowestTime, highestTime, page = 1) { 
-  const pageSize = 10;
+module.exports.between = function(lowestTime, highestTime, page = 1, pageSize = 10) { 
+  if(pageSize > 120)
+    pageSize = 120;
   return collection.find({ "TimeStamp" : { $gte: lowestTime, $lte: highestTime} })
     .skip((page - 1) * pageSize).limit(pageSize).toArray();
 };
