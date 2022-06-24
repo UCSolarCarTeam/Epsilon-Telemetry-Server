@@ -171,6 +171,8 @@
 						<span *ngIf="auxBms.highVoltageEnable; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
 						<span class="item text-align-left">High Voltage Enable</span>
 					</span>
+				</div>
+				<div class="column">
 					<span class="item text-align-left">
 						<span *ngIf="auxBms.orionCANReceivedRecently; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
 						<span class="item text-align-left">Orion CAN Received</span>
@@ -192,13 +194,13 @@
 						<span class="item text-align-left">Discharge Open but Should be Closed</span>
 					</span>
 				</div>
-				<div>
-					<div class="item" style="margin-left: 2em">Aux Voltage
-						<div class="data">{{auxBms.auxVoltage}} V</div>
-					</div>
-					<div class="item" style="margin-left: 2em">Precharge State
-						<div class="data">{{auxBms.prechargeState}}</div>
-					</div>
+			</div>
+			<div>
+				<div class="item" style="margin-left: 2em">Aux Voltage
+					<div class="data">{{auxBms.auxVoltage}} V</div>
+				</div>
+				<div class="item" style="margin-left: 2em">Precharge State
+					<div class="data">{{auxBms.prechargeState}}</div>
 				</div>
 			</div>
 		</div>
