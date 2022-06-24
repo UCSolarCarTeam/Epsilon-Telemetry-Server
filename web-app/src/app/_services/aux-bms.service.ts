@@ -38,5 +38,23 @@ export class AuxBmsService {
     this.auxbms.prechargeState = State[pState];
     this.auxbms.strobeBmsLight = data.AuxBms.StrobeBmsLight;
     this.auxbms.highVoltageEnable = data.AuxBms.HighVoltageEnableState; // TODO: add the correct value
+    this.auxbms.allowDischarge = data.AuxBms.AllowDischarge;
+    this.auxbms.chargeContactorError = data.AuxBms.ChargeContactorError;
+    this.auxbms.chargeOpenButShouldBeClosed = data.AuxBms.ChargeOpenButShouldBeClosed;
+    this.auxbms.chargeShouldTrip = data.AuxBms.ChargeShouldTrip;
+    this.auxbms.chargeTripDueToHighCellVoltage = data.AuxBms.ChargeTripDueToHighCellVoltage;
+    this.auxbms.chargeTripDueToHighTemperatureAndCurrent = data.AuxBms.ChargeTripDueToHighTemperatureAndCurrent;
+    this.auxbms.chargeTripDueToPackCurrent = data.AuxBms.ChargeTripDueToPackCurrent;
+    this.auxbms.dischargeContactorError = data.AuxBms.DischargeContactorError;
+    this.auxbms.dischargeOpenButShouldBeClosed = data.AuxBms.DischargeOpenButShouldBeClosed;
+    this.auxbms.dischargeShouldTrip = data.AuxBms.DischargeShouldTrip;
+    this.auxbms.dischargeTripDueToHighTemperatureAndCurrent = data.AuxBms.DischargeTripDueToHighTemperatureAndCurrent;
+    this.auxbms.dischargeTripDueToLowCellVoltage = data.AuxBms.DischargeTripDueToLowCellVoltage;
+    this.auxbms.dischargeTripDueToPackCurrent = data.AuxBms.DischargeTripDueToPackCurrent;
+    this.auxbms.orionCANReceivedRecently = data.AuxBms.OrionCANReceivedRecently;
+    this.auxbms.protectionTrip = data.AuxBms.ProtectionTrip;
+    this.auxbms.tripDueToOrionMessageTimeout = data.AuxBms.TripDueToOrionMessageTimeout;
+    this.auxbms.chargeNotClosedDueToHighCurrent = data.AuxBms.ChargeNotClosedDueToHighCurrent;
+    this.auxbms.dischargeNotClosedDueToHighCurrent = data.AuxBms.DischargeNotClosedDueToHighCurrent;
   }
 }

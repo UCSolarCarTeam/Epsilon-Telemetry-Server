@@ -35,7 +35,10 @@ export interface IAuxBms {
   OrionCANReceivedRecently: boolean,
   PrechargeState: string,
   ProtectionTrip: boolean,
-  StrobeBmsLight: boolean
+  StrobeBmsLight: boolean,
+  TripDueToOrionMessageTimeout: boolean,
+  ChargeNotClosedDueToHighCurrent: boolean,
+  DischargeNotClosedDueToHighCurrent: boolean
 }
 
 export interface IKeyMotor {

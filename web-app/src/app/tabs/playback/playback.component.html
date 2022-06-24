@@ -69,6 +69,7 @@
                   <li>AuxBmsAlive: <span [style.color]="getPropertyStyling('AuxBms.AuxBmsAlive', packet.AuxBms.AuxBmsAlive)" class="white-text">{{packet.AuxBms.AuxBmsAlive}}</span></li>
                   <li>AuxVoltage: <span [style.color]="getPropertyStyling('AuxBms.AuxVoltage', packet.AuxBms.AuxVoltage)" class="white-text">{{packet.AuxBms.AuxVoltage}}</span></li>
                   <li>ChargeContactorError: <span [style.color]="getPropertyStyling('AuxBms.ChargeContactorError', packet.AuxBms.ChargeContactorError)" class="white-text">{{packet.AuxBms.ChargeContactorError}}</span></li>
+                  <li>ChargeNotClosedDueToHighCurrent: <span class="white-text">{{packet.AuxBms.ChargeNotClosedDueToHighCurrent}}</span></li>
                   <li>ChargeOpenButShouldBeClosed: <span [style.color]="getPropertyStyling('AuxBms.ChargeOpenButShouldBeClosed', packet.AuxBms.ChargeOpenButShouldBeClosed)" class="white-text">{{packet.AuxBms.ChargeOpenButShouldBeClosed}}</span></li>
                   <li>ChargeShouldTrip: <span class="white-text">{{packet.AuxBms.ChargeShouldTrip}}</span></li>
                   <li>ChargeTripDueToHighCellVoltage: <span [style.color]="getPropertyStyling('AuxBms.ChargeTripDueToHighCellVoltage', packet.AuxBms.ChargeTripDueToHighCellVoltage)" class="white-text">{{packet.AuxBms.ChargeTripDueToHighCellVoltage}}</span></li>
@@ -76,6 +77,7 @@
                   <li>ChargeTripDueToPackCurrent: <span [style.color]="getPropertyStyling('AuxBms.ChargeTripDueToPackCurrent', packet.AuxBms.ChargeTripDueToPackCurrent)"class="white-text">{{packet.AuxBms.ChargeTripDueToPackCurrent}}</span></li>
                   <li>CommonContactorError: <span [style.color]="getPropertyStyling('AuxBms.CommonContactorError', packet.AuxBms.CommonContactorError)" class="white-text">{{packet.AuxBms.CommonContactorError}}</span></li>
                   <li>DischargeContactorError: <span [style.color]="getPropertyStyling('AuxBms.DischargeContactorError', packet.AuxBms.DischargeContactorError)" class="white-text">{{packet.AuxBms.DischargeContactorError}}</span></li>
+                  <li>DischargeNotClosedDueToHighCurrent: <span class="white-text">{{packet.AuxBms.DischargeNotClosedDueToHighCurrent}}</span></li>
                   <li>DischargeOpenButShouldBeClosed: <span [style.color]="getPropertyStyling('AuxBms.DischargeOpenButShouldBeClosed', packet.AuxBms.DischargeOpenButShouldBeClosed)" class="white-text">{{packet.AuxBms.DischargeOpenButShouldBeClosed}}</span></li>
                   <li>DischargeShouldTrip: <span class="white-text">{{packet.AuxBms.DischargeShouldTrip}}</span></li>
                   <li>DischargeTripDueToHighTemperatureAndCurrent: <span [style.color]="getPropertyStyling('AuxBms.DischargeTripDueToHighTemperatureAndCurrent', packet.AuxBms.DischargeTripDueToHighTemperatureAndCurrent)" class="white-text">{{packet.AuxBms.DischargeTripDueToHighTemperatureAndCurrent}}</span></li>
@@ -86,6 +88,8 @@
                   <li>PrechargeState: <span class="white-text">{{packet.AuxBms.PrechargeState}}</span></li>
                   <li>ProtectionTrip: <span [style.color]="getPropertyStyling('AuxBms.ProtectionTrip', packet.AuxBms.ProtectionTrip)" class="white-text">{{packet.AuxBms.ProtectionTrip}}</span></li>
                   <li>StrobeBmsLight: <span class="white-text">{{packet.AuxBms.StrobeBmsLight}}</span></li>
+                  <li>TripDueToContactorDisconnectedUnexpectedly: <span class="white-text">{{packet.AuxBms.TripDueToContactorDisconnectedUnexpectedly}}</span></li>
+                  <li>TripDueToOrionMessageTimeout: <span class="white-text">{{packet.AuxBms.TripDueToOrionMessageTimeout}}</span></li>
               </td>
               <td *ngIf="showKeyMotor">
                   <ul *ngFor="let keyMotor of packet.KeyMotor">

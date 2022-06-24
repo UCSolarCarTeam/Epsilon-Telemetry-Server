@@ -1,4 +1,8 @@
 /* Added on to from src/styles.css */
+.aux-bms-faults {
+  margin-bottom: 1em;
+}
+
 .subheader {
   margin-top: 1em;
   margin-bottom: 1em;
