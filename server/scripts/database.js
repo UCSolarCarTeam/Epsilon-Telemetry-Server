@@ -89,7 +89,7 @@ module.exports.between = function(lowestTime, highestTime, page = 1, pageSize = 
  */
 module.exports.betweenLap = function(lowestTime, highestTime) {
   return collection.find({ "TimeStamp" : { $gte: lowestTime, $lte: highestTime} })
-  .sort({TimeStamp : -1}).limit(1200);
+  .sort({TimeStamp : -1}).limit(1200).toArray();
 }
 
 // module.exports.conversionTest = async function() {
