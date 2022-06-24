@@ -90,7 +90,8 @@ export interface IDriverControls {
     Reverse: boolean,
     PushToTalk: boolean,
     Horn: boolean,
-    Reset: boolean
+    Reset: boolean,
+    Lap: boolean
 }
 
 export interface ILights {

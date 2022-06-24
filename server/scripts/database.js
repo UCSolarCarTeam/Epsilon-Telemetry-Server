@@ -43,6 +43,7 @@ const db = pgp(config.database);
  const client = new MongoClient(uri);
  const database = client.db('Elysia');
  const collection = database.collection('Packets');
+ const lapCollection = database.collection('Laps');
 
  module.exports.connectToDatabase = function() {
   return client.connect();
@@ -73,11 +74,23 @@ module.exports.lastPacket = function() {
  * @param {Number} page
  * @return {Promise}
  */
-module.exports.between = function(lowestTime, highestTime, page = 1) { 
-  const pageSize = 10;
+module.exports.between = function(lowestTime, highestTime, page = 1, pageSize = 10) { 
+  if(pageSize > 120)
+    pageSize = 120;
   return collection.find({ "TimeStamp" : { $gte: lowestTime, $lte: highestTime} })
     .skip((page - 1) * pageSize).limit(pageSize).toArray();
 };
+
+/**
+ * Fetches packets between a lap with a time limit of 10 minutes
+ * @param {Timestamp} lowestTime 
+ * @param {Timestamp} highestTime 
+ * @return {Promise}
+ */
+module.exports.betweenLap = function(lowestTime, highestTime) {
+  return collection.find({ "TimeStamp" : { $gte: lowestTime, $lte: highestTime} })
+  .sort({TimeStamp : -1}).limit(1200);
+}
 
 // module.exports.conversionTest = async function() {
 //   var packets = collection.find();
@@ -99,12 +112,7 @@ module.exports.between = function(lowestTime, highestTime, page = 1) {
 * @return {Promise}
 */
 module.exports.laps = function() {
-  return db.any({
-    name: 'client-init-lap',
-    text: 'SELECT * ' +
-          'FROM lap ' +
-          'ORDER BY timestamp DESC',
-  });
+  return lapCollection.find().sort({timestamp : -1}).limit(50).toArray();
 };
 
 /**
@@ -112,12 +120,7 @@ module.exports.laps = function() {
  * @return {Promise}
  */
 module.exports.lastLap = function() {
-  return db.one({
-    name: 'client-last-lap',
-    text: 'SELECT * ' +
-          'FROM lap ' +
-          'ORDER BY timestamp DESC LIMIT 1',
-  });
+  return lapCollection.find().sort({timestamp : -1}).limit(1).toArray();
 };
 
 /**
@@ -125,9 +128,5 @@ module.exports.lastLap = function() {
 **/
 // TODO - Add actual calculations
 module.exports.addLap = function(jsonObj) {
-  // return db.one({
-  //   name: `insertLap`,
-  //   text: `INSERT INTO lap (${Object.keys(jsonObj)}) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
-  //   values: Object.values(jsonObj),
-  // });
+  return lapCollection.insertOne(jsonObj);
 };
