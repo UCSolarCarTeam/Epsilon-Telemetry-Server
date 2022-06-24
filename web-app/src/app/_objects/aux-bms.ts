@@ -14,4 +14,22 @@ export class AuxBms {
   prechargeState: State = State.OFF;
   strobeBmsLight = false;
   highVoltageEnable = false;
+  allowDischarge = false;
+  chargeContactorError = false;
+  chargeOpenButShouldBeClosed = false;
+  chargeShouldTrip = false;
+  chargeTripDueToHighCellVoltage = false;
+  chargeTripDueToHighTemperatureAndCurrent = false;
+  chargeTripDueToPackCurrent = false;
+  dischargeContactorError = false;
+  dischargeOpenButShouldBeClosed = false;
+  dischargeShouldTrip = false;
+  dischargeTripDueToHighTemperatureAndCurrent = false;
+  dischargeTripDueToLowCellVoltage = false;
+  dischargeTripDueToPackCurrent = false;
+  orionCANReceivedRecently = false;
+  protectionTrip = false;
+  tripDueToOrionMessageTimeout = false;
+  chargeNotClosedDueToHighCurrent = false;
+  dischargeNotClosedDueToHighCurrent = false;
 }

@@ -160,16 +160,36 @@
 						<span class="item">Strobe BMS</span>
 					</span>
 					<span class="item text-align-left">
-						<span *ngIf="auxBms.contactorError; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
-						<span class="item">Contactor Error</span>
-					</span>
-					<span class="item text-align-left">
 						<span *ngIf="auxBms.allowCharge; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
 						<span class="item text-align-left">Allow Charge</span>
 					</span>
 					<span class="item text-align-left">
+						<span *ngIf="auxBms.allowDischarge; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
+						<span class="item text-align-left">Allow Discharge</span>
+					</span>
+					<span class="item text-align-left">
 						<span *ngIf="auxBms.highVoltageEnable; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
 						<span class="item text-align-left">High Voltage Enable</span>
+					</span>
+					<span class="item text-align-left">
+						<span *ngIf="auxBms.orionCANReceivedRecently; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
+						<span class="item text-align-left">Orion CAN Received</span>
+					</span>
+					<span class="item text-align-left">
+						<span *ngIf="auxBms.dischargeShouldTrip; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
+						<span class="item text-align-left">Discharge Should Trip</span>
+					</span>
+					<span class="item text-align-left">
+						<span *ngIf="auxBms.chargeShouldTrip; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
+						<span class="item text-align-left">Charge Should Trip</span>
+					</span>
+					<span class="item text-align-left">
+						<span *ngIf="auxBms.chargeOpenButShouldBeClosed; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
+						<span class="item text-align-left">Charge Open but Should be Closed</span>
+					</span>
+					<span class="item text-align-left">
+						<span *ngIf="auxBms.dischargeOpenButShouldBeClosed; else elseBlock" class="ifs"><img class="circle-items" src="../../../assets/GreenCircle.png" alt="Green Circle" ></span>
+						<span class="item text-align-left">Discharge Open but Should be Closed</span>
 					</span>
 				</div>
 				<div>
