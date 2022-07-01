@@ -17,9 +17,8 @@ export class FaultsComponent implements OnInit {
   motor0Faults: MotorFaults;
   motor1Faults: MotorFaults;
   auxBms: AuxBms;
-  auxBmsService: AuxBmsService;
 
-  constructor(private faultsService: FaultsService) { }
+  constructor(private faultsService: FaultsService, private auxBmsService: AuxBmsService) { }
 
   ngOnInit() {
     this.batteryFaults = this.faultsService.getBatteryFaults();
