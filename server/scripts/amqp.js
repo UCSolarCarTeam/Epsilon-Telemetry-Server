@@ -61,7 +61,7 @@ amqp.connect(config.rabbitmq.host)
           // Want to capture when button is released
           if (!jsonObj.DriverControls.Lap
             && lap) {
-            const currentTimeStampEpoch = new Date(jsonObj.TimeStamp).getTime().toFixed(0);
+            const currentTimeStampEpoch = Number(jsonObj.TimeStamp);
             db.betweenLap(lastLapTimestamp, currentTimeStampEpoch)
                .then((allPackets) => {
                   let timestamp = currentTimeStampEpoch;
