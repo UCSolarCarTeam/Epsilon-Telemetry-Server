@@ -88,8 +88,8 @@ module.exports.getAveragePowerIn = function(packetArray) {
             // Array Power = Array Voltage * Array Current
             // arrayPower += packet['mppt' + mppt + 'arrayvoltage'] *
             //               packet['mppt' + mppt + 'arraycurrent'];
-            arrayPower += packet.Mppt[mppt].ArrayVoltage *
-                        packet.Mppt[mppt].ArrayCurrent;
+            arrayPower += packet.MPPT[mppt].ArrayVoltage *
+                        packet.MPPT[mppt].ArrayCurrent;
         }
         return arrayPower;
     }).reduce((sum, curr) => sum + (curr / packetArray.length), 0);
