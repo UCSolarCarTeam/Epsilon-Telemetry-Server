@@ -24,6 +24,7 @@ wss.on('connection', function(ws, req) {
     });
   db.laps()
   .then((laps) => {
+    laps.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1);
     laps.forEach(lap => {
       ws.send(JSON.stringify(lap));
     })
