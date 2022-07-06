@@ -1,5 +1,6 @@
 export class LapData {
     lapNumber = -1;
+    timestamp = -1;
     lapTime = 'stringTime';
     totalPowerIn = -1;
     totalPowerOut = -1;

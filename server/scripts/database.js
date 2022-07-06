@@ -112,7 +112,7 @@ module.exports.betweenLap = function(lowestTime, highestTime) {
 * @return {Promise}
 */
 module.exports.laps = function() {
-  return lapCollection.find().sort({timestamp : 1}).limit(50).toArray();
+  return lapCollection.find().sort({timestamp : -1}).limit(80).toArray();
 };
 
 /**
