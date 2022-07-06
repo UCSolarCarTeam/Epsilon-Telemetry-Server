@@ -35,13 +35,13 @@ export class LapService {
     newData.lapNumber = data.lapnumber;
 
     newData.lapTime = this.getTimeString(data.secondsdifference);
-
+    newData.timestamp = data.timestamp;
     newData.totalPowerIn = this.rdService.getRoundedValue(data.totalpowerin, 2);
     newData.totalPowerOut = this.rdService.getRoundedValue(data.totalpowerout, 2);
     newData.netPowerOut = this.rdService.getRoundedValue(data.netpowerout, 2);
     newData.distance = this.rdService.getRoundedValue(data.distance, 2);
     newData.amphours = this.rdService.getRoundedValue(data.amphours, 2);
-    newData.averagePackCurrent = this.rdService.getRoundedValue(data.averagepackcurrent, 2);
+    newData.averagePackCurrent = this.rdService.getRoundedValue(data.averagepackCurrent, 2);
     newData.batterySecondsRemaining = data.batterysecondsremaining;
     newData.averageSpeed = this.rdService.getRoundedValue(data.averagespeed, 2);
 
