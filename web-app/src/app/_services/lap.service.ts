@@ -46,6 +46,7 @@ export class LapService {
     newData.averageSpeed = this.rdService.getRoundedValue(data.averagespeed, 2);
 
     this.lapDataArray.unshift(newData)
+    this.lapDataArray.sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1)
   }
 
   getTimeString(secondsdifference): string {
