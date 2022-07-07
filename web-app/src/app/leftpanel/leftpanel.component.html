@@ -60,6 +60,7 @@
       readonly="true"
     >
   </mat-form-field>
+  <mat-divider></mat-divider>
   <mat-form-field class="bus-current">
     <input matInput 
       placeholder="Bus Current"
@@ -81,33 +82,14 @@
       readonly="true"
     >
   </mat-form-field>
-  <div class="spinners"> 
-    <mat-progress-spinner
-      id="overlay-0"
-      color="accent"
-      value="100"
-      diameter="180"
-      strokeWidth="10"
-    >
-    </mat-progress-spinner>
-    <mat-progress-spinner
-      id="overlay-2"
-      color="warn"
-      value="{{getVehicleVelocityPercentage()}}"
-      diameter="180"
-      strokeWidth="10"
-    >
-    </mat-progress-spinner>
-    <div class="velocity-data">
-      <label>Vehicle Velocity</label>
-      <p id="vehicle-velocity">
-        <span class="velocity-number">
-          {{getVehicleVelocity() | number: '1.2-2'}}
-        </span>
-        km/h
-      </p>
-    </div>
-  </div>
+
+    <mat-form-field class="velocity-data">
+      <input matInput
+      placeholder="Vehicle Velocity"
+      value="{{getVehicleVelocity() | number: '1.2-2'}}km/h"
+      readonly="true"
+      >
+      </mat-form-field>
 </mat-card>
 
 

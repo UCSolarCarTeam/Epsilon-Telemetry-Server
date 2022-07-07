@@ -7,28 +7,13 @@
       readonly="true"
     >
   </mat-form-field>
-  <div class="spinners">
-    <mat-progress-spinner
-      id="overlay-0"
-      color="accent"
-      value="100"
-      diameter="180"
-      strokeWidth="10"
+  <mat-form-field class="pack-soc">
+    <input matInput 
+    placeholder="Pack SOC"
+    value="{{battery.packStateOfCharge}}%"
+    readonly="true"
     >
-    </mat-progress-spinner>
-    <mat-progress-spinner
-      id="overlay-2"
-      color="warn"
-      value="{{battery.packStateOfCharge}}"
-      diameter="180"
-      strokeWidth="10"
-    >
-    </mat-progress-spinner>
-    <div class="soc-data">
-      <label>Pack SOC</label>
-      <p id="pack-soc">{{battery.packStateOfCharge}}%</p>
-    </div>
-  </div>
+  </mat-form-field>
   <mat-form-field>
     <input matInput
       placeholder="Pack kWh"
