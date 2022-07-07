@@ -14,15 +14,15 @@
 
 .mat-tab-link-active {
   background-color: #303030;
-  color: #D5FEFF;
-  border: 1px solid #6B7F7F;
+  color: #d5feff;
+  border: 1px solid #6b7f7f;
   font-weight: bold;
 }
 
 .mat-tab-link {
   line-height: 30px !important;
   height: 3em !important;
-  min-width: 16.66666% !important;
+  min-width: 16.6667% !important;
   border: 1px solid #7e7e7e;
   color: white;
   font-size: 18px;
@@ -53,38 +53,40 @@
 }
 
 @media only screen
-and (max-width: 768px){
-  .tabs{
+  and (max-width: 768px) {
+  .tabs {
     width: 100%;
     margin: 0;
   }
 }
 
 @media only screen
-and (min-width: 769px)
-and (max-width: 992px){
-  .tabs{
-    margin-right:5em;
+  and (min-width: 769px)
+  and (max-width: 992px) {
+  .tabs {
+    margin-right: 5em;
   }
 }
 
 @media only screen
-and (min-width: 992px){
+  and (min-width: 992px) {
   app-timestamp {
     display: none;
   }
 }
+
 @media only screen
-and (min-width: 992px)
-and (max-width: 1100px){
-  .tabs{
+  and (min-width: 992px)
+  and (max-width: 1100px) {
+  .tabs {
     margin-right: 3em;
   }
 }
+
 @media only screen
-and (min-width: 1100px)
-and (max-width: 1200px){
-  .tabs{
+  and (min-width: 1100px)
+  and (max-width: 1200px) {
+  .tabs {
     margin-right: 2em;
   }
 }

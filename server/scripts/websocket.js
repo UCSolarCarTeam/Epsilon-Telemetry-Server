@@ -14,9 +14,9 @@ wss.on('connection', function(ws, req) {
   db.lastPacket()
     // send to client
     .then((lastRow) => {
-      // make the datetime pretty
-      lastRow['msgType'] = 'packet';
-      ws.send(JSON.stringify(lastRow));
+      //lastRow['msgType'] = 'packet';
+      packet = lastRow[0];
+      ws.send(JSON.stringify(packet));
     })
     // send error if cannot fetch last row
     .catch((err) => {
@@ -24,16 +24,19 @@ wss.on('connection', function(ws, req) {
     });
   db.laps()
   .then((laps) => {
-    for (let lap = laps.length - 1; lap >= 0; --lap) {
-      laps[lap]['msgType'] = 'lap';
-      ws.send(JSON.stringify(laps[lap]));
-    }
+    laps.forEach(lap => {
+      ws.send(JSON.stringify(lap));
+    })
   });
 });
 
 wss.broadcast = function broadcast(data) {
   wss.clients.forEach(function each(client) {
-    client.send(data);
+    try {
+      client.send(data);
+    }catch {
+      console.log('Cannot send packet. Client no longer exits..')
+    }
   });
 };
 

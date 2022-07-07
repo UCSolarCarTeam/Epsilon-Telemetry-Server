@@ -1,26 +1,49 @@
 .container {
   height: 400px;
   overflow: auto;
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(128 128 128);
   margin-top: 1.5em;
 }
-.mat-row:nth-child(even) {
-  background-color: rgb(66, 66, 66);
+
+.mat-row {
+  background-color: rgb(102 99 99);
 }
-.mat-row:nth-child(odd) {
-      background-color: rgb(102, 99, 99);
-}
+
 table {
   width: 100%;
 }
+
 td.mat-cell {
-	text-align: center;
+  text-align: center;
+  width: 11.11%;
+  border: 0.5px solid white;
 }
+
+td.mat-cell:first-of-type {
+  padding-left: 0;
+}
+
+td.mat-cell:last-of-type {
+  padding-right: 0;
+}
+
 th.mat-cell-header {
-	text-align: center;
-	padding-left: .5em;
-	padding-right: .5em;
+  text-align: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
+
 th.mat-header-cell {
   text-align: center;
+  width: 11.11%;
+  border: 0.5px solid white;
+  background: #212121;
+}
+
+th.mat-header-cell:last-of-type {
+  padding-right: 0;
+}
+
+th.mat-header-cell:first-of-type {
+  padding-left: 0;
 }

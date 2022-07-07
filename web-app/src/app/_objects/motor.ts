@@ -8,7 +8,8 @@ export class Motor {
   vehicleVelocity = -1;
 
   // MotorDetails
-  backEmf = -1;
+  backEmfReal = -1;
+  backEmfImaginary = -1;
   dcBusAmpHours = -1;
   dspBoardTemp = -1;
   heatSinkTemp = -1;

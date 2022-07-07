@@ -6,6 +6,34 @@
   justify-content: space-around;
 }
 
+.car-misc,
+.battery-misc {
+  width: 40%;
+  min-width: 120px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #212121;
+  margin: 0 2px;
+}
+
+.direction,
+.warning {
+  display: flex;
+  justify-content: space-around;
+}
+
+.forward,
+.reverse,
+.brakes,
+.hazard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 5px;
+}
 .progress-bars {
   display: flex;
   align-items: center;
@@ -14,6 +42,12 @@
 .progress-bars p {
   margin: 0 3px;
 }
+
+#back-arrow-2,
+#forward-arrow-2 {
+  margin-left: -12px;
+}
+
 
 .precharge-state-dots {
   margin-top: 5px;
@@ -38,21 +72,11 @@ mat-divider {
   margin: 5px 0;
 }
 
+
 #bms-strobe-label {
   text-align: left;
   display: block;
 }
-
-  .mat-card{
-    height: 95%;
-  }
-
-  @media screen
-  and (min-width: 1200px)
-  and (max-width: 1600px) {
-  :host {
-    height: auto;
-  }
 
   .packet {
     padding: 12px;
@@ -67,8 +91,10 @@ mat-divider {
 }
 
 @media screen
+
   and (min-width: 768px) {
   app-timestamp {
     display: block;
   }
 }
+

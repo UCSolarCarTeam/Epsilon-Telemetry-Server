@@ -13,7 +13,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +37,8 @@ import { DataInitService } from './_services/data.init.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { TimestampComponent } from './timestamp/timestamp.component';
 import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component';
+import { TestComponentComponent } from './test-component/test-component.component';
+import { PlaybackComponent } from './tabs/playback/playback.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +53,9 @@ import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component'
     RightpanelComponent,
     DataTableComponent,
     TimestampComponent,
-    RaceGraphComponent
+    RaceGraphComponent,
+    TestComponentComponent,
+    PlaybackComponent
   ],
   imports: [
     AppRoutingModule,
@@ -65,7 +74,12 @@ import { RaceGraphComponent } from './tabs/race/race-graph/race-graph.component'
     MatProgressSpinnerModule,
     MatTableModule,
     MatRadioModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatButtonModule,
   ],
   providers: [
     WebSocketService,

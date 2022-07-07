@@ -14,15 +14,17 @@
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "event-stream": "^3.3.4",
     "express": "^4.16.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
+    "mongodb": "^4.5.0",
     "morgan": "^1.9.1",
-    "pg-promise": "^8.4.6",
+    "pg-promise": "^10.5.6",
     "promise": "^8.0.2",
-    "url-parse": "^1.4.7",
-    "ws": "^5.2.2"
+    "url-parse": "^1.5.9",
+    "ws": "^5.2.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",

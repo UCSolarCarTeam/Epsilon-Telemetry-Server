@@ -1,0 +1,1 @@
+npm run start >> debugLog.txt 2>> errorLogs.txt

@@ -17,6 +17,7 @@ import { ControlsComponent } from './tabs/controls/controls.component';
 import { FaultsComponent } from './tabs/faults/faults.component';
 import { MotorComponent } from './tabs/motor/motor.component';
 import { MpptComponent } from './tabs/mppt/mppt.component';
+import { PlaybackComponent } from './tabs/playback/playback.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -40,7 +41,7 @@ describe('AppComponent', () => {
         FaultsComponent,
         MotorComponent,
         MpptComponent,
-        DataTableComponent
+        PlaybackComponent
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue : '/' }

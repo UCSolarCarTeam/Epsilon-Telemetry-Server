@@ -1,15 +1,17 @@
 const amqp = require('amqplib');
+const app = require('../app');
 const config = require('../config');
 const db = require('./database');
 const wss = require('./websocket').websocket;
 const rc = require('./race');
 
 let lap = false;
-let lastLapTimestamp;
+let lastLapTimestamp = undefined;
 
 db.lastLap()
   .then((lastLap) => {
-    lastLapTimestamp = lastLap.timestamp;
+    if(lastLap[0] != null)
+      lastLapTimestamp = lastLap[0].timestamp;
 }).catch(() => {
     lastLapTimestamp = undefined;
 });
@@ -39,20 +41,28 @@ amqp.connect(config.rabbitmq.host)
           const jsonObj = JSON.parse(msg.content);
           // save the data into database
           // Process Packet Data
-          db.insert('rabbitmq-insert', jsonObj)
-            .then((insertedRow) => {
-              console.log('1 row inserted from RabbitMQ');
-              insertedRow['msgType'] = 'packet';
-              // send to angular clients
-              wss.broadcast(JSON.stringify(insertedRow));
-            });
-
+          if(jsonObj.Ccs.CcsAlive === true){
+            try {
+              db.insert('rabbitmq-insert', jsonObj)
+              .then(() => {
+                wss.broadcast(JSON.stringify(jsonObj));
+              });
+            }
+            catch {
+              console.error('Could not insert packet into database')
+              wss.broadcast(JSON.stringify(jsonObj));
+            }
+          }
+          else {
+            wss.broadcast(JSON.stringify(jsonObj));
+          }
+          
           // Process Lap data
           // Want to capture when button is released
           if (!jsonObj.DriverControls.Lap
             && lap) {
-            const currentTimeStampEpoch = new Date(jsonObj.TimeStamp).getTime().toFixed(0);
-            db.between(lastLapTimestamp, currentTimeStampEpoch)
+            const currentTimeStampEpoch = jsonObj.TimeStamp;
+            db.betweenLap(lastLapTimestamp, currentTimeStampEpoch)
                .then((allPackets) => {
                   let timestamp = currentTimeStampEpoch;
                   let averagePowerIn = rc.getAveragePowerIn(allPackets);
@@ -72,12 +82,11 @@ amqp.connect(config.rabbitmq.host)
                     'averagepackCurrent': averagePackCurrent,
                     'batterysecondsremaining': rc.getSecondsRemainingUntilChargedOrDepleted(averagePackCurrent, amphours),
                     'averagespeed': rc.getAverageSpeed(allPackets),
+                    'msgType': 'lap'
                   };
                   db.addLap(lap)
-                    .then((insertedRow) => {
-                      console.log('1 row inserted into Lap Table');
-                      insertedRow['msgType'] = 'lap';
-                      wss.broadcast(JSON.stringify(insertedRow));
+                    .then(() => {
+                      wss.broadcast(JSON.stringify(lap));
                     });
                   lastLapTimestamp = currentTimeStampEpoch;
                });

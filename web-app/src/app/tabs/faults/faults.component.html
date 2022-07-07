@@ -120,3 +120,18 @@
 		</div>
 	</div>
 </div>
+<div class="aux-bms-faults">
+	<div class="subheader">Aux BMS Faults</div>
+	<div class="fault-grid">
+		<div class="item off" [ngClass]="{'on' : auxBms.chargeTripDueToHighCellVoltage, 'off' : !auxBms.chargeTripDueToHighCellVoltage}">Charge Trip Due To High Cell Voltage</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.chargeTripDueToHighTemperatureAndCurrent, 'off' : !auxBms.chargeTripDueToHighTemperatureAndCurrent}">Charge Trip Due To High Temperature And Current</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.chargeTripDueToPackCurrent, 'off' : !auxBms.chargeTripDueToPackCurrent}">Charge Trip Due To Pack Current</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.dischargeTripDueToLowCellVoltage, 'off' : !auxBms.dischargeTripDueToLowCellVoltage}">Discharge Trip Due To Low Cell Voltage</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.dischargeTripDueToHighTemperatureAndCurrent, 'off' : !auxBms.dischargeTripDueToHighTemperatureAndCurrent}">Discharge Trip Due To High Temperature And Current</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.dischargeTripDueToPackCurrent, 'off' : !auxBms.dischargeTripDueToPackCurrent}">Discharge Trip Due To Pack Current</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.protectionTrip, 'off' : !auxBms.protectionTrip}">Protection Trip</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.tripDueToOrionMessageTimeout, 'off' : !auxBms.tripDueToOrionMessageTimeout}">Trip Due To Orion Message Timeout</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.chargeNotClosedDueToHighCurrent, 'off' : !auxBms.chargeNotClosedDueToHighCurrent}">Charge Not Closed Due To High Current</div>
+		<div class="item off" [ngClass]="{'on' : auxBms.dischargeNotClosedDueToHighCurrent, 'off' : !auxBms.dischargeNotClosedDueToHighCurrent}">Discharge Not Closed Due To High Current</div>
+	</div>
+</div>

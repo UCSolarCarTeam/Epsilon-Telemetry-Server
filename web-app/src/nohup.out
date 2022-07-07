@@ -1,0 +1,25 @@
+
+> telemetry-view@0.0.0 start /root/Epsilon-Telemetry-Server/web-app
+> ng serve
+
+
+@angular/compiler-cli@6.1.9 requires typescript@'>=2.7.0 <2.8.0' but 2.9.2 was found instead.
+Using this version can result in undefined behaviour and difficult to debug problems.
+
+Please run the following command to install a compatible version of TypeScript.
+
+    npm install typescript@'>=2.7.0 <2.8.0'
+
+To disable this warning run "ng config cli.warnings.typescriptMismatch false".
+
+Port 4200 is already in use. Use '--port' to specify a different port.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! telemetry-view@0.0.0 start: `ng serve`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the telemetry-view@0.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2019-07-02T14_04_08_162Z-debug.log

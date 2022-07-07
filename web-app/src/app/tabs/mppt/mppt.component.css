@@ -1,50 +1,58 @@
 .text {
-	text-align: center;
+  text-align: center;
 }
+
 .alive-text {
-	background-color: transparent;
-	color: #D5FEFF;
+  background-color: transparent;
+  color: #d5feff;
 }
+
 .circle-items {
-	margin-top: .5em;
-	width: 15px;
-	height: 15px;
+  margin-top: 0.5em;
+  width: 15px;
+  height: 15px;
 }
+
 .flex-row {
-	padding-top: .2em;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+  padding-top: 0.2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
+
 .flex-column {
-	display: flex;
-	margin-left: 1%;
-	margin-right: 1%;
-	margin-bottom: 0.35em;
-	width: 98%;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 0.35em;
+  width: 98%;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .data {
-	font-family: Arial, sans-serif;
-	color: rgba(255, 255, 255, 0.75);
-	font-size: 0.8rem;
-	padding-bottom: 0.2em;
-	padding-top: .2em;
-	text-align: center;
+  font-family: Arial, sans-serif;
+  color: rgb(255 255 255 / 75%);
+  font-size: 0.8rem;
+  padding-bottom: 0.2em;
+  padding-top: 0.2em;
+  text-align: center;
 }
+
 .underline {
-	border-bottom: 1px solid white;
-	margin-bottom: .5em;
+  border-bottom: 1px solid white;
+  margin-bottom: 0.5em;
 }
+
 .mppt-grid-container {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	margin-top: 1em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 1em;
 }
-@media only screen 
-and (max-width: 768px){
-	.mppt-grid-container{
-		grid-template-columns: repeat(1, 1fr);
-	}
+
+@media only screen
+  and (max-width: 768px) {
+  .mppt-grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
