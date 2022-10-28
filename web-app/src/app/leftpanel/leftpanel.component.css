@@ -1,11 +1,10 @@
 :host {
   display: flex;
-  height: 98%;
+  height: 100% auto;
   min-width: 260px;
   max-width: 20%;
   margin: 0.5% auto;
 }
-
 .packet {
   display: flex;
   width: 90%;
@@ -35,12 +34,55 @@
   font-weight: bold;
   font-size: 22px;
 }
+  
+.direction,
+.warning {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.forward,
+.reverse,
+.brakes,
+.hazard
+ {
+  display: flex;
+  flex-direction: left;
+  align-items: center;
+  overflow: hidden;
+  padding: 5px;
+}
+
+
+.progress-bars {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bars p {
+  margin: 0 3px;
+}
+
+.bus-current,
+.battery-power,
+.velocity-data{
+	text-align: left;
+  width: 100%;
+}
+.set-current,
+.bus-voltage{
+  width: 100%;
+}
+.mat-card{
+  height: 100%;
+}
 
 @media screen
   and (min-width: 1200px)
   and (max-width: 1600px) {
   :host {
-    height: 96%;
+    height: auto;
   }
 
   .packet {
